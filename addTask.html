@@ -6,25 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="addTask.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/fonts.css">
     <title>Add Task</title>
 </head>
 
 <body>
-    <input typer="text" placeholder="Enter a title">
-    <textarea placeholder="Enter a Description"></textarea>
-    <input type="date">
-    <button>Urgent</button>
-    <button>Medium</button>
-    <button>Low</button>
-    <select name="selectcontact">
-        <option>Select contacts to assign</option>
-    </select>
-    <select name="selectcategory">
-        <option>Select task category</option>
-    </select>
-    <input type="text" placeholder="Add new Subtask">
-    <button>Clear</button>
-    <button>Create Task</button>
+    <div class="content">
+        <input id="title" type="text" placeholder="Enter a title">
+        <textarea placeholder="Enter a Description"></textarea>
+        <div class="custom-date-input">
+            <label for="date" class="custom-calendar-icon"><input id="date" type="date"></label>
+        </div>
+        <div class="priority-buttons">
+            <button>Urgent</button>
+            <button>Medium</button>
+            <button>Low</button>
+        </div>
+        <select name="selectcontact">
+            <option>Select contacts to assign</option>
+        </select>
+        <select name="selectcategory">
+            <option>Select task category</option>
+        </select>
+        <input type="text" placeholder="Add new Subtask">
+        <div>
+            <button>Clear</button>
+            <button>Create Task</button>
+        </div>
+    </div>
 </body>
 
 </html>
