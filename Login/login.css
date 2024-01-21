@@ -189,26 +189,91 @@ span:hover{
     color: #4589FF;
 }
 
-/* Join Animation*/
 
 
-.animated-logo-join img{
+/* Join-logo Animation*/
+
+
+.join-logo-container{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    animation: fadeOutBackground 3s ease-in-out;
+    
+}
+
+@keyframes fadeOutBackground{
+    from{
+        opacity: 1;
+        background-color: #4589FF;
+    }to{
+        opacity: 0;
+        background-color: transparent;
+    }
+}
+
+.join-logo-img{
     height: 323.1px;
     width: 265px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
 }
 
-.animated-logo-join{
-    background-color: #4589FF;
-}
+.animation-join-logo {
+    height: 100%;
+    opacity: 1;
+    animation-name: content-loaded;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    animation-delay: 1s;
+  }
+  
+  @keyframes content-loaded {
+    from {
+      opacity: 0;
+      
+    }
+    to {
+      opacity: 1;
+    }
+   
+  }
 
+  .invis-visible-animation {
+    position: absolute;
+    width: 100.03px;
+    height: 121.97px;
+    top: 80px;
+    left: 77px;
+    display: inline-block;
+    animation-name: logo-animation;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+  }
 
-
-
-
-
-
-    
+  .invis-visible-animation img{
+    height: 121.97px;
+    width: 100.03px;
+  }
+  
+  @keyframes logo-animation {
+    from {
+      width: 265px;
+      height: 323.1px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      
+    }
+    to {
+      width: 100.03px;
+      height: 121.97px;
+      top: 80px;
+      left: 77px;
+    }
+  }
+  
