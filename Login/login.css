@@ -188,3 +188,27 @@ span:hover{
     cursor: pointer;
     color: #4589FF;
 }
+
+/* Join Animation*/
+
+
+.animated-logo-join img{
+    height: 323.1px;
+    width: 265px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.animated-logo-join{
+    background-color: #4589FF;
+}
+
+
+
+
+
+
+
+    
