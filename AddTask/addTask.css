@@ -6,35 +6,6 @@ body {
     margin: 0;
 }
 
-.header {
-    max-width: 1440px;
-    height: 96px;
-    background-color: #4589FF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header span {
-    color: white !important;
-    font-size: 19px;
-    font-weight: 400;
-}
-
-.right-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 433px;
-    margin-right: 39px;
-}
-
-#logo {
-    height: 56px;
-    width: 45.93px;
-    margin-left: 39px;
-}
-
 span {
     height: 23px;
     font-size: 19px;;
@@ -53,6 +24,8 @@ textarea {
     padding: 64px 24px 0px 24px;
     gap: 24px;
     overflow-y: scroll;
+    margin-top: 96px;
+    margin-left: 232px;
 }
 
 .title {
