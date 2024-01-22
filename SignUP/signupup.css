@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    background-color: #4589FF;
+    font-family: 'Open Sans';
+}
+
+.join-logo-left-corner{
+    height: 121.97px;
+    width: 100.03px;
+    position: fixed;
+    top: 80px;
+    left: 77px;
+}
+
+.login-box-center{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 118px;
+    border-radius: 30px;
+    box-shadow: (0, 0, 0, 0.08);
+    width: 418px;
+    height: 392px;
+    padding: 48px 88px 48px 88px;
+    background-color: white;
+    margin-top: 208px;
+}
+
+.signup-txt-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 39px;
+}
+
+.signup-txt-in-login-box{
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.underline-blue{
+    width: 150px;
+    border: solid 3px rgba(69, 137, 255, 1);
+    border-radius: 10px; 
+}
+
