@@ -18,31 +18,34 @@
     <div class="login-box-center">
 
         <div class="signup-txt-container">
-            <div class="signup-txt-in-login-box">Sign up</div>
-            <div class="underline-blue"></div>
+            <div class="left-arrow-inbox">
+                <img id="back_to_login" onclick="backToLogin()" style="width: 37px; height: 37px;" src="/imgs/arrow-left-line.png">
+            </div>
+            <div class="signup-txt-in-login-box">
+                <div>Sign up</div>
+                <div class="underline-blue"></div>
+            </div>
         </div>
 
-        <div class="email-input-container">
-            <input class="email-input" placeholder="Email" required type="email">
-        </div>
-        <div class="password-input-container">
-            <input class="password-input" placeholder="Password" required type="password">
-        </div>
+        <form onsubmit="signUPsend(); return false;">
+            <input class="input input-name" placeholder="Name" type="text" required>
+            <input class="input input-email" placeholder="Email" type="email" required>
+            <input class="input input-password" placeholder="Password" type="password" required>
+            <input class="input input-confirm-password" placeholder="Confirm Password" type="password" required>
+            <div class="accept-the-terms">
+                <input class="checkbox" type="checkbox" id="accept_terms">
+                <label for="accept_terms">I accept the <a class="pp-inbox-link" href="#">Privacy Policy</a></label>
+            </div>
+            <button>Sign up</button>
+        </form>
 
-        <div class="checkbox-rememberme">
-            <input class="checkbox" type="checkbox" id="remember_me">
-            <label for="remember_me">Remember me</label>
-        </div>
+       
     
-        <div class="log-in-btns-container-bottom">
-            <button class="login-btn-bottom">Log In</button>
-            <button class="sign-up-btn-bottom">Guest Log In</button>
-        </div>
     </div>
 
     <div class="privacy-policy-and-legal-notice-container">
-        <span>Privacy Policy</span>
-        <span>Legal Notice</span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Legal Notice</a>
     </div>
     
 </body>
