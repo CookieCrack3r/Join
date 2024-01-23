@@ -83,10 +83,13 @@ form button:hover{
 }
 
 .accept-the-terms{
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
 }
 
 .input{
@@ -126,4 +129,34 @@ form button:hover{
 .pp-inbox-link{
     text-decoration: none;
     color: #4589FF;
+}
+
+.pp-inbox-link:hover{
+    text-decoration: underline;
+    color: #4589FF;
+}
+
+.checkbox {
+    cursor: pointer;
+    accent-color: lightgreen;
+    height: 19px;
+    width: 19px;
+}
+
+.privacy-policy-and-legal-notice-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 55px;
+    column-gap: 35px;
+}
+
+.privacy-policy-and-legal-notice-container a{
+    text-decoration: none;
+    color: white;
+}
+
+.privacy-policy-and-legal-notice-container a:hover{
+    color: whitesmoke;
+    text-decoration: underline
 }

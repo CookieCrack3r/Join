@@ -73,7 +73,7 @@ body{
 .login-txt-in-login-box{
     font-size: 48px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .underline-blue{
@@ -121,11 +121,13 @@ body{
     margin-top: 38px;
     column-gap: 10px;
     font-size: 16px;
+    align-items: center;
 }
 
 .checkbox{
-    height: 18px;
-    width: 18px;
+    height: 19px;
+    width: 19px;
+    accent-color: lightgreen;
 }
 
 .checkbox:hover{
