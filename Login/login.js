@@ -10,4 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+//this function open's the sign up page
+
+function redirectToSignUp(){
+    window.location.pathname = '/SignUP/signup.html';
+}
+
 
