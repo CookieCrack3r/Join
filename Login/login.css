@@ -279,3 +279,12 @@ span:hover{
     }
   }
   
+  a{
+    text-decoration: none;
+    color: #4589FF;
+  }
+
+  a:hover{
+    text-decoration: underline;
+    
+  }
