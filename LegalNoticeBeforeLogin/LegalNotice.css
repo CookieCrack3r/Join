@@ -23,6 +23,12 @@ img{
     width: 45.93px;
 }
 
+img:hover{
+    background-color: #005eff0f;
+    border-radius: 50%;
+    scale: 1.1;
+}
+
 .header-txt{
     font-size: 19px;
     color: white;

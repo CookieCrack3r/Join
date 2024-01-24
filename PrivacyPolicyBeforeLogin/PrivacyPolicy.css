@@ -93,6 +93,9 @@ a:hover{
 
 .arrow-middle-content-header img:hover{
     cursor: pointer;
+    background-color: #005eff0f;
+    border-radius: 50%;
+    scale: 1.1;
 
 }
 
