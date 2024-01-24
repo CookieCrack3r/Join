@@ -10,84 +10,90 @@
     <link rel="icon" type="image/svg" href="img/favicon_join.svg">
     <link rel="stylesheet" type="text/css" href="/Templates/Menu/menu.css">
     <script src="/Templates/template.js"></script>
+    <script src="board.js"></script>
     <title>Board</title>
 </head>
 
-<body onload="includeHTML()">
-    <div w3-include-html="/Templates/Menu/menu.html"></div>
-    <div class="content">
-        <div class="find-task">
-            <input type="search" class="icon" placeholder="Find Task"><button>Add Task <img src="img/plus.svg"></button>
+<body onload="includeHTML(); init()">
+        <div w3-include-html="/Templates/Menu/menu.html"></div>
+        <div class="content">
+            <div class="find-task">
+                <input type="search" class="icon" placeholder="Find Task"><button onclick="addTask()">Add Task <img
+                        src="img/plus.svg"></button>
+            </div>
+            <table>
+                <thead>
+                    <tr class="table-head">
+                        <th>To do <button onclick="addTask()"><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg></button></th>
+                        <th>In progress <button onclick="addTask()"><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg></button></th>
+                        <th>Await feedback <button onclick="addTask()"><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg></button></th>
+                        <th>Done</th>
+                    </tr>
+                </thead>
+                <tbody id="board" class="table-body">
+                    <tr>
+                        <td id="todo">
+                            <div class="no-tasks">No tasks To do</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="in-progress">
+                            <div class="card">
+                                <span class="label">User Story</span>
+                                <span class="description">
+                                    <h3>Kochwelt Page & Recipe Recommendor</h3><br>Build start page with recipe
+                                    recommendation...
+                                </span>
+                                <div class="progress-section">
+                                    <div class="progress-bar">
+                                        <div class="progress"></div>
+                                    </div>
+                                    <div>1/2 Subtasks</div>
+                                </div>
+                                <div class="members-and-priority">
+                                    <div class="members">
+                                        <img src="img/profile.svg">
+                                        <img src="img/profile1.svg">
+                                        <img src="img/profile2.svg">
+                                    </div>
+                                    <div class="priority">
+                                        <img src="img/medium.svg">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="await-feedback">
+                            <div class="no-tasks">No tasks To do</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="done">
+                            <div class="no-tasks">No tasks To do</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <table>
-            <thead>
-                <tr class="table-head">
-                    <th>To do <button><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </svg></button></th>
-                    <th>In progress <button><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </svg></button></th>
-                    <th>Await feedback <button><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </svg></button></th>
-                    <th>Done</th>
-                </tr>
-            </thead>
-            <tbody class="table-body">
-                <tr>
-                    <td>
-                        <div class="no-tasks">No tasks To do</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="card">
-                            <span class="label">User Story</span>
-                            <span class="description">
-                                <h3>Kochwelt Page & Recipe Recommendor</h3><br>Build start page with recipe
-                                recommendation...
-                            </span>
-                            <div class="progress-section">
-                                <div class="progress-bar">
-                                    <div class="progress"></div>
-                                </div>
-                                <div>1/2 Subtasks</div>
-                            </div>
-                            <div class="members-and-priority">
-                                <div class="members">
-                                    <img src="img/profile.svg">
-                                    <img src="img/profile1.svg">
-                                    <img src="img/profile2.svg">
-                                </div>
-                                <div class="priority">
-                                    <img src="img/medium.svg">
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><div class="no-tasks">No tasks To do</div></td>
-                </tr>
-                <tr>
-                    <td><div class="no-tasks">No tasks To do</div></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </body>
 
 </html>

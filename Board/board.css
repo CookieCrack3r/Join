@@ -1,6 +1,8 @@
 body {
     max-width: 1440px;
-    max-width: 1024px;
+    height: 1024px;
+    margin: 0;
+    padding: 0;
 }
 
 .content {
@@ -56,7 +58,7 @@ input {
 }
 
 table {
-    width: 976px;
+    max-width: 1192px;
     margin-top: 64px;
     display: flex;
     flex-direction: column;
@@ -66,21 +68,20 @@ table {
 }
 
 .table-head {
-    width: 1208px;
+    max-width: 1192px;
     height: 28px;
     display: flex;
     justify-content: space-between;
     font-size: 23px;
     font-weight: 700;
     padding: 0px 64px 0px 64px;
-    gap: 24px;
 }
 
 th {
-    display: flex;
-    justify-content: space-between;
     width: 244px;
     height: 28px;
+    display: flex;
+    justify-content: space-between;
 }
 
 table button {
@@ -102,6 +103,13 @@ table button {
     font-size: 16px;
     padding: 0px 64px 0px 64px;
     gap: 24px;
+}
+
+#in-progress {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
 }
 
 td {
@@ -200,4 +208,3 @@ td {
 .priority {
     margin-right: 10px;
 }
-
