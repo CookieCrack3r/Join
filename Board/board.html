@@ -49,13 +49,13 @@
                     </tr>
                 </thead>
                 <tbody id="board" class="table-body">
-                    <tr>
+                    <tr id="dragsection-to-do" class="dragsection" ondrop="moveTo('to-do')" ondragleave="removeHighlight('dragsection-to-do')" ondragover="allowDrop(event); highlight('dragsection-to-do')">
                         <td id="todo">
                             <div class="no-tasks">No tasks To do</div>
                         </td>
                     </tr>
-                    <tr>
-                        <td id="in-progress">
+                    <tr id="dragsection-progress" class="dragsection" ondrop="moveTo('in-progress')" ondragleave="removeHighlight('dragsection-progress')" ondragover="allowDrop(event); highlight('dragsection-progress')">
+                        <td id="in-progress" >
                             <div class="card">
                                 <span class="label">User Story</span>
                                 <span class="description">
@@ -81,13 +81,13 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr id="dragsection-feedback" class="dragsection" ondrop="moveTo('await-feedback')" ondragleave="removeHighlight('dragsection-feedback')" ondragover="allowDrop(event); highlight('dragsection-feedback')">
                         <td id="await-feedback">
                             <div class="no-tasks">No tasks To do</div>
                         </td>
                     </tr>
-                    <tr>
-                        <td id="done">
+                    <tr id="dragsection-done" class="dragsection" ondrop="moveTo('done')" ondragleave="removeHighlight('dragsection-done')" ondragover="allowDrop(event); highlight('dragsection-done')">
+                        <td id="done" >
                             <div class="no-tasks">No tasks To do</div>
                         </td>
                     </tr>
