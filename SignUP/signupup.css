@@ -166,3 +166,16 @@ form button:hover{
     color: whitesmoke;
     text-decoration: underline
 }
+
+/*Disable the Button*/
+
+.disabled-Button{
+    color: white;
+    opacity: 0.5;
+
+}
+
+.disabled-Button:hover{
+    cursor: not-allowed;
+
+}

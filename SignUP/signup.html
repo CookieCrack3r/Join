@@ -36,10 +36,10 @@
             <input class="input input-password" placeholder="Password" type="password" required>
             <input class="input input-confirm-password" placeholder="Confirm Password" type="password" required>
             <div class="accept-the-terms">
-                <input class="checkbox" type="checkbox" id="accept_terms">
+                <input class="checkbox" type="checkbox" onclick="enableTheBtn()" id="accept_terms">
                 <label for="accept_terms">I accept the <a class="pp-inbox-link" href="/PrivacyPolicyBeforeLogin/PrivacyPolicy.html" target="_blank">Privacy Policy</a></label>
             </div>
-            <button>Sign up</button>
+            <button id="sign_up" disabled>Sign up</button>
         </form>
     </div>
 
