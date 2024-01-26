@@ -98,7 +98,7 @@ function generateKanbanHTML(todo) {
     }
 
     return /*html*/`
-    <div draggable="true" onclick="openCard(${todo['id']})" ondragstart="startDraggin(${todo['id']})" class="card">
+    <div draggable="true" onclick="openCard('${todo['category']}', '${todo['title']}', '${todo['description']}')" ondragstart="startDraggin(${todo['id']})" class="card">
              <span class="label" style="background-color: ${categoryColor};">${todo['category']}</span>
                                 <span class="description">
                                     <h3>${todo['title']}</h3><br>${todo['description']}
@@ -123,19 +123,36 @@ function generateKanbanHTML(todo) {
     `;
 }
 
-function openCard(todo) {
+function openCard(category, title, description) {
+
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
-    document.getElementById('big-card').innerHTML += `
-    <div class="first-section">
-            <span class="label-big">${todo['category']}</span>
+    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description);
+    
+    `
+   
+    `;
+}
+
+function generateBigCard(category, title, description) {
+    let categoryColor = '';
+
+    if (category === 'Technical Task') {
+        categoryColor = '#005bf8';
+    } else if (category === 'User Story') {
+        categoryColor = '#FF7A00';
+    }
+
+    return /*html*/`
+         <div class="first-section">
+            <span class="label-big" style="background-color: ${categoryColor};">${category}</span>
             <img src="img/close.svg" id="close" onclick="closeCard()">
         </div>
-        <span class="headline-big">${todo['title']}</span>
+        <span class="headline-big">${title}</span>
         <br>
         <div class="description-big">
-            <span>${todo['description']}</span>
+            <span>${description}</span>
         </div>
         <div class="date-big">
             <span><b>Due date:</b></span><span>10/05/2023</span>
