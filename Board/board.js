@@ -1,5 +1,5 @@
 let todos = [{
-    'id': '01',
+    'id': '1',
     'category': 'User Story',
     'title': 'Kochwelt Page & Recipe Recommender',
     'description': 'Build start page with recipe recommendation...',
@@ -7,7 +7,7 @@ let todos = [{
     'status': 'in-progress'
 },
 {
-    'id': '02',
+    'id': '2',
     'category': 'Technical Task',
     'title': 'HTML Base Template Creation',
     'description': 'Create reusable HTML bas templates',
@@ -15,7 +15,7 @@ let todos = [{
     'status': 'to-do'
 },
 {
-    'id': '03',
+    'id': '3',
     'category': 'Technical Task',
     'title': 'CSS Architecture Planning',
     'description': 'Build start page with recipe recommendation...',
@@ -23,7 +23,7 @@ let todos = [{
     'status': 'done'
 },
 {
-    'id': '04',
+    'id': '4',
     'category': 'User Story',
     'title': 'Daily Kochwelt Recipe',
     'description': 'Implement daily recipe and portion calculator',
@@ -97,8 +97,8 @@ function generateKanbanHTML(todo) {
         categoryColor = '#FF7A00';
     }
 
-    return `
-             <div draggable="true" ondragstart="startDraggin(${todo['id']})" class="card">
+    return /*html*/`
+    <div draggable="true" onclick="openCard(${todo['id']})" ondragstart="startDraggin(${todo['id']})" class="card">
              <span class="label" style="background-color: ${categoryColor};">${todo['category']}</span>
                                 <span class="description">
                                     <h3>${todo['title']}</h3><br>${todo['description']}
@@ -119,8 +119,52 @@ function generateKanbanHTML(todo) {
                                         <img src="img/medium.svg">
                                     </div>
                                 </div>
-                            </div>
+                            </div>            
     `;
+}
+
+function openCard(todo) {
+    document.getElementById('big-card-bg').style.display = 'flex';
+    document.getElementById('big-card').classList.remove('d-none');
+    document.getElementById('big-card').innerHTML = '';
+    document.getElementById('big-card').innerHTML += `
+    <div class="first-section">
+            <span class="label-big">${todo['category']}</span>
+            <img src="img/close.svg" id="close" onclick="closeCard()">
+        </div>
+        <span class="headline-big">${todo['title']}</span>
+        <br>
+        <div class="description-big">
+            <span>${todo['description']}</span>
+        </div>
+        <div class="date-big">
+            <span><b>Due date:</b></span><span>10/05/2023</span>
+        </div>
+        <div class="date-big">
+            <span><b>Priority:</b></span><span>Medium<img src="img/prio-medium.svg"></span>
+        </div>
+        <div class="profiles-big">
+            <span><b>Assigned To:</b></span>
+            <span><img src="img/profile1.svg">Emmanuel Mauer</span>
+            <span><img src="img/profile2.svg">Marcel Bauer</span>
+            <span><img src="img/profile.svg">Anton Mayer</span>
+        </div>
+        <div class="subtasks-big">
+            <span><b>Subtasks</b></span>
+            <span><input type="checkbox">Implement Recipe Recommendation</span>
+            <span><input type="checkbox">Start Page Layout</span>
+        </div>
+        <div class="end-section">
+            <span><img src="img/delete.svg">Delete</span>
+            |
+            <span><img src="img/edit.svg">Edit</span>
+        </div>
+    `;
+}
+
+function closeCard() {
+    document.getElementById('big-card').classList.add('d-none');
+    document.getElementById('big-card-bg').style.display = 'none';
 }
 
 function startDraggin(id) {
@@ -147,4 +191,3 @@ function removeHighlight(id) {
 function addTask() {
     window.location.href = '/AddTask/addTask.html';
 }
-

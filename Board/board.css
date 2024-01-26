@@ -146,6 +146,142 @@ td {
     background-color: white;
 }
 
+.card:hover {
+    scale: 1.05;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+#big-card-bg {
+    width: 1440px;
+    height: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.618);
+}
+
+#big-card {
+    max-height: 932px;
+    width: 528px;
+    border-radius: 30px;
+    background-color: white;
+    padding: 48px 40px 48px 40px;
+    gap: 24px;
+    border: 1px solid lightgray;
+    top: 40px;
+    position: absolute;
+}
+
+.label-big {
+    width: 160;
+    height: 36px;
+    font-size: 23px;
+    background-color: #FF7A00;
+    border-radius: 8px;
+    color: white;
+    padding: 4px 24px 4px 24px;
+    display: flex;
+    align-items: center;
+}
+
+.first-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.headline-big {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.description-big {
+    font-size: 19px;
+    margin-top: 2em;
+}
+
+.date-big {
+    width: 250px;
+    justify-content: space-between;
+    display: flex;
+    font-size: 21px;
+    margin-top: 1em;
+    align-items: center;
+}
+
+.date-big img {
+    padding: 3px;
+    margin-left: 7px;
+}
+
+.profiles-big {
+    display: flex;
+    font-size: 21px;
+    margin-top: 1em;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.profiles-big span {
+    display: flex;
+    align-items: center;
+}
+
+.profiles-big img {
+    height: 42px;
+    width: 42px;
+    margin-right: 40px;
+}
+
+.subtasks-big {
+    display: flex;
+    font-size: 21px;
+    margin-top: 1em;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.subtasks-big input {
+    height: 16px;
+    width: 16px;
+    margin-left: 8px;
+}
+
+.end-section {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 2em;
+    gap: 16px;
+}
+
+.end-section span {
+    display: flex;
+    align-items: center;
+}
+
+.end-section span img {
+    margin-right: 4px;
+}
+
+.end-section span:hover {
+    scale: 1.1;
+    color: #005bf8;
+}
+
+#close:hover {
+    cursor: pointer;
+    background-color: #005eff0f;
+    border-radius: 50%;
+    scale: 1.1;
+}
+
 .label {
     background-color: #FF7A00;
     border-radius: 8px;
@@ -212,4 +348,8 @@ td {
 
 .priority {
     margin-right: 10px;
+}
+
+.d-none {
+    display: none;
 }
