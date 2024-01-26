@@ -2,6 +2,7 @@ function backToLogin() {
     window.location.pathname = '/Login/login.html';
 }
 
+//Disable & Enable the Button befor Sign Up
 function enableTheBtn() {
     
     let checkboxAccepted = document.getElementById('accept_terms');
