@@ -1,39 +1,9 @@
-let todos = [{
-    'id': '1',
-    'category': 'User Story',
-    'title': 'Kochwelt Page & Recipe Recommender',
-    'description': 'Build start page with recipe recommendation...',
-    'subtasks': '1/2 Subtasks',
-    'status': 'in-progress'
-},
-{
-    'id': '2',
-    'category': 'Technical Task',
-    'title': 'HTML Base Template Creation',
-    'description': 'Create reusable HTML bas templates',
-    'subtasks': '',
-    'status': 'to-do'
-},
-{
-    'id': '3',
-    'category': 'Technical Task',
-    'title': 'CSS Architecture Planning',
-    'description': 'Build start page with recipe recommendation...',
-    'subtasks': '2/2 Subtasks',
-    'status': 'done'
-},
-{
-    'id': '4',
-    'category': 'User Story',
-    'title': 'Daily Kochwelt Recipe',
-    'description': 'Implement daily recipe and portion calculator',
-    'subtasks': '',
-    'status': 'await-feedback'
-}];
+let todo = [];
 
 let currentDraggedElement;
 
-function init() {
+async function initBoard() {
+    await loadTodos(); 
     updateHTML();
 }
 
@@ -44,8 +14,17 @@ function updateHTML() {
     updateDone();
 }
 
+async function loadTodos(){
+    try {
+        todo = JSON.parse(await getItem('todos'));
+        updateHTML();
+    } catch(e){
+        console.error('Loading error:', e);
+    }
+}
+
 function updateToDo() {
-    let to_do = todos.filter(t => t['status'] == 'to-do');
+    let to_do = todo.filter(t => t['status'] == 'to-do');
 
     document.getElementById('todo').innerHTML = '';
 
@@ -56,7 +35,7 @@ function updateToDo() {
 }
 
 function updateInProgress() {
-    let progress = todos.filter(t => t['status'] == 'in-progress');
+    let progress = todo.filter(t => t['status'] == 'in-progress');
 
     document.getElementById('in-progress').innerHTML = '';
 
@@ -67,7 +46,7 @@ function updateInProgress() {
 }
 
 function updateAwaitFeedback() {
-    let await = todos.filter(t => t['status'] == 'await-feedback');
+    let await = todo.filter(t => t['status'] == 'await-feedback');
 
     document.getElementById('await-feedback').innerHTML = '';
 
@@ -78,7 +57,7 @@ function updateAwaitFeedback() {
 }
 
 function updateDone() {
-    let done = todos.filter(t => t['status'] == 'done');
+    let done = todo.filter(t => t['status'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -91,9 +70,9 @@ function updateDone() {
 function generateKanbanHTML(todo) {
     let categoryColor = '';
 
-    if (todo['category'] === 'Technical Task') {
+    if (todo['category'] === 'Technical') {
         categoryColor = '#005bf8';
-    } else if (todo['category'] === 'User Story') {
+    } else if (todo['category'] === 'Design') {
         categoryColor = '#FF7A00';
     }
 
@@ -124,23 +103,18 @@ function generateKanbanHTML(todo) {
 }
 
 function openCard(category, title, description) {
-
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
     document.getElementById('big-card').innerHTML += generateBigCard(category, title, description);
-    
-    `
-   
-    `;
 }
 
 function generateBigCard(category, title, description) {
     let categoryColor = '';
 
-    if (category === 'Technical Task') {
+    if (category === 'Technical') {
         categoryColor = '#005bf8';
-    } else if (category === 'User Story') {
+    } else if (category === 'Design') {
         categoryColor = '#FF7A00';
     }
 
