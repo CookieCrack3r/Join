@@ -37,15 +37,15 @@ function succesfullySignedUp(){
     success.style.display = 'block';
     success.style.transition = "top 0.5s ease, transform 0.5s ease";
     setTimeout(() => {
-      success.style.top = "50%";
-    }, 800);
+      success.style.top = "106%";
+    }, 1200);
     setTimeout(() => {
-      success.style.top = "100%";
-    }, 2000);
+      success.style.bottom = "50%";
+    }, 2800);
     setTimeout(() => {
       success.style.display = "none";
-    }, 2500);
+    }, 3200);
     setTimeout(() => {
         window.location.pathname = '/Login/login.html';
-    }, 2800);
+    }, 3200);
 }
