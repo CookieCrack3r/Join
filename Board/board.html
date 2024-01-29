@@ -10,90 +10,78 @@
     <link rel="icon" type="image/svg" href="img/favicon_join.svg">
     <link rel="stylesheet" type="text/css" href="/Templates/Menu/menu.css">
     <script src="/Templates/template.js"></script>
+    <script src="/storage.js"></script>
+    <script src="/AddTask/addTask.js"></script>
     <script src="board.js"></script>
     <title>Board</title>
 </head>
 
-<body onload="includeHTML(); init()">
-        <div w3-include-html="/Templates/Menu/menu.html"></div>
-        <div class="content">
-            <div class="find-task">
-                <input type="search" class="icon" placeholder="Find Task"><button onclick="addTask()">Add Task <img
-                        src="img/plus.svg"></button>
-            </div>
-            <table>
-                <thead>
-                    <tr class="table-head">
-                        <th>To do <button onclick="addTask()"><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg></button></th>
-                        <th>In progress <button onclick="addTask()"><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg></button></th>
-                        <th>Await feedback <button onclick="addTask()"><svg class="img-hover" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg></button></th>
-                        <th>Done</th>
-                    </tr>
-                </thead>
-                <tbody id="board" class="table-body">
-                    <tr id="dragsection-to-do" class="dragsection" ondrop="moveTo('to-do')" ondragleave="removeHighlight('dragsection-to-do')" ondragover="allowDrop(event); highlight('dragsection-to-do')">
-                        <td id="todo">
-                            <div class="no-tasks">No tasks To do</div>
-                        </td>
-                    </tr>
-                    <tr id="dragsection-progress" class="dragsection" ondrop="moveTo('in-progress')" ondragleave="removeHighlight('dragsection-progress')" ondragover="allowDrop(event); highlight('dragsection-progress')">
-                        <td id="in-progress" >
-                            <div class="card">
-                                <span class="label">User Story</span>
-                                <span class="description">
-                                    <h3>Kochwelt Page & Recipe Recommendor</h3><br>Build start page with recipe
-                                    recommendation...
-                                </span>
-                                <div class="progress-section">
-                                    <div class="progress-bar">
-                                        <div class="progress"></div>
-                                    </div>
-                                    <div>1/2 Subtasks</div>
-                                </div>
-                                <div class="members-and-priority">
-                                    <div class="members">
-                                        <img src="img/profile.svg">
-                                        <img src="img/profile1.svg">
-                                        <img src="img/profile2.svg">
-                                    </div>
-                                    <div class="priority">
-                                        <img src="img/medium.svg">
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr id="dragsection-feedback" class="dragsection" ondrop="moveTo('await-feedback')" ondragleave="removeHighlight('dragsection-feedback')" ondragover="allowDrop(event); highlight('dragsection-feedback')">
-                        <td id="await-feedback">
-                            <div class="no-tasks">No tasks To do</div>
-                        </td>
-                    </tr>
-                    <tr id="dragsection-done" class="dragsection" ondrop="moveTo('done')" ondragleave="removeHighlight('dragsection-done')" ondragover="allowDrop(event); highlight('dragsection-done')">
-                        <td id="done" >
-                            <div class="no-tasks">No tasks To do</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<body onload="includeHTML(); initBoard()">
+    <div w3-include-html="/Templates/Menu/menu.html"></div>
+    <div class="content">
+        <div class="find-task">
+            <input type="search" class="icon" placeholder="Find Task"><button onclick="addTask()">Add Task <img
+                    src="img/plus.svg"></button>
         </div>
+        <table>
+            <thead>
+                <tr class="table-head">
+                    <th>To do <button onclick="addTask()"><svg class="img-hover" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                                <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg></button></th>
+                    <th>In progress <button onclick="addTask()"><svg class="img-hover" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                                <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg></button></th>
+                    <th>Await feedback <button onclick="addTask()"><svg class="img-hover" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                                <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg></button></th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody id="board" class="table-body">
+                <tr id="dragsection-to-do" class="dragsection" ondrop="moveTo('to-do')"
+                    ondragleave="removeHighlight('dragsection-to-do')"
+                    ondragover="allowDrop(event); highlight('dragsection-to-do')">
+                    <td id="todo">
+                    </td>
+                </tr>
+                <tr id="dragsection-progress" class="dragsection" ondrop="moveTo('in-progress')"
+                    ondragleave="removeHighlight('dragsection-progress')"
+                    ondragover="allowDrop(event); highlight('dragsection-progress')">
+                    <td id="in-progress">
+                    </td>
+                </tr>
+                <tr id="dragsection-feedback" class="dragsection" ondrop="moveTo('await-feedback')"
+                    ondragleave="removeHighlight('dragsection-feedback')"
+                    ondragover="allowDrop(event); highlight('dragsection-feedback')">
+                    <td id="await-feedback">
+                    </td>
+                </tr>
+                <tr id="dragsection-done" class="dragsection" ondrop="moveTo('done')"
+                    ondragleave="removeHighlight('dragsection-done')"
+                    ondragover="allowDrop(event); highlight('dragsection-done')">
+                    <td id="done">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="display: none;" id="big-card-bg">
+    <div class="d-none" id="big-card">
+    </div>
+    </div>
 </body>
 
 </html>

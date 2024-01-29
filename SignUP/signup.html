@@ -7,11 +7,13 @@
     <title>Sign-Up</title>
     <link rel="stylesheet" href="signupup.css">
     <link rel="icon" type="image/svg" href="/imgs/favicon_join.svg">
-    <link rel="stylesheet" href="fonts_signup.css">
+    <link rel="stylesheet" href="fonts.css">
+    <script src="/storage.js"></script>
     <script src="signup.js"></script>
+    <script src="/registerUser.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
     <header>
         <img class="join-logo-left-corner" src="/Login/imgs/firstpage_logo_join.png">
@@ -31,17 +33,22 @@
         </div>
 
         <form onsubmit="registerUser(); return false;">
-            <input class="input input-name" placeholder="Name" type="text" required>
-            <input class="input input-email" placeholder="Email" type="email" required>
-            <input class="input input-password" placeholder="Password" type="password" required>
-            <input class="input input-confirm-password" placeholder="Confirm Password" type="password" required>
+            <input id="sign_up_name" class="input input-name" placeholder="Name" type="text" required>
+            <input id="sign_up_email" class="input input-email" placeholder="Email" type="email" required>
+            <input id="sign_up_password" class="input input-password" placeholder="Password" type="password" required>
+            <input id="sign_up_confirm_pw" class="input input-confirm-password" placeholder="Confirm Password" type="password" required>
+            <span id="result_password_match"></span>
             <div class="accept-the-terms">
                 <input class="checkbox" type="checkbox" onclick="enableTheBtn()" id="accept_terms">
                 <label for="accept_terms">I accept the <a class="pp-inbox-link" href="/PrivacyPolicyBeforeLogin/PrivacyPolicy.html" target="_blank">Privacy Policy</a></label>
+
             </div>
             <button id="sign_up" disabled>Sign up</button>
         </form>
+         <button id="popup_after_succesfully_signup">You Signed Up succesfully</button>
     </div>
+       
+    
 
     <div class="privacy-policy-and-legal-notice-container">
         <a href="/PrivacyPolicyBeforeLogin/PrivacyPolicy.html" target="_blank">Privacy Policy</a>

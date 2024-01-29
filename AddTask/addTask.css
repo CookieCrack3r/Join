@@ -75,7 +75,7 @@ textarea {
     position: relative;
 }
 
-#date {
+#selectedDate {
     width: 440px;
     height: 48px;
     font-family: 'Open Sans', sans-serif;
@@ -83,8 +83,10 @@ textarea {
     border-bottom: 1px solid #D1D1D1;
 }
 
-#date::-webkit-calendar-picker-indicator {
-    display: none;
+#selectedDate::-webkit-calendar-picker-indicator {
+    background-image: url(imgAddTask/event.svg);
+    height: 20px;
+    width: 20px;
 }
 
 .calendar-icon {
@@ -132,7 +134,7 @@ textarea {
 }
 
 #urgent:hover {
-        border-bottom: 3px solid #ff3d00;
+    border-bottom: 3px solid #ff3d00;
 }
 
 #medium {
