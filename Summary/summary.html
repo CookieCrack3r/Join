@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="addTask.css">
-    <link rel="stylesheet" href="summary.css">    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+    <link rel="stylesheet" type="text/css" href="summary.css">
+    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
     <link rel="stylesheet" type="text/css" href="/Templates/Menu/menu.css">
-    <link rel="icon" type="image/svg" href="imgAddTask/favicon_join.svg">
+    <link rel="icon" type="image/svg" href="img/favicon_join.svg">
     <script src="/Templates/template.js"></script>
     <script src="/storage.js"></script>
     <script src="addTask.js"></script>
@@ -19,11 +19,30 @@
     <div w3-include-html="/Templates/Menu/menu.html"></div>
 
     <div class="content">
-        <h1>TEST</h1>
-            
+        <h1 id="greetings">Good morning</h1>
+
+        <div id="task-todo">
+            <a href="/Board/board.html"><img src="/Summary/img/Urgent.svg">1</a>
+
+        </div>
+        <div id="task-in-progress">
+            <a href="/Board/board.html"><img src="/Summary/img/In Progress.svg">1</a>
+        </div>
+
+        <div id="task-done">
+            <a href="/Board/board.html"><img src="/Summary/img/Done.svg">1</a>
+        </div>
+
+        <div id="awaiting-feedback">
+            <a href="/Board/board.html"><img src="/Summary/img/Awaiting feedback.svg">1</a>
+        </div>
+
+        <div id="task-in-board">
+            <a href="/Board/board.html"><img src="/Summary/img/Board.svg">1</a>
+        </div>
     </div>
 
-    
+
 </body>
 
 </html>

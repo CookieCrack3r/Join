@@ -8,7 +8,14 @@ body {
 .content {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 96px;
     margin-left: 232px;
     padding: 72px 0px 16px 0px;
+}
+
+#task-todo{
+    height: 120px;
+    width: 120px;
+    background-color: rgb(208, 208, 183);
 }
