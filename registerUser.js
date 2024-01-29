@@ -55,24 +55,24 @@ function succesfullySignedUp() {
     }, 3200);
 }
 
-//this function is to check the password, if he is confirm 
-    function checkPasswords() {
-        let password = document.getElementById('sign_up_password').value;
-        let passwordConfirm = document.getElementById('sign_up_confirm_pw').value;
-        let resultElement = document.getElementById('result_password_match');
-    
-        if (password.length > 0 && passwordConfirm.length > 0) {
-            if (password === passwordConfirm) {
-                resultElement.innerHTML = 'The Password match!';
-                resultElement.style.color = 'Green';
-            } else {
-                resultElement.innerHTML = 'The Password do not match!';
-                resultElement.style.color = 'Red';
-            }
+//this function is to check the password, if he is match 
+function checkPasswords() {
+    let password = document.getElementById('sign_up_password').value;
+    let passwordConfirm = document.getElementById('sign_up_confirm_pw').value;
+    let resultElement = document.getElementById('result_password_match');
+
+    if (password.length > 0 && passwordConfirm.length > 0) {
+        if (password === passwordConfirm) {
+            resultElement.innerHTML = 'The Password match!';
+            resultElement.style.color = 'Green';
         } else {
-            resultElement.innerHTML = '';
+            resultElement.innerHTML = 'The Password do not match!';
+            resultElement.style.color = 'Red';
         }
+    } else {
+        resultElement.innerHTML = '';
+    }
     document.getElementById('sign_up_password').addEventListener('input', checkPasswords);
     document.getElementById('sign_up_confirm_pw').addEventListener('input', checkPasswords);
 
-    }
+}
