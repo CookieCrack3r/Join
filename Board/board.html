@@ -14,7 +14,7 @@
     <script src="/AddTask/addTask.js"></script>
     <script src="board.js"></script>
     <title>Board</title>
-    
+
 </head>
 
 <body onload="includeHTML(); initBoard()">
@@ -52,36 +52,41 @@
                 </tr>
             </thead>
             <tbody id="board" class="table-body">
+
                 <tr id="dragsection-to-do" class="dragsection" ondrop="moveTo('to-do')"
                     ondragleave="removeHighlight('dragsection-to-do')"
                     ondragover="allowDrop(event); highlight('dragsection-to-do')">
                     <td id="todo">
                     </td>
                 </tr>
+
                 <tr id="dragsection-progress" class="dragsection" ondrop="moveTo('in-progress')"
                     ondragleave="removeHighlight('dragsection-progress')"
                     ondragover="allowDrop(event); highlight('dragsection-progress')">
                     <td id="in-progress">
                     </td>
                 </tr>
+
                 <tr id="dragsection-feedback" class="dragsection" ondrop="moveTo('await-feedback')"
                     ondragleave="removeHighlight('dragsection-feedback')"
                     ondragover="allowDrop(event); highlight('dragsection-feedback')">
                     <td id="await-feedback">
                     </td>
                 </tr>
+
                 <tr id="dragsection-done" class="dragsection" ondrop="moveTo('done')"
                     ondragleave="removeHighlight('dragsection-done')"
                     ondragover="allowDrop(event); highlight('dragsection-done')">
                     <td id="done">
                     </td>
                 </tr>
+                
             </tbody>
         </table>
     </div>
     <div style="display: none;" id="big-card-bg">
-    <div class="d-none" id="big-card">
-    </div>
+        <div class="d-none" id="big-card">
+        </div>
     </div>
 </body>
 

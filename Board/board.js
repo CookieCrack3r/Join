@@ -203,7 +203,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
-    todos[currentDraggedElement]['status'] = status;
+    todo[currentDraggedElement]['status'] = status;
     updateHTML();
 }
 
