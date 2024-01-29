@@ -5,8 +5,6 @@ let currentDraggedElement;
 async function initBoard() {
     await loadTodos();
     updateHTML();
-    console.log(currentDraggedElement);
-
 }
 
 function updateHTML() {
@@ -61,7 +59,7 @@ function updateAwaitFeedback() {
 
     for (let i = 0; i < await.length; i++) {
 
-        let await = await[i];
+        let todo = await[i];
         document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
     }
 }
@@ -160,6 +158,36 @@ function generateBigCard(category, title, description, date, priority) {
         </div>
             `;
 }
+
+function generateKanbanHTML(todo){
+    return `
+             <div draggable="true" ondragstart="startDraggin(${todo['id']})" class="card">
+             <span class="label" style="background-color: ${todo};">${todo['category']}</span>
+                                <span class="description">
+                                    <h3>${todo['title']}</h3><br>${todo['id']}
+                                </span>
+                                <div class="progress-section">
+                                    <div class="progress-bar">
+                                        <div class="progress"></div>
+                                    </div>
+                                    <div>${todo['subtasks']}</div>
+                                </div>
+                                <div class="members-and-priority">
+                                    <div class="members">
+                                        <img src="img/profile.svg">
+                                        <img src="img/profile1.svg">
+                                        <img src="img/profile2.svg">
+                                    </div>
+                                    <div class="priority">
+                                        <img src="img/medium.svg">
+                                    </div>
+                                </div>
+                            </div>
+            `;
+}
+
+
+
 
 function closeCard() {
     document.getElementById('big-card').classList.add('d-none');
