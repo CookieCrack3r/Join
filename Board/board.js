@@ -3,7 +3,7 @@ let todo = [];
 let currentDraggedElement;
 
 async function initBoard() {
-    await loadTodos(); 
+    await loadTodos();
     updateHTML();
     console.log(currentDraggedElement);
 
@@ -16,43 +16,43 @@ function updateHTML() {
     updateDone();
 }
 
-async function loadTodos(){
+async function loadTodos() {
     try {
         todo = JSON.parse(await getItem('todos'));
         updateHTML();
-    } catch(e){
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }
+
+//-------------------------------------------------------------------------------------------------->
 
 function updateToDo() {
     let to_do = todo.filter(t => t['status'] == 'to-do');
 
     document.getElementById('todo').innerHTML = '';
-        if(to_do = !null){
 
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-    }}
+    }
 }
 
+//-------------------------------------------------------------------------------------------------->
+
 function updateInProgress() {
-<<<<<<< HEAD
-    let progress = todos.filter(t => t['status'] == 'in-progress');
-if(progress = !null){
-=======
     let progress = todo.filter(t => t['status'] == 'in-progress');
 
->>>>>>> 7e09be9d9f3b3b3d567293d7a88b11e711bc1e9e
     document.getElementById('in-progress').innerHTML = '';
 
     for (let i = 0; i < progress.length; i++) {
-        
+
         let todo = progress[i];
         document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
-    }}
+    }
 }
+
+//-------------------------------------------------------------------------------------------------->
 
 function updateAwaitFeedback() {
     let await = todo.filter(t => t['status'] == 'await-feedback');
@@ -60,11 +60,13 @@ function updateAwaitFeedback() {
     document.getElementById('await-feedback').innerHTML = '';
 
     for (let i = 0; i < await.length; i++) {
-        if(dome = !null){
+
         let await = await[i];
-        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo)};
+        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
     }
 }
+
+//-------------------------------------------------------------------------------------------------->
 
 function updateDone() {
     let done = todo.filter(t => t['status'] == 'done');
@@ -72,11 +74,11 @@ function updateDone() {
     document.getElementById('done').innerHTML = '';
 
     for (let i = 0; i < done.length; i++) {
-        if(dome = !null){
         let todo = done[i];
-        document.getElementById('done').innerHTML += generateKanbanHTML(todo);}
+        document.getElementById('done').innerHTML += generateKanbanHTML(todo);
     }
 }
+//-------------------------------------------------------------------------------------------------->
 
 function generateBackroundColor(category) {
     let categoryColor = '';
@@ -87,7 +89,6 @@ function generateBackroundColor(category) {
         categoryColor = '#FF7A00';
     }
 
-<<<<<<< HEAD
     return `
              <div draggable="true" ondragstart="startDraggin(${todo['id']})" class="card">
              <span class="label" style="background-color: ${categoryColor};">${todo['category']}</span>
@@ -111,58 +112,7 @@ function generateBackroundColor(category) {
                                     </div>
                                 </div>
                             </div>
-=======
-    return categoryColor;
-}
-
-function getPriorityImage(priority) {
-    if (priority === 'Low') {
-        return 'img/low.png';
-    } else if (priority === 'Medium') {
-        return 'img/medium.svg';
-    } else if (priority === 'Urgent') {
-        return 'img/urgent.png';
-    } else {
-        return 'img/medium.svg';
-    }
-}
-
-function generateKanbanHTML(todo) {
-    let category = todo['category'];
-    let title = todo['title'];
-    let subtasks = todo['subtasks'];
-    let description = todo['description'];
-    let priority = todo['priority'];
-    let date = todo['date'];
-
-    let priorityImage = getPriorityImage(priority);
-    let categoryColor = generateBackroundColor(category);
-    
-    return /*html*/`
-    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${date}', '${priority}')" ondragstart="startDraggin(${todo['id']})" class="card">
-        <span class="label" style="background-color: ${categoryColor};">${category}</span>
-        <span class="description">
-            <h3>${title}</h3><br>${description}
-        </span>
-        <div class="progress-section">
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-            <div>${subtasks}</div>
-        </div>
-        <div class="members-and-priority">
-            <div class="members">
-                <img src="img/profile.svg">
-                <img src="img/profile1.svg">
-                <img src="img/profile2.svg">
-            </div>
-            <div class="priority">
-                <img src="${priorityImage}">
-            </div>
-        </div>
-    </div>            
->>>>>>> 7e09be9d9f3b3b3d567293d7a88b11e711bc1e9e
-    `;
+            `;
 }
 
 function openCard(category, title, description, date, priority) {
@@ -176,7 +126,7 @@ function generateBigCard(category, title, description, date, priority) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
-    return /*html*/`
+    return `
          <div class="first-section">
             <span class="label-big" style="background-color: ${categoryColor};">${category}</span>
             <img src="img/close.svg" id="close" onclick="closeCard()">
@@ -208,7 +158,7 @@ function generateBigCard(category, title, description, date, priority) {
             |
             <span><img src="img/edit.svg">Edit</span>
         </div>
-    `;
+            `;
 }
 
 function closeCard() {
@@ -218,9 +168,6 @@ function closeCard() {
 
 function startDraggin(id) {
     currentDraggedElement = id;
-    console.log(todos[currentDraggedElement]['status']);
-    console.log(todos[currentDraggedElement]['id']);
-
 }
 
 function allowDrop(ev) {
@@ -228,13 +175,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
-<<<<<<< HEAD
-        console.log(todos[currentDraggedElement]['status']);
     todos[currentDraggedElement]['status'] = status;
-        console.log(todos[currentDraggedElement]['status']);
-=======
-    todo[currentDraggedElement]['status'] = status;
->>>>>>> 7e09be9d9f3b3b3d567293d7a88b11e711bc1e9e
     updateHTML();
 }
 
