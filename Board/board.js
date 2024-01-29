@@ -35,6 +35,8 @@ let currentDraggedElement;
 
 function init() {
     updateHTML();
+    console.log(currentDraggedElement);
+
 }
 
 function updateHTML() {
@@ -48,22 +50,24 @@ function updateToDo() {
     let to_do = todos.filter(t => t['status'] == 'to-do');
 
     document.getElementById('todo').innerHTML = '';
+        if(to_do = !null){
 
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-    }
+    }}
 }
 
 function updateInProgress() {
     let progress = todos.filter(t => t['status'] == 'in-progress');
-
+if(progress = !null){
     document.getElementById('in-progress').innerHTML = '';
 
     for (let i = 0; i < progress.length; i++) {
+        
         let todo = progress[i];
         document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
-    }
+    }}
 }
 
 function updateAwaitFeedback() {
@@ -72,8 +76,9 @@ function updateAwaitFeedback() {
     document.getElementById('await-feedback').innerHTML = '';
 
     for (let i = 0; i < await.length; i++) {
-        let todo = await[i];
-        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
+        if(dome = !null){
+        let await = await[i];
+        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo)};
     }
 }
 
@@ -83,8 +88,9 @@ function updateDone() {
     document.getElementById('done').innerHTML = '';
 
     for (let i = 0; i < done.length; i++) {
+        if(dome = !null){
         let todo = done[i];
-        document.getElementById('done').innerHTML += generateKanbanHTML(todo);
+        document.getElementById('done').innerHTML += generateKanbanHTML(todo);}
     }
 }
 
@@ -101,7 +107,7 @@ function generateKanbanHTML(todo) {
              <div draggable="true" ondragstart="startDraggin(${todo['id']})" class="card">
              <span class="label" style="background-color: ${categoryColor};">${todo['category']}</span>
                                 <span class="description">
-                                    <h3>${todo['title']}</h3><br>${todo['description']}
+                                    <h3>${todo['title']}</h3><br>${todo['id']}
                                 </span>
                                 <div class="progress-section">
                                     <div class="progress-bar">
@@ -125,6 +131,9 @@ function generateKanbanHTML(todo) {
 
 function startDraggin(id) {
     currentDraggedElement = id;
+    console.log(todos[currentDraggedElement]['status']);
+    console.log(todos[currentDraggedElement]['id']);
+
 }
 
 function allowDrop(ev) {
@@ -132,7 +141,9 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
+        console.log(todos[currentDraggedElement]['status']);
     todos[currentDraggedElement]['status'] = status;
+        console.log(todos[currentDraggedElement]['status']);
     updateHTML();
 }
 
