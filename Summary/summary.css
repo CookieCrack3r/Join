@@ -15,10 +15,12 @@ body {
     gap: 20px;
 }
 
-#task-todo{
-    height: 120px;
-    width: 120px;
+
+#tasks{
+    display: flex;
+    gap: 100px;
 }
+
 
 #date{
     display: flex;
@@ -27,4 +29,10 @@ body {
     width: 400px;
     height: 100px;
     border-radius: 20px;
+}
+
+#Tasks-Urgent{
+    display: flex;
+    width: 500px;
+
 }

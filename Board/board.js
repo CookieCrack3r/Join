@@ -1,5 +1,4 @@
 let todo = [];
-
 let currentDraggedElement;
 
 async function initBoard() {
