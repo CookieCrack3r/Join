@@ -272,6 +272,7 @@ td {
 .end-section span:hover {
     scale: 1.1;
     color: #005bf8;
+    cursor: pointer;
 }
 
 #close:hover {

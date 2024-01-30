@@ -64,7 +64,7 @@ function priorityLow() {
     document.getElementById('urgent-img').src = 'imgAddTask/urgent.png';
 }
 
-function createTask(){
+function createTask() {
     create.disabled = false;
     window.location.href = '/Board/board.html';
 }

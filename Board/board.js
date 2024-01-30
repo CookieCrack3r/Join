@@ -93,13 +93,6 @@ function getPriorityImage(priority) {
     }
 }
 
-function openCard(category, title, description, date, priority) {
-    document.getElementById('big-card-bg').style.display = 'flex';
-    document.getElementById('big-card').classList.remove('d-none');
-    document.getElementById('big-card').innerHTML = '';
-    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority);
-}
-
 function generateKanbanHTML(todo) {
     let category = todo['category'];
     let title = todo['title'];
@@ -137,6 +130,13 @@ function generateKanbanHTML(todo) {
             `;
 }
 
+function openCard(category, title, description, date, priority) {
+    document.getElementById('big-card-bg').style.display = 'flex';
+    document.getElementById('big-card').classList.remove('d-none');
+    document.getElementById('big-card').innerHTML = '';
+    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority);
+}
+
 function generateBigCard(category, title, description, date, priority) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
@@ -169,11 +169,30 @@ function generateBigCard(category, title, description, date, priority) {
             <span><input type="checkbox">Start Page Layout</span>
         </div>
         <div class="end-section">
-            <span><img src="img/delete.svg">Delete</span>
+            <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
             |
-            <span><img src="img/edit.svg">Edit</span>
+            <span onclick="editTodo()"><img src="img/edit.svg">Edit</span>
         </div>
             `;
+}
+
+function deleteTodo() {
+    let titleToDelete = '';
+    let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
+    if (currentDraggedElement !== undefined) {
+        titleToDelete = todo[currentDraggedElement]['title'];
+    } else {
+        let bigCardTitleElement = document.querySelector('.headline-big');
+        if (bigCardTitleElement) {
+            titleToDelete = bigCardTitleElement.textContent;
+        }
+    }
+    if (indexToDelete !== -1) {
+        todo.splice(indexToDelete, 1);
+        currentDraggedElement = undefined;
+        closeCard();
+        updateHTML();
+    }
 }
 
 function closeCard() {
