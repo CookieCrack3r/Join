@@ -176,6 +176,18 @@ function generateBigCard(category, title, description, date, priority) {
             `;
 }
 
+function filterTodos() {
+    let searchInput = document.getElementById('search').value.toLowerCase();
+
+    let filteredTodos = todo.filter(t => t['title'].toLowerCase().includes(searchInput));
+
+    document.getElementById('todo').innerHTML = '';
+    for (let i = 0; i < filteredTodos.length; i++) {
+        let filteredTodo = filteredTodos[i];
+        document.getElementById('todo').innerHTML += generateKanbanHTML(filteredTodo);
+    }
+}
+
 function deleteTodo() {
     let titleToDelete = '';
     let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);

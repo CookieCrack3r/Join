@@ -21,7 +21,7 @@
     <div w3-include-html="/Templates/Menu/menu.html"></div>
     <div class="content">
         <div class="find-task">
-            <input type="search" class="icon" placeholder="Find Task"><button onclick="addTask()">Add Task <img
+            <input type="search" class="icon" id="search" placeholder="Find Task" oninput="filterTodos()"><button onclick="addTask()">Add Task <img
                     src="img/plus.svg"></button>
         </div>
         <table>
