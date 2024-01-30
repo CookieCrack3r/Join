@@ -18,17 +18,29 @@ body {
 
 #tasks{
     display: flex;
-    gap: 100px;
+    gap: 70px;
 }
 
+#Tasks-Urgent{
+    display: flex;
+   
+}
+
+#Urgency{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    border-radius: 20px;
+    background-color:rgb(69,137,255);
+}
+#Task-in-Board{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
 
 #date{
-    display: flex;
-    justify-content: center;
-    background-color:rgb(69,137,255);
-    width: 400px;
-    height: 100px;
-    border-radius: 20px;
+    
 }
 
 #Summary{
