@@ -14,7 +14,7 @@ async function addTodo() {
         subtasks: subtasks.value,
         status: todo,
         priority: selectedPriority,
-        //date: date.value
+        date: selectedDate.value
     });
     await setItem('todos', JSON.stringify(todos));
     createTask();

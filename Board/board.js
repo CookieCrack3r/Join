@@ -22,8 +22,6 @@ async function loadTodos() {
     }
 }
 
-//-------------------------------------------------------------------------------------------------->
-
 function updateToDo() {
     let to_do = todo.filter(t => t['status'] == 'to-do');
 
@@ -35,7 +33,6 @@ function updateToDo() {
     }
 }
 
-//-------------------------------------------------------------------------------------------------->
 
 function updateInProgress() {
     let progress = todo.filter(t => t['status'] == 'in-progress');
@@ -49,8 +46,6 @@ function updateInProgress() {
     }
 }
 
-//-------------------------------------------------------------------------------------------------->
-
 function updateAwaitFeedback() {
     let await = todo.filter(t => t['status'] == 'await-feedback');
 
@@ -63,8 +58,6 @@ function updateAwaitFeedback() {
     }
 }
 
-//-------------------------------------------------------------------------------------------------->
-
 function updateDone() {
     let done = todo.filter(t => t['status'] == 'done');
 
@@ -75,7 +68,6 @@ function updateDone() {
         document.getElementById('done').innerHTML += generateKanbanHTML(todo);
     }
 }
-//-------------------------------------------------------------------------------------------------->
 
 function generateBackroundColor(category) {
     let categoryColor = '';
@@ -86,17 +78,50 @@ function generateBackroundColor(category) {
         categoryColor = '#FF7A00';
     }
 
+    return categoryColor;
+}
+
+function getPriorityImage(priority) {
+    if (priority === 'Low') {
+        return 'img/low.png';
+    } else if (priority === 'Medium') {
+        return 'img/medium.svg';
+    } else if (priority === 'Urgent') {
+        return 'img/urgent.png';
+    } else {
+        return 'img/medium.svg';
+    }
+}
+
+function openCard(category, title, description, date, priority) {
+    document.getElementById('big-card-bg').style.display = 'flex';
+    document.getElementById('big-card').classList.remove('d-none');
+    document.getElementById('big-card').innerHTML = '';
+    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority);
+}
+
+function generateKanbanHTML(todo) {
+    let category = todo['category'];
+    let title = todo['title'];
+    let subtasks = todo['subtasks'];
+    let description = todo['description'];
+    let priority = todo['priority'];
+    let date = todo['date'];
+
+    let priorityImage = getPriorityImage(priority);
+    let categoryColor = generateBackroundColor(category);
+
     return `
-             <div draggable="true" ondragstart="startDraggin(${todo['id']})" class="card">
-             <span class="label" style="background-color: ${categoryColor};">${todo['category']}</span>
+    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${date}', '${priority}')" ondragstart="startDraggin(${todo['id']})" class="card">
+        <span class="label" style="background-color: ${categoryColor};">${category}</span>
                                 <span class="description">
-                                    <h3>${todo['title']}</h3><br>${todo['id']}
+                                    <h3>${title}</h3><br>${description}
                                 </span>
                                 <div class="progress-section">
                                     <div class="progress-bar">
                                         <div class="progress"></div>
                                     </div>
-                                    <div>${todo['subtasks']}</div>
+                                    <div>${subtasks}</div>
                                 </div>
                                 <div class="members-and-priority">
                                     <div class="members">
@@ -105,18 +130,11 @@ function generateBackroundColor(category) {
                                         <img src="img/profile2.svg">
                                     </div>
                                     <div class="priority">
-                                        <img src="img/medium.svg">
-                                    </div>
+                                        <img src="${priorityImage}">
+                                     </div>
                                 </div>
-                            </div>
+    </div>
             `;
-}
-
-function openCard(category, title, description, date, priority) {
-    document.getElementById('big-card-bg').style.display = 'flex';
-    document.getElementById('big-card').classList.remove('d-none');
-    document.getElementById('big-card').innerHTML = '';
-    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority);
 }
 
 function generateBigCard(category, title, description, date, priority) {
@@ -157,36 +175,6 @@ function generateBigCard(category, title, description, date, priority) {
         </div>
             `;
 }
-
-function generateKanbanHTML(todo){
-    return `
-             <div draggable="true" ondragstart="startDraggin(${todo['id']})" class="card">
-             <span class="label" style="background-color: ${todo};">${todo['category']}</span>
-                                <span class="description">
-                                    <h3>${todo['title']}</h3><br>${todo['id']}
-                                </span>
-                                <div class="progress-section">
-                                    <div class="progress-bar">
-                                        <div class="progress"></div>
-                                    </div>
-                                    <div>${todo['subtasks']}</div>
-                                </div>
-                                <div class="members-and-priority">
-                                    <div class="members">
-                                        <img src="img/profile.svg">
-                                        <img src="img/profile1.svg">
-                                        <img src="img/profile2.svg">
-                                    </div>
-                                    <div class="priority">
-                                        <img src="img/medium.svg">
-                                    </div>
-                                </div>
-                            </div>
-            `;
-}
-
-
-
 
 function closeCard() {
     document.getElementById('big-card').classList.add('d-none');
