@@ -12,35 +12,38 @@ body {
     margin-top: 96px;
     margin-left: 232px;
     padding: 72px 0px 16px 0px;
-    gap: 20px;
+    
 }
 
 
 #tasks{
     display: flex;
-    gap: 70px;
+    gap: 100px;
 }
 
 #Tasks-Urgent{
     display: flex;
-   
+
 }
 
 #Urgency{
     display: flex;
-    flex: 1;
     justify-content: center;
     border-radius: 20px;
     background-color:rgb(69,137,255);
+    width: 70%;
+    gap: 40px;
 }
+
 #Task-in-Board{
     display: flex;
-    flex: 1;
     justify-content: center;
+    
 }
 
 #date{
-    
+    display: flex;
+    flex-direction: column;
 }
 
 #Summary{
@@ -48,5 +51,5 @@ body {
     height: 591px;
     top: 264.5px;
     left: 380px;
-    gap: 72px;
+    gap: 90px;
 }
