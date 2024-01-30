@@ -6,8 +6,6 @@ async function addTodo() {
 
     create.disabled = true;
     let newTodoId = nextTodoId++;
-    
-    todos = JSON.parse(await getItem('todos')) || [];
     todos.push({
         id: newTodoId,
         title: title.value,
@@ -18,9 +16,7 @@ async function addTodo() {
         priority: selectedPriority,
         date: selectedDate.value
     });
-
     await setItem('todos', JSON.stringify(todos));
-
     createTask();
 }
 

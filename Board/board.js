@@ -105,7 +105,7 @@ function generateKanbanHTML(todo) {
     let categoryColor = generateBackroundColor(category);
 
     return `
-    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
+    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${date}', '${priority}')" ondragstart="startDraggin(${todo['id']})" class="card">
         <span class="label" style="background-color: ${categoryColor};">${category}</span>
                                 <span class="description">
                                     <h3>${title}</h3><br>${description}
@@ -130,14 +130,14 @@ function generateKanbanHTML(todo) {
             `;
 }
 
-function openCard(category, title, description, date, priority, subtasks) {
+function openCard(category, title, description, date, priority) {
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
-    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority, subtasks);
+    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority);
 }
 
-function generateBigCard(category, title, description, date, priority, subtasks) {
+function generateBigCard(category, title, description, date, priority) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
@@ -165,7 +165,8 @@ function generateBigCard(category, title, description, date, priority, subtasks)
         </div>
         <div class="subtasks-big">
             <span><b>Subtasks</b></span>
-            <span><input type="checkbox">${subtasks}</span>
+            <span><input type="checkbox">Implement Recipe Recommendation</span>
+            <span><input type="checkbox">Start Page Layout</span>
         </div>
         <div class="end-section">
             <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
@@ -187,26 +188,23 @@ function filterTodos() {
     }
 }
 
-async function deleteTodo() {
+function deleteTodo() {
     let titleToDelete = '';
-
+    let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
     if (currentDraggedElement !== undefined) {
         titleToDelete = todo[currentDraggedElement]['title'];
-        todo.splice(currentDraggedElement, 1);
     } else {
         let bigCardTitleElement = document.querySelector('.headline-big');
         if (bigCardTitleElement) {
             titleToDelete = bigCardTitleElement.textContent;
-            let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
-            if (indexToDelete !== -1) {
-                todo.splice(indexToDelete, 1);
-                closeCard();
-            }
         }
     }
-
-    await setItem('todos', JSON.stringify(todo));
-    updateHTML();
+    if (indexToDelete !== -1) {
+        todo.splice(indexToDelete, 1);
+        currentDraggedElement = undefined;
+        closeCard();
+        updateHTML();
+    }
 }
 
 function closeCard() {
