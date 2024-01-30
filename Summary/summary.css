@@ -29,6 +29,12 @@ body {
     width: 400px;
     height: 100px;
     border-radius: 20px;
+}
 
-
+#Summary{
+    width: 912px;
+    height: 591px;
+    top: 264.5px;
+    left: 380px;
+    gap: 72px;
 }
