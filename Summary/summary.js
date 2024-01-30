@@ -1,13 +1,15 @@
 let todos = [];
 let task = document.getElementById('task-todo');
 
+function includeHTML() {
+    
+}
 
-
-async function loadTodos(){
+async function loadTodos() {
     try {
         todos = JSON.parse(await getItem('todos'));
-       
-    } catch(e){
+
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }
@@ -15,6 +17,5 @@ async function loadTodos(){
 let progress = todos.filter(t => t['status'] == 'in-progress');
 task.innerHTML = progress.toString();
 
-   
-   
+
 
