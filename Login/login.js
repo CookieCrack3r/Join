@@ -1,19 +1,71 @@
+
 //to reset the Z-Index of the Logo-animation in the first
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const logoContainer = document.querySelector('.join-logo-container');
 
-    logoContainer.addEventListener('animationend', function() {
-        logoContainer.remove();
-        
-    });
+    if (logoContainer) {
+        logoContainer.addEventListener('animationend', function () {
+            logoContainer.remove();
+        });
+    }
+    greetAsLogedUser();
 });
+
 
 
 //this function open's the sign up page
 
-function redirectToSignUp(){
+function redirectToSignUp() {
     window.location.pathname = '/SignUP/signup.html';
 }
+
+//this function is to login as a guest
+
+function loginAsGuest() {
+    window.location.pathname = '/Summary/summary.html';
+}
+
+// this function is to login with your registered Email and Password && to save your Initials of your first and lastname
+
+async function LoginRegistered() {
+    const email = document.getElementById('login_email_input').value;
+    const password = document.getElementById('login_password_input').value;
+
+    try {
+        const users = JSON.parse(await getItem('users'));
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            const userInitial = user.name.split(' ').map(word => word[0].toUpperCase()).join('');
+            await setItem('userName', user.name);
+            await setItem('userInitial', userInitial);
+            window.location.href = '/Summary/summary.html?name=' + encodeURIComponent(user.name);
+        } else {
+            console.warn('Benutzer oder Passwort falsch');
+        }
+    } catch (e) {
+        console.error('Loading error', e);
+    }
+}
+
+
+
+//this function is to greet the User with his name on the landing page
+
+function greetAsLogedUser() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientname = urlParams.get('name');
+
+    if (clientname) {
+        document.getElementById('greetings').innerText = 'Hello, ' + decodeURIComponent(clientname);
+    } else {
+        console.error('Name not found in URL parameters', urlParams);
+        document.getElementById('greetings').innerText = 'Hello, Guest';
+    }
+
+}
+
 
 

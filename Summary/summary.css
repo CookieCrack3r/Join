@@ -29,10 +29,15 @@ body {
     width: 400px;
     height: 100px;
     border-radius: 20px;
+<<<<<<< HEAD
 }
 
 #Tasks-Urgent{
     display: flex;
     width: 500px;
+=======
+
+
+>>>>>>> 786974291280a99d90e2a5e75d78c70e1c240d75
 
 }
