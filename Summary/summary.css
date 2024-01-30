@@ -21,6 +21,14 @@ body {
     gap: 100px;
 }
 
+#Task{
+    padding: 10px;
+}
+#Task:hover{
+    background-color: rgb(210,227,255);
+    border-radius: 20px;
+}
+
 #Tasks-Urgent{
     display: flex;
 
