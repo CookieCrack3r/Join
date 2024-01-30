@@ -18,7 +18,7 @@ async function loadUsers() {
 async function registerUser() {
     users.push({
         name: sign_up_name.value,
-        email: sign_up_email.value,
+        email: sign_up_email.value.toLowerCase(),
         password: sign_up_password.value,
     });
     await setItem('users', JSON.stringify(users));

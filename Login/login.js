@@ -35,9 +35,8 @@ async function LoginRegistered() {
     try {
         const users = JSON.parse(await getItem('users'));
         const user = users.find(u => u.email === email && u.password === password);
-
+        const userInitial = user.name.split(' ').map(word => word[0].toUpperCase()).join('');
         if (user) {
-            const userInitial = user.name.split(' ').map(word => word[0].toUpperCase()).join('');
             await setItem('userName', user.name);
             await setItem('userInitial', userInitial);
             window.location.href = '/Summary/summary.html?name=' + encodeURIComponent(user.name);
@@ -59,10 +58,9 @@ function greetAsLogedUser() {
     const clientname = urlParams.get('name');
 
     if (clientname) {
-        document.getElementById('greetings').innerText = 'Hello, ' + decodeURIComponent(clientname);
+        document.getElementById('greetings').innerHTML = 'Hello, ' + decodeURIComponent(clientname);
     } else {
-        console.error('Name not found in URL parameters', urlParams);
-        document.getElementById('greetings').innerText = 'Hello, Guest';
+        console.error('Kein Params bis jetzt gefunden', urlParams);
     }
 
 }

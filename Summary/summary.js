@@ -2,7 +2,7 @@ let todos = [];
 let task = document.getElementById('task-todo');
 
 function includeHTML() {
-    
+    greetAsLogedUser();
 }
 
 async function loadTodos() {
