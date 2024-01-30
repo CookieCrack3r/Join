@@ -19,6 +19,7 @@ body {
 #tasks{
     display: flex;
     gap: 100px;
+    justify-content: space-between;
 }
 
 #Task{
@@ -31,7 +32,7 @@ body {
 
 #Tasks-Urgent{
     display: flex;
-
+    justify-content: space-between;
 }
 
 #Urgency{
