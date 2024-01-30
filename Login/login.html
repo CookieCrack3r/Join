@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="fonts.css">
 <link rel="icon" type="image/svg" href="/imgs/favicon_join.svg">
 <script src="login.js"></script>
+<script src="/storage.js"></script>
+<script src="/registerUser.js"></script>
 
 <body>
 
@@ -28,7 +30,7 @@
         </div>
     </div>
 
-    <form class="login-box-center">
+    <form onsubmit="LoginRegistered(); return false;" class="login-box-center">
 
         <div class="login-txt-container">
             <div class="login-txt-in-login-box">Log in</div>
@@ -36,10 +38,10 @@
         </div>
 
         <div class="email-input-container">
-            <input class="email-input" placeholder="Email" required type="email">
+            <input id="login_email_input" class="email-input" placeholder="Email" required type="email">
         </div>
         <div class="password-input-container">
-            <input class="password-input" placeholder="Password" required type="password">
+            <input id="login_password_input" class="password-input" placeholder="Password" required type="password">
         </div>
 
         <div class="checkbox-rememberme">
@@ -49,7 +51,7 @@
     
         <div class="log-in-btns-container-bottom">
             <button class="login-btn-bottom">Log In</button>
-            <button class="sign-up-btn-bottom">Guest Log In</button>
+            <button class="sign-up-btn-bottom" onclick="loginAsGuest()">Guest Log In</button>
         </div>
     </form>
 
