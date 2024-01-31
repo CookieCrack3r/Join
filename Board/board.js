@@ -12,7 +12,11 @@ function updateHTML() {
     updateToDo();
     updateDone();
 }
-
+function updateDB(){
+    console.log("updateDB+"+todo);
+    setItem('todos', JSON.stringify(todo));
+    console.log("updateDB+"+todo);
+}
 async function loadTodos() {
     try {
         todo = JSON.parse(await getItem('todos'));
@@ -226,8 +230,11 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     todo[currentDraggedElement]['status'] = status;
+    updateDB();
     updateHTML();
 }
+
+
 
 function highlight(id) {
     document.getElementById(id).classList.add('dragsection-highlight');
