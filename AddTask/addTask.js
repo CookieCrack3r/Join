@@ -1,11 +1,9 @@
 let todos = [];
-let nextTodoId = 1;
 
 async function addTodo() {
     let todo = 'to-do';
 
     create.disabled = true;
-    let newTodoId = nextTodoId++;
     todos_length = JSON.parse(await getItem('todos')) || [];
     let newTodoId = todos_length.length-1;
     newTodoId++;
@@ -26,6 +24,7 @@ async function addTodo() {
 
     createTask();
 }
+
 
 let selectedPriority = 'Medium';
 
