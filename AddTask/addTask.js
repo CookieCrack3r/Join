@@ -1,11 +1,12 @@
 let todos = [];
-let nextTodoId = 1;
 
 async function addTodo() {
     let todo = 'to-do';
 
     create.disabled = true;
-    let newTodoId = nextTodoId++;
+    todos = JSON.parse(await getItem('todos')) || [];
+    let newTodoId = todos.length;
+    newTodoId++;
     
     todos = JSON.parse(await getItem('todos')) || [];
     todos.push({

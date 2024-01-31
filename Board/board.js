@@ -30,6 +30,7 @@ function updateToDo() {
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
+        
     }
 }
 
@@ -66,6 +67,7 @@ function updateDone() {
     for (let i = 0; i < done.length; i++) {
         let todo = done[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(todo);
+        
     }
 }
 
