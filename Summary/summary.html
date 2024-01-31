@@ -12,11 +12,13 @@
     <script src="/Templates/template.js"></script>
     <script src="/storage.js"></script>
     <script src="addTask.js"></script>
+    <script src="summary.js"></script>
+
     <script src="/Login/login.js"></script>
     <title>Summary</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); loadTodos()">
     <div w3-include-html="/Templates/Menu/menu.html"></div>
 
 
@@ -31,7 +33,7 @@
             <div id="Tasks-Urgent">
                 <div id="Urgency">
                     <div id="task-Urgent-2">
-                        <a href="/Board/board.html"><img src="/Summary/img/Urgent2.svg">1</a>
+                        <a href="/Board/board.html"><img src="/Summary/img/Urgent2.svg"></a>
                         <p>Tasks Urgent</p>
                     </div>
 
@@ -44,7 +46,7 @@
                 <div id="Task-in-Board">
                     <div id="Task-To-Do">
                         <div id="Task">
-                            <a href="/Board/board.html"><img src="/Summary/img/Board.svg">1</a>
+                            <a href="/Board/board.html"><img src="/Summary/img/Board.svg"><p id="Task-in-Board_value"></p></a>
                             <p>Task-in-Board</p>
                         </div>
                     </div>
@@ -57,28 +59,28 @@
                 <div id="tasks">
                     <div id="Task-To-Do">
                         <div id="Task">
-                            <a href="/Board/board.html"><img src="/Summary/img/Urgent.svg">1</a>
+                            <a href="/Board/board.html"><img src="/Summary/img/Urgent.svg"><p id="Tasks_value"></p></a>
                             <p>Tasks To-do</p>
                         </div>
                     </div>
 
                     <div id="Task-In-Progress">
                         <div id="Task">
-                            <a href="/Board/board.html"><img src="/Summary/img/In Progress.svg">1</a>
+                            <a href="/Board/board.html"><img src="/Summary/img/In Progress.svg"><p id="Task-in-Progress_value"></p></a>
                             <p>Task-In-Progress</p>
                         </div>
                     </div>
 
                     <div id="Awaiting-feedback">
                         <div id="Task">
-                            <a href="/Board/board.html"><img src="/Summary/img/Awaiting feedback.svg">1</a>
+                            <a href="/Board/board.html"><img src="/Summary/img/Awaiting feedback.svg"><p id="Awaiting-feedback_value"></p></a>
                             <p>Awaiting-feedback</p>
                         </div>
                     </div>
 
                     <div id="Task-Done">
                         <div id="Task">
-                            <a href="/Board/board.html"><img src="/Summary/img/Done.svg">1</a>
+                            <a href="/Board/board.html"><img src="/Summary/img/Done.svg"><p id="Task-Done_value"></p></a>
                             <p>Task-Done</p>
                         </div>
                     </div>
