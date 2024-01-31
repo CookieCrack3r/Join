@@ -19,7 +19,9 @@ async function addTodo() {
         priority: selectedPriority,
         date: selectedDate.value
     });
+
     await setItem('todos', JSON.stringify(todos));
+
     createTask();
 }
 
