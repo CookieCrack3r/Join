@@ -5,7 +5,7 @@ async function addTodo() {
 
     create.disabled = true;
     todos = JSON.parse(await getItem('todos')) || [];
-    let newTodoId = todos.length;
+    let newTodoId = todos.length-1;
     newTodoId++;
     
     todos = JSON.parse(await getItem('todos')) || [];
