@@ -206,12 +206,13 @@ async function deleteTodo() {
             let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
             if (indexToDelete !== -1) {
                 todo.splice(indexToDelete, 1);
-                closeCard();
+                
             }
         }
     }
 
     await setItem('todos', JSON.stringify(todo));
+    closeCard();
     updateHTML();
 }
 
