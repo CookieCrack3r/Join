@@ -15,6 +15,7 @@ function updateHTML() {
 function updateDB(){
     setItem('todos', JSON.stringify(todo));
 }
+
 async function loadTodos() {
     try {
         todo = JSON.parse(await getItem('todos'));
@@ -32,7 +33,6 @@ function updateToDo() {
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-        
     }
 }
 
@@ -69,7 +69,6 @@ function updateDone() {
     for (let i = 0; i < done.length; i++) {
         let todo = done[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(todo);
-        
     }
 }
 
@@ -226,11 +225,8 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     todo[currentDraggedElement]['status'] = status;
-    updateDB();
     updateHTML();
 }
-
-
 
 function highlight(id) {
     document.getElementById(id).classList.add('dragsection-highlight');
