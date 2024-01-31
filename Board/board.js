@@ -204,10 +204,11 @@ async function deleteTodo() {
         if (bigCardTitleElement) {
             titleToDelete = bigCardTitleElement.textContent;
             let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
-            if (indexToDelete !== -1) {
-                todo.splice(indexToDelete, 1);
-                
-            }
+            todo.splice(indexToDelete, 1);
+            
+            //if (indexToDelete !== -2) {
+            //   todo.splice(indexToDelete, 1);
+            //}
         }
     }
 
