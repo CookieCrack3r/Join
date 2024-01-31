@@ -13,9 +13,7 @@ function updateHTML() {
     updateDone();
 }
 function updateDB(){
-    console.log("updateDB+"+todo);
     setItem('todos', JSON.stringify(todo));
-    console.log("updateDB+"+todo);
 }
 async function loadTodos() {
     try {
