@@ -5,16 +5,16 @@ async function addTodo() {
 
     create.disabled = true;
     todos_length = JSON.parse(await getItem('todos')) || [];
-    let newTodoId = todos_length.length-1;
+    let newTodoId = todos_length.length - 1;
     newTodoId++;
-    
+
     todos = JSON.parse(await getItem('todos')) || [];
     todos.push({
         id: newTodoId,
         title: title.value,
         description: descritpion.value,
         category: category.value,
-        subtasks: subtasks.value,
+        subtasks: getSubtasks(),
         status: todo,
         priority: selectedPriority,
         date: selectedDate.value
@@ -68,6 +68,27 @@ function priorityLow() {
     document.getElementById('urgent').style.backgroundColor = 'white';
     document.getElementById('urgent').style.color = 'black';
     document.getElementById('urgent-img').src = 'imgAddTask/urgent.png';
+}
+
+function addSubtask() {
+    let subtask = document.getElementById('subtasks').value;
+
+    document.getElementById('subtasks-list').innerHTML += `
+    <li>${subtask}</li>
+`;
+
+    document.getElementById('subtasks').value = '';
+}
+
+function getSubtasks() {
+    let subtasksList = document.getElementById('subtasks-list');
+    let subtasksArray = [];
+
+    subtasksList.querySelectorAll('li').forEach(li => {
+        subtasksArray.push(li.textContent.trim());
+    });
+
+    return subtasksArray;
 }
 
 function createTask() {

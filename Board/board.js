@@ -11,11 +11,13 @@ function updateHTML() {
     updateInProgress();
     updateToDo();
     updateDone();
+    updateProgressBar();
 }
-function updateDB(){
-    console.log("updateDB+"+todo);
+
+function updateDB() {
+    console.log("updateDB+" + todo);
     setItem('todos', JSON.stringify(todo));
-    console.log("updateDB+"+todo);
+    console.log("updateDB+" + todo);
 }
 async function loadTodos() {
     try {
@@ -34,7 +36,7 @@ function updateToDo() {
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-        
+
     }
 }
 
@@ -71,7 +73,7 @@ function updateDone() {
     for (let i = 0; i < done.length; i++) {
         let todo = done[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(todo);
-        
+
     }
 }
 
@@ -107,6 +109,9 @@ function generateKanbanHTML(todo) {
     let priority = todo['priority'];
     let date = todo['date'];
 
+    let subtaskCount = getSubtaskCount(todo['subtasks']);
+    let completedSubtaskCount = getCompletedSubtaskCount(todo['subtasks']);
+
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
@@ -120,7 +125,7 @@ function generateKanbanHTML(todo) {
                                     <div class="progress-bar">
                                         <div class="progress"></div>
                                     </div>
-                                    <div>${subtasks}</div>
+                                    <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
                                 </div>
                                 <div class="members-and-priority">
                                     <div class="members">
@@ -136,19 +141,33 @@ function generateKanbanHTML(todo) {
             `;
 }
 
+function updateProgressBar() {
+    let progressBar = document.querySelector('.progress');
+
+    if (currentDraggedElement !== undefined) {
+        let todoItem = todo[currentDraggedElement];
+        let subtaskCount = getSubtaskCount(todoItem['subtasks']);
+        let completedSubtaskCount = getCompletedSubtaskCount(todoItem['subtasks']);
+        let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
+
+        progressBar.style.width = `${progressPercentage}%`;
+    }
+}
+
 function openCard(category, title, description, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
     document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority, subtasks);
+    createCheckboxes(subtasks);
 }
 
-function generateBigCard(category, title, description, date, priority, subtasks) {
+function generateBigCard(category, title, description, date, priority) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
     return `
-         <div class="first-section">
+        <div class="first-section">
             <span class="label-big" style="background-color: ${categoryColor};">${category}</span>
             <img src="img/close.svg" id="close" onclick="closeCard()">
         </div>
@@ -171,14 +190,42 @@ function generateBigCard(category, title, description, date, priority, subtasks)
         </div>
         <div class="subtasks-big">
             <span><b>Subtasks</b></span>
-            <span><input type="checkbox">${subtasks}</span>
+            <span id="checkboxes"></span>
         </div>
         <div class="end-section">
             <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
             |
             <span onclick="editTodo()"><img src="img/edit.svg">Edit</span>
         </div>
-            `;
+    `;
+
+}
+
+function createCheckboxes(subtasks) {
+    let checkboxesContainer = document.getElementById('checkboxes');
+    checkboxesContainer.innerHTML = '';
+
+    let subtaskArray = subtasks.split(',');
+
+    for (let i = 0; i < subtaskArray.length; i++) {
+        let element = subtaskArray[i].trim();
+
+        if (element !== '') {
+            checkboxesContainer.innerHTML += `<input type="checkbox"> ${element}<br>`;
+        }
+    }
+}
+
+function getSubtaskCount(subtasks) {
+    let nonEmptySubtasks = subtasks.filter(element => element.trim() !== '');
+
+    return nonEmptySubtasks.length;
+}
+
+function getCompletedSubtaskCount(subtasks) {
+    let completedSubtasks = subtasks.filter(element => element.trim().startsWith('✔'));
+
+    return completedSubtasks.length;
 }
 
 function filterTodos() {
@@ -205,7 +252,7 @@ async function deleteTodo() {
             titleToDelete = bigCardTitleElement.textContent;
             let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
             todo.splice(indexToDelete, 1);
-            
+
             //if (indexToDelete !== -2) {
             //   todo.splice(indexToDelete, 1);
             //}
@@ -235,8 +282,6 @@ function moveTo(status) {
     updateDB();
     updateHTML();
 }
-
-
 
 function highlight(id) {
     document.getElementById(id).classList.add('dragsection-highlight');

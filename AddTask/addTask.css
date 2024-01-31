@@ -191,6 +191,7 @@ select:hover {
 .subtask-input-container {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .subtask-input-container svg {
@@ -211,6 +212,10 @@ select:hover {
 
 .subtasks input:hover {
     border-bottom: 1px solid #4589FF;
+}
+
+.subtask-input-field {
+    display: flex;
 }
 
 .buttons {
