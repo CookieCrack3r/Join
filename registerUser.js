@@ -55,7 +55,7 @@ function succesfullySignedUp() {
     }, 3200);
 }
 
-//this function is to check the password, if he is match 
+//this function is to check the password, if he match 
 function checkPasswords() {
     let password = document.getElementById('sign_up_password').value;
     let passwordConfirm = document.getElementById('sign_up_confirm_pw').value;

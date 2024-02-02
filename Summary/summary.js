@@ -30,7 +30,6 @@ async function loadTodos() {
         Task_Done.innerHTML = Task_Done_Length;
         Task_in_Board.innerHTML = Task_in_Board_Length;
 
-        console.log(Task_in_Board);
 
     } catch (e) {
         console.error('Loading error:', e);

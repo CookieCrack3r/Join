@@ -1,3 +1,4 @@
+let greetingName = [];
 
 //to reset the Z-Index of the Logo-animation in the first
 
@@ -37,8 +38,8 @@ async function LoginRegistered() {
         const user = users.find(u => u.email === email && u.password === password);
         const userInitial = user.name.split(' ').map(word => word[0].toUpperCase()).join('');
         if (user) {
-            await setItem('userName', user.name);
-            await setItem('userInitial', userInitial);
+            await setItem('userName', JSON.stringify(user.name));
+            await setItem('userInitial', JSON.stringify(userInitial));
             window.location.href = '/Summary/summary.html?name=' + encodeURIComponent(user.name);
         } else {
             console.warn('Benutzer oder Passwort falsch');
@@ -46,6 +47,8 @@ async function LoginRegistered() {
     } catch (e) {
         console.error('Loading error', e);
     }
+
+
 }
 
 
@@ -58,9 +61,9 @@ function greetAsLogedUser() {
     const clientname = urlParams.get('name');
 
     if (clientname) {
-        document.getElementById('greetings').innerHTML = 'Hello, ' + decodeURIComponent(clientname);
+        document.getElementById('greetingname').innerHTML = decodeURIComponent(clientname);
     } else {
-        console.error('Kein Params bis jetzt gefunden', urlParams);
+        document.getElementById('greetingname').innerHTML = "";
     }
 
 }

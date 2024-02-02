@@ -1,64 +1,233 @@
-body {
-    max-width: 1440px;
-    height: 1024px;
+body{
     margin: 0;
-    padding: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 96px;
-    margin-left: 232px;
-    padding: 72px 0px 16px 0px;
-    
-}
-
-
-#tasks{
-    display: flex;
-    gap: 100px;
-    justify-content: space-between;
-}
-
-#Task{
-    padding: 10px;
-}
-#Task:hover{
-    background-color: rgb(210,227,255);
-    border-radius: 20px;
-}
-
-#Tasks-Urgent{
-    display: flex;
-    justify-content: space-between;
-}
-
-#Urgency{
-    display: flex;
-    justify-content: center;
-    border-radius: 20px;
-    background-color:rgb(69,137,255);
-    width: 70%;
-    gap: 40px;
-}
-
-#Task-in-Board{
-    display: flex;
-    justify-content: center;
-    
-}
-
-#date{
-    display: flex;
-    flex-direction: column;
-}
-
-#Summary{
+.content-container{
+    position: fixed;
     width: 912px;
     height: 591px;
     top: 264.5px;
     left: 380px;
-    gap: 90px;
+}
+
+.greet-container{
+    width: 1044px;
+    height: 77px;
+}
+
+.flex-container{
+    display: flex;
+}
+
+.timezone-container{
+    height: 58px;
+    font-size: 48px;
+    line-height: 57.6px;
+}
+
+.greetingname-container{
+    height: 77px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #4589FF;
+    margin-left: 8px;
+    line-height: 57.6px;
+    margin-bottom: 72px;
+}
+
+.middle-section{
+    width: 912px;
+    height: 191px;
+    display: flex;
+    column-gap: 35px;
+}
+
+.task-urgent{
+    width: 672px;
+    height: 191px;
+    background: rgba(69, 137, 255, 1);
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 48px 28px 48px 28px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.task-urgent:hover{
+    background-color: #2e77f5;
+    cursor: pointer;
+}
+
+.task-urgend-under-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.task-urgend-under-container span{
+    color: white;
+    margin-top: 8px;
+}
+
+.task-urgend-number{
+    height: 58px;
+    width: 28px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 57.6px;
+    color: white;
+    margin-left: 12px;
+}
+
+.white-column-urgent-task{
+    display: flex;
+    align-items: center;
+}
+
+.white-column-urgent-task img{
+    width: 3px;
+    height: 145px;
+}
+
+
+.date-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.date-container span{
+    color: white;
+    font-weight: 700;
+    font-size: 33px;
+}
+
+.date-container p{
+    color: white;
+    font-size: 23px;
+    margin: 0;
+    margin-top: 9px;
+}
+
+.task-in-board{
+    width: 208px;
+    height: 191px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    border-radius: 30px;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.task-in-board:hover{
+    background: rgba(210, 227, 255, 1);
+    cursor: pointer;
+}
+
+.task-in-board-under-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.task-in-board span{
+    display: flex;
+    justify-content: center;
+    color: rgba(69, 137, 255, 1);
+    margin-top: 8px;
+}
+
+.task-in-board-number{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+
+.under-task-section{
+    width: 912px;
+    height: 219px;
+    display: flex;
+    column-gap: 35px;
+    margin-top: 35px;
+}
+
+/* for all 4 task in the under section*/
+
+.under-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.number-in-tasks{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.task-to-do span, .task-in-progress span, .awaiting-feedback span, .tasks-done span{
+    margin-top: 8px;
+    color: rgba(69, 137, 255, 1);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/* for all 4 tasks in the under section end*/
+
+
+.task-to-do{
+    width: 204px;
+    height: 219px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.task-to-do:hover{
+    background: rgba(210, 227, 255, 1);
+    cursor: pointer;
+}
+
+.task-in-progress{
+    width: 204px;
+    height: 219px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.task-in-progress:hover{
+    background: rgba(210, 227, 255, 1);
+    cursor: pointer;
+}
+
+.awaiting-feedback{
+    width: 204px;
+    height: 219px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.awaiting-feedback:hover{
+    background: rgba(210, 227, 255, 1);
+    cursor: pointer;
+}
+
+.tasks-done{
+    width: 204px;
+    height: 219px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.tasks-done:hover{
+    background: rgba(210, 227, 255, 1);
+    cursor: pointer;
 }
