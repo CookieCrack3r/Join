@@ -162,7 +162,7 @@ function openCard(category, title, description, date, priority, subtasks) {
     createCheckboxes(subtasks);
 }
 
-function generateBigCard(category, title, description, date, priority) {
+function generateBigCard(category, title, description, date, priority, subtasks) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
@@ -193,12 +193,11 @@ function generateBigCard(category, title, description, date, priority) {
             <span id="checkboxes"></span>
         </div>
         <div class="end-section">
-            <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
+            <span onclick="deleteTodo()"><img src="img/delete.svg">Löschen</span>
             |
-            <span onclick="editTodo()"><img src="img/edit.svg">Edit</span>
+            <span onclick="editTodo()"><img src="img/edit.svg">Bearbeiten</span>
         </div>
     `;
-
 }
 
 function createCheckboxes(subtasks) {
@@ -209,9 +208,11 @@ function createCheckboxes(subtasks) {
 
     for (let i = 0; i < subtaskArray.length; i++) {
         let element = subtaskArray[i].trim();
+        let isChecked = element.startsWith('✔');
+        let checkboxId = `checkbox${i}`;
 
         if (element !== '') {
-            checkboxesContainer.innerHTML += `<input type="checkbox"> ${element}<br>`;
+            checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${isChecked ? 'checked' : ''} onclick="updateSubtaskStatus(${i})"> ${element}<br>`;
         }
     }
 }
@@ -226,6 +227,36 @@ function getCompletedSubtaskCount(subtasks) {
     let completedSubtasks = subtasks.filter(element => element.trim().startsWith('✔'));
 
     return completedSubtasks.length;
+}
+
+function updateSubtasks(subtasks, newSubtasks) {
+    let subtaskArray = subtasks.split(',');
+
+    for (let i = 0; i < subtaskArray.length; i++) {
+        let element = subtaskArray[i].trim();
+
+        if (element !== '') {
+            newSubtasks.push(element);
+        }
+    }
+}
+
+function updateSubtaskStatus(index) {
+    let checkbox = document.getElementById(`checkbox${index}`);
+
+    if (checkbox) {
+        let newStatus = checkbox.checked ? '✔' : '';
+
+        if (currentDraggedElement !== undefined) {
+            let todoItem = todo[currentDraggedElement];
+            let subtasks = todoItem['subtasks'].split(',');
+            subtasks[index] = newStatus;
+            todoItem['subtasks'] = subtasks.join(',');
+
+            updateDB();
+            updateHTML();
+        }
+    }
 }
 
 function filterTodos() {
