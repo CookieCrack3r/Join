@@ -217,30 +217,6 @@ function createCheckboxes(subtasks) {
     }
 }
 
-function getSubtaskCount(subtasks) {
-    let nonEmptySubtasks = subtasks.filter(element => element.trim() !== '');
-
-    return nonEmptySubtasks.length;
-}
-
-function getCompletedSubtaskCount(subtasks) {
-    let completedSubtasks = subtasks.filter(element => element.trim().startsWith('✔'));
-
-    return completedSubtasks.length;
-}
-
-function updateSubtasks(subtasks, newSubtasks) {
-    let subtaskArray = subtasks.split(',');
-
-    for (let i = 0; i < subtaskArray.length; i++) {
-        let element = subtaskArray[i].trim();
-
-        if (element !== '') {
-            newSubtasks.push(element);
-        }
-    }
-}
-
 function updateSubtaskStatus(index) {
     let checkbox = document.getElementById(`checkbox${index}`);
 
@@ -257,6 +233,18 @@ function updateSubtaskStatus(index) {
             updateHTML();
         }
     }
+}
+
+function getSubtaskCount(subtasks) {
+    let nonEmptySubtasks = subtasks.filter(element => element.trim() !== '');
+
+    return nonEmptySubtasks.length;
+}
+
+function getCompletedSubtaskCount(subtasks) {
+    let completedSubtasks = subtasks.filter(element => element.trim().startsWith('✔'));
+
+    return completedSubtasks.length;
 }
 
 function filterTodos() {
