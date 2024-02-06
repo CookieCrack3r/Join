@@ -21,8 +21,9 @@ async function addTodo() {
     });
 
     await setItem('todos', JSON.stringify(todos));
+    console.log(todos);
 
-    createTask();
+    //createTask();
 }
 
 
@@ -85,11 +86,17 @@ function getSubtasks() {
     let subtasksArray = [];
 
     subtasksList.querySelectorAll('li').forEach(li => {
-        subtasksArray.push(li.textContent.trim());
+        let subtaskText = li.textContent.trim();
+        let subtaskObject = {
+            text: subtaskText,
+            checked: false // Standardmäßig auf false setzen
+        };
+        subtasksArray.push(subtaskObject);
     });
 
     return subtasksArray;
 }
+
 
 function createTask() {
     create.disabled = false;

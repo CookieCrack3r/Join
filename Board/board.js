@@ -101,6 +101,7 @@ function getPriorityImage(priority) {
 }
 
 function generateKanbanHTML(todo) {
+    
     let category = todo['category'];
     let title = todo['title'];
     let subtasks = todo['subtasks'];
@@ -232,45 +233,38 @@ function createCheckboxes(subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
 
-    let subtaskArray = subtasks.split(',');
-
-    for (let i = 0; i < subtaskArray.length; i++) {
-        let element = subtaskArray[i].trim();
-        let isChecked = element.startsWith('✔');
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtask = subtasks[i];
         let checkboxId = `checkbox${i}`;
 
-        if (element !== '') {
-            checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${isChecked ? 'checked' : ''} onclick="updateSubtaskStatus(${i})"> ${element}<br>`;
-        }
+        checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtask.checked ? 'checked' : ''} onclick="updateSubtaskStatus(${i})"> ${subtask.text}<br>`;
     }
 }
 
 function updateSubtaskStatus(index) {
     let checkbox = document.getElementById(`checkbox${index}`);
+    if (checkbox && currentDraggedElement !== undefined) {
+        let todoItem = todo[currentDraggedElement];
+        let subtasks = todoItem['subtasks'];
 
-    if (checkbox) {
-        let newStatus = checkbox.checked ? '✔' : '';
+        // Ändern Sie den Status des Subtasks in Abhängigkeit vom Checkbox-Status
+        subtasks[index].checked = checkbox.checked;
 
-        if (currentDraggedElement !== undefined) {
-            let todoItem = todo[currentDraggedElement];
-            let subtasks = todoItem['subtasks'].split(',');
-            subtasks[index] = newStatus;
-            todoItem['subtasks'] = subtasks.join(',');
-
-            updateDB();
-            updateHTML();
-        }
+        // Aktualisieren Sie die Datenbank und das HTML
+        updateDB();
+        updateHTML();
     }
 }
 
+
 function getSubtaskCount(subtasks) {
-    let nonEmptySubtasks = subtasks.filter(element => element.trim() !== '');
+    let nonEmptySubtasks = 3 //subtasks.filter(element => element.trim() !== '');
 
     return nonEmptySubtasks.length;
 }
 
 function getCompletedSubtaskCount(subtasks) {
-    let completedSubtasks = subtasks.filter(element => element.trim().startsWith('✔'));
+    let completedSubtasks = 3 //subtasks.filter(element => element.trim().startsWith('✔'));
 
     return completedSubtasks.length;
 }
