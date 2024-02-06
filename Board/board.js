@@ -15,9 +15,7 @@ function updateHTML() {
 }
 
 function updateDB() {
-    console.log("updateDB+" + todo);
     setItem('todos', JSON.stringify(todo));
-    console.log("updateDB+" + todo);
 }
 
 async function loadTodos() {
@@ -196,24 +194,39 @@ function generateBigCard(category, title, description, date, priority, subtasks)
         <div class="end-section" id="end-section">
             <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
             |
-            <span onclick="editTodo('${category}', '${title}', '${description}', '${date}', '${priority}', '${subtasks}')"><img src="img/edit.svg">Edit</span>
+            <span onclick="editTodo({
+                category: '${category}',
+                title: '${title}',
+                description: '${description}',
+                date: '${date}',
+                priority: '${priority}',
+                subtasks: '${subtasks}'
+            })"><img src="img/edit.svg">Edit</span>
         </div>
     `;
 }
 
-function editTodo(title, description, date, priority, subtasks) {
-    document.getElementById('headline-big').innerHTML = `<input value=${title}>`;
-    document.getElementById('description-big').innerHTML = `<textarea value=${description}>`;
-    document.getElementById('date-big').innerHTML = `<input type=date value=${date}>`;
+function editTodo(card) {
+    document.getElementById('headline-big').innerHTML = `<input value="${card.title}">`;
+    document.getElementById('description-big').innerHTML = `<textarea>${card.description}</textarea>`;
+    document.getElementById('date-big').innerHTML = `<input type="date" value="${card.date}">`;
     document.getElementById('priority-big').innerHTML = `<div class="priority-big-buttons">
-   <button type="button" onclick="priorityUrgent()" id="urgent">Urgent<img id="urgent-img"
-           src="img/urgent.png"></button>
-   <button type="button" onclick="priorityMedium()" id="medium">Medium<img id="medium-img"
-           src="img/medium.png"></button>
-   <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
-           src="img/low.png"></button>
-</div>`;
+       <button type="button" onclick="priorityUrgent()" id="urgent">Urgent<img id="urgent-img"
+               src="img/urgent.png"></button>
+       <button type="button" onclick="priorityMedium()" id="medium">Medium<img id="medium-img"
+               src="img/medium.png"></button>
+       <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
+               src="img/low.png"></button>
+    </div>`;
+    document.getElementById('end-section').innerHTML = `<span onclick=saveTodo('${card.title}', '${card.description}', '${card.date}')><img src=img/save.svg>Save</span>`;
 }
+
+async function saveTodo() {
+    updateDB();
+    updateHTML();
+    closeCard();
+}
+
 
 function createCheckboxes(subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');

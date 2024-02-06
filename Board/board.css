@@ -164,7 +164,7 @@ td {
 }
 
 #big-card {
-    max-height: 932px;
+    max-height: 800px;
     width: 528px;
     border-radius: 30px;
     background-color: white;
@@ -173,6 +173,7 @@ td {
     border: 1px solid lightgray;
     top: 40px;
     position: absolute;
+    overflow-y: scroll;
 }
 
 .label-big {
@@ -368,7 +369,6 @@ td {
     display: flex;
     flex-direction: column;
     width: 440px;
-    height: 154px;
     gap: 8px;
     font-size: 19px;
 }
@@ -383,14 +383,6 @@ td {
     gap: 4px;
     margin-bottom: 16px;
     margin-top: 4px;
-}
-
-#date-big {
-    display: flex;
-    flex-direction: column;
-    height: 99px;
-    width: 440px;
-    font-family: 'Open Sans', sans-serif;
 }
 
 #date-big input {
