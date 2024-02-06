@@ -19,6 +19,7 @@ function updateDB() {
     setItem('todos', JSON.stringify(todo));
     console.log("updateDB+" + todo);
 }
+
 async function loadTodos() {
     try {
         todo = JSON.parse(await getItem('todos'));
@@ -171,16 +172,16 @@ function generateBigCard(category, title, description, date, priority, subtasks)
             <span class="label-big" style="background-color: ${categoryColor};">${category}</span>
             <img src="img/close.svg" id="close" onclick="closeCard()">
         </div>
-        <span class="headline-big">${title}</span>
+        <span class="headline-big" id="headline-big">${title}</span>
         <br>
-        <div class="description-big">
+        <div class="description-big" id="description-big">
             <span>${description}</span>
         </div>
         <div class="date-big">
-            <span><b>Due date:</b></span><span>${date}</span>
+            <span><b>Due date:</b></span><span id="date-big">${date}</span>
         </div>
         <div class="date-big">
-            <span><b>Priority:</b></span><span>${priority}<img src="${priorityImage}"></span>
+            <span><b>Priority:</b></span><span id="priority-big">${priority}<img src="${priorityImage}"></span>
         </div>
         <div class="profiles-big">
             <span><b>Assigned To:</b></span>
@@ -192,12 +193,26 @@ function generateBigCard(category, title, description, date, priority, subtasks)
             <span><b>Subtasks</b></span>
             <span id="checkboxes"></span>
         </div>
-        <div class="end-section">
-            <span onclick="deleteTodo()"><img src="img/delete.svg">Löschen</span>
+        <div class="end-section" id="end-section">
+            <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
             |
-            <span onclick="editTodo()"><img src="img/edit.svg">Bearbeiten</span>
+            <span onclick="editTodo('${category}', '${title}', '${description}', '${date}', '${priority}', '${subtasks}')"><img src="img/edit.svg">Edit</span>
         </div>
     `;
+}
+
+function editTodo(title, description, date, priority, subtasks) {
+    document.getElementById('headline-big').innerHTML = `<input value=${title}>`;
+    document.getElementById('description-big').innerHTML = `<textarea value=${description}>`;
+    document.getElementById('date-big').innerHTML = `<input type=date value=${date}>`;
+    document.getElementById('priority-big').innerHTML = `<div class="priority-big-buttons">
+   <button type="button" onclick="priorityUrgent()" id="urgent">Urgent<img id="urgent-img"
+           src="img/urgent.png"></button>
+   <button type="button" onclick="priorityMedium()" id="medium">Medium<img id="medium-img"
+           src="img/medium.png"></button>
+   <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
+           src="img/low.png"></button>
+</div>`;
 }
 
 function createCheckboxes(subtasks) {
