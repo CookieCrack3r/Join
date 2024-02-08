@@ -36,3 +36,35 @@ async function loadTodos() {
     }
 }
 
+//this function is to get the user initials 
+
+async function getInitials(){
+    UserInitials = await getItem('userInitial');
+    UserName = await getItem('userName');
+    const kanban = document.getElementById("kanban");
+    kanban.innerHTML += `<div onclick="displayOptions()" id="initials">
+      ${UserInitials}
+      </div>`;
+}
+
+function displayOptions() {
+    const options = document.getElementById("options");
+    if (options.classList.contains("dNone")) {
+      options.classList.remove("dNone");
+      options.innerHTML = /*html*/ `
+      <div class="option"><a href="/privacyPolicy.html">Privacy Policy</a></div>
+      <div class="option"><a href="/legalNotice.html">Legal Notice</a></div>
+      <div class="option" onclick="goToLogIn()">Log out</div>
+      `;
+    } else {
+      options.classList.add("dNone");
+    }
+  }
+  
+
+  function goToLogin(){
+    window.location.pathname = '/Login/login.html';
+  }
+
+
+
