@@ -19,14 +19,11 @@
     <div w3-include-html="/Templates/Menu/menu.html"></div>
     <div class="content">
         <div class="allContacts">
-            <button id="addContact">Add new contact <img src="img/person_add.svg"></button>
+            <button id="addContact" onclick="addContact()">Add new contact <img src="img/person_add.svg"></button>
             <div>
                 <span class="alphabet">A<div class="borderBottom"></div></span>
                 <div class="contact" onclick="openContact()">
                     <div class="contactSign">AM</div><span>Anton Mayer</span>
-                </div>
-                <div class="contact">
-                    <div class="contactSign">AS</div><span>Anja Schulz</span>
                 </div>
             </div>
             <div>
@@ -37,15 +34,41 @@
             </div>
         </div>
         <div class="contactContent">
-            <div class="contactId">
-                <div class="bigContactSign">AM</div>
-                <div class="contactName">
-                    <span>Anton Meyer</span>
-                    <span>
-                        <button><img src="img/edit.svg">Edit</button>
-                        <button><img src="img/delete.svg">Delete</button>
-                    </span>
+            <div class="displayNone" id="contactContent">
+                <div class="contactId">
+                    <div class="bigContactSign">AM</div>
+                    <div class="contactName">
+                        <span>Anton Meyer</span>
+                        <span>
+                            <button><img src="img/edit.svg">Edit</button>
+                            <button><img src="img/delete.svg">Delete</button>
+                        </span>
+                    </div>
                 </div>
+                <div class="contactInfo">
+                    <h3>Contact Information</h3>
+                    <span><b>Email</b><br><br><a href="mailto:antom@gmail.com">antom@gmail.com</a></span>
+                    <br>
+                    <br>
+                    <span><b>Phone</b><br><br>+49 1111 111 11 1</span>
+                </div>
+            </div>
+            <div id="addNewContact" class="displayNone">
+                    <div class="addContactHeader">
+                        <img src="img/logo.svg">
+                        <h1>Add Contact</h1>
+                        <h2>Tasks are better with a Team!</h2>
+                    </div>
+                    <div class="addContactInfo">
+                        <img src="img/person.svg">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Phone">
+                    </div>
+                    <div class="addContactButtons">
+                        <button id="cancel" onclick="closeCard()">Cancel</button>
+                        <button id="create">Create Contact <img src="img/check.svg"></button>
+                    </div>
             </div>
         </div>
     </div>

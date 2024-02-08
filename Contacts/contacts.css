@@ -130,8 +130,134 @@ body {
     align-items: center;
     flex-direction: row;
 }
+
+.contactName button:hover {
+    color: #005bf8;
+    scale: 1.05;
+    cursor: pointer;
+}
   
 .contactId {
     display: flex;
     flex-direction: row;
+}
+
+.contactInfo h3 {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+a {
+    color: #4589FF;
+    text-decoration: none;
+}
+
+#addNewContact {
+    height: 1024px;
+    width: 584px;
+    left: 856px;
+    position: absolute;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.addContactHeader {
+    height: 362.48px;
+    width: 584px;
+    background-color: #005bf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top-left-radius: 30px;
+}
+
+.addContactInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 32px;
+    border-bottom-left-radius: 30px;
+}
+
+.addContactInfo input {
+    width: 422px;
+    height: 48px;
+    margin-top: 8px;
+    border: 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.addContactHeader h1 {
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    margin-block-end: 0;
+}
+
+.addContactHeader h2 {
+    color: white;
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.addContactButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    gap: 32px;
+}
+
+#cancel {
+    height: 61px;
+    width: 136px;
+    background-color: white;
+    border: 1px solid #647188;
+    border-radius: 10px;
+    padding: 16px 10px 16px 10px;
+    color: #647188;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+#cancel:hover {
+    cursor: pointer;
+    border: 1px solid #4589FF;
+    color: #4589FF;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    scale: 1.01;
+    transition: 200ms;
+}
+
+#create {
+    height: 60px;
+    width: 204px;
+    border-radius: 10px;
+    padding: 16px 10px 16px 10px;
+    border: 0;
+    background-color: #4589FF;
+    color: white;
+    font-size: 23px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+#create:hover {
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    background-color: #005bf8;
+    cursor: pointer;
+    scale: 1.01;
+    transition: 200ms;
+}
+
+
+.displayNone {
+    display: none !important;
 }
