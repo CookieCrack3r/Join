@@ -1,6 +1,14 @@
 let todo = [];
 
 
+ async function init(){
+  await includeHTML();
+        loadTodos(); 
+  await getInitials();
+  await displayOptions();
+  
+}
+
 async function loadTodos() {
     try {
 
@@ -47,20 +55,24 @@ async function getInitials(){
       </div>`;
 }
 
-function displayOptions() {
-    const options = document.getElementById("options");
-    if (options.classList.contains("dNone")) {
-      options.classList.remove("dNone");
-      options.innerHTML = /*html*/ `
-      <div class="option"><a href="/privacyPolicy.html">Privacy Policy</a></div>
-      <div class="option"><a href="/legalNotice.html">Legal Notice</a></div>
-      <div class="option" onclick="goToLogIn()">Log out</div>
-      `;
-    } else {
-      options.classList.add("dNone");
-    }
+//this function is to open the submenu for the logout
+
+async function displayOptions() {
+  const options = document.getElementById("options");
+  const isDisplayed = options.classList.toggle("dNone");
+ 
+  if (isDisplayed) {
+    document.getElementById('d_none_svg').style.display = 'none';
   }
-  
+
+  if (isDisplayed && !options.innerHTML.trim()) {
+    options.innerHTML = /*html*/`
+      <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
+      <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
+      <div class="option" onclick="goToLogin()">Log out</div>
+    `;
+  }
+}
 
   function goToLogin(){
     window.location.pathname = '/Login/login.html';
