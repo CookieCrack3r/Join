@@ -231,3 +231,73 @@ body{
     background: rgba(210, 227, 255, 1);
     cursor: pointer;
 }
+
+/**this section is to design the User Initial on the right corner**/ 
+
+#kanban{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+    color:white;
+}
+
+#initials{
+    background-color: white;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    border: 3px solid #4589ff;
+    outline: 4px solid white; 
+    color: #4589ff;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  
+
+  #options{
+    height: 120px;
+    width: 138px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    position: fixed;
+    top: 104px;
+    right:8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(69, 137, 255, 1);
+    background-color: white;
+    z-index: 100;
+  }
+
+  #options a {
+    text-decoration: none;
+    color: rgba(69, 137, 255, 1);
+  }
+  #options a:hover {
+    background-color:rgb(210,227,255); 
+  }
+
+  .option{
+    cursor: pointer;
+  }
+  .option:hover {
+    background-color: rgb(210,227,255);
+  }
+
+  #options.dNone{
+    display: none;
+    }

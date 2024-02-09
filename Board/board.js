@@ -4,6 +4,9 @@ let currentDraggedElement;
 async function initBoard() {
     await loadTodos();
     updateHTML();
+    await displayOptions();
+    await getInitials();
+
 }
 
 function updateHTML() {

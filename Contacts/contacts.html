@@ -18,17 +18,98 @@
 <body onload="includeHTML()">
     <div w3-include-html="/Templates/Menu/menu.html"></div>
     <div class="content">
-        <button id="addContact">Add new contact <img src="img/person_add.svg"></button>
-        <div>
-            <span class="alphabet">A<div class="borderBottom"></div></span>
-            <div class="contact"><div class="contactSign">AM</div><span>Anton Mayer</span></div>
-            <div class="contact"><div class="contactSign">AS</div><span>Anja Schulz</span></div>
+        <div class="allContacts">
+            <button id="addContact" onclick="addContact()">Add new contact <img src="img/person_add.svg"></button>
+            <div>
+                <span class="alphabet">A<div class="borderBottom"></div></span>
+                <div class="contact" onclick="openContact()">
+                    <div class="contactSign">AM</div><span>Anton Mayer</span>
+                </div>
+            </div>
+            <div>
+                <span class="alphabet">B<div class="borderBottom"></div></span>
+            </div>
+            <div>
+                <span class="alphabet">C<div class="borderBottom"></div></span>
+            </div>
         </div>
-        <div>
-            <span class="alphabet">B<div class="borderBottom"></div></span>
-        </div>
-        <div>
-            <span class="alphabet">C<div class="borderBottom"></div></span>
+        <div class="contactContent">
+            <div class="displayNone" id="contactContent">
+                <div class="contactId">
+                    <div class="bigContactSign">AM</div>
+                    <div class="contactName">
+                        <span>Anton Meyer</span>
+                        <span>
+                            <button onclick="editContact()"><img src="img/edit.svg">Edit</button>
+                            <button><img src="img/delete.svg">Delete</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="contactInfo">
+                    <h3>Contact Information</h3>
+                    <span><b>Email</b><br><br><a href="mailto:antom@gmail.com">antom@gmail.com</a></span>
+                    <br>
+                    <br>
+                    <span><b>Phone</b><br><br>+49 1111 111 11 1</span>
+                </div>
+            </div>
+            <div style="display: none;" id="bg">
+                <div id="addNewContact" class="displayNone">
+                    <div class="addContactHeader">
+                        <button  class="closeButton" onclick="closeCard()"><img src="img/close.svg"></button>
+                        <img src="img/logo.svg">
+                        <h1>Add Contact</h1>
+                        <h2>Tasks are better with a Team!</h2>
+                    </div>
+                    <div class="addContactInfo">
+                        <img src="img/icon.svg">
+                        <div class="inputDiv">
+                            <input type="text" placeholder="Name">
+                            <img src="img/person.svg">
+                        </div>
+                        <div class="inputDiv">
+                            <input type="email" placeholder="Email">
+                            <img src="img/mail.svg">
+                        </div>
+                        <div class="inputDiv">
+                            <input type="text" placeholder="Phone">
+                            <img src="img/call.svg">
+                        </div>
+                    </div>
+                    <div class="addContactButtons">
+                        <button id="cancel" onclick="closeCard()">Cancel</button>
+                        <button id="create">Create Contact <img src="img/check.svg"></button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="editContact" class="displayNone">
+                    <div class="editContactHeader">
+                        <button class="closeButton" onclick="closeCard()"><img src="img/close.svg"></button>
+                        <img src="img/logo.svg">
+                        <h1>Edit Contact</h1>
+                    </div>
+                    <div class="addContactInfo">
+                        <img src="img/icon.svg">
+                        <div class="inputDiv">
+                            <input type="text" placeholder="Name">
+                            <img src="img/person.svg">
+                        </div>
+                        <div class="inputDiv">
+                            <input type="email" placeholder="Email">
+                            <img src="img/mail.svg">
+                        </div>
+                        <div class="inputDiv">
+                            <input type="text" placeholder="Phone">
+                            <img src="img/call.svg">
+                        </div>
+                    </div>
+                    <div class="addContactButtons">
+                        <button id="cancel" onclick="closeCard()">Delete</button>
+                        <button id="create">Save<img src="img/check.svg"></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

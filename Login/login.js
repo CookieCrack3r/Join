@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             logoContainer.remove();
         });
     }
-    greetAsLogedUser();
+    
 });
 
 
@@ -23,7 +23,9 @@ function redirectToSignUp() {
 
 //this function is to login as a guest
 
-function loginAsGuest() {
+async function loginAsGuest() {
+    await setItem('userInitial', 'G')
+    await setItem('userName', 'Guest');
     window.location.pathname = '/Summary/summary.html';
 }
 
@@ -51,22 +53,6 @@ async function LoginRegistered() {
 
 }
 
-
-
-//this function is to greet the User with his name on the landing page
-
-function greetAsLogedUser() {
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const clientname = urlParams.get('name');
-
-    if (clientname) {
-        document.getElementById('greetingname').innerHTML = decodeURIComponent(clientname);
-    } else {
-        document.getElementById('greetingname').innerHTML = "";
-    }
-
-}
 
 
 
