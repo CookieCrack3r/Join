@@ -23,7 +23,9 @@ function redirectToSignUp() {
 
 //this function is to login as a guest
 
-function loginAsGuest() {
+async function loginAsGuest() {
+    await setItem('userInitial', 'G')
+    await setItem('userName', 'Guest');
     window.location.pathname = '/Summary/summary.html';
 }
 
