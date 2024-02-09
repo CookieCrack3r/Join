@@ -22,17 +22,19 @@
     <div class="content">
         <div class="allContacts">
             <button id="addContact" onclick="addContact()">Add new contact <img src="img/person_add.svg"></button>
-            <div>
-                <span class="alphabet">A<div class="borderBottom"></div></span>
-                <div class="contact" onclick="openContact()">
-                    <div class="contactSign">AM</div><span>Anton Mayer</span>
+            <div id="allContacts">
+                <div>
+                    <span class="alphabet">A<div class="borderBottom"></div></span>
+                    <div class="contact" onclick="openContact()">
+                        <div class="contactSign">AM</div><span>Anton Mayer</span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <span class="alphabet">B<div class="borderBottom"></div></span>
-            </div>
-            <div>
-                <span class="alphabet">C<div class="borderBottom"></div></span>
+                <div>
+                    <span class="alphabet">B<div class="borderBottom"></div></span>
+                </div>
+                <div>
+                    <span class="alphabet">C<div class="borderBottom"></div></span>
+                </div>
             </div>
         </div>
         <div class="contactContent">
@@ -58,7 +60,7 @@
             <div style="display: none;" id="bg">
                 <div id="addNewContact" class="displayNone">
                     <div class="addContactHeader">
-                        <button  class="closeButton" onclick="closeCard()"><img src="img/close.svg"></button>
+                        <button class="closeButton" onclick="closeCard()"><img src="img/close.svg"></button>
                         <img src="img/logo.svg">
                         <h1>Add Contact</h1>
                         <h2>Tasks are better with a Team!</h2>
@@ -66,21 +68,21 @@
                     <div class="addContactInfo">
                         <img src="img/icon.svg">
                         <div class="inputDiv">
-                            <input type="text" placeholder="Name">
+                            <input type="text" id="nameInput" placeholder="Name">
                             <img src="img/person.svg">
                         </div>
                         <div class="inputDiv">
-                            <input type="email" placeholder="Email">
+                            <input type="email" id="mail" placeholder="Email">
                             <img src="img/mail.svg">
                         </div>
                         <div class="inputDiv">
-                            <input type="text" placeholder="Phone">
+                            <input type="text" id="phone" placeholder="Phone">
                             <img src="img/call.svg">
                         </div>
                     </div>
                     <div class="addContactButtons">
                         <button id="cancel" onclick="closeCard()">Cancel</button>
-                        <button id="create">Create Contact <img src="img/check.svg"></button>
+                        <button id="create" onclick="createContact()">Create Contact <img src="img/check.svg"></button>
                     </div>
                 </div>
             </div>

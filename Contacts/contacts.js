@@ -1,34 +1,75 @@
-async function init(){
-    getInitials();
-    displayOptions();
+let contacts = [];
+
+async function init() {
+  await loadContacts();
+  await generateContacts();
+  await getInitials();
+  displayOptions();
+}
+
+async function createContact() {
+  contacts = JSON.parse(await getItem('contacts')) || [];
+  contacts.push({
+    name: nameInput.value,
+    mail: mail.value,
+    phone: phone.value
+  });
+
+  await setItem('contacts', JSON.stringify(contacts));
+  closeCard();
+}
+
+async function loadContacts() {
+  try {
+    contacts = JSON.parse(await getItem('contacts')) || [];
+    generateContacts();
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
 }
 
 function addContact() {
-    document.getElementById('addNewContact').classList.remove('displayNone');
-    document.getElementById('bg').style.display = 'flex';
+  document.getElementById('addNewContact').classList.remove('displayNone');
+  document.getElementById('bg').style.display = 'flex';
 }
 
+async function generateContacts() {
+  document.getElementById('allContacts').innerHTML = '';
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    document.getElementById('allContacts').innerHTML += `
+    <div>
+      <span class="alphabet">A<div class="borderBottom"></div></span>
+      <div class="contact" onclick="openContact()">
+          <div class="contactSign">${contact.name.substring(0, 2)}</div><span>${contact.name}</span>
+      </div>
+    </div>
+    `;
+  }
+ }
+
 function openContact() {
-    document.getElementById('contactContent').classList.remove('displayNone');
+  document.getElementById('contactContent').classList.remove('displayNone');
 }
 
 function closeCard() {
-    document.getElementById('addNewContact').classList.add('displayNone');
-    document.getElementById('editContact').classList.add('displayNone');
-    document.getElementById('bg').style.display = 'none';
+  document.getElementById('addNewContact').classList.add('displayNone');
+  document.getElementById('editContact').classList.add('displayNone');
+  document.getElementById('bg').style.display = 'none';
 }
 
 function editContact() {
-    document.getElementById('editContact').classList.remove('displayNone');
-    document.getElementById('bg').style.display = 'flex';
+  document.getElementById('editContact').classList.remove('displayNone');
+  document.getElementById('bg').style.display = 'flex';
 }
 
 //this function is to get the user initials
-async function getInitials(){
-    UserInitials = await getItem('userInitial');
-    UserName = await getItem('userName');
-    const kanban = document.getElementById("kanban");
-    kanban.innerHTML += `<div onclick="displayOptions()" id="initials">
+async function getInitials() {
+  UserInitials = await getItem('userInitial');
+  UserName = await getItem('userName');
+  const kanban = document.getElementById("kanban");
+  kanban.innerHTML += `<div onclick="displayOptions()" id="initials">
       ${UserInitials}
       </div>`;
 }
@@ -38,7 +79,7 @@ async function getInitials(){
 async function displayOptions() {
   const options = document.getElementById("options");
   const isDisplayed = options.classList.toggle("dNone");
- 
+
   if (isDisplayed) {
     document.getElementById('d_none_svg').style.display = 'none';
   }
