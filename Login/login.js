@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             logoContainer.remove();
         });
     }
-    greetAsLogedUser();
+    
 });
 
 
@@ -51,22 +51,6 @@ async function LoginRegistered() {
 
 }
 
-
-
-//this function is to greet the User with his name on the landing page
-
-function greetAsLogedUser() {
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const clientname = urlParams.get('name');
-
-    if (clientname) {
-        document.getElementById('greetingname').innerHTML = decodeURIComponent(clientname);
-    } else {
-        document.getElementById('greetingname').innerHTML = "";
-    }
-
-}
 
 
 

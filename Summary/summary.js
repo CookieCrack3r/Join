@@ -6,7 +6,8 @@ let todo = [];
         loadTodos(); 
   await getInitials();
   await displayOptions();
-  
+  greetingOnDailyTime();
+  getCurrentDate();
 }
 
 async function loadTodos() {
@@ -70,6 +71,7 @@ async function displayOptions() {
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
+    
     `;
   }
 }
@@ -79,4 +81,31 @@ async function displayOptions() {
   }
 
 
+  //this function is to greet the user based on daily time
 
+  function greetingOnDailyTime(){
+      const timeOfDay = getTimeOfDay();
+      const userNameFlex = `<span style="color: #4589FF; font-weight: bold; font-size: 60px;">${UserName}</span>`;
+      const greetingMessage = `${timeOfDay}, ${userNameFlex}`;
+      document.getElementById("timezone").innerHTML = greetingMessage;
+
+    }
+    
+
+    function getTimeOfDay(){
+
+      const currentHour = new Date().getHours();
+      if (currentHour >= 5 && currentHour < 12) return "Guten Morgen";
+      if (currentHour >= 12 && currentHour < 18) return "Guten Tag";
+      if (currentHour >= 18 && currentHour < 22) return "Guten Abend";
+      return "Gute Nacht";
+    }
+  
+    //this function is to get the current date
+
+    function getCurrentDate(){
+      let currentDateElement = document.getElementById("currentDate");
+      let currentDate = new Date();
+      let options = { year: 'numeric', month: 'long', day: 'numeric' };
+      currentDateElement.textContent = currentDate.toLocaleDateString('de-DE', options);
+    }
