@@ -8,14 +8,16 @@
     <link rel="stylesheet" type="text/css" href="contacts.css">
     <link rel="stylesheet" type="text/css" href="/fonts/fonts.css">
     <link rel="stylesheet" type="text/css" href="/Templates/Menu/menu.css">
+    <link rel="stylesheet" href="/Summary/summary.css">
     <link rel="icon" type="image/svg" href="img/favicon_join.svg">
     <script src="/Templates/template.js"></script>
     <script src="/storage.js"></script>
     <script src="contacts.js"></script>
+    <script src="/Summary/summary.js"></script>
     <title>Contacts</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); init()">
     <div w3-include-html="/Templates/Menu/menu.html"></div>
     <div class="content">
         <div class="allContacts">
