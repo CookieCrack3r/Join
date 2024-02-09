@@ -237,15 +237,18 @@ function createCheckboxes(subtasks) {
         let subtask = subtasks[i];
         let checkboxId = `checkbox${i}`;
 
-        checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtask.checked ? 'checked' : ''} onclick="updateSubtaskStatus(${i})"> ${subtask.text}<br>`;
+        checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtask.checked ? 'checked' : ''} onchange="updateSubtaskStatus(${i})"> ${subtask.text}<br>`;
     }
 }
 
 function updateSubtaskStatus(index) {
     let checkbox = document.getElementById(`checkbox${index}`);
-    if (checkbox && currentDraggedElement !== undefined) {
-        let todoItem = todo[currentDraggedElement];
+
+    if (checkbox && index !== undefined) {
+        let todoItem = todo[index];
+
         let subtasks = todoItem['subtasks'];
+        console.log(subtasks);
 
         // Ändern Sie den Status des Subtasks in Abhängigkeit vom Checkbox-Status
         subtasks[index].checked = checkbox.checked;

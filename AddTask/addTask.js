@@ -23,7 +23,7 @@ async function addTodo() {
     await setItem('todos', JSON.stringify(todos));
     console.log(todos);
 
-    //createTask();
+    createTask();
 }
 
 
