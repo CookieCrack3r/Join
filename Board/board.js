@@ -119,8 +119,10 @@ function generateKanbanHTML(todo) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
     
-    let progressPercentage = (subtaskCount / completedSubtaskCount ) * 100;
+    let progressPercentage = (completedSubtaskCount / subtaskCount) * 50;
 
+    console.log(progressPercentage);
+    
     return `
     <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
         <span class="label" style="background-color: ${categoryColor};">${category}</span>
@@ -128,7 +130,7 @@ function generateKanbanHTML(todo) {
                                     <h3>${title}</h3><br>${description}
                                 </span>
                                 <div class="progress-section">
-                                    <div class="progress-bar"style="width: ${progressPercentage}%"> >
+                                    <div class="progress-bar"style="width: ${progressPercentage}%"->>
                                         <div class="progress"></div>
                                     </div>
                                     <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
