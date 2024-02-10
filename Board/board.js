@@ -119,7 +119,7 @@ function generateKanbanHTML(todo) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
     
-    let progressPercentage = (completedSubtaskCount / subtaskCount) * 50;
+    let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
 
     console.log(progressPercentage);
     
@@ -130,10 +130,13 @@ function generateKanbanHTML(todo) {
                                     <h3>${title}</h3><br>${description}
                                 </span>
                                 <div class="progress-section">
-                                    <div class="progress-bar"style="width: ${progressPercentage}%"->>
-                                        <div class="progress"></div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: ${progressPercentage}%">
+                                        </div>
                                     </div>
-                                    <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
+
+                                    <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks
+                                    </div>
                                 </div>
                                 <div class="members-and-priority">
                                     <div class="members">
