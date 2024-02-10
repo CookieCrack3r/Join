@@ -1,5 +1,12 @@
 let todos = [];
 
+
+async function init() {
+    await getInitials();
+    displayOptions();
+
+}
+
 async function addTodo() {
     let todo = 'to-do';
 
@@ -21,7 +28,6 @@ async function addTodo() {
     });
 
     await setItem('todos', JSON.stringify(todos));
-    console.log(todos);
 
     createTask();
 }
@@ -101,4 +107,39 @@ function getSubtasks() {
 function createTask() {
     create.disabled = false;
     window.location.href = '/Board/board.html';
+}
+
+//this function is to get the user initials 
+
+async function getInitials() {
+    UserInitials = await getItem('userInitial');
+    UserName = await getItem('userName');
+    const kanban = document.getElementById("kanban");
+    kanban.innerHTML += `<div onclick="displayOptions()">
+      ${UserInitials}
+      </div>`;
+}
+
+//this function is to open the submenu for the logout
+
+async function displayOptions() {
+    const options = document.getElementById("options");
+    const isDisplayed = options.classList.toggle("dNone");
+
+    if (isDisplayed) {
+        document.getElementById('d_none_svg').style.display = 'none';
+    }
+
+    if (isDisplayed && !options.innerHTML.trim()) {
+        options.innerHTML = /*html*/`
+      <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
+      <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
+      <div class="option" onclick="goToLogin()">Log out</div>
+    
+    `;
+    }
+}
+
+function goToLogin() {
+    window.location.pathname = '/Login/login.html';
 }

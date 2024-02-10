@@ -53,6 +53,8 @@ async function LoginRegistered() {
 
 }
 
-
+function goToLogin(){
+    window.location.pathname = '/Login/login.html';
+  }
 
 
