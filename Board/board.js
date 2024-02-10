@@ -14,7 +14,6 @@ function updateHTML() {
     updateInProgress();
     updateToDo();
     updateDone();
-    //updateProgressBar();
 }
 
 function updateDB() {
@@ -38,7 +37,7 @@ function updateToDo() {
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-
+        
     }
 }
 
@@ -76,7 +75,7 @@ function updateDone() {
     for (let i = 0; i < done.length; i++) {
         let todo = done[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(todo);
-
+        
     }
 }
 
@@ -119,6 +118,8 @@ function generateKanbanHTML(todo) {
 
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
+    
+    let progressPercentage = (subtaskCount / completedSubtaskCount ) * 100;
 
     return `
     <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
@@ -127,8 +128,8 @@ function generateKanbanHTML(todo) {
                                     <h3>${title}</h3><br>${description}
                                 </span>
                                 <div class="progress-section">
-                                    <div class="progress-bar">
-                                        <div class="progress">Fortschritt:</div>
+                                    <div class="progress-bar"style="width: ${progressPercentage}%"> >
+                                        <div class="progress"></div>
                                     </div>
                                     <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
                                 </div>
@@ -144,21 +145,10 @@ function generateKanbanHTML(todo) {
                                 </div>
     </div>
             `;
+            
 }
 
-// function updateProgressBar() {
-//     let progressBar = document.querySelector('.progress');
 
-   
-//         let todoItem = todo[currentDraggedElement];
-//         let subtaskCount = getSubtaskCount(todoItem['subtasks']);
-        
-//         let completedSubtaskCount = getCompletedSubtaskCount(todoItem['subtasks']);
-//         let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
-
-//         progressBar.style.width = `${progressPercentage}%`;
-    
-// }
 
 function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
@@ -256,10 +246,10 @@ function updateSubtaskStatus(i, id) {
 
    if (todo[id].subtasks[i]['checked'] == false){
         todo[id].subtasks[i]['checked'] = true;
-       
+
    } else
    todo[id].subtasks[i]['checked'] = false;
-    
+
 
     updateDB();
     updateHTML();
@@ -362,7 +352,7 @@ async function getInitials(){
 function displayOptions() {
   const options = document.getElementById("options");
   const isDisplayed = options.classList.toggle("dNone");
- 
+
   if (isDisplayed) {
     document.getElementById('d_none_svg').style.display = 'none';
   }
@@ -372,7 +362,7 @@ function displayOptions() {
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
-    
+
     `;
   }
 }
