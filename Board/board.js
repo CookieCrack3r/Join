@@ -14,7 +14,7 @@ function updateHTML() {
     updateInProgress();
     updateToDo();
     updateDone();
-    updateProgressBar();
+    //updateProgressBar();
 }
 
 function updateDB() {
@@ -114,8 +114,8 @@ function generateKanbanHTML(todo) {
     let date = todo['date'];
     let id = todo['id'];
 
-    let subtaskCount = getSubtaskCount(todo['subtasks']);
-    let completedSubtaskCount = getCompletedSubtaskCount(todo['subtasks']);
+    let subtaskCount = getSubtaskCount(todo, id);
+    let completedSubtaskCount = getCompletedSubtaskCount(todo, id);
 
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
@@ -128,7 +128,7 @@ function generateKanbanHTML(todo) {
                                 </span>
                                 <div class="progress-section">
                                     <div class="progress-bar">
-                                        <div class="progress"></div>
+                                        <div class="progress">Fortschritt:</div>
                                     </div>
                                     <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
                                 </div>
@@ -146,18 +146,19 @@ function generateKanbanHTML(todo) {
             `;
 }
 
-function updateProgressBar() {
-    let progressBar = document.querySelector('.progress');
+// function updateProgressBar() {
+//     let progressBar = document.querySelector('.progress');
 
-    if (currentDraggedElement !== undefined) {
-        let todoItem = todo[currentDraggedElement];
-        let subtaskCount = getSubtaskCount(todoItem['subtasks']);
-        let completedSubtaskCount = getCompletedSubtaskCount(todoItem['subtasks']);
-        let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
+   
+//         let todoItem = todo[currentDraggedElement];
+//         let subtaskCount = getSubtaskCount(todoItem['subtasks']);
+        
+//         let completedSubtaskCount = getCompletedSubtaskCount(todoItem['subtasks']);
+//         let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
 
-        progressBar.style.width = `${progressPercentage}%`;
-    }
-}
+//         progressBar.style.width = `${progressPercentage}%`;
+    
+// }
 
 function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
@@ -244,8 +245,6 @@ function createCheckboxes(id, subtasks) {
         let subtaskText = todo[id].subtasks[i]['text'];
         let subtaskChecked = todo[id].subtasks[i]['checked'];
 
-        console.log(subtaskText);
-        console.log(subtaskChecked);
 
         let checkboxId = `checkbox${i}`;
 
@@ -254,11 +253,10 @@ function createCheckboxes(id, subtasks) {
 }
 
 function updateSubtaskStatus(i, id) {
-    console.log(todo[id].subtasks[i]['text']);
-    console.log(todo[id].subtasks[i]['checked']);
 
    if (todo[id].subtasks[i]['checked'] == false){
         todo[id].subtasks[i]['checked'] = true;
+       
    } else
    todo[id].subtasks[i]['checked'] = false;
     
@@ -268,16 +266,17 @@ function updateSubtaskStatus(i, id) {
 }
 
 
-function getSubtaskCount(subtasks) {
-    let nonEmptySubtasks = 3 //subtasks.filter(element => element.trim() !== '');
+function getSubtaskCount(todo, id) {
+    let subtasks = todo['subtasks'];
 
-    return nonEmptySubtasks.length;
+    return subtasks.length;
 }
 
-function getCompletedSubtaskCount(subtasks) {
-    let completedSubtasks = 3 //subtasks.filter(element => element.trim().startsWith('✔'));
+function getCompletedSubtaskCount(todo, id) {
+    let Subtasks = todo['subtasks'];
+    let subtasksLength = Subtasks.filter(t => t['checked'] == true);
 
-    return completedSubtasks.length;
+    return subtasksLength.length;
 }
 
 function filterTodos() {
