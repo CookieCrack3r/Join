@@ -319,7 +319,7 @@ td {
 
 .progress-bar {
     width: 128px;
-    background-color: #4589FF;
+    background-color: #d9dde4;
     border-radius: 8px;
     border: 0;
     height: 8px;
@@ -327,7 +327,7 @@ td {
 
 .progress {
     height: 100%;
-    background-color: #F4F4F4;
+    background-color: #110e9c;
     border-radius: 8px;
 }
 
