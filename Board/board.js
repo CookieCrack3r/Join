@@ -52,6 +52,7 @@ function updateInProgress() {
 
         let todo = progress[i];
         document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
+
     }
 }
 
@@ -104,13 +105,14 @@ function getPriorityImage(priority) {
 }
 
 function generateKanbanHTML(todo) {
-    
+
     let category = todo['category'];
     let title = todo['title'];
     let subtasks = todo['subtasks'];
     let description = todo['description'];
     let priority = todo['priority'];
     let date = todo['date'];
+    let id = todo['id'];
 
     let subtaskCount = getSubtaskCount(todo['subtasks']);
     let completedSubtaskCount = getCompletedSubtaskCount(todo['subtasks']);
@@ -119,7 +121,7 @@ function generateKanbanHTML(todo) {
     let categoryColor = generateBackroundColor(category);
 
     return `
-    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
+    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
         <span class="label" style="background-color: ${categoryColor};">${category}</span>
                                 <span class="description">
                                     <h3>${title}</h3><br>${description}
@@ -157,12 +159,13 @@ function updateProgressBar() {
     }
 }
 
-function openCard(category, title, description, date, priority, subtasks) {
+function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
     document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority, subtasks);
-    createCheckboxes(subtasks);
+
+    createCheckboxes(id, subtasks);
 }
 
 function generateBigCard(category, title, description, date, priority, subtasks) {
@@ -232,34 +235,36 @@ async function saveTodo() {
 }
 
 
-function createCheckboxes(subtasks) {
+function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
 
-    for (let i = 0; i < subtasks.length; i++) {
-        let subtask = subtasks[i];
+
+    for (let i = 0; i < todo[id].subtasks.length; i++) {
+        let subtaskText = todo[id].subtasks[i]['text'];
+        let subtaskChecked = todo[id].subtasks[i]['checked'];
+
+        console.log(subtaskText);
+        console.log(subtaskChecked);
+
         let checkboxId = `checkbox${i}`;
 
-        checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtask.checked ? 'checked' : ''} onchange="updateSubtaskStatus(${i})"> ${subtask.text}<br>`;
+        checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtaskChecked ? 'checked' : ''} onchange="updateSubtaskStatus(${i}, ${id})"> ${subtaskText}<br>`;
     }
 }
 
-function updateSubtaskStatus(index) {
-    let checkbox = document.getElementById(`checkbox${index}`);
+function updateSubtaskStatus(i, id) {
+    console.log(todo[id].subtasks[i]['text']);
+    console.log(todo[id].subtasks[i]['checked']);
 
-    if (checkbox && index !== undefined) {
-        let todoItem = todo[index];
+   if (todo[id].subtasks[i]['checked'] == false){
+        todo[id].subtasks[i]['checked'] = true;
+   } else
+   todo[id].subtasks[i]['checked'] = false;
+    
 
-        let subtasks = todoItem['subtasks'];
-        console.log(subtasks);
-
-        // Ändern Sie den Status des Subtasks in Abhängigkeit vom Checkbox-Status
-        subtasks[index].checked = checkbox.checked;
-
-        // Aktualisieren Sie die Datenbank und das HTML
-        updateDB();
-        updateHTML();
-    }
+    updateDB();
+    updateHTML();
 }
 
 

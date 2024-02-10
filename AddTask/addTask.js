@@ -1,5 +1,5 @@
 let todos = [];
-
+let subtasks = [];
 
 async function init() {
     await getInitials();
@@ -21,7 +21,7 @@ async function addTodo() {
         title: title.value,
         description: descritpion.value,
         category: category.value,
-        subtasks: getSubtasks(),
+        subtasks: subtasks,
         status: todo,
         priority: selectedPriority,
         date: selectedDate.value
@@ -85,23 +85,14 @@ function addSubtask() {
 `;
 
     document.getElementById('subtasks').value = '';
+
+    let subtasksObject = {
+        text: subtask,
+        checked: false // Standardmäßig auf false setzen
+    };
+    subtasks.push(subtasksObject);
 }
 
-function getSubtasks() {
-    let subtasksList = document.getElementById('subtasks-list');
-    let subtasksArray = [];
-
-    subtasksList.querySelectorAll('li').forEach(li => {
-        let subtaskText = li.textContent.trim();
-        let subtaskObject = {
-            text: subtaskText,
-            checked: false // Standardmäßig auf false setzen
-        };
-        subtasksArray.push(subtaskObject);
-    });
-
-    return subtasksArray;
-}
 
 
 function createTask() {
