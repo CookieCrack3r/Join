@@ -45,11 +45,10 @@ async function generateContacts() {
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    console.log(contact.id);
     document.getElementById('allContacts').innerHTML += `
     <div>
       <span class="alphabet">A<div class="borderBottom"></div></span>
-      <div class="contact" onclick="openContact()">
+      <div id="${contact.id}" class="contact" onclick="openContact(${i})">
           <div class="contactSign">${contact.name.substring(0, 2)}</div><span>${contact.name}</span>
       </div>
     </div>
@@ -57,8 +56,27 @@ async function generateContacts() {
   }
  }
 
-function openContact() {
+function openContact(i) {
   document.getElementById('contactContent').classList.remove('displayNone');
+  document.getElementById('contactContent').innerHTML = `
+  <div class="contactId">
+  <div class="bigContactSign">AM</div>
+  <div class="contactName">
+      <span>${contacts[i].name}</span>
+      <span>
+          <button onclick="editContact()"><img src="img/edit.svg">Edit</button>
+          <button><img src="img/delete.svg">Delete</button>
+      </span>
+  </div>
+</div>
+<div class="contactInfo">
+  <h3>Contact Information</h3>
+  <span><b>Email</b><br><br><a href="mailto:${contacts[i].mail}">${contacts[i].mail}</a></span>
+  <br>
+  <br>
+  <span><b>Phone</b><br><br>${contacts[i].phone}</span>
+</div>
+  `;
 }
 
 function closeCard() {
