@@ -1,13 +1,20 @@
 let contacts = [];
 
-async function init() {
-  await getInitials();
-  displayOptions();
-}
+// async function init() {
+//   console.log("dsfg");
+//   await getInitials();
+//   displayOptions();
+// }
 
 async function createContact() {
-  contacts = JSON.parse(await getItem('contacts')) || [];
-  contacts.push({
+    contacts_length = JSON.parse(await getItem('contacts')) || [];
+    let newcontactsId = contacts_length.length - 1;
+    newcontactsId++;
+
+
+    contacts = JSON.parse(await getItem('contacts')) || [];
+    contacts.push({
+    id: newcontactsId,
     name: nameInput.value,
     mail: mail.value,
     phone: phone.value
@@ -15,12 +22,14 @@ async function createContact() {
 
   await setItem('contacts', JSON.stringify(contacts));
   closeCard();
+  generateContacts();
 }
 
 async function loadContacts() {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
     generateContacts();
+    
   } catch (e) {
     console.error('Loading error:', e);
   }
@@ -36,6 +45,7 @@ async function generateContacts() {
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
+    console.log(contact.id);
     document.getElementById('allContacts').innerHTML += `
     <div>
       <span class="alphabet">A<div class="borderBottom"></div></span>
