@@ -1,8 +1,6 @@
 let contacts = [];
 
 async function init() {
-  await loadContacts();
-  await generateContacts();
   await getInitials();
   displayOptions();
 }
