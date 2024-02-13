@@ -209,15 +209,17 @@ form button:hover{
 @media (max-width: 700px) {
     
     .login-box-center{
-            padding: 0;
-            width: 372px;
-            margin-top: 218px;
-            height: 472px;
-        }
+        padding: 0;
+        width: 372px;
+        margin-top: 218px;
+        height: 472px;
+    }
+    
     .signup-txt-in-login-box{
         padding-right: 5px;
         padding-top: 8px;
     }
+
      .underline-blue{
         padding-right: 5px;
      }
@@ -242,8 +244,5 @@ form button:hover{
         left: 37px;
         right: 38px;
      }
-
-     
-     
  
 }

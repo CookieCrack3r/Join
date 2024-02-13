@@ -288,3 +288,75 @@ span:hover{
     text-decoration: underline;
     
   }
+
+  /*///Media querry///*/
+
+  @media (max-width: 700px) {
+    .login-box-center{
+        width: 372px;
+        height: 455px;
+        padding: 0;
+    }
+
+    .login-txt-in-login-box{
+        margin-top: 12px;
+        margin-bottom: 0; 
+    }
+
+    .email-input, .password-input {
+        width: 77%;
+    }
+
+    .checkbox-rememberme{
+        padding-left: 35px;
+    }
+
+    .login-btn-bottom, .sign-up-btn-bottom{
+        width: 180px;
+    }
+
+    .log-in-btns-container-bottom{
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        margin-top: 24px;
+    }
+
+    .Join-logo-left-corner-above{
+        height: 78px;
+        width: 64px;
+        top: 37px;
+        left: 38px;
+    }
+
+    .above-signup-right-corner{
+        position: fixed;
+        top: 728px;
+        left: 70px;
+    }
+
+    .privacy-policy-and-legal-notice-container{
+        margin-top: 176px;
+    }
+
+    .flex-container{
+        gap: 20px;
+    }
+
+    @keyframes logo-animation {
+        from {
+          width: 265px;
+          height: 323.1px;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          
+        }
+        to {
+          width: 78px;
+          height: 64px;
+          top: 37px;
+          left: 38px;
+        }
+      }
+  }
