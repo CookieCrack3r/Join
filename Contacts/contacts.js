@@ -50,17 +50,26 @@ function getRandomColor() {
 function generateContacts() {
   document.getElementById('allContacts').innerHTML = '';
 
+  contacts.sort((a, b) => a.name.localeCompare(b.name));
+
+  let processedInitials = [];
+
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const initials = getContactInitials(contact.name);
-    
+
+    if (!processedInitials.includes(initials[0])) {
+      document.getElementById('allContacts').innerHTML += `
+        <div>
+          <span class="alphabet">${initials[0]}<div class="borderBottom"></div></span>
+        </div>
+      `;
+      processedInitials.push(initials[0]);
+    }
     document.getElementById('allContacts').innerHTML += `
-    <div>
-      <span class="alphabet">${initials[0]}<div class="borderBottom"></div></span>
-      <div id="${contact.id}" class="contact" onclick="openContact(${i})">
-          <div class="contactSign" style="background-color: ${contact.backgroundColor}; color: white;">${initials}</div><span>${contact.name}</span>
+      <div id="${contact.id}" class="contact" onclick="openContact(${i}, '${contact.backgroundColor}')">
+        <div class="contactSign" style="background-color: ${contact.backgroundColor}; color: white;">${initials}</div><span>${contact.name}</span>
       </div>
-    </div>
     `;
   }
 }
@@ -76,7 +85,7 @@ function openContact(i) {
   <div class="contactName">
       <span>${contact.name}</span>
       <span>
-          <button onclick="editContact()"><img src="img/edit.svg">Edit</button>
+          <button onclick="editContact(${i})"><img src="img/edit.svg">Edit</button>
           <button onclick="deleteContact(${i})"><img src="img/delete.svg">Delete</button>
       </span>
   </div>
@@ -100,14 +109,66 @@ function getContactInitials(name) {
 
 function closeCard() {
   document.getElementById('addNewContact').classList.add('displayNone');
-  document.getElementById('editContact').classList.add('displayNone');
+  document.getElementById('editContainer').classList.add('displayNone');
   document.getElementById('bg').style.display = 'none';
 }
 
-function editContact() {
-  document.getElementById('editContact').classList.remove('displayNone');
+function editContact(i) {
+  const contact = contacts[i];
   document.getElementById('bg').style.display = 'flex';
+  document.getElementById('editContainer').classList.remove('displayNone');
+  document.getElementById('editContainer').innerHTML = '';
+
+  document.getElementById('editContainer').innerHTML += `
+    <div id="editContact">
+      <div class="editContactHeader">
+        <button class="closeButton" onclick="closeCard()"><img src="img/close.svg"></button>
+        <img src="img/logo.svg">
+        <h1>Edit Contact</h1>
+      </div>
+      <div class="addContactInfo">
+        <img src="img/icon.svg">
+        <div class="inputDiv">
+          <input id="editName" type="text" value="${contact.name}">
+          <img src="img/person.svg">
+        </div>
+        <div class="inputDiv">
+          <input id="editMail" type="email" value="${contact.mail}">
+          <img src="img/mail.svg">
+        </div>
+        <div class="inputDiv">
+          <input id="editPhone" type="text" value="${contact.phone}">
+          <img src="img/call.svg">
+        </div>
+      </div>
+      <div class="addContactButtons">
+        <button id="deleteButton" onclick="deleteContact(${i})">Delete</button>
+        <button id="saveButton" onclick="updateContact(${i})">Save<img src="img/check.svg"></button>
+      </div>
+    </div>
+  `;
 }
+
+async function updateContact(i) {
+  try {
+    let editedName = document.getElementById('editName').value;
+    let editedMail = document.getElementById('editMail').value;
+    let editedPhone = document.getElementById('editPhone').value;
+
+    contacts = JSON.parse(await getItem('contacts')) || [];
+    contacts[i].name = editedName;
+    contacts[i].mail = editedMail;
+    contacts[i].phone = editedPhone;
+
+    await setItem('contacts', JSON.stringify(contacts));
+    closeCard();
+    generateContacts();
+    openContact(i);
+  } catch (e) {
+    console.error('Error updating contact:', e);
+  }
+}
+
 
 async function deleteContact(i) {
   try {
