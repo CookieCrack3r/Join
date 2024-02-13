@@ -201,3 +201,49 @@ form button:hover{
     margin-left: auto;
     margin-top: 12px;
 }
+
+
+/*////Media-querry/////*/
+
+
+@media (max-width: 700px) {
+    
+    .login-box-center{
+            padding: 0;
+            width: 372px;
+            margin-top: 218px;
+            height: 472px;
+        }
+    .signup-txt-in-login-box{
+        padding-right: 5px;
+        padding-top: 8px;
+    }
+     .underline-blue{
+        padding-right: 5px;
+     }
+
+     .signup-txt-container{
+        padding-right: 7px;
+        padding-top: 5px;
+        margin-bottom: 0;
+     }
+     
+     .input{
+        width: 312px;
+     }
+
+     .left-arrow-inbox{
+        left: -54px;
+     }
+
+     .join-logo-left-corner{
+        height: 78px;
+        width: 64px;
+        left: 37px;
+        right: 38px;
+     }
+
+     
+     
+ 
+}
