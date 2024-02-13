@@ -1,4 +1,5 @@
 let contacts = [];
+let colors = ["#9327FF", "#FF7900", "#6E52FF", "#FC71FF", "#FFBB2C", "#1CD7C1", "#462F8A", "#FF4647"];
 
 // async function init() {
 //   console.log("dsfg");
@@ -17,7 +18,8 @@ async function createContact() {
     id: newcontactsId,
     name: nameInput.value,
     mail: mail.value,
-    phone: phone.value
+    phone: phone.value,
+    backgroundColor: getRandomColor()
   });
 
   await setItem('contacts', JSON.stringify(contacts));
@@ -40,7 +42,12 @@ function addContact() {
   document.getElementById('bg').style.display = 'flex';
 }
 
-async function generateContacts() {
+function getRandomColor() {
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+
+function generateContacts() {
   document.getElementById('allContacts').innerHTML = '';
 
   for (let i = 0; i < contacts.length; i++) {
@@ -51,7 +58,7 @@ async function generateContacts() {
     <div>
       <span class="alphabet">${initials[0]}<div class="borderBottom"></div></span>
       <div id="${contact.id}" class="contact" onclick="openContact(${i})">
-          <div class="contactSign">${initials}</div><span>${contact.name}</span>
+          <div class="contactSign" style="background-color: ${contact.backgroundColor}; color: white;">${initials}</div><span>${contact.name}</span>
       </div>
     </div>
     `;
@@ -65,7 +72,7 @@ function openContact(i) {
   document.getElementById('contactContent').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
-  <div class="bigContactSign">${initials}</div>
+  <div class="bigContactSign" style="background-color: ${contact.backgroundColor}; color: white;">${initials}</div>
   <div class="contactName">
       <span>${contact.name}</span>
       <span>
