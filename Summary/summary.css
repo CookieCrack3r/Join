@@ -301,3 +301,8 @@ body{
   #options.dNone{
     display: none;
     }
+
+
+    @media (max-width: 700px) {
+        
+    }
