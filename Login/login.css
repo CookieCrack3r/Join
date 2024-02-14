@@ -1,10 +1,10 @@
-body{
+body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
 /* Above the Login Section */
-.Join-logo-left-corner-above{
+.Join-logo-left-corner-above {
     height: 121.97px;
     width: 100.03px;
     position: relative;
@@ -12,7 +12,7 @@ body{
     left: 77px;
 }
 
-.above-signup-right-corner{
+.above-signup-right-corner {
     position: sticky;
     width: 315px;
     height: 48px;
@@ -20,12 +20,12 @@ body{
     top: 67px;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     gap: 35px;
 }
 
-.above-signup-right-corner-txt{
+.above-signup-right-corner-txt {
     display: flex;
     text-align: center;
     font-size: 23px;
@@ -33,7 +33,7 @@ body{
     align-items: center;
 }
 
-.btn-above-login-section{
+.btn-above-login-section {
     background-color: #4589FF;
     border-radius: 8px;
     color: white;
@@ -44,14 +44,14 @@ body{
     font-size: 22px;
 }
 
-.btn-above-login-section:hover{
+.btn-above-login-section:hover {
     cursor: pointer;
     background-color: #317af9;
 }
 
 /* The Login-Box in the middle */
 
-.login-box-center{
+.login-box-center {
     margin-left: auto;
     margin-right: auto;
     margin-top: 118px;
@@ -62,7 +62,7 @@ body{
     padding: 48px 115px 48px 115px;
 }
 
-.login-txt-container{
+.login-txt-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,25 +70,25 @@ body{
     margin-bottom: 39px;
 }
 
-.login-txt-in-login-box{
+.login-txt-in-login-box {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 12px;
 }
 
-.underline-blue{
+.underline-blue {
     width: 150px;
     border: solid 3px rgba(69, 137, 255, 1);
     border-radius: 10px;
 }
 
-.email-input-container{
+.email-input-container {
     display: flex;
     justify-content: center;
 }
 
 
-.email-input{
+.email-input {
     outline-color: transparent;
     border: none;
     border-bottom: 1px solid rgba(209, 209, 209, 1);
@@ -98,12 +98,12 @@ body{
     width: 100%;
 }
 
-.password-input-container{
+.password-input-container {
     display: flex;
     justify-content: center;
 }
 
-.password-input{
+.password-input {
     outline-color: transparent;
     border: none;
     border-bottom: 1px solid rgba(209, 209, 209, 1);
@@ -115,7 +115,7 @@ body{
 
 }
 
-.checkbox-rememberme{
+.checkbox-rememberme {
     height: 23px;
     display: flex;
     margin-top: 38px;
@@ -124,25 +124,25 @@ body{
     align-items: center;
 }
 
-.checkbox{
+.checkbox {
     height: 19px;
     width: 19px;
     accent-color: lightgreen;
 }
 
-.checkbox:hover{
+.checkbox:hover {
     cursor: pointer;
 }
 
 /* Log in and Sign up Button's on the Bottom*/
 
-.log-in-btns-container-bottom{
+.log-in-btns-container-bottom {
     display: flex;
     justify-content: space-around;
     margin-top: 44px;
 }
 
-.login-btn-bottom{
+.login-btn-bottom {
     height: 48px;
     width: 135px;
     background-color: #4589FF;
@@ -153,12 +153,12 @@ body{
     padding: 10px 16px 10px 16px;
 }
 
-.login-btn-bottom:hover{
+.login-btn-bottom:hover {
     cursor: pointer;
     background-color: #317af9;
 }
 
-.sign-up-btn-bottom{
+.sign-up-btn-bottom {
     height: 48px;
     width: 197px;
     background-color: white;
@@ -169,7 +169,7 @@ body{
     padding: 10px 16px 10px 16px;
 }
 
-.sign-up-btn-bottom:hover{
+.sign-up-btn-bottom:hover {
     background-color: #4589FF;
     cursor: pointer;
     color: white;
@@ -177,7 +177,7 @@ body{
 
 /* Privacy Policy and Legal Notice*/
 
-.privacy-policy-and-legal-notice-container{
+.privacy-policy-and-legal-notice-container {
     display: flex;
     justify-content: center;
     margin-top: 72px;
@@ -186,7 +186,7 @@ body{
     color: rgba(66, 82, 110, 1);
 }
 
-span:hover{
+span:hover {
     cursor: pointer;
     color: #4589FF;
 }
@@ -196,25 +196,27 @@ span:hover{
 /* Join-logo Animation*/
 
 
-.join-logo-container{
+.join-logo-container {
     height: 100vh;
     width: 100%;
     position: absolute;
     animation: fadeOutBackground 3s ease-in-out;
-    
+
 }
 
-@keyframes fadeOutBackground{
-    from{
+@keyframes fadeOutBackground {
+    from {
         opacity: 1;
         background-color: #4589FF;
-    }to{
+    }
+
+    to {
         opacity: 0;
         background-color: transparent;
     }
 }
 
-.join-logo-img{
+.join-logo-img {
     height: 323.1px;
     width: 265px;
     position: absolute;
@@ -230,20 +232,21 @@ span:hover{
     animation-timing-function: ease-in-out;
     animation-duration: 2s;
     animation-delay: 1s;
-  }
-  
-  @keyframes content-loaded {
-    from {
-      opacity: 0;
-      
-    }
-    to {
-      opacity: 1;
-    }
-   
-  }
+}
 
-  .invis-visible-animation {
+@keyframes content-loaded {
+    from {
+        opacity: 0;
+
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.invis-visible-animation {
     position: absolute;
     width: 100.03px;
     height: 121.97px;
@@ -255,108 +258,112 @@ span:hover{
     animation-timing-function: ease-in-out;
     animation-duration: 1s;
     animation-delay: 0.5s;
-  }
+}
 
-  .invis-visible-animation img{
+.invis-visible-animation img {
     height: 121.97px;
     width: 100.03px;
-  }
-  
-  @keyframes logo-animation {
+}
+
+@keyframes logo-animation {
     from {
-      width: 265px;
-      height: 323.1px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      
+        width: 265px;
+        height: 323.1px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
     }
+
     to {
-      width: 100.03px;
-      height: 121.97px;
-      top: 80px;
-      left: 77px;
+        width: 100.03px;
+        height: 121.97px;
+        top: 80px;
+        left: 77px;
     }
-  }
-  
-  a{
+}
+
+a {
     text-decoration: none;
     color: #4589FF;
-  }
+}
 
-  a:hover{
+a:hover {
     text-decoration: underline;
-    
-  }
 
-  /*///Media querry///*/
+}
 
-  @media (max-width: 700px) {
-    .login-box-center{
+/*///Media querry///*/
+
+@media (max-width: 700px) {
+    .login-box-center {
         width: 372px;
         height: 455px;
         padding: 0;
     }
 
-    .login-txt-in-login-box{
+    .login-txt-in-login-box {
         margin-top: 12px;
-        margin-bottom: 0; 
+        margin-bottom: 0;
     }
 
-    .email-input, .password-input {
+    .email-input,
+    .password-input {
         width: 77%;
     }
 
-    .checkbox-rememberme{
+    .checkbox-rememberme {
         padding-left: 35px;
     }
 
-    .login-btn-bottom, .sign-up-btn-bottom{
+    .login-btn-bottom,
+    .sign-up-btn-bottom {
         width: 180px;
     }
 
-    .log-in-btns-container-bottom{
+    .log-in-btns-container-bottom {
         flex-direction: column;
         gap: 10px;
         align-items: center;
         margin-top: 24px;
     }
 
-    .Join-logo-left-corner-above{
+    .Join-logo-left-corner-above {
         height: 78px;
         width: 64px;
         top: 37px;
         left: 38px;
     }
 
-    .above-signup-right-corner{
+    .above-signup-right-corner {
         position: fixed;
         top: 728px;
         left: 70px;
     }
 
-    .privacy-policy-and-legal-notice-container{
+    .privacy-policy-and-legal-notice-container {
         margin-top: 176px;
     }
 
-    .flex-container{
+    .flex-container {
         gap: 20px;
     }
 
     @keyframes logo-animation {
         from {
-          width: 265px;
-          height: 323.1px;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          
+            width: 265px;
+            height: 323.1px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
         }
+
         to {
-          width: 78px;
-          height: 64px;
-          top: 37px;
-          left: 38px;
+            width: 78px;
+            height: 64px;
+            top: 37px;
+            left: 38px;
         }
-      }
-  }
+    }
+}

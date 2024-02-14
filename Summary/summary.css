@@ -1,9 +1,9 @@
-body{
+body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
-.content-container{
+.content-container {
     position: fixed;
     width: 912px;
     height: 591px;
@@ -11,22 +11,22 @@ body{
     left: 380px;
 }
 
-.greet-container{
+.greet-container {
     width: 1044px;
     height: 77px;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
 }
 
-.timezone-container{
+.timezone-container {
     height: 58px;
     font-size: 48px;
     line-height: 57.6px;
 }
 
-.greetingname-container{
+.greetingname-container {
     height: 77px;
     font-size: 48px;
     font-weight: 700;
@@ -36,14 +36,14 @@ body{
     margin-bottom: 72px;
 }
 
-.middle-section{
+.middle-section {
     width: 912px;
     height: 191px;
     display: flex;
     column-gap: 35px;
 }
 
-.task-urgent{
+.task-urgent {
     width: 672px;
     height: 191px;
     background: rgba(69, 137, 255, 1);
@@ -54,23 +54,23 @@ body{
     justify-content: space-evenly;
 }
 
-.task-urgent:hover{
+.task-urgent:hover {
     background-color: #2e77f5;
     cursor: pointer;
 }
 
-.task-urgend-under-container{
+.task-urgend-under-container {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.task-urgend-under-container span{
+.task-urgend-under-container span {
     color: white;
     margin-top: 8px;
 }
 
-.task-urgend-number{
+.task-urgend-number {
     height: 58px;
     width: 28px;
     font-weight: 700;
@@ -80,38 +80,38 @@ body{
     margin-left: 12px;
 }
 
-.white-column-urgent-task{
+.white-column-urgent-task {
     display: flex;
     align-items: center;
 }
 
-.white-column-urgent-task img{
+.white-column-urgent-task img {
     width: 3px;
     height: 145px;
 }
 
 
-.date-container{
+.date-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 }
 
-.date-container span{
+.date-container span {
     color: white;
     font-weight: 700;
     font-size: 33px;
 }
 
-.date-container p{
+.date-container p {
     color: white;
     font-size: 23px;
     margin: 0;
     margin-top: 9px;
 }
 
-.task-in-board{
+.task-in-board {
     width: 208px;
     height: 191px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
@@ -120,31 +120,31 @@ body{
     box-sizing: border-box;
 }
 
-.task-in-board:hover{
+.task-in-board:hover {
     background: rgba(210, 227, 255, 1);
     cursor: pointer;
 }
 
-.task-in-board-under-container{
+.task-in-board-under-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.task-in-board span{
+.task-in-board span {
     display: flex;
     justify-content: center;
     color: rgba(69, 137, 255, 1);
     margin-top: 8px;
 }
 
-.task-in-board-number{
+.task-in-board-number {
     font-size: 48px;
     font-weight: 700;
 }
 
 
-.under-task-section{
+.under-task-section {
     width: 912px;
     height: 219px;
     display: flex;
@@ -154,18 +154,21 @@ body{
 
 /* for all 4 task in the under section*/
 
-.under-container{
+.under-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.number-in-tasks{
+.number-in-tasks {
     font-size: 48px;
     font-weight: 700;
 }
 
-.task-to-do span, .task-in-progress span, .awaiting-feedback span, .tasks-done span{
+.task-to-do span,
+.task-in-progress span,
+.awaiting-feedback span,
+.tasks-done span {
     margin-top: 8px;
     color: rgba(69, 137, 255, 1);
     display: flex;
@@ -176,7 +179,7 @@ body{
 /* for all 4 tasks in the under section end*/
 
 
-.task-to-do{
+.task-to-do {
     width: 204px;
     height: 219px;
     border-radius: 30px;
@@ -185,12 +188,12 @@ body{
     padding: 40px;
 }
 
-.task-to-do:hover{
+.task-to-do:hover {
     background: rgba(210, 227, 255, 1);
     cursor: pointer;
 }
 
-.task-in-progress{
+.task-in-progress {
     width: 204px;
     height: 219px;
     border-radius: 30px;
@@ -199,12 +202,12 @@ body{
     padding: 40px;
 }
 
-.task-in-progress:hover{
+.task-in-progress:hover {
     background: rgba(210, 227, 255, 1);
     cursor: pointer;
 }
 
-.awaiting-feedback{
+.awaiting-feedback {
     width: 204px;
     height: 219px;
     border-radius: 30px;
@@ -213,12 +216,12 @@ body{
     padding: 40px;
 }
 
-.awaiting-feedback:hover{
+.awaiting-feedback:hover {
     background: rgba(210, 227, 255, 1);
     cursor: pointer;
 }
 
-.tasks-done{
+.tasks-done {
     width: 204px;
     height: 219px;
     border-radius: 30px;
@@ -227,22 +230,22 @@ body{
     padding: 40px;
 }
 
-.tasks-done:hover{
+.tasks-done:hover {
     background: rgba(210, 227, 255, 1);
     cursor: pointer;
 }
 
-/**this section is to design the User Initial on the right corner**/ 
+/**this section is to design the User Initial on the right corner**/
 
-#kanban{
+#kanban {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-right: 20px;
-    color:white;
+    color: white;
 }
 
-#initials{
+#initials {
     background-color: white;
     height: 42px;
     width: 42px;
@@ -250,17 +253,17 @@ body{
     cursor: pointer;
     display: flex;
     border: 3px solid #4589ff;
-    outline: 4px solid white; 
+    outline: 4px solid white;
     color: #4589ff;
     justify-content: center;
     align-items: center;
     font-size: 18px;
     font-weight: 500;
-  }
+}
 
-  
 
-  #options{
+
+#options {
     height: 120px;
     width: 138px;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
@@ -281,28 +284,38 @@ body{
     color: rgba(69, 137, 255, 1);
     background-color: white;
     z-index: 100;
-  }
+}
 
-  #options a {
+#options a {
     text-decoration: none;
     color: rgba(69, 137, 255, 1);
-  }
-  #options a:hover {
-    background-color:rgb(210,227,255); 
-  }
+}
 
-  .option{
+#options a:hover {
+    background-color: rgb(210, 227, 255);
+}
+
+.option {
     cursor: pointer;
-  }
-  .option:hover {
-    background-color: rgb(210,227,255);
-  }
+}
 
-  #options.dNone{
+.option:hover {
+    background-color: rgb(210, 227, 255);
+}
+
+#options.dNone {
     display: none;
-    }
+}
 
 
-    @media (max-width: 700px) {
-        
+/*/// Media-querry///*/
+
+@media (max-width: 700px) {
+
+    .secondary-links a{
+        display: none;
     }
+
+    
+   
+}
