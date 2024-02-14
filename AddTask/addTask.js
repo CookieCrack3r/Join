@@ -2,9 +2,9 @@ let todos = [];
 let subtasks = [];
 
 async function init() {
+    await showContacts();
     await getInitials();
     displayOptions();
-
 }
 
 async function addTodo() {
@@ -75,6 +75,21 @@ function priorityLow() {
     document.getElementById('urgent').style.backgroundColor = 'white';
     document.getElementById('urgent').style.color = 'black';
     document.getElementById('urgent-img').src = 'imgAddTask/urgent.png';
+}
+
+async function showContacts() {
+    await loadContacts();
+
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        let initials = getContactInitials(contact.name);
+        document.getElementById('contacts').innerHTML += `
+        <div class="contacts">
+            <div class="sign" style="background-color: ${contact.backgroundColor}">${initials}</div>
+            <div>${contact.name}</div>
+        </div>
+        `;
+    }
 }
 
 function addSubtask() {

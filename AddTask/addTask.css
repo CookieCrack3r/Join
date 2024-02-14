@@ -154,8 +154,42 @@ textarea {
     border-bottom: 3px solid #7ae228;
 }
 
+.contacts {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 4px;
+}
+
+.contacts:hover {
+    cursor: pointer;
+    background-color: #D2E3FF;
+    border-radius: 8px;
+}
+
+
+.sign {
+    background-color: #F77A02;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    border: white 2px solid;
+}
+
+#contacts {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    height: 100px;
+}
+
 .select {
-    height: 79px;
+    height: 100px;
     width: 440px;
     display: flex;
     flex-direction: column;
