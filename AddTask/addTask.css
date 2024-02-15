@@ -159,10 +159,19 @@ textarea {
     gap: 10px;
     align-items: center;
     padding: 4px;
+    justify-content: space-between;
+}
+
+.contacts button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+}
+
+.contacts button:hover {
+    cursor: pointer;
 }
 
 .contacts:hover {
-    cursor: pointer;
     background-color: #D2E3FF;
     border-radius: 8px;
 }
@@ -179,6 +188,12 @@ textarea {
     color: white;
     font-size: 12px;
     border: white 2px solid;
+}
+
+.signContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 #contacts {

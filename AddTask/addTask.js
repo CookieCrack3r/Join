@@ -84,12 +84,19 @@ async function showContacts() {
         let contact = contacts[i];
         let initials = getContactInitials(contact.name);
         document.getElementById('contacts').innerHTML += `
-        <div class="contacts">
-            <div class="sign" style="background-color: ${contact.backgroundColor}">${initials}</div>
-            <div>${contact.name}</div>
+        <div onclick="addContacttoTodo" class="contacts" id="assignedTo">
+            <div class="signContainer">
+                <div class="sign" style="background-color: ${contact.backgroundColor}">${initials}</div>
+                <div>${contact.name}</div>
+            </div>
+            <button onclick="addContactToTodo(i)"><img src="imgAddTask/add.svg"></button>
         </div>
         `;
     }
+}
+
+async function addContactToTodo(i) {
+    
 }
 
 function addSubtask() {
