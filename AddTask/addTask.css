@@ -21,9 +21,9 @@ textarea {
     flex-direction: column;
     width: 488px;
     height: 928px;
-    padding: 64px 24px 0px 24px;
+    padding: 0px 24px 0px 24px;
     gap: 24px;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-top: 96px;
     margin-left: 232px;
 }
@@ -234,7 +234,6 @@ select:hover {
     flex-direction: column;
     width: 440px;
     height: 79px;
-    margin-bottom: 360px;
 }
 
 .subtask-input-container {
