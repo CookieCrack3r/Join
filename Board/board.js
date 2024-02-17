@@ -139,9 +139,9 @@ function generateKanbanHTML(todo) {
                                 </div>
                                 <div class="members-and-priority">
                                     <div class="members">
-                                        <img src="img/profile.svg">
-                                        <img src="img/profile1.svg">
-                                        <img src="img/profile2.svg">
+
+                                    ${getContactsPic(id)}
+
                                     </div>
                                     <div class="priority">
                                         <img src="${priorityImage}">
@@ -219,6 +219,19 @@ function getContacts(id) {
     }
 
     return names;
+}
+
+function getContactsPic(id) {
+    let pics = '';
+
+
+    for (let i = 0; i < todo[id].contacts.length; i++) {
+
+        pics += `<img src="img/profile.svg">`;
+        
+    }
+
+    return pics;
 }
 
 function editTodo(card) {
