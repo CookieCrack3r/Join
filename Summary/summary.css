@@ -325,6 +325,11 @@ body {
         z-index: -1;
     }
 
+    #options{
+        top: 108px;
+        left: 247px;
+    }
+
     .greet-container {
         height: 60px;
         max-width: 425px;
@@ -433,5 +438,9 @@ body {
 
     aside a {
         margin-top: 6px !important;
+    }
+
+    #options{
+        left: 240px;
     }
 }

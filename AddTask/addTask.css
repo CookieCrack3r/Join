@@ -335,3 +335,127 @@ select:hover {
     top: 24.38px;
     left: 144.26px;
 }
+
+
+/*////Mediaquerry////*/
+
+@media (max-width: 700px) {
+
+    .buttons{
+        margin-left: 50px;
+        height: 50px;
+        margin-bottom: 70px;
+    }
+    #clear{
+        display: none;
+    }
+
+    #create{
+        height: 48px;
+        width: 160px;
+        margin-left: 84px;
+    }
+
+    .content{
+        height: 700px;
+        width: 396px;
+        margin-left: 12px;
+        padding: 0;
+        margin-top: 0;
+        overflow-y: hidden;
+        
+    }
+
+    .content::-webkit-scrollbar{
+        display: none;
+    }
+
+    .title{
+        height: 60px;
+        width: 396px;
+
+    }
+
+    #title{
+        font-size: 28px;
+        padding: 7px 16px 7px 16px;
+        width: 396px;
+    }
+
+    .description{
+        height: 135px;
+        width: 396px;
+        margin-bottom: 22px;
+    }
+
+    .description span{
+        font-size: 16px;
+        height: 19px;
+    }
+
+    #descritpion{
+        padding: 18px 16px 18px 16px;
+        font-size: 16px;
+        font-weight: 400;
+        width: 352px;
+        height: 88px;
+    }
+
+    .date{
+        height: 95px;
+        width: 396px;
+        gap: 0px;
+        margin-bottom: 0px;
+    }
+
+    .date span{
+        font-size: 16px;
+        height: 19px;
+    }
+
+    #selectedDate{
+        width: 380px;
+
+    }
+
+    .priority{
+        width: 380px;
+        height: 48px;
+        margin-bottom: 45px;
+        padding-left: 3px;
+    }
+
+    .priority span{
+        font-size: 16px;
+    }
+
+    .priority-buttons{
+        width: 378px;
+    }
+
+    .priority-buttons button{
+        width: 121px;
+        height: 48px;
+    }
+
+    .select{
+        height: 75px;
+        width: 380px;
+    }
+
+    .subtasks{
+        width: 380px;
+        height: 75px;
+    }
+
+    .subtask-input-field{
+        width: 388px;
+    }
+
+    .subtasks input{
+        width: 385px;
+        height: 35px;
+    }
+
+
+}
