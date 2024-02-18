@@ -312,10 +312,126 @@ body {
 
 @media (max-width: 700px) {
 
-    .secondary-links a{
+    .secondary-links a {
         display: none;
     }
 
-    
-   
+    .content-container {
+        display: flex;
+        width: 426px;
+        height: 100%;
+        top: 97px;
+        left: 0px;
+        z-index: -1;
+    }
+
+    .greet-container {
+        height: 60px;
+        max-width: 425px;
+    }
+
+    .timezone-container {
+        font-size: 24px;
+    }
+
+    #media_query {
+        font-size: 27px !important;
+    }
+
+    .flex-container {
+        height: 60px;
+        justify-content: flex-start;
+        padding-left: 30px;
+    }
+
+    .middle-section {
+        width: 426px;
+        height: 150px;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .under-task-section {
+        margin-top: 163px;
+    }
+
+    .task-urgent {
+        width: 396px;
+        height: 150px;
+        padding: 23px 28px 23px 28px;
+    }
+
+    .date-container span {
+        font-size: 23px;
+    }
+
+    .date-container p {
+        font-size: 19.2px;
+    }
+
+    .white-column-urgent-task img {
+        width: 4px;
+        height: 112px;
+    }
+
+    .task-in-board {
+        width: 396px;
+        height: 150px;
+        padding: 15px 40px 15px 40px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .task-in-board-under-container {
+        justify-content: center;
+        column-gap: 24px;
+    }
+
+    .task-in-board {
+        justify-content: space-evenly;
+    }
+
+    .task-in-board span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        font-size: 19px;
+    }
+
+    .under-task-section {
+        width: 426px;
+        height: 370px;
+        flex-wrap: wrap;
+        column-gap: 18px;
+        justify-content: center;
+    }
+
+    .task-to-do,
+    .task-in-progress,
+    .awaiting-feedback,
+    .tasks-done {
+        width: 186px;
+        height: 152px;
+        padding: 15px 40px 15px 40px;
+
+    }
+}
+
+
+/*samsung display*/
+
+@media (max-width: 413px) {
+
+    .under-task-section,
+    .middle-section,
+    .greet-container,
+    .content-container {
+        width: 412px;
+    }
+
+    aside a {
+        margin-top: 6px !important;
+    }
 }

@@ -37,7 +37,7 @@ function updateToDo() {
     for (let i = 0; i < to_do.length; i++) {
         let todo = to_do[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-        
+
     }
 }
 
@@ -75,7 +75,7 @@ function updateDone() {
     for (let i = 0; i < done.length; i++) {
         let todo = done[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(todo);
-        
+
     }
 }
 
@@ -118,13 +118,12 @@ function generateKanbanHTML(todo) {
 
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
-    
+
     let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
 
-    console.log(progressPercentage);
-    
+
     return `
-    <div draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
+    <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
         <span class="label" style="background-color: ${categoryColor};">${category}</span>
                                 <span class="description">
                                     <h3>${title}</h3><br>${description}
@@ -140,9 +139,9 @@ function generateKanbanHTML(todo) {
                                 </div>
                                 <div class="members-and-priority">
                                     <div class="members">
-                                        <img src="img/profile.svg">
-                                        <img src="img/profile1.svg">
-                                        <img src="img/profile2.svg">
+
+                                    ${getContactsPic(id)}
+
                                     </div>
                                     <div class="priority">
                                         <img src="${priorityImage}">
@@ -150,7 +149,7 @@ function generateKanbanHTML(todo) {
                                 </div>
     </div>
             `;
-            
+
 }
 
 
@@ -159,12 +158,12 @@ function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
-    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, date, priority, subtasks);
+    document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, id, date, priority, subtasks);
 
     createCheckboxes(id, subtasks);
 }
 
-function generateBigCard(category, title, description, date, priority, subtasks) {
+function generateBigCard(category, title, description, id, date, priority, subtasks) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
@@ -186,9 +185,9 @@ function generateBigCard(category, title, description, date, priority, subtasks)
         </div>
         <div class="profiles-big">
             <span><b>Assigned To:</b></span>
-            <span><img src="img/profile1.svg">Emmanuel Mauer</span>
-            <span><img src="img/profile2.svg">Marcel Bauer</span>
-            <span><img src="img/profile.svg">Anton Mayer</span>
+
+            ${getContacts(id)}
+            
         </div>
         <div class="subtasks-big">
             <span><b>Subtasks</b></span>
@@ -207,6 +206,32 @@ function generateBigCard(category, title, description, date, priority, subtasks)
             })"><img src="img/edit.svg">Edit</span>
         </div>
     `;
+}
+
+function getContacts(id) {
+    let names = '';
+
+
+    for (let i = 0; i < todo[id].contacts.length; i++) {
+
+        names += `<span><img src="img/profile.svg">${todo[id].contacts[i].name}</span>`;
+        
+    }
+
+    return names;
+}
+
+function getContactsPic(id) {
+    let pics = '';
+
+
+    for (let i = 0; i < todo[id].contacts.length; i++) {
+
+        pics += `<img src="img/profile.svg">`;
+        
+    }
+
+    return pics;
 }
 
 function editTodo(card) {
@@ -249,11 +274,11 @@ function createCheckboxes(id, subtasks) {
 
 function updateSubtaskStatus(i, id) {
 
-   if (todo[id].subtasks[i]['checked'] == false){
+    if (todo[id].subtasks[i]['checked'] == false) {
         todo[id].subtasks[i]['checked'] = true;
 
-   } else
-   todo[id].subtasks[i]['checked'] = false;
+    } else
+        todo[id].subtasks[i]['checked'] = false;
 
 
     updateDB();
@@ -343,7 +368,7 @@ function addTask() {
 
 
 //this function is to get the user initials
-async function getInitials(){
+async function getInitials() {
     UserInitials = await getItem('userInitial');
     UserName = await getItem('userName');
     const kanban = document.getElementById("kanban");
@@ -355,19 +380,19 @@ async function getInitials(){
 //this function is to open the submenu for the logout
 
 function displayOptions() {
-  const options = document.getElementById("options");
-  const isDisplayed = options.classList.toggle("dNone");
+    const options = document.getElementById("options");
+    const isDisplayed = options.classList.toggle("dNone");
 
-  if (isDisplayed) {
-    document.getElementById('d_none_svg').style.display = 'none';
-  }
+    if (isDisplayed) {
+        document.getElementById('d_none_svg').style.display = 'none';
+    }
 
-  if (isDisplayed && !options.innerHTML.trim()) {
-    options.innerHTML = /*html*/`
+    if (isDisplayed && !options.innerHTML.trim()) {
+        options.innerHTML = /*html*/`
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
 
     `;
-  }
+    }
 }

@@ -1,5 +1,6 @@
 let todos = [];
 let subtasks = [];
+let contactsObject = [];
 
 async function init() {
     await showContacts();
@@ -22,6 +23,7 @@ async function addTodo() {
         description: descritpion.value,
         category: category.value,
         subtasks: subtasks,
+        contacts: contactsObject,
         status: todo,
         priority: selectedPriority,
         date: selectedDate.value
@@ -84,19 +86,19 @@ async function showContacts() {
         let contact = contacts[i];
         let initials = getContactInitials(contact.name);
         document.getElementById('contacts').innerHTML += `
-        <div onclick="addContacttoTodo" class="contacts" id="assignedTo">
+        <div class="contacts" id="${i}">
             <div class="signContainer">
                 <div class="sign" style="background-color: ${contact.backgroundColor}">${initials}</div>
                 <div>${contact.name}</div>
             </div>
-            <button onclick="addContactToTodo(i)"><img src="imgAddTask/add.svg"></button>
+            <button type="button" onclick="addContactToTodo(${i})"><img src="imgAddTask/add.svg"></button>
         </div>
         `;
     }
 }
 
-async function addContactToTodo(i) {
-    
+function addContactToTodo(i) {
+    contactsObject.push(contacts[i]);
 }
 
 function addSubtask() {

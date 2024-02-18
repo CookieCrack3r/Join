@@ -85,7 +85,7 @@ async function displayOptions() {
 
   function greetingOnDailyTime(){
       const timeOfDay = getTimeOfDay();
-      const userNameFlex = `<span style="color: #4589FF; font-weight: bold; font-size: 60px;">${UserName}</span>`;
+      const userNameFlex = `<span id="media_query" style="color: #4589FF; font-weight: bold; font-size: 60px;">${UserName}</span>`;
       const greetingMessage = `${timeOfDay}, ${userNameFlex}`;
       document.getElementById("timezone").innerHTML = greetingMessage;
 
