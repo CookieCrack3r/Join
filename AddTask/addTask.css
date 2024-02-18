@@ -361,7 +361,7 @@ select:hover {
         width: 396px;
         margin-left: 12px;
         padding: 0;
-        margin-top: 0;
+        margin-top: 3px;
         overflow-y: hidden;
         
     }
@@ -379,13 +379,13 @@ select:hover {
     #title{
         font-size: 28px;
         padding: 7px 16px 7px 16px;
-        width: 396px;
+        width: 349px;
     }
 
     .description{
         height: 135px;
         width: 396px;
-        margin-bottom: 22px;
+        margin-bottom: 4px;
     }
 
     .description span{
@@ -398,7 +398,7 @@ select:hover {
         font-size: 16px;
         font-weight: 400;
         width: 352px;
-        height: 88px;
+        height: 65px;
     }
 
     .date{
@@ -415,7 +415,6 @@ select:hover {
 
     #selectedDate{
         width: 380px;
-
     }
 
     .priority{
@@ -438,10 +437,16 @@ select:hover {
         height: 48px;
     }
 
-    .select{
+    select{
         height: 75px;
         width: 380px;
     }
+
+    .select{
+        width: 380px;
+        height: 75px;
+    }
+
 
     .subtasks{
         width: 380px;
@@ -449,12 +454,21 @@ select:hover {
     }
 
     .subtask-input-field{
-        width: 388px;
+        width: 377px;
     }
 
     .subtasks input{
         width: 385px;
         height: 35px;
+    }
+
+    .subtasks ul{
+        position: fixed;
+        left: -10px;
+        height: 56px;
+        width: 60px;
+        bottom: 79px;
+    }
     }
 
 
