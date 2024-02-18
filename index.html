@@ -37,9 +37,11 @@
     <script src="/AddTask/addTask.js"></script>
     <title>Join</title>
 </head>
-
-<body onload="initBoard()">
-    <app id="content-app"> </app>
-</body>
-
+<script>
+   window.onload = function() {
+    var currentUrl = window.location.href;
+    var newUrl = currentUrl.replace('index.html', 'Login/login.html');
+    window.location.href = newUrl;
+}
+    </script>
 </html>
