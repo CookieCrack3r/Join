@@ -462,8 +462,30 @@ td {
     border-bottom: 3px solid #7ae228;
 }
 
-
-
 .d-none {
     display: none;
+}
+
+@media (max-width: 700px) {
+    .content {
+        margin-left: 0px;
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .find-task button {
+        display: none;
+    }
+
+    #big-card {
+        height: 621px;
+        width: 336px;
+        left: 0.5%;
+        overflow-x: hidden;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
 }
