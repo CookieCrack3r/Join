@@ -373,3 +373,89 @@ h1 {
 .displayNone {
     display: none !important;
 }
+
+/*/// Media-querry///*/
+
+@media (max-width: 700px) {
+    .body {
+        overflow-x: auto;
+    }
+
+    .content {
+        margin-left: -200px;
+        margin-top: -100px;
+    }
+
+    .allContacts {
+        overflow-y: hidden;
+    }
+
+    #addContact {
+        width: 313px;
+    }
+
+    .contactContent {
+        background-color: white;
+        margin-left: 60px;
+    }
+
+    #contactContent {
+        margin-right: 135px;
+    }
+
+    #editContact {
+        height: 700px;
+        width: 396px;
+        border-radius: 30px;
+        top: 100px;
+        left: 4%;
+    }
+
+    #editContact input {
+        width: 364px;
+    }
+
+    .editContactHeader {
+        height: 328px;
+        width: 396px;
+        border-top-left-radius: 30px;
+    }
+
+    #saveButton {
+        height: 48px;
+        width: 86px;
+        font-size: 19px;
+    }
+
+    #deleteButton {
+        height: 48px;
+        width: 104px;
+        font-size: 19px;
+    }
+
+    .addContactButtons {
+        margin-bottom: 16px;
+    }
+
+    #addNewContact {
+        height: 700px;
+        width: 396px;
+        border-radius: 30px;
+        top: 100px;
+        left: 1.2%;
+    }
+
+    #addNewContact input {
+        width: 364px;
+    }
+
+    .addContactHeader {
+        height: 328px;
+        width: 396px;
+        border-top-right-radius: 30px;
+    }
+
+    .addEditLogo {
+        display: none;
+    }
+}

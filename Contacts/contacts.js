@@ -123,7 +123,7 @@ function editContact(i) {
     <div id="editContact">
       <div class="editContactHeader">
         <button class="closeButton" onclick="closeCard()"><img src="img/close.svg"></button>
-        <img src="img/logo.svg">
+        <img class="addEditLogo" src="img/logo.svg">
         <h1>Edit Contact</h1>
       </div>
       <div class="addContactInfo">
