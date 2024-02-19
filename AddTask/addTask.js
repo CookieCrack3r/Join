@@ -80,8 +80,8 @@ function priorityLow() {
 }
 
 async function showContacts() {
-    await loadContacts();
-
+    let contacts = JSON.parse(await getItem('contacts')) || [];
+    console.log(contacts);
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
         let initials = getContactInitials(contact.name);

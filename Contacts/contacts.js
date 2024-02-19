@@ -33,7 +33,9 @@ async function loadContacts() {
     generateContacts();
   } catch (e) {
     console.error('Loading error:', e);
+
   }
+  
 }
 
 function addContact() {
@@ -47,6 +49,7 @@ function getRandomColor() {
 }
 
 function generateContacts() {
+
   document.getElementById('allContacts').innerHTML = '';
 
   contacts.sort((a, b) => a.name.localeCompare(b.name));
