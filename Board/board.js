@@ -2,11 +2,13 @@ let todo = [];
 let currentDraggedElement;
 
 async function initBoard() {
-    await loadTodos();
-    updateHTML();
-    await displayOptions();
+    await includeHTML();
     await getInitials();
-
+    await displayOptions();
+    await loadTodos();
+        updateHTML();
+    
+    
 }
 
 function updateHTML() {
