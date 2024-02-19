@@ -204,7 +204,7 @@ textarea {
 }
 
 .select {
-    height: 100px;
+    height: 130px;
     width: 440px;
     display: flex;
     flex-direction: column;
