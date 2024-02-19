@@ -3,10 +3,10 @@ body {
     height: 1024px;
     margin: 0;
     padding: 0;
+    overflow-y: hidden;
 }
 
 .content {
-    margin-top: 96px;
     margin-left: 232px;
     padding: 72px 0px 16px 0px;
 }
@@ -59,7 +59,7 @@ input {
 
 table {
     max-width: 1440px;
-    margin-top: 64px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -95,12 +95,17 @@ table button {
 
 .table-body {
     max-width: 1440px;
-    height: 28px;
+    height: 600px;
     display: flex;
     justify-content: space-between;
     font-size: 16px;
     padding: 0px 64px 0px 64px;
     gap: 24px;
+    overflow-y: auto;
+}
+
+.table-body::-webkit-scrollbar{
+    display: none;
 }
 
 .dragsection {
