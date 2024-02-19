@@ -8,15 +8,20 @@ body {
 .header {
     height: 96px;
     background-color: #4589FF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .header span {
     color: white !important;
     font-size: 19px;
     font-weight: 400;
+}
+
+.headerContent {
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
 }
 
 .right-section {
