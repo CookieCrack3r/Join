@@ -1,11 +1,10 @@
 let contacts = [];
 let colors = ["#9327FF", "#FF7900", "#6E52FF", "#FC71FF", "#FFBB2C", "#1CD7C1", "#462F8A", "#FF4647"];
 
-// async function init() {
-//   console.log("dsfg");
-//   await getInitials();
-//   displayOptions();
-// }
+async function initBoard() {
+  await getInitials();
+  displayOptions();
+}
 
 async function createContact() {
   contacts_length = JSON.parse(await getItem('contacts')) || [];
@@ -35,7 +34,7 @@ async function loadContacts() {
     console.error('Loading error:', e);
 
   }
-  
+
 }
 
 function addContact() {
