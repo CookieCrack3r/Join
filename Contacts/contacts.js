@@ -131,15 +131,15 @@ function editContact(i) {
       <div class="addContactInfo">
         <img src="img/icon.svg">
         <div class="inputDiv">
-          <input id="editName" type="text" value="${contact.name}">
+          <input id="editName" type="text" placeholder="Name" value="${contact.name}">
           <img src="img/person.svg">
         </div>
         <div class="inputDiv">
-          <input id="editMail" type="email" value="${contact.mail}">
+          <input id="editMail" type="email" placeholder="E-Mail" value="${contact.mail}">
           <img src="img/mail.svg">
         </div>
         <div class="inputDiv">
-          <input id="editPhone" type="text" value="${contact.phone}">
+          <input id="editPhone" type="text" placeholder="Phone" value="${contact.phone}">
           <img src="img/call.svg">
         </div>
       </div>
