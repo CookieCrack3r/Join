@@ -6,6 +6,7 @@ async function initTask() {
     await showContacts();
     await getInitials();
     displayOptions();
+    await setMinDate();
 }
 
 async function addTodo() {
@@ -117,7 +118,15 @@ function addSubtask() {
     subtasks.push(subtasksObject);
 }
 
+async function setMinDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
 
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("selectedDate").min = today;
+}
 
 function createTask() {
     create.disabled = false;
