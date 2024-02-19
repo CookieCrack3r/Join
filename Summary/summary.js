@@ -1,7 +1,7 @@
 let todoSum = [];
 
 
- async function init(){
+ async function initSummary(){
   await includeHTML();
         loadtodoSums(); 
   await getInitials();
@@ -20,14 +20,12 @@ async function loadtodoSums() {
 
         let Task_in_Board = document.getElementById('Task-in-Board_value');
 
-
         todoSum = JSON.parse(await getItem('todos'));
 
         let Tasks_value = todoSum.filter(t => t['status'] == 'to-do');
         let Task_in_Progress_value = todoSum.filter(t => t['status'] == 'in-progress');
         let Awaiting_feedback_value = todoSum.filter(t => t['status'] == 'await-feedback');
         let Task_Done_value = todoSum.filter(t => t['status'] == 'done');
-
       
         Tasks.innerHTML = Tasks_value.length.toString();
         Task_in_Progress.innerHTML = Task_in_Progress_value.length.toString();

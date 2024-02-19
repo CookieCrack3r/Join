@@ -2,7 +2,7 @@ let todos = [];
 let subtasks = [];
 let contactsObject = [];
 
-async function init() {
+async function initTask() {
     await showContacts();
     await getInitials();
     displayOptions();
