@@ -471,13 +471,20 @@ td {
 @media (max-width: 700px) {
     .content {
         margin-left: 0px;
-        margin-top: 0px;
+        margin-top: -38px;
         display: flex;
         flex-direction: column;
+        height: 626px;
+        width: 396px;
     }
 
     .find-task button {
         display: none;
+    }
+
+    .find-task{
+        width: 396px;
+        height: 48px;
     }
 
     #big-card {
@@ -487,7 +494,26 @@ td {
         overflow-x: hidden;
     }
 
-    table {
-        border-collapse: collapse;
-    }
+   table {
+    width: 396px;
+    margin-top: 20px;
+
+   }
+
+   tr{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+   }
+
+   th{
+    justify-content: space-between;
+    margin-bottom: 120px;
+   }
+
+   .dragsection{
+    display: flex;
+    flex-direction: row;
+   }
+
 }
