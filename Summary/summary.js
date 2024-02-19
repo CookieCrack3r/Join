@@ -75,6 +75,9 @@ async function displayOptions() {
     window.location.pathname = '/Login/login.html';
   }
 
+  function goToBoard() {
+    window.location.pathname = '/Board/board.html';
+  }
 
   //this function is to greet the user based on daily time
 
