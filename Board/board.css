@@ -104,7 +104,7 @@ table button {
     overflow-y: auto;
 }
 
-.table-body::-webkit-scrollbar{
+.table-body::-webkit-scrollbar {
     display: none;
 }
 
@@ -482,7 +482,7 @@ td {
         display: none;
     }
 
-    .find-task{
+    .find-task {
         width: 396px;
         height: 48px;
     }
@@ -494,26 +494,57 @@ td {
         overflow-x: hidden;
     }
 
-   table {
-    width: 396px;
-    margin-top: 20px;
+    table {
+        width: 396px;
+        margin-top: 20px;
 
-   }
+    }
 
-   tr{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-   }
+    .table-body {
+        max-width: 0;
+        padding: 0;
 
-   th{
-    justify-content: space-between;
-    margin-bottom: 120px;
-   }
+    }
 
-   .dragsection{
-    display: flex;
-    flex-direction: row;
-   }
+    tr {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
+    th {
+        justify-content: space-between;
+        margin-bottom: 120px;
+    }
+
+    .dragsection {
+        display: flex;
+        flex-direction: row;
+        height: 88px;
+        width: 285px;
+    }
+
+    #dragsection-to-do{
+        position: fixed;
+        left: 35px;
+    }
+
+    #dragsection-progress {
+        position: fixed;
+        left: 35px;
+        top: 422px;
+    }
+
+    #dragsection-feedback{
+        position: fixed;
+        left: 35px;
+        top: 570px;
+    }
+
+    #dragsection-done{
+        position: fixed;
+        left: 35px;
+        top: 740px;
+    }
 }
+
