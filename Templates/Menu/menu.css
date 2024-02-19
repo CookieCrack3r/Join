@@ -33,7 +33,7 @@ body {
 }
 
 aside {
-    height: 932px;
+    height: 100vh;
     max-width: 232px;
     border-right: 1px solid lightgray;
     display: flex;
