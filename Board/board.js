@@ -226,7 +226,6 @@ function getContacts(id) {
 function getContactsPic(id) {
     let pics = '';
 
-
     for (let i = 0; i < todo[id].contacts.length; i++) {
 
         pics += `<img src="img/profile.svg">`;
