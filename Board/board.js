@@ -106,7 +106,6 @@ function getPriorityImage(priority) {
 }
 
 function generateKanbanHTML(todo) {
-
     let category = todo['category'];
     let title = todo['title'];
     let subtasks = todo['subtasks'];
@@ -121,38 +120,38 @@ function generateKanbanHTML(todo) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
 
-    let progressPercentage = (completedSubtaskCount / subtaskCount) * 100;
+    let progressPercentage = subtaskCount === 0 ? 0 : (completedSubtaskCount / subtaskCount) * 100;
 
+    let progressBarSection = '';
+    if (subtaskCount > 0) {
+        progressBarSection = `
+            <div class="progress-section">
+                <div class="progress-bar">
+                    <div class="progress" style="width: ${progressPercentage}%">
+                    </div>
+                </div>
+                <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
+            </div>`;
+    }
 
     return `
     <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
         <span class="label" style="background-color: ${categoryColor};">${category}</span>
-                                <span class="description">
-                                    <h3>${title}</h3><br>${description}
-                                </span>
-                                <div class="progress-section">
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: ${progressPercentage}%">
-                                        </div>
-                                    </div>
-
-                                    <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks
-                                    </div>
-                                </div>
-                                <div class="members-and-priority">
-                                    <div class="members">
-
-                                    ${getContactsPic(id)}
-
-                                    </div>
-                                    <div class="priority">
-                                        <img src="${priorityImage}">
-                                     </div>
-                                </div>
-    </div>
-            `;
-
+        <span class="description">
+            <h3>${title}</h3><br>${description}
+        </span>
+        ${progressBarSection}
+        <div class="members-and-priority">
+            <div class="members">
+                ${getContactsPic(id)}
+            </div>
+            <div class="priority">
+                <img src="${priorityImage}">
+            </div>
+        </div>
+    </div>`;
 }
+
 
 
 
@@ -380,7 +379,7 @@ async function getInitials() {
 
 //this function is to open the submenu for the logout
 
-function displayOptions() {
+async function displayOptions() {
     const options = document.getElementById("options");
     const isDisplayed = options.classList.toggle("dNone");
 
