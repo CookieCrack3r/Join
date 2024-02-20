@@ -27,66 +27,60 @@
             <input type="search" class="icon" id="search" placeholder="Find Task" oninput="filterTodos()"><button
                 onclick="addTask()">Add Task <img src="img/plus.svg"></button>
         </div>
-        <table>
-            <div class="complete-table">
-                <thead>
-                    <tr class="table-head">
-                        <th>To do <button onclick="addTask()"><svg class="img-hover" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg></button></th>
-                        <th>In progress <button onclick="addTask()"><svg class="img-hover" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg></button></th>
-                        <th>Await feedback <button onclick="addTask()"><svg class="img-hover" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
-                                    <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg></button></th>
-                        <th>Done</th>
-                    </tr>
-                </thead>
-                <tbody id="board" class="table-body">
-
-                    <tr id="dragsection-to-do" class="dragsection" ondrop="moveTo('to-do')"
-                        ondragleave="removeHighlight('dragsection-to-do')"
-                        ondragover="allowDrop(event); highlight('dragsection-to-do')">
-                        <td id="todo">
-                        </td>
-                    </tr>
-
-                    <tr id="dragsection-progress" class="dragsection" ondrop="moveTo('in-progress')"
-                        ondragleave="removeHighlight('dragsection-progress')"
-                        ondragover="allowDrop(event); highlight('dragsection-progress')">
-                        <td id="in-progress">
-                        </td>
-                    </tr>
-
-                    <tr id="dragsection-feedback" class="dragsection" ondrop="moveTo('await-feedback')"
-                        ondragleave="removeHighlight('dragsection-feedback')"
-                        ondragover="allowDrop(event); highlight('dragsection-feedback')">
-                        <td id="await-feedback">
-                        </td>
-                    </tr>
-
-                    <tr id="dragsection-done" class="dragsection" ondrop="moveTo('done')"
-                        ondragleave="removeHighlight('dragsection-done')"
-                        ondragover="allowDrop(event); highlight('dragsection-done')">
-                        <td id="done">
-                        </td>
-                    </tr>
-                </tbody>
+        <div class="complete-table">
+            <div class="table-element">
+                <div class="table-headlines">To do <button onclick="addTask()"><svg class="img-hover" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                            <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                            <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                        </svg></button></div>
+                <div id="dragsection-to-do" class="dragsection" ondrop="moveTo('to-do')"
+                    ondragleave="removeHighlight('dragsection-to-do')"
+                    ondragover="allowDrop(event); highlight('dragsection-to-do')">
+                    <div id="todo">
+                    </div>
+                </div>
             </div>
-        </table>
+            <div class="table-element">
+                <div class="table-headlines">In progress <button onclick="addTask()"><svg class="img-hover" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                            <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                            <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                        </svg></button></div>
+                <div id="dragsection-progress" class="dragsection" ondrop="moveTo('in-progress')"
+                    ondragleave="removeHighlight('dragsection-progress')"
+                    ondragover="allowDrop(event); highlight('dragsection-progress')">
+                    <div id="in-progress">
+                    </div>
+                </div>
+            </div>
+            <div class="table-element">
+                <div class="table-headlines">Await feedback <button onclick="addTask()"><svg class="img-hover"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
+                            <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                            <path d="M16 12.0752L8 12.0752" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
+                        </svg></button></div>
+                <div id="dragsection-feedback" class="dragsection" ondrop="moveTo('await-feedback')"
+                    ondragleave="removeHighlight('dragsection-feedback')"
+                    ondragover="allowDrop(event); highlight('dragsection-feedback')">
+                    <div id="await-feedback">
+                    </div>
+                </div>
+            </div>
+            <div class="table-element">
+                <div class="table-headlines">Done</div>
+                <div id="dragsection-done" class="dragsection" ondrop="moveTo('done')"
+                    ondragleave="removeHighlight('dragsection-done')"
+                    ondragover="allowDrop(event); highlight('dragsection-done')">
+                    <div id="done">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <div style="display: none;" id="big-card-bg">
         <div class="d-none" id="big-card">

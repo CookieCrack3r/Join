@@ -57,32 +57,27 @@ input {
     box-shadow: 0px 0px 1px 0px black;
 }
 
-table {
+.complete-table {
     max-width: 1440px;
     margin-top: 50px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
+    margin-left: 54px;
 }
 
-.table-head {
-    max-width: 1440px;
-    height: 28px;
-    display: flex;
-    font-size: 23px;
-    font-weight: 700;
-    padding: 0px 64px 0px 64px;
-    column-gap: 55px;
-    margin-bottom: 10px;
-}
-
-th {
+.table-headlines {
     width: 244px;
     height: 28px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 16px;
 }
 
-table button {
+.complete-table button {
     border: 0;
     background-color: white;
     cursor: pointer;
@@ -93,21 +88,6 @@ table button {
     stroke: #005bf8;
 }
 
-.table-body {
-    max-width: 1440px;
-    height: 600px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    padding: 0px 64px 0px 64px;
-    gap: 24px;
-    overflow-y: auto;
-}
-
-.table-body::-webkit-scrollbar {
-    display: none;
-}
-
 .dragsection {
     height: 100vh;
 }
@@ -115,14 +95,6 @@ table button {
 .dragsection-highlight {
     background-color: #a8a8a81c;
     border-radius: 24px;
-}
-
-td {
-    display: flex;
-    flex-direction: column;
-    width: 244px;
-    height: 28px;
-    gap: 12px;
 }
 
 .no-tasks {
@@ -146,6 +118,7 @@ td {
     height: fit-content;
     cursor: pointer;
     background-color: white;
+    margin-bottom: 16px;
 }
 
 .card:hover {
@@ -469,82 +442,30 @@ td {
 }
 
 @media (max-width: 700px) {
-    .content {
-        margin-left: 0px;
-        margin-top: -38px;
-        display: flex;
-        flex-direction: column;
-        height: 626px;
-        width: 396px;
+    body {
+        overflow-y: auto;
+    }
+
+    .find-task {
+        margin-left: -220px;
+        margin-top: -50px;
     }
 
     .find-task button {
         display: none;
     }
 
-    .find-task {
-        width: 396px;
-        height: 48px;
+    .complete-table {
+        margin-left: -140px;
+        flex-direction: column;
     }
 
-    #big-card {
-        height: 621px;
-        width: 336px;
-        left: 0.5%;
-        overflow-x: hidden;
-    }
-
-    table {
-        width: 396px;
-        margin-top: 20px;
-
-    }
-
-    .table-body {
-        max-width: 0;
-        padding: 0;
-
-    }
-
-    tr {
+    .table-element {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-    }
-
-    th {
-        justify-content: space-between;
-        margin-bottom: 120px;
     }
 
     .dragsection {
-        display: flex;
-        flex-direction: row;
-        height: 88px;
-        width: 285px;
-    }
-
-    #dragsection-to-do{
-        position: fixed;
-        left: 35px;
-    }
-
-    #dragsection-progress {
-        position: fixed;
-        left: 35px;
-        top: 422px;
-    }
-
-    #dragsection-feedback{
-        position: fixed;
-        left: 35px;
-        top: 570px;
-    }
-
-    #dragsection-done{
-        position: fixed;
-        left: 35px;
-        top: 740px;
+        height: 100%;
     }
 }
-
