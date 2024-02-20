@@ -87,10 +87,10 @@ async function showContacts() {
         let contact = contacts[i];
         let initials = getContactInitials(contact.name);
         document.getElementById('contacts').innerHTML += `
-        <div class="contacts" id="${i}">
+        <div class="contacts" id="contact-${i}">
             <div class="signContainer">
                 <div class="sign" style="background-color: ${contact.backgroundColor}">${initials}</div>
-                <div>${contact.name}</div>
+                <div id="added-${i}">${contact.name}</div>
             </div>
             <button type="button" onclick="addContactToTodo(${i})"><img src="imgAddTask/add.svg"></button>
         </div>
@@ -99,7 +99,28 @@ async function showContacts() {
 }
 
 function addContactToTodo(i) {
-    contactsObject.push(contacts[i]);
+    let contactElement = document.getElementById(`added-${i}`);
+    if (contactsObject.some(contact => contact.id === i)) {
+        displayFeedback('Contact already added!');
+    } else {
+        contactsObject.push({
+            ...contacts[i],
+            added: true 
+        });
+
+        contactElement.innerHTML += ' <i>(added)</i>';
+
+        displayFeedback('Contact added successfully!');
+    }
+}
+
+function displayFeedback(message) {
+    const feedbackContainer = document.getElementById('feedback');
+    feedbackContainer.innerHTML = message;
+
+    setTimeout(() => {
+        feedbackContainer.innerHTML = '';
+    }, 1500);
 }
 
 function addSubtask() {

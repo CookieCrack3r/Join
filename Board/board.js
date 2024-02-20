@@ -152,9 +152,6 @@ function generateKanbanHTML(todo) {
     </div>`;
 }
 
-
-
-
 function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
@@ -212,13 +209,9 @@ function generateBigCard(category, title, description, id, date, priority, subta
 function getContacts(id) {
     let names = '';
 
-
     for (let i = 0; i < todo[id].contacts.length; i++) {
-
         names += `<span><img src="img/profile.svg">${todo[id].contacts[i].name}</span>`;
-        
     }
-
     return names;
 }
 
@@ -323,10 +316,6 @@ async function deleteTodo() {
             titleToDelete = bigCardTitleElement.textContent;
             let indexToDelete = todo.findIndex(t => t['title'] === titleToDelete);
             todo.splice(indexToDelete, 1);
-
-            //if (indexToDelete !== -2) {
-            //   todo.splice(indexToDelete, 1);
-            //}
         }
     }
 
