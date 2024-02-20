@@ -174,10 +174,20 @@ async function updateContact(i) {
 async function deleteContact(i) {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
-    contacts.splice(i, 1);
-    await setItem('contacts', JSON.stringify(contacts));
-    closeCard();
-    generateContacts();
+    const contactIdToDelete = contacts[i].id;
+
+    // Find the index of the contact with the specified ID
+    const indexToDelete = contacts.findIndex(contact => contact.id === contactIdToDelete);
+
+    if (indexToDelete !== -1) {
+      // Remove the contact at the found index
+      contacts.splice(indexToDelete, 1);
+      await setItem('contacts', JSON.stringify(contacts));
+      closeCard();
+      generateContacts();
+    } else {
+      console.error('Contact not found for deletion.');
+    }
   } catch (e) {
     console.error('Error deleting contact:', e);
   }
