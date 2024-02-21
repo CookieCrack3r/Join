@@ -65,6 +65,7 @@ input {
     justify-content: space-between;
     margin-left: 54px;
     margin-right: 54px;
+    overflow-y: auto;
 }
 
 .table-headlines {
