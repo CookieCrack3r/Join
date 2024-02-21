@@ -67,5 +67,11 @@ span {
 @media (max-width: 700px) {
     .privacypolicy {
         margin: 10px;
+        
+    }
+
+    .header-pp {
+        font-size: 47px;
+        
     }
 }

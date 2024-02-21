@@ -32,4 +32,8 @@ async function getInitials() {
 }
 
 
+function goToLogin(){
+    window.location.pathname = '/Login/login.html';
+  }
+
 

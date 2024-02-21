@@ -90,4 +90,24 @@ span {
     .privacypolicy {
         margin: 10px;
     }
+
+    .headline h1 {
+        font-size: 47px;
+    }
+
+    h2{
+        font-size: 23px;
+    }
+
+    h3{
+        font-size: 15px;
+    }
+
+    li{
+        margin-left: 3px;
+    }
+
+    #mediaquerry_margin{
+        margin-bottom: 90px;
+    }
 }
