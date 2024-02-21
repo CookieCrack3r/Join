@@ -7,8 +7,6 @@ async function initBoard() {
     await displayOptions();
     await loadTodos();
         updateHTML();
-    
-    
 }
 
 function updateHTML() {

@@ -58,12 +58,13 @@ input {
 }
 
 .complete-table {
-    max-width: 1440px;
+    max-width: 1090px;
     margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-left: 54px;
+    margin-right: 54px;
 }
 
 .table-headlines {
