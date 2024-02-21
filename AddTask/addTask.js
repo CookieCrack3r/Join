@@ -43,13 +43,13 @@ function priorityUrgent() {
 
     document.getElementById('urgent').style.backgroundColor = '#FF3D00';
     document.getElementById('urgent').style.color = 'white';
-    document.getElementById('urgent-img').src = 'imgAddTask/urgent.svg';
+    document.getElementById('urgent-img').src = '/AddTask/imgAddTask/urgent.svg';
     document.getElementById('medium').style.backgroundColor = 'white';
     document.getElementById('medium').style.color = 'black';
-    document.getElementById('medium-img').src = 'imgAddTask/medium.svg';
+    document.getElementById('medium-img').src = '/AddTask/imgAddTask/medium.svg';
     document.getElementById('low').style.backgroundColor = 'white';
     document.getElementById('low').style.color = 'black';
-    document.getElementById('low-img').src = 'imgAddTask/low.png';
+    document.getElementById('low-img').src = '/AddTask/imgAddTask/low.png';
 }
 
 function priorityMedium() {
@@ -57,13 +57,13 @@ function priorityMedium() {
 
     document.getElementById('urgent').style.backgroundColor = 'white';
     document.getElementById('urgent').style.color = 'black';
-    document.getElementById('urgent-img').src = 'imgAddTask/urgent.png';
+    document.getElementById('urgent-img').src = '/AddTask/imgAddTask/urgent.png';
     document.getElementById('medium').style.backgroundColor = '#FFA800';
     document.getElementById('medium').style.color = 'white';
-    document.getElementById('medium-img').src = 'imgAddTask/medium.png';
+    document.getElementById('medium-img').src = '/AddTask/imgAddTask/medium.png';
     document.getElementById('low').style.backgroundColor = 'white';
     document.getElementById('low').style.color = 'black';
-    document.getElementById('low-img').src = 'imgAddTask/low.png';
+    document.getElementById('low-img').src = '/AddTask/imgAddTask/low.png';
 }
 
 function priorityLow() {
@@ -71,13 +71,13 @@ function priorityLow() {
 
     document.getElementById('low').style.backgroundColor = '#7BE129';
     document.getElementById('low').style.color = 'white';
-    document.getElementById('low-img').src = 'imgAddTask/low.svg';
+    document.getElementById('low-img').src = '/AddTask/imgAddTask/low.svg';
     document.getElementById('medium').style.backgroundColor = 'white';
     document.getElementById('medium').style.color = 'black';
-    document.getElementById('medium-img').src = 'imgAddTask/medium.svg';
+    document.getElementById('medium-img').src = '/AddTask/imgAddTask/medium.svg';
     document.getElementById('urgent').style.backgroundColor = 'white';
     document.getElementById('urgent').style.color = 'black';
-    document.getElementById('urgent-img').src = 'imgAddTask/urgent.png';
+    document.getElementById('urgent-img').src = '/AddTask/imgAddTask/urgent.png';
 }
 
 async function showContacts() {
