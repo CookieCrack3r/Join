@@ -461,3 +461,28 @@ h1 {
         display: none;
     }
 }
+
+
+/*Mediaquerry for Iphon ProMax 14*/
+
+@media (max-width: 430px){
+    #addNewContact{
+        height: 700px;
+        width: 396px;
+        border-radius: 30px;
+        top: 100px;
+        left: 17px;
+    }
+}
+
+/*Mediaquerry for samsung s20Ultra*/
+
+@media (max-width: 412px) {
+    #addNewContact{
+        height: 700px;
+        width: 396px;
+        border-radius: 30px;
+        top: 100px;
+        left: 7px;
+    }
+}
