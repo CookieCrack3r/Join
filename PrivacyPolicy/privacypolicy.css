@@ -5,15 +5,22 @@ body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar{
+    display: none;
+}
+
 .privacypolicy {
     max-width: 1023px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-left: 320px;
-    margin-top: 168px;
-    margin-bottom: 35px;
+    margin-left: 226px;
+    overflow-y: auto;
+    border-left: 1px solid lightgray;
+    padding-left: 106px;
+
 }
+
 
 .headline {
     display: flex;
@@ -62,12 +69,14 @@ span {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 30px;
 }
 
 @media (max-width: 700px) {
     .privacypolicy {
         margin: 10px;
-        
+        border-left: none;
+        padding-left: 18px;
     }
 
     .header-pp {
@@ -82,4 +91,6 @@ span {
     span {
         padding-bottom: 95px;
     }
+
+
 }

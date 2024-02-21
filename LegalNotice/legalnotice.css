@@ -10,10 +10,9 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-left: 320px;
-    margin-top: 168px;
-    margin-bottom: 35px;
-    
+    margin-left: 226px;
+    border-left: 1px solid lightgray;    
+    padding-left: 83px;
 }
 
 
@@ -89,6 +88,8 @@ span {
 @media (max-width: 700px) {
     .privacypolicy {
         margin: 10px;
+        border-left: none;
+        padding-left: 18px;
     }
 
     .headline h1 {
