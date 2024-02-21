@@ -74,4 +74,12 @@ span {
         font-size: 47px;
         
     }
+
+    h3{
+        font-size: 23px;
+    }
+
+    span {
+        padding-bottom: 95px;
+    }
 }
