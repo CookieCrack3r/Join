@@ -145,3 +145,40 @@ a:hover{
     height: 95px;
     width: 1032px;
 }
+
+@media (max-width: 700px) {
+    .header-txt {
+        display: none;
+    }
+
+    .left-side-container {
+        display: none;
+    }
+
+    .middle-content-header {
+        width: 323px;
+        height: 56px;
+        top: 144px;
+        font-size: 47px;
+        left: 16px;
+    }
+
+    .arrow-img {
+        left: 365px;
+        top: 161px;
+        position: fixed;
+    }
+
+    .content-container {
+        left: 16px;
+        top: 253px;
+        width: 380px;
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    .subtitle1,
+    .subtitle2{
+        font-size: 28px;
+    }
+}
