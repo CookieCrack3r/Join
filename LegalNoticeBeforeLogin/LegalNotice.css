@@ -1,16 +1,16 @@
-body{
+body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
-header{
+header {
     position: fixed;
     width: 100%;
     height: 96px;
     background-color: #4589FF;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,24 +19,25 @@ header{
     margin-left: 39px;
     max-width: 1440px;
 }
-img{
+
+img {
     height: 56px;
     width: 45.93px;
 }
 
-img:hover{
+img:hover {
     background-color: #005eff0f;
     border-radius: 50%;
     scale: 1.1;
 }
 
-.header-txt{
+.header-txt {
     font-size: 19px;
     color: white;
     font-weight: 400;
 }
 
-.left-side-container{
+.left-side-container {
     position: fixed;
     width: 232px;
     height: 932px;
@@ -45,7 +46,7 @@ img:hover{
     padding: 66px 0px 66px 0px;
 }
 
-.btn-cont{
+.btn-cont {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,7 +54,7 @@ img:hover{
     margin-top: 578px;
 }
 
-button{
+button {
     height: 35px;
     width: 126px;
     border-radius: 10px;
@@ -66,22 +67,22 @@ button{
 
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
     background-color: #487fdc;
 }
 
-a{
+a {
     text-decoration: none;
     color: #4589FF;
 }
 
-a:hover{
+a:hover {
     color: #487fdc;
     text-decoration: underline;
 }
 
-.middle-content-header{
+.middle-content-header {
     position: fixed;
     width: 418px;
     height: 73px;
@@ -91,24 +92,24 @@ a:hover{
     font-weight: 700;
 }
 
-.arrow-middle-content-header{
+.arrow-middle-content-header {
     position: fixed;
     left: 1315px;
     top: 186px;
 
 }
 
-.arrow-middle-content-header img:hover{
+.arrow-middle-content-header img:hover {
     cursor: pointer;
 
 }
 
-.arrow-img{
+.arrow-img {
     height: 37px;
     width: 37px;
 }
 
-.content-container{
+.content-container {
     position: fixed;
     height: 659px;
     width: 1032px;
@@ -121,107 +122,170 @@ a:hover{
     display: none;
 }
 
-.imprint{
+.imprint {
     height: 174px;
     width: 1032px;
 
 }
 
-.imprint span{
+.imprint span {
     font-size: 33px;
     font-weight: 700;
     color: #4589FF;
 }
 
-.exploring-the-board-subtitle{
+.exploring-the-board-subtitle {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
     margin: 0;
 }
 
-p{
+p {
     margin: 0;
 }
 
-.acceptance-of-terms{
+.acceptance-of-terms {
     height: 80px;
     width: 968px;
     margin-top: 44px;
 }
 
-.acceptance-of-terms span{
+.acceptance-of-terms span {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
 }
 
-.scope-and-ownership-of-the-product{
+.scope-and-ownership-of-the-product {
     width: 968px;
     height: 137px;
     margin-top: 26px;
 }
 
-.scope-and-ownership-of-the-product span{
+.scope-and-ownership-of-the-product span {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
 }
 
-.propriertary-rights{
+.propriertary-rights {
     width: 968px;
     height: 61px;
     margin-top: 32px;
 }
 
-.propriertary-rights span{
+.propriertary-rights span {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
 }
 
-.use-of-the-product{
+.use-of-the-product {
     width: 968px;
     height: 80px;
     margin-top: 26px;
 }
 
-.use-of-the-product span{
+.use-of-the-product span {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
 }
 
-.disclaimer-of-warranties-and-limitation-of-liability{
+.disclaimer-of-warranties-and-limitation-of-liability {
     height: 118px;
     width: 968px;
     margin-top: 28px;
 }
 
-.disclaimer-of-warranties-and-limitation-of-liability span{
+.disclaimer-of-warranties-and-limitation-of-liability span {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
 }
 
-.idemnity{
+.idemnity {
     width: 968px;
     height: 156px;
     margin-top: 54px;
 }
 
-.idemnity span{
+.idemnity span {
     font-size: 19px;
     font-weight: 700;
     color: rgba(0, 93, 255, 1);
 }
 
-.highlight-txt{
+.highlight-txt {
     color: #4589FF;
     text-decoration: none;
 
 }
 
-.highlight-txt:hover{
+.highlight-txt:hover {
     cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .header-txt {
+        display: none;
+    }
+
+    .left-side-container {
+        display: none;
+    }
+
+    .middle-content-header {
+        width: 323px;
+        height: 56px;
+        top: 144px;
+        font-size: 47px;
+        left: 16px;
+    }
+
+    .arrow-img {
+        left: 365px;
+        top: 161px;
+        position: fixed;
+    }
+
+    .content-container {
+        left: 16px;
+        top: 253px;
+        width: 380px;
+    }
+
+    .imprint,
+    .acceptance-of-terms,
+    .scope-and-ownership-of-the-product,
+    .propriertary-rights,
+    .use-of-the-product,
+    .disclaimer-of-warranties-and-limitation-of-liability,
+    .idemnity {
+        width: 380px;
+        margin-bottom: 48px;
+    }
+
+    .scope-and-ownership-of-the-product{
+        margin-top: 112px;
+    }
+
+    .propriertary-rights{
+        margin-top: 183px;
+
+        
+    }
+
+    .use-of-the-product{
+        margin-top: 85px;
+    }
+
+    .disclaimer-of-warranties-and-limitation-of-liability{
+        margin-top: 110px;
+    }
+
+    .idemnity{
+        margin-top: 250px;
+    }
 }
