@@ -13,7 +13,9 @@ body {
     margin-left: 320px;
     margin-top: 168px;
     margin-bottom: 35px;
+    
 }
+
 
 .headline {
     display: flex;
@@ -81,6 +83,8 @@ span {
     background-color: white;
     text-decoration: none;
 }
+
+
 
 @media (max-width: 700px) {
     .privacypolicy {

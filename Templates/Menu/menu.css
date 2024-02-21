@@ -78,6 +78,12 @@ aside a:hover {
     background-color: white;
 }
 
+#myElement{
+    position: fixed;
+    max-width: 232px;
+    border-right: 1px solid lightgray;
+}
+
 /*Media-querry*/
 
 @media (max-width: 700px) {
