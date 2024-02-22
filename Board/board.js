@@ -212,7 +212,7 @@ function getContacts(id) {
         console.log(todo[id].contacts);
 
     for (let i = 0; i < todo[id].contacts.length; i++) {
-        names += `<span><img src="img/profile.svg">${todo[id].contacts[i].name}</span>`;
+        names += `<span>${todo[id].contacts[i].name}</span>`;
     }
     return names;
 }
@@ -226,7 +226,7 @@ function getContactsPic(id) {
 
         for (let i = 0; i < todo[id].contacts.length; i++) {
 
-            pics += `<img src="img/profile.svg">`;
+            pics += ``;
 
         }
     }
