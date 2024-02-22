@@ -28,6 +28,18 @@ input {
     margin-right: 10px;
 }
 
+input::-ms-clear {
+    display: none;
+}
+
+input::-ms-reveal {
+    display: none;
+}
+
+input::-webkit-search-cancel-button {
+    display: none;
+}
+
 .icon {
     background: url(img/search.svg) no-repeat right;
 }
