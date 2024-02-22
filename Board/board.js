@@ -3,9 +3,9 @@ let currentDraggedElement;
 
 async function initBoard() {
     await includeHTML();
+    await loadTodos();
     await getInitials();
     await displayOptions();
-    await loadTodos();
     updateHTML();
 }
 
@@ -206,32 +206,38 @@ function generateBigCard(category, title, description, id, date, priority, subta
 }
 
 function getContacts(id) {
-    let names = '';
-
-    if (todo[id])
-        console.log(todo[id].contacts);
-
-    for (let i = 0; i < todo[id].contacts.length; i++) {
-        names += `<span>${todo[id].contacts[i].name}</span>`;
-    }
-    return names;
-}
-
-function getContactsPic(id) {
-    let pics = '';
-
-    console.log("todo id pics");
-
-    if (todo[id]) {
+    try {
+        let names = '';
 
         for (let i = 0; i < todo[id].contacts.length; i++) {
 
-            pics += ``;
-
+            names += `<span>${todo[id].contacts[i].name}</span>`;
         }
-    }
 
-    return pics;
+        return names;
+    } catch (error) {
+        console.error("Error occurred while getting contacts:", error);
+    }
+}
+
+function getContactsPic(id) {
+    try {
+        let pics = '';
+
+        if (todo[id]) {
+
+            for (let i = 0; i < todo[id].contacts.length; i++) {
+
+                pics += ``;
+
+            }
+        }
+
+        return pics;
+
+    }  catch (error) {
+        console.error("Error occurred while getting contacts:", error);
+    }
 }
 
 function editTodo(card) {
@@ -263,7 +269,7 @@ function saveTodo(idInput) {
     todo[idInput].description = textinput;
     todo[idInput].date = dateinput;
 
-    
+
     updateDB();
     updateHTML();
     closeCard();
