@@ -235,9 +235,13 @@ function getContactsPic(id) {
 }
 
 function editTodo(card) {
-    document.getElementById('headline-big').innerHTML = `<input value="${card.title}">`;
-    document.getElementById('description-big').innerHTML = `<textarea>${card.description}</textarea>`;
-    document.getElementById('date-big').innerHTML = `<input type="date" value="${card.date}">`;
+
+    let idInput = card.id;
+
+    document.getElementById('headline-big').innerHTML = `<input id="titleinput" value="${card.title}">`;
+    document.getElementById('description-big').innerHTML = `<textarea id="textinput">${card.description}</textarea>`;
+    document.getElementById('date-big').innerHTML = `<input id="dateinput" type="date" value="${card.date}">`;
+
     document.getElementById('priority-big').innerHTML = `<div class="priority-big-buttons">
        <button type="button" onclick="priorityUrgent()" id="urgent">Urgent<img id="urgent-img"
                src="img/urgent.png"></button>
@@ -246,33 +250,22 @@ function editTodo(card) {
        <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
                src="img/low.png"></button>
     </div>`;
-    document.getElementById('end-section').innerHTML = `<span onclick=saveTodo('${card.id}')><img src=img/save.svg>Save</span>`;
+    document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
+
 }
 
-async function saveTodo(i) {
+function saveTodo(idInput) {
+    let titleinput = document.getElementById('titleinput').value;
+    let textinput = document.getElementById('textinput').value;
+    let dateinput = document.getElementById('dateinput').value;
 
-    const spans = document.querySelectorAll('#end-section');
+    todo[idInput].title = titleinput;
+    todo[idInput].description = textinput;
+    todo[idInput].date = dateinput;
 
-    spans.forEach(span => {
-        const data = {
-            category: span.dataset.category,
-            title: span.dataset.title,
-            description: span.dataset.description,
-            id: span.dataset.id,
-            date: span.dataset.date,
-            priority: span.dataset.priority,
-            subtasks: span.dataset.subtasks
-        };
-
-        console.log(todo[i].description);
-
-        console.log(data[description]);
-
-        
-
-    });
-
+    
     updateDB();
+    updateHTML();
     closeCard();
 }
 
