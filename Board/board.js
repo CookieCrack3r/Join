@@ -6,7 +6,7 @@ async function initBoard() {
     await getInitials();
     await displayOptions();
     await loadTodos();
-        updateHTML();
+    updateHTML();
 }
 
 function updateHTML() {
@@ -207,6 +207,9 @@ function generateBigCard(category, title, description, id, date, priority, subta
 function getContacts(id) {
     let names = '';
 
+    if(todo[id])
+    console.log(todo[id].contacts);
+
     for (let i = 0; i < todo[id].contacts.length; i++) {
         names += `<span><img src="img/profile.svg">${todo[id].contacts[i].name}</span>`;
     }
@@ -216,10 +219,15 @@ function getContacts(id) {
 function getContactsPic(id) {
     let pics = '';
 
-    for (let i = 0; i < todo[id].contacts.length; i++) {
+    console.log("todo id pics");
 
-        pics += `<img src="img/profile.svg">`;
+    if (todo[id]) {
         
+        for (let i = 0; i < todo[id].contacts.length; i++) {
+
+            pics += `<img src="img/profile.svg">`;
+
+        }
     }
 
     return pics;
@@ -242,7 +250,7 @@ function editTodo(card) {
 
 async function saveTodo() {
     updateDB();
-    updateHTML();
+    //updateHTML();
     closeCard();
 }
 

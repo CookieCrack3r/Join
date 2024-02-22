@@ -1,12 +1,17 @@
 let todos = [];
 let subtasks = [];
 let contactsObject = [];
+let contactsAddTask = [];
 
 async function initTask() {
+    todos = JSON.parse(await getItem('todos')) || [];
+
+    contactsAddTask = JSON.parse(await getItem('contacts')) || [];
     await showContacts();
     await getInitials();
     displayOptions();
     await setMinDate();
+
 }
 
 async function addTodo() {
@@ -17,7 +22,6 @@ async function addTodo() {
     let newTodoId = todos_length.length - 1;
     newTodoId++;
 
-    todos = JSON.parse(await getItem('todos')) || [];
     todos.push({
         id: newTodoId,
         title: title.value,
@@ -81,10 +85,10 @@ function priorityLow() {
 }
 
 async function showContacts() {
-    let contacts = JSON.parse(await getItem('contacts')) || [];
-    console.log(contacts);
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+    console.log(todos);
+
+    for (let i = 0; i < contactsAddTask.length; i++) {
+        let contact = contactsAddTask[i];
         let initials = getContactInitials(contact.name);
         document.getElementById('contacts').innerHTML += `
         <div class="contacts" id="contact-${i}">
@@ -99,13 +103,19 @@ async function showContacts() {
 }
 
 function addContactToTodo(i) {
+
     let contactElement = document.getElementById(`added-${i}`);
-    if (contactsObject.some(contact => contact.id === i)) {
+    if (contactsObject.some(contacts => contactsAddTask.id === i)) {
         displayFeedback('Contact already added!');
     } else {
+
         contactsObject.push({
-            ...contacts[i],
-            added: true 
+            id: contactsAddTask[i].id,
+            name: contactsAddTask[i].name,
+            mail: contactsAddTask[i].mail,
+            phone: contactsAddTask[i].phone,
+            backgroundColor: getRandomColor()
+
         });
 
         contactElement.innerHTML += ' <i>(added)</i>';
