@@ -235,7 +235,7 @@ function getContactsPic(id) {
 
         return pics;
 
-    }  catch (error) {
+    } catch (error) {
         console.error("Error occurred while getting contacts:", error);
     }
 }
@@ -280,17 +280,20 @@ function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
 
+    console.log(todo[0].subtasks);
+    console.log(todo[id]);
 
     for (let i = 0; i < todo[id].subtasks.length; i++) {
         let subtaskText = todo[id].subtasks[i]['text'];
         let subtaskChecked = todo[id].subtasks[i]['checked'];
-
 
         let checkboxId = `checkbox${i}`;
 
         checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtaskChecked ? 'checked' : ''} onchange="updateSubtaskStatus(${i}, ${id})"> ${subtaskText}<br>`;
     }
 }
+
+
 
 function updateSubtaskStatus(i, id) {
 
