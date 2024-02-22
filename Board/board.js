@@ -314,7 +314,12 @@ function getCompletedSubtaskCount(todo, id) {
 }
 
 function filterTodos() {
-    let searchInput = document.getElementById('search').value.toLowerCase();
+    let searchInput = document.getElementById('search').value.trim().toLowerCase();
+
+    if (searchInput === '') {
+        alert('Invalid input. Please do not enter a newline character at the beginning.');
+        return;
+    }
 
     let filteredTodos = todo.filter(t => t['title'].toLowerCase().includes(searchInput));
 
