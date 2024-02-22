@@ -196,6 +196,7 @@ function generateBigCard(category, title, description, id, date, priority, subta
                 category: '${category}',
                 title: '${title}',
                 description: '${description}',
+                id: '${id}',
                 date: '${date}',
                 priority: '${priority}',
                 subtasks: '${subtasks}'
@@ -207,8 +208,8 @@ function generateBigCard(category, title, description, id, date, priority, subta
 function getContacts(id) {
     let names = '';
 
-    if(todo[id])
-    console.log(todo[id].contacts);
+    if (todo[id])
+        console.log(todo[id].contacts);
 
     for (let i = 0; i < todo[id].contacts.length; i++) {
         names += `<span><img src="img/profile.svg">${todo[id].contacts[i].name}</span>`;
@@ -222,7 +223,7 @@ function getContactsPic(id) {
     console.log("todo id pics");
 
     if (todo[id]) {
-        
+
         for (let i = 0; i < todo[id].contacts.length; i++) {
 
             pics += `<img src="img/profile.svg">`;
@@ -245,12 +246,33 @@ function editTodo(card) {
        <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
                src="img/low.png"></button>
     </div>`;
-    document.getElementById('end-section').innerHTML = `<span onclick=saveTodo('${card.title}', '${card.description}', '${card.date}')><img src=img/save.svg>Save</span>`;
+    document.getElementById('end-section').innerHTML = `<span onclick=saveTodo('${card.id}')><img src=img/save.svg>Save</span>`;
 }
 
-async function saveTodo() {
+async function saveTodo(i) {
+
+    const spans = document.querySelectorAll('#end-section');
+
+    spans.forEach(span => {
+        const data = {
+            category: span.dataset.category,
+            title: span.dataset.title,
+            description: span.dataset.description,
+            id: span.dataset.id,
+            date: span.dataset.date,
+            priority: span.dataset.priority,
+            subtasks: span.dataset.subtasks
+        };
+
+        console.log(todo[i].description);
+
+        console.log(data[description]);
+
+        
+
+    });
+
     updateDB();
-    //updateHTML();
     closeCard();
 }
 
