@@ -190,7 +190,7 @@ function generateBigCard(category, title, description, id, date, priority, subta
             <span id="checkboxes"></span>
         </div>
         <div class="end-section" id="end-section">
-            <span onclick="deleteTodo()"><img src="img/delete.svg">Delete</span>
+            <span onclick="deleteTodo(${id})"><img src="img/delete.svg">Delete</span>
             |
             <span onclick="editTodo({
                 category: '${category}',
@@ -332,12 +332,12 @@ function filterTodos() {
     }
 }
 
-async function deleteTodo() {
+async function deleteTodo(id) {
     let titleToDelete = '';
 
-    if (currentDraggedElement !== undefined) {
-        titleToDelete = todo[currentDraggedElement]['title'];
-        todo.splice(currentDraggedElement, 1);
+    if (todo[id] !== undefined) {
+        titleToDelete = todo[id]['title'];
+        todo.splice(id, 1);
     } else {
         let bigCardTitleElement = document.querySelector('.headline-big');
         if (bigCardTitleElement) {
