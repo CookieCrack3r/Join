@@ -132,19 +132,22 @@ function displayFeedback(message) {
 }
 
 function addSubtask() {
-    let subtask = document.getElementById('subtasks').value;
+    let subtaskInput = document.getElementById('subtasks');
+    let subtaskText = subtaskInput.value.trim();
 
-    document.getElementById('subtasks-list').innerHTML += `
-    <li>${subtask}</li>
-`;
+    if (subtaskText !== '') {
+        document.getElementById('subtasks-list').innerHTML += `<li>${subtaskText}</li>`;
 
-    document.getElementById('subtasks').value = '';
+        let subtasksObject = {
+            text: subtaskText,
+            checked: false // Standardmäßig auf false setzen
+        };
+        subtasks.push(subtasksObject);
 
-    let subtasksObject = {
-        text: subtask,
-        checked: false // Standardmäßig auf false setzen
-    };
-    subtasks.push(subtasksObject);
+        subtaskInput.value = '';
+    } else {
+        displayFeedback('Subtask cannot be empty!');
+    }
 }
 
 async function setMinDate() {
@@ -167,25 +170,12 @@ async function clearInputs() {
     document.getElementById('descritpion').value = '';
     document.getElementById('selectedDate').value = '';
     
-    document.getElementById('urgent').style.backgroundColor = 'white';
-    document.getElementById('urgent').style.color = 'black';
-    document.getElementById('urgent-img').src = 'imgAddTask/urgent.png';
-
-    document.getElementById('medium').style.backgroundColor = '#FFA800';
-    document.getElementById('medium').style.color = 'white';
-    document.getElementById('medium-img').src = '/AddTask/imgAddTask/medium.png';
-
-    document.getElementById('low').style.backgroundColor = 'white';
-    document.getElementById('low').style.color = 'black';
-    document.getElementById('low-img').src = 'imgAddTask/low.png';
-
-    document.getElementById('contacts').innerHTML = '';
-
     document.getElementById('category').selectedIndex = 0;
 
     document.getElementById('subtasks').value = '';
     document.getElementById('subtasks-list').innerHTML = '';
 
+    priorityMedium();
     await showContacts();
 }
 
