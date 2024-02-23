@@ -34,36 +34,43 @@ function updateToDo() {
 
     document.getElementById('todo').innerHTML = '';
 
-    for (let i = 0; i < to_do.length; i++) {
-        let todo = to_do[i];
-        document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-
+    if (to_do.length === 0) {
+        document.getElementById('todo').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < to_do.length; i++) {
+            let todo = to_do[i];
+            document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
-
 
 function updateInProgress() {
     let progress = todo.filter(t => t['status'] == 'in-progress');
 
     document.getElementById('in-progress').innerHTML = '';
 
-    for (let i = 0; i < progress.length; i++) {
-
-        let todo = progress[i];
-        document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
-
+    if (progress.length === 0) {
+        document.getElementById('in-progress').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < progress.length; i++) {
+            let todo = progress[i];
+            document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
 
 function updateAwaitFeedback() {
-    let await = todo.filter(t => t['status'] == 'await-feedback');
+    let awaitFeedback = todo.filter(t => t['status'] == 'await-feedback');
 
     document.getElementById('await-feedback').innerHTML = '';
 
-    for (let i = 0; i < await.length; i++) {
-
-        let todo = await[i];
-        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
+    if (awaitFeedback.length === 0) {
+        document.getElementById('await-feedback').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < awaitFeedback.length; i++) {
+            let todo = awaitFeedback[i];
+            document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
 
@@ -72,10 +79,13 @@ function updateDone() {
 
     document.getElementById('done').innerHTML = '';
 
-    for (let i = 0; i < done.length; i++) {
-        let todo = done[i];
-        document.getElementById('done').innerHTML += generateKanbanHTML(todo);
-
+    if (done.length === 0) {
+        document.getElementById('done').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < done.length; i++) {
+            let todo = done[i];
+            document.getElementById('done').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
 
