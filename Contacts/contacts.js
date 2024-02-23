@@ -34,7 +34,6 @@ async function loadContacts() {
     console.error('Loading error:', e);
 
   }
-
 }
 
 function addContact() {
@@ -128,25 +127,26 @@ function editContact(i) {
         <h1>Edit Contact</h1>
       </div>
       <div class="addContactInfo">
-        <img src="img/icon.svg">
-        <div class="inputDiv">
-          <input id="editName" type="text" placeholder="Name" value="${contact.name}">
-          <img src="img/person.svg">
-        </div>
-        <div class="inputDiv">
-          <input id="editMail" type="email" placeholder="E-Mail" value="${contact.mail}">
-          <img src="img/mail.svg">
-        </div>
-        <div class="inputDiv">
-          <input id="editPhone" type="text" placeholder="Phone" value="${contact.phone}">
-          <img src="img/call.svg">
-        </div>
-      </div>
-      <div class="addContactButtons">
-        <button id="deleteButton" onclick="deleteContact(${i})">Delete</button>
-        <button id="saveButton" onclick="updateContact(${i})">Save<img src="img/check.svg"></button>
-      </div>
-    </div>
+      <img src="img/icon.svg">
+      <form onsubmit="updateContact(${i}); return false;">
+          <div class="inputDiv">
+              <input id="editName" required type="text" placeholder="Name" value="${contact.name}">
+              <img src="img/person.svg">
+          </div>
+          <div class="inputDiv">
+              <input id="editMail" required type="email" placeholder="E-Mail" value="${contact.mail}">
+              <img src="img/mail.svg">
+          </div>
+          <div class="inputDiv">
+              <input id="editPhone" required pattern="^[0-9]{5,20}$" type="text" placeholder="Phone" value="${contact.phone}">
+              <img src="img/call.svg">
+          </div>
+          <div class="addContactButtons">
+              <button id="deleteButton" onclick="deleteContact(${i})">Delete</button>
+              <button id="saveButton" type="submit">Save<img src="img/check.svg"></button>
+          </div>
+      </form>
+  </div>
   `;
 }
 

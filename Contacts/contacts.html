@@ -48,13 +48,13 @@
                             <img src="img/mail.svg">
                         </div>
                         <div class="inputDiv">
-                            <input type="text" required id="phone" placeholder="Phone">
+                            <input type="tel" pattern="^[0-9]{5,20}$" required id="phone" placeholder="Phone">
                             <img src="img/call.svg">
                         </div>
                     </div>
                     <div class="addContactButtons">
-                        <button id="cancel" onclick="closeCard()">Cancel</button>
-                        <button id="create" onsubmit="createContact()">Create Contact <img src="img/check.svg"></button>
+                        <button id="cancel" type="button" onclick="closeCard()">Cancel</button>
+                        <button id="create" type="submit">Create Contact <img src="img/check.svg"></button>
                     </div></form>
                 </div>
             </div>
