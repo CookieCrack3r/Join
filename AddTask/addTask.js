@@ -103,23 +103,21 @@ async function showContacts() {
 }
 
 function addContactToTodo(i) {
-
     let contactElement = document.getElementById(`added-${i}`);
-    if (contactsObject.some(contacts => contactsAddTask.id === i)) {
+    let contactToAdd = contactsAddTask[i];
+
+    if (contactsObject.some(existingContact => existingContact.id === contactToAdd.id)) {
         displayFeedback('Contact already added!');
     } else {
-
         contactsObject.push({
-            id: contactsAddTask[i].id,
-            name: contactsAddTask[i].name,
-            mail: contactsAddTask[i].mail,
-            phone: contactsAddTask[i].phone,
+            id: contactToAdd.id,
+            name: contactToAdd.name,
+            mail: contactToAdd.mail,
+            phone: contactToAdd.phone,
             backgroundColor: getRandomColor()
-
         });
 
         contactElement.innerHTML += ' <i>(added)</i>';
-
         displayFeedback('Contact added successfully!');
     }
 }
