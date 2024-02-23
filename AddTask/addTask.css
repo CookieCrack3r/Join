@@ -372,12 +372,18 @@ select:hover {
 /*////Mediaquerry////*/
 
 @media (max-width: 700px) {
+    .feedback-container {
+        background-color: rgba(255, 255, 255, 0);
+    }
 
     .buttons{
         margin-left: 50px;
         height: 50px;
         margin-bottom: 70px;
+        top: 790px;
+        
     }
+
     #clear{
         display: none;
     }
@@ -503,5 +509,56 @@ select:hover {
     
     }
 
+}
 
+@media (max-width: 400px) {
+    .priority-buttons{
+        width: 320px;
+        justify-content: center;
+        margin-left: -10px;
+        gap: 2px;
+    }
+
+    .priority-buttons button{
+        width: 100px;
+    }
+
+    .subtask-input-field,
+    select,
+    .contacts,
+    #selectedDate {
+        width: 290px;
+    }
+
+    #descritpion,
+    #title {
+        width: 270px;
+    }
+
+    .subtask-input-field {
+        margin-left: -100px;
+    }
+
+    .buttons {
+        top: 810px;
+    }
+
+    #create {
+        margin-left: 36px;
+        font-size: 16px;
+        height: 32px;
+    }
+
+    #create img {
+        height: 16px;
+        width: 16px;
+    }
+
+    .list {
+        top: 750px;
+    }
+
+    .list li {
+        width: 290px;
+    }
 }

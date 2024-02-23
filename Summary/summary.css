@@ -444,3 +444,29 @@ body {
         left: 240px;
     }
 }
+
+@media (max-width: 400px) {
+    .under-task-section,
+    .middle-section,
+    .greet-container,
+    .content-container {
+        width: 320px;
+    }
+
+    .task-in-board,
+    .task-urgent {
+        width: 318px;
+        height: 150px;
+        padding: 23px 28px 23px 28px;
+    }
+
+    .task-to-do,
+    .task-in-progress,
+    .awaiting-feedback,
+    .tasks-done {
+        width: 150px;
+        height: 152px;
+        padding: 15px 40px 15px 40px;
+
+    }
+}

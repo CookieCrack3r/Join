@@ -367,3 +367,14 @@ a:hover {
         }
     }
 }
+
+@media (max-width: 380px) {
+    .login-box-center {
+        width: 320px;
+    }
+
+    .above-signup-right-corner {
+        position: fixed;
+        left: 4%;
+    }
+}

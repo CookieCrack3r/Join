@@ -246,3 +246,13 @@ form button:hover{
      }
  
 }
+
+@media (max-width: 380px) {
+    .login-box-center {
+        width: 320px;
+    }
+
+    .input {
+        width: 200px;
+    }
+}

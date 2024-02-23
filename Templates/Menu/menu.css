@@ -141,3 +141,9 @@ aside a:hover {
         margin-top: 8px;
     }
 }
+
+@media (max-width: 400px) {
+    aside ul {
+        width: 280px;
+    }
+}
