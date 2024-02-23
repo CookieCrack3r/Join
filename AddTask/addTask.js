@@ -136,7 +136,8 @@ function addSubtask() {
     let subtaskText = subtaskInput.value.trim();
 
     if (subtaskText !== '') {
-        document.getElementById('subtasks-list').innerHTML += `<li>${subtaskText}</li>`;
+        let subtaskIndex = subtasks.length;
+        document.getElementById('subtasks-list').innerHTML += `<li><span>${subtaskText}</span><input type="text" id="editSubtaskInput${subtaskIndex}" style="display: none;"><div><button onclick="editSubtask(${subtaskIndex})"><img src="imgAddTask/edit.svg"></button><button onclick="deleteSubtask(${subtaskIndex})"><img src="imgAddTask/delete.svg"></button></div></li>`;
 
         let subtasksObject = {
             text: subtaskText,
@@ -148,6 +149,37 @@ function addSubtask() {
     } else {
         displayFeedback('Subtask cannot be empty!');
     }
+}
+
+function editSubtask(index) {
+    let subtaskElement = document.getElementById(`editSubtaskInput${index}`);
+    let subtaskSpan = document.querySelector(`#subtasks-list li:nth-child(${index + 1}) span`);
+
+    if (subtaskElement.style.display === 'none') {
+        subtaskElement.style.display = 'inline';
+        subtaskElement.value = subtasks[index].text;
+        subtaskSpan.style.display = 'none';
+        subtaskElement.focus();
+    } else {
+        subtasks[index].text = subtaskElement.value;
+        subtaskSpan.textContent = subtasks[index].text;
+        subtaskElement.style.display = 'none';
+        subtaskSpan.style.display = 'inline';
+    }
+}
+
+function deleteSubtask(index) {
+    subtasks.splice(index, 1);
+    displaySubtasks();
+}
+
+function displaySubtasks() {
+    let subtasksList = document.getElementById('subtasks-list');
+    subtasksList.innerHTML = '';
+    
+    subtasks.forEach((subtask, index) => {
+        subtasksList.innerHTML += `<li>${subtask.text}<div><button><img src="imgAddTask/edit.svg"></button><button onclick="deleteSubtask(${index})"><img src="imgAddTask/delete.svg"></button></div></li>`;
+    });
 }
 
 async function setMinDate() {

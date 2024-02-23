@@ -349,6 +349,25 @@ select:hover {
     left: 144.26px;
 }
 
+.list li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.list li img {
+    padding: 5px;
+}
+
+.list button {
+    background-color: white;
+    border: none;
+}
+
+.list button:hover {
+    cursor: pointer;
+}
 
 /*////Mediaquerry////*/
 
