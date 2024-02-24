@@ -86,7 +86,7 @@ function openContact(i) {
       <span>${contact.name}</span>
       <span>
           <button onclick="editContact(${i})"><img src="img/edit.svg">Edit</button>
-          <button onclick="deleteContact(${i})"><img src="img/delete.svg">Delete</button>
+          <button onclick="deleteContactByName('${contact.name}')"><img src="img/delete.svg">Delete</button>
       </span>
   </div>
 </div>
@@ -142,7 +142,7 @@ function editContact(i) {
               <img src="img/call.svg">
           </div>
           <div class="addContactButtons">
-              <button id="deleteButton" onclick="deleteContact(${i})">Delete</button>
+              <button id="deleteButton" type="button" onclick="deleteContactByName('${contact.name}')">Delete</button>
               <button id="saveButton" type="submit">Save<img src="img/check.svg"></button>
           </div>
       </form>
@@ -171,17 +171,19 @@ async function updateContact(i) {
 }
 
 
-async function deleteContact(i) {
+async function deleteContactByName(contactName) {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
+    
+    const indexToDelete = contacts.findIndex(contact => contact.name === contactName);
 
-    if (i >= 0 && i < contacts.length) {
-      contacts.splice(i, 1);
+    if (indexToDelete !== -1) {
+      contacts.splice(indexToDelete, 1);
       await setItem('contacts', JSON.stringify(contacts));
       closeCard();
       generateContacts();
     } else {
-      console.error('Invalid index for contact deletion.');
+      console.error('Contact with name ' + contactName + ' not found.');
     }
   } catch (e) {
     console.error('Error deleting contact:', e);
