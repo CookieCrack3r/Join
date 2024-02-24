@@ -455,6 +455,11 @@ input::-webkit-search-cancel-button {
     display: none;
 }
 
+#checkboxes input[type="text"] {
+    width: 200px;
+    margin-top: 8px;
+}
+
 @media (max-width: 700px) {
     body {
         overflow-y: auto;

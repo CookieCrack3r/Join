@@ -251,7 +251,6 @@ function getContactsPic(id) {
 }
 
 function editTodo(card) {
-
     let idInput = card.id;
 
     document.getElementById('headline-big').innerHTML = `<input id="titleinput" value="${card.title}">`;
@@ -266,8 +265,22 @@ function editTodo(card) {
        <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
                src="img/low.png"></button>
     </div>`;
-    document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
 
+    document.getElementById('checkboxes').innerHTML = '';
+
+    for (let i = 0; i < todo[idInput].subtasks.length; i++) {
+        let subtaskText = todo[idInput].subtasks[i]['text'];
+        let subtaskChecked = todo[idInput].subtasks[i]['checked'];
+
+        let checkboxId = `checkbox${i}`;
+
+        document.getElementById('checkboxes').innerHTML += `
+            <div>
+                <input type="text" id="${checkboxId}" value="${subtaskText}" ${subtaskChecked ? 'checked' : ''}>
+            </div>`;
+    }
+
+    document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
 }
 
 function saveTodo(idInput) {
@@ -279,12 +292,16 @@ function saveTodo(idInput) {
     todo[idInput].description = textinput;
     todo[idInput].date = dateinput;
 
+    for (let i = 0; i < todo[idInput].subtasks.length; i++) {
+        let checkboxId = `checkbox${i}`;
+        todo[idInput].subtasks[i]['text'] = document.getElementById(checkboxId).value;
+        todo[idInput].subtasks[i]['checked'] = document.getElementById(checkboxId).checked;
+    }
 
     updateDB();
     updateHTML();
     closeCard();
 }
-
 
 function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
