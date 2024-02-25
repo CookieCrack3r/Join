@@ -378,3 +378,26 @@ a:hover {
         left: 4%;
     }
 }
+
+
+@media (max-width: 350px) {
+
+    .login-box-center{
+        width: 300px;
+    }
+
+    .email-input, .password-input{
+        width: 60%;
+    }
+
+    .above-signup-right-corner{
+        top: 675px;
+        left: 4%;
+
+    }
+
+    .privacy-policy-and-legal-notice-container{
+        margin-top: 85px;
+    }
+    
+}
