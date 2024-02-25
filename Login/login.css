@@ -384,6 +384,8 @@ a:hover {
 
     .login-box-center{
         width: 300px;
+        margin-top: 50px;
+
     }
 
     .email-input, .password-input{
@@ -391,7 +393,7 @@ a:hover {
     }
 
     .above-signup-right-corner{
-        top: 675px;
+        top: 605px;
         left: 4%;
 
     }
