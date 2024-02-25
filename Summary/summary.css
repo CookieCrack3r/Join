@@ -469,4 +469,30 @@ body {
         padding: 15px 40px 15px 40px;
 
     }
+
+    .date-container span{
+        font-size: 15px;
+        padding-left: 3px;
+    }
+
+    .date-container p{
+        font-size: 13.2px;
+        padding-left: 3px;
+    }
+
+    .task-urgent{
+        width: 305px;
+    }
+
+    .task-in-board{
+        width: 300px;
+    }
+
+    .task-in-board span{
+        font-size: 16px;
+    }
+
+    .under-task-section{
+        column-gap: 5px;
+    }
 }

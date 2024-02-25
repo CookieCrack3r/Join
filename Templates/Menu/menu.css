@@ -144,6 +144,16 @@ aside a:hover {
 
 @media (max-width: 400px) {
     aside ul {
-        width: 280px;
+        width: 320px;
     }
+
+    #options{
+        left: 150px;
+    }
+
+    aside a{
+        font-size: 13px;
+        width: 63px;
+    }
+   
 }
