@@ -86,6 +86,7 @@ function priorityLow() {
 
 async function showContacts() {
     console.log(todos);
+    document.getElementById('contacts').innerHTML = '';
 
     for (let i = 0; i < contactsAddTask.length; i++) {
         let contact = contactsAddTask[i];
@@ -208,6 +209,10 @@ async function clearInputs() {
     document.getElementById('subtasks-list').innerHTML = '';
 
     priorityMedium();
+    
+    contactsAddTask = JSON.parse(await getItem('contacts')) || [];
+    contactsObject = [];
+
     await showContacts();
 }
 
