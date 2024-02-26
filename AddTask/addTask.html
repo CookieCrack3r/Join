@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="addTask.css">
-    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/fonts.css">
     <link rel="stylesheet" type="text/css" href="/Templates/Menu/menu.css">
     <link rel="icon" type="image/svg" href="imgAddTask/favicon_join.svg">
     <link rel="stylesheet" href="/Summary/summary.css">
@@ -56,7 +56,6 @@
             <div class="select">
                 <span><b>Category</b></span>
                 <select id="category" name="selectcategory">
-                    <option>Select task category</option>
                     <option>Technical</option>
                     <option>Design</option>
                 </select>
@@ -67,20 +66,22 @@
                     <div class="subtask-input-field"><input id="subtasks" type="text" placeholder="Add new Subtask">
                         <img src="imgAddTask/add.svg" onclick="addSubtask()">
                     </div>
-                    <ul id="subtasks-list">
-                    </ul>
+                    <div class="listSubtasks">
+                        <ul class="list" id="subtasks-list">
+                        </ul>
+                    </div>
                 </div>
             </div>
     </div>
     <div class="buttons">
-        <button id="clear">Clear <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+        <button type="button" id="clear" onclick="clearInputs()">Clear <svg width="14" height="13" viewBox="0 0 14 13"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M7.00106 6.49984L12.2441 11.7428M1.75806 11.7428L7.00106 6.49984L1.75806 11.7428ZM12.2441 1.25684L7.00006 6.49984L12.2441 1.25684ZM7.00006 6.49984L1.75806 1.25684L7.00006 6.49984Z"
                     stroke="#647188" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg></button>
-        <button onsubmit="addTodo()" type="submit" id="create">Create Task <svg width="16" height="13"
-                viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button type="submit" id="create">Create Task <svg width="16" height="13" viewBox="0 0 16 13" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M5.55021 9.65L14.0252 1.175C14.2252 0.975 14.4627 0.875 14.7377 0.875C15.0127 0.875 15.2502 0.975 15.4502 1.175C15.6502 1.375 15.7502 1.6125 15.7502 1.8875C15.7502 2.1625 15.6502 2.4 15.4502 2.6L6.25021 11.8C6.05021 12 5.81687 12.1 5.55021 12.1C5.28354 12.1 5.05021 12 4.85021 11.8L0.550207 7.5C0.350207 7.3 0.254374 7.0625 0.262707 6.7875C0.27104 6.5125 0.375207 6.275 0.575207 6.075C0.775207 5.875 1.01271 5.775 1.28771 5.775C1.56271 5.775 1.80021 5.875 2.00021 6.075L5.55021 9.65Z"
                     fill="white" />

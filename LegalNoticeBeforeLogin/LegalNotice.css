@@ -128,7 +128,7 @@ a:hover {
 
 }
 
-.imprint span {
+.headlineImprint {
     font-size: 33px;
     font-weight: 700;
     color: #4589FF;
@@ -237,7 +237,7 @@ p {
     }
 
     .middle-content-header {
-        width: 323px;
+        width: 90%;
         height: 56px;
         top: 144px;
         font-size: 47px;
@@ -253,37 +253,24 @@ p {
     .content-container {
         left: 16px;
         top: 253px;
-        width: 380px;
+        width: 80%;
     }
 
-    .imprint,
-    .acceptance-of-terms,
-    .scope-and-ownership-of-the-product,
-    .propriertary-rights,
-    .use-of-the-product,
-    .disclaimer-of-warranties-and-limitation-of-liability,
-    .idemnity {
-        width: 380px;
-        margin-bottom: 48px;
+}
+
+@media (max-width: 400px) {
+    .middle-content-header {
+        width: 90%;
+        height: 56px;
+        top: 144px;
+        font-size: 40px;
+        left: 16px;
     }
 
-    .scope-and-ownership-of-the-product{
-        margin-top: 112px;
+    .arrow-img {
+        left: 280px;
+        top: 161px;
+        position: fixed;
     }
 
-    .propriertary-rights{
-        margin-top: 183px;
-    }
-
-    .use-of-the-product{
-        margin-top: 85px;
-    }
-
-    .disclaimer-of-warranties-and-limitation-of-liability{
-        margin-top: 110px;
-    }
-
-    .idemnity{
-        margin-top: 250px;
-    }
 }

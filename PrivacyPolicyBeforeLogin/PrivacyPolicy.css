@@ -156,7 +156,7 @@ a:hover{
     }
 
     .middle-content-header {
-        width: 323px;
+        width: 90%;
         height: 56px;
         top: 144px;
         font-size: 47px;
@@ -172,13 +172,48 @@ a:hover{
     .content-container {
         left: 16px;
         top: 253px;
-        width: 380px;
+        width: 90%;
         height: 600px;
         overflow-y: auto;
+        overflow-x: none;
     }
 
     .subtitle1,
     .subtitle2{
         font-size: 28px;
     }
+}
+
+@media (max-width: 400px) {
+    .middle-content-header {
+        width: 90%;
+        height: 56px;
+        top: 144px;
+        font-size: 40px;
+        left: 16px;
+    }
+
+    .arrow-img {
+        left: 320px;
+        top: 161px;
+        position: fixed;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .middle-content-header {
+        width: 90%;
+        height: 56px;
+        top: 144px;
+        font-size: 38px;
+        left: 16px;
+    }
+
+    .arrow-img {
+        left: 280px;
+        top: 161px;
+        position: fixed;
+    }
+
 }

@@ -141,3 +141,19 @@ aside a:hover {
         margin-top: 8px;
     }
 }
+
+@media (max-width: 400px) {
+    aside ul {
+        width: 320px;
+    }
+
+    #options{
+        left: 150px;
+    }
+
+    aside a{
+        font-size: 13px;
+        width: 63px;
+    }
+   
+}

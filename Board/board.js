@@ -34,36 +34,43 @@ function updateToDo() {
 
     document.getElementById('todo').innerHTML = '';
 
-    for (let i = 0; i < to_do.length; i++) {
-        let todo = to_do[i];
-        document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
-
+    if (to_do.length === 0) {
+        document.getElementById('todo').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < to_do.length; i++) {
+            let todo = to_do[i];
+            document.getElementById('todo').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
-
 
 function updateInProgress() {
     let progress = todo.filter(t => t['status'] == 'in-progress');
 
     document.getElementById('in-progress').innerHTML = '';
 
-    for (let i = 0; i < progress.length; i++) {
-
-        let todo = progress[i];
-        document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
-
+    if (progress.length === 0) {
+        document.getElementById('in-progress').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < progress.length; i++) {
+            let todo = progress[i];
+            document.getElementById('in-progress').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
 
 function updateAwaitFeedback() {
-    let await = todo.filter(t => t['status'] == 'await-feedback');
+    let awaitFeedback = todo.filter(t => t['status'] == 'await-feedback');
 
     document.getElementById('await-feedback').innerHTML = '';
 
-    for (let i = 0; i < await.length; i++) {
-
-        let todo = await[i];
-        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
+    if (awaitFeedback.length === 0) {
+        document.getElementById('await-feedback').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < awaitFeedback.length; i++) {
+            let todo = awaitFeedback[i];
+            document.getElementById('await-feedback').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
 
@@ -72,10 +79,13 @@ function updateDone() {
 
     document.getElementById('done').innerHTML = '';
 
-    for (let i = 0; i < done.length; i++) {
-        let todo = done[i];
-        document.getElementById('done').innerHTML += generateKanbanHTML(todo);
-
+    if (done.length === 0) {
+        document.getElementById('done').innerHTML = '<span class="no-tasks">No tasks added</span>';
+    } else {
+        for (let i = 0; i < done.length; i++) {
+            let todo = done[i];
+            document.getElementById('done').innerHTML += generateKanbanHTML(todo);
+        }
     }
 }
 
@@ -241,7 +251,6 @@ function getContactsPic(id) {
 }
 
 function editTodo(card) {
-
     let idInput = card.id;
 
     document.getElementById('headline-big').innerHTML = `<input id="titleinput" value="${card.title}">`;
@@ -256,8 +265,22 @@ function editTodo(card) {
        <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
                src="img/low.png"></button>
     </div>`;
-    document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
 
+    document.getElementById('checkboxes').innerHTML = '';
+
+    for (let i = 0; i < todo[idInput].subtasks.length; i++) {
+        let subtaskText = todo[idInput].subtasks[i]['text'];
+        let subtaskChecked = todo[idInput].subtasks[i]['checked'];
+
+        let checkboxId = `checkbox${i}`;
+
+        document.getElementById('checkboxes').innerHTML += `
+            <div>
+                <input type="text" id="${checkboxId}" value="${subtaskText}" ${subtaskChecked ? 'checked' : ''}>
+            </div>`;
+    }
+
+    document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
 }
 
 function saveTodo(idInput) {
@@ -269,12 +292,16 @@ function saveTodo(idInput) {
     todo[idInput].description = textinput;
     todo[idInput].date = dateinput;
 
+    for (let i = 0; i < todo[idInput].subtasks.length; i++) {
+        let checkboxId = `checkbox${i}`;
+        todo[idInput].subtasks[i]['text'] = document.getElementById(checkboxId).value;
+        todo[idInput].subtasks[i]['checked'] = document.getElementById(checkboxId).checked;
+    }
 
     updateDB();
     updateHTML();
     closeCard();
 }
-
 
 function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
@@ -392,7 +419,7 @@ async function getInitials() {
     UserInitials = await getItem('userInitial');
     UserName = await getItem('userName');
     const kanban = document.getElementById("kanban");
-    kanban.innerHTML += `<div onclick="displayOptions()" id="initials">
+    kanban.innerHTML += `<div onclick="displayOptions()">
       ${UserInitials}
       </div>`;
 }

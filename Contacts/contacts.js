@@ -21,6 +21,10 @@ async function createContact() {
     backgroundColor: getRandomColor()
   });
 
+  nameInput.value = '';
+  mail.value = '';
+  phone.value = '';
+
   await setItem('contacts', JSON.stringify(contacts));
   closeCard();
   generateContacts();
@@ -34,7 +38,6 @@ async function loadContacts() {
     console.error('Loading error:', e);
 
   }
-
 }
 
 function addContact() {
@@ -79,6 +82,8 @@ function openContact(i) {
   const contact = contacts[i];
   const initials = getContactInitials(contact.name);
 
+  highlightContactByName(contact.name);
+
   document.getElementById('contactContent').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
@@ -87,7 +92,7 @@ function openContact(i) {
       <span>${contact.name}</span>
       <span>
           <button onclick="editContact(${i})"><img src="img/edit.svg">Edit</button>
-          <button onclick="deleteContact(${i})"><img src="img/delete.svg">Delete</button>
+          <button onclick="deleteContactByName('${contact.name}')"><img src="img/delete.svg">Delete</button>
       </span>
   </div>
 </div>
@@ -99,6 +104,26 @@ function openContact(i) {
   <span><b>Phone</b><br><br>${contact.phone}</span>
 </div>
   `;
+}
+
+function highlightContactByName(contactName) {
+  const normalizedContactName = contactName.trim().toLowerCase();
+
+  const contactsElements = document.querySelectorAll('.contact');
+  
+  contactsElements.forEach(contactElement => {
+      contactElement.classList.remove('highlighted-contact');
+  });
+  
+  const selectedContactElement = Array.from(contactsElements).find(contactElement => {
+      const contact = contacts.find(c => c.id == contactElement.id);
+      const normalizedComparisonName = contact ? contact.name.trim().toLowerCase() : '';
+      return normalizedComparisonName === normalizedContactName;
+  });
+
+  if (selectedContactElement) {
+      selectedContactElement.classList.add('highlighted-contact');
+  }
 }
 
 function getContactInitials(name) {
@@ -128,25 +153,26 @@ function editContact(i) {
         <h1>Edit Contact</h1>
       </div>
       <div class="addContactInfo">
-        <img src="img/icon.svg">
-        <div class="inputDiv">
-          <input id="editName" type="text" placeholder="Name" value="${contact.name}">
-          <img src="img/person.svg">
-        </div>
-        <div class="inputDiv">
-          <input id="editMail" type="email" placeholder="E-Mail" value="${contact.mail}">
-          <img src="img/mail.svg">
-        </div>
-        <div class="inputDiv">
-          <input id="editPhone" type="text" placeholder="Phone" value="${contact.phone}">
-          <img src="img/call.svg">
-        </div>
-      </div>
-      <div class="addContactButtons">
-        <button id="deleteButton" onclick="deleteContact(${i})">Delete</button>
-        <button id="saveButton" onclick="updateContact(${i})">Save<img src="img/check.svg"></button>
-      </div>
-    </div>
+      <img src="img/icon.svg">
+      <form onsubmit="updateContact(${i}); return false;">
+          <div class="inputDiv">
+              <input id="editName" required type="text" placeholder="Name" value="${contact.name}">
+              <img src="img/person.svg">
+          </div>
+          <div class="inputDiv">
+              <input id="editMail" required type="email" placeholder="E-Mail" value="${contact.mail}">
+              <img src="img/mail.svg">
+          </div>
+          <div class="inputDiv">
+              <input id="editPhone" required pattern="^[0-9]{5,20}$" type="text" placeholder="Phone" value="${contact.phone}">
+              <img src="img/call.svg">
+          </div>
+          <div class="addContactButtons">
+              <button id="deleteButton" type="button" onclick="deleteContactByName('${contact.name}')">Delete</button>
+              <button id="saveButton" type="submit">Save<img src="img/check.svg"></button>
+          </div>
+      </form>
+  </div>
   `;
 }
 
@@ -171,12 +197,11 @@ async function updateContact(i) {
 }
 
 
-async function deleteContact(i) {
+async function deleteContactByName(contactName) {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
-    const contactIdToDelete = contacts[i].id;
 
-    const indexToDelete = contacts.findIndex(contact => contact.id === contactIdToDelete);
+    const indexToDelete = contacts.findIndex(contact => contact.name === contactName);
 
     if (indexToDelete !== -1) {
       contacts.splice(indexToDelete, 1);
@@ -184,7 +209,7 @@ async function deleteContact(i) {
       closeCard();
       generateContacts();
     } else {
-      console.error('Contact not found for deletion.');
+      console.error('Contact with name ' + contactName + ' not found.');
     }
   } catch (e) {
     console.error('Error deleting contact:', e);
@@ -223,3 +248,6 @@ async function displayOptions() {
     `;
   }
 }
+
+
+

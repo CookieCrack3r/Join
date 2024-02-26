@@ -253,6 +253,11 @@ select:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
+    height: 200px;
+}
+
+.subtask-input-container img:hover {
+    cursor: pointer;
 }
 
 .subtask-input-container svg {
@@ -349,16 +354,46 @@ select:hover {
     left: 144.26px;
 }
 
+.list li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.list li img {
+    padding: 5px;
+}
+
+.list button {
+    background-color: white;
+    border: none;
+}
+
+.list button:hover {
+    cursor: pointer;
+}
+
+.listSubtasks {
+    height: 100px !important;
+    overflow-y: scroll;
+}
 
 /*////Mediaquerry////*/
 
 @media (max-width: 700px) {
+    .feedback-container {
+        background-color: rgba(255, 255, 255, 0);
+    }
 
     .buttons{
         margin-left: 50px;
         height: 50px;
         margin-bottom: 70px;
+        top: 790px;
+        
     }
+
     #clear{
         display: none;
     }
@@ -484,5 +519,56 @@ select:hover {
     
     }
 
+}
 
+@media (max-width: 400px) {
+    .priority-buttons{
+        width: 320px;
+        justify-content: center;
+        margin-left: -10px;
+        gap: 2px;
+    }
+
+    .priority-buttons button{
+        width: 100px;
+    }
+
+    .subtask-input-field,
+    select,
+    .contacts,
+    #selectedDate {
+        width: 290px;
+    }
+
+    #descritpion,
+    #title {
+        width: 270px;
+    }
+
+    .subtask-input-field {
+        margin-left: -100px;
+    }
+
+    .buttons {
+        top: 810px;
+    }
+
+    #create {
+        margin-left: 36px;
+        font-size: 16px;
+        height: 32px;
+    }
+
+    #create img {
+        height: 16px;
+        width: 16px;
+    }
+
+    .list {
+        top: 750px;
+    }
+
+    .list li {
+        width: 290px;
+    }
 }

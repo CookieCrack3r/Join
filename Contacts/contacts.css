@@ -96,6 +96,11 @@ body {
     gap: 21px;
 }
 
+.contactId {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .bigContactSign {
     display: flex;
     justify-content: center;
@@ -156,9 +161,7 @@ a {
     height: 100vh;
     width: 584px;
     left: 856px;
-    position: absolute;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-    top: 0;
     display: flex;
     flex-direction: column;
     border-top-left-radius: 30px;
@@ -180,14 +183,13 @@ a {
 .closeButton {
     background-color: rgba(255, 255, 255, 0);
     border: 0;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     height: 32px;
     width: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 481px;
+    margin-bottom: 25px;
 }
 
 .closeButton:hover {
@@ -361,20 +363,23 @@ h1 {
 }
 
 #bg {
-    width: 1440px;
-    height: 1024px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
     background-color: rgba(255, 255, 255, 0.618);
+}
+
+.highlighted-contact {
+    background-color: #4689FF;
+    color: white;
 }
 
 .displayNone {
     display: none !important;
 }
+
+
+
 
 /*/// Media-querry///*/
 
@@ -462,27 +467,59 @@ h1 {
     }
 }
 
-
-/*Mediaquerry for Iphon ProMax 14*/
-
-@media (max-width: 430px){
-    #addNewContact{
-        height: 700px;
-        width: 396px;
-        border-radius: 30px;
-        top: 100px;
-        left: 17px;
+@media (max-width: 430px) {
+    #addContact {
+        width: 200px;
     }
-}
 
-/*Mediaquerry for samsung s20Ultra*/
+    #allContacts {
+        width: 320px;
+        margin-left: -20px;
+    }
 
-@media (max-width: 412px) {
-    #addNewContact{
+    .contactContent {
+        margin-left: 0px;
+    }
+
+    #editContact {
         height: 700px;
-        width: 396px;
+        width: 300px;
         border-radius: 30px;
         top: 100px;
-        left: 7px;
+        left: 4%;
+    }
+
+    #editContact input {
+        width: 280px;
+    }
+
+    .editContactHeader {
+        height: 328px;
+        width: 300px;
+        border-top-left-radius: 30px;
+    }
+
+    #addNewContact {
+        height: 700px;
+        width: 300px;
+        border-radius: 30px;
+        top: 100px;
+        left: 1.2%;
+    }
+
+    #addNewContact input {
+        width: 280px;
+    }
+
+    .addContactHeader {
+        height: 328px;
+        width: 300px;
+        border-top-right-radius: 30px;
+    }
+
+    #addNewContact button {
+        height: 48px;
+        width: 104px;
+        font-size: 19px;
     }
 }

@@ -367,3 +367,51 @@ a:hover {
         }
     }
 }
+
+@media (max-width: 380px) {
+    .login-box-center {
+        width: 320px;
+    }
+
+    .above-signup-right-corner {
+        position: absolute;
+        top: 121px;
+        left: 12%;
+    }
+
+    .privacy-policy-and-legal-notice-container{
+        margin-top: 5px;
+    }
+    
+}
+
+
+@media (max-width: 350px) {
+
+    .login-box-center{
+        width: 300px;
+        margin-top: 88px;
+        height: 439px;
+
+    }
+
+    .email-input, .password-input{
+        width: 60%;
+    }
+
+    .above-signup-right-corner{
+        top: 121px;
+        left: 6%;
+
+    }
+
+    .privacy-policy-and-legal-notice-container{
+        margin-top: 85px;
+    }
+
+    .login-txt-in-login-box{
+        font-size: 42px;
+        margin-top: 0;
+    }
+    
+}

@@ -86,6 +86,7 @@ function priorityLow() {
 
 async function showContacts() {
     console.log(todos);
+    document.getElementById('contacts').innerHTML = '';
 
     for (let i = 0; i < contactsAddTask.length; i++) {
         let contact = contactsAddTask[i];
@@ -103,23 +104,21 @@ async function showContacts() {
 }
 
 function addContactToTodo(i) {
-
     let contactElement = document.getElementById(`added-${i}`);
-    if (contactsObject.some(contacts => contactsAddTask.id === i)) {
+    let contactToAdd = contactsAddTask[i];
+
+    if (contactsObject.some(existingContact => existingContact.id === contactToAdd.id)) {
         displayFeedback('Contact already added!');
     } else {
-
         contactsObject.push({
-            id: contactsAddTask[i].id,
-            name: contactsAddTask[i].name,
-            mail: contactsAddTask[i].mail,
-            phone: contactsAddTask[i].phone,
+            id: contactToAdd.id,
+            name: contactToAdd.name,
+            mail: contactToAdd.mail,
+            phone: contactToAdd.phone,
             backgroundColor: getRandomColor()
-
         });
 
         contactElement.innerHTML += ' <i>(added)</i>';
-
         displayFeedback('Contact added successfully!');
     }
 }
@@ -134,19 +133,54 @@ function displayFeedback(message) {
 }
 
 function addSubtask() {
-    let subtask = document.getElementById('subtasks').value;
+    let subtaskInput = document.getElementById('subtasks');
+    let subtaskText = subtaskInput.value.trim();
 
-    document.getElementById('subtasks-list').innerHTML += `
-    <li>${subtask}</li>
-`;
+    if (subtaskText !== '') {
+        let subtaskIndex = subtasks.length;
+        document.getElementById('subtasks-list').innerHTML += `<li><span>${subtaskText}</span><input type="text" id="editSubtaskInput${subtaskIndex}" style="display: none;"><div><button onclick="editSubtask(${subtaskIndex})"><img src="imgAddTask/edit.svg"></button><button onclick="deleteSubtask(${subtaskIndex})"><img src="imgAddTask/delete.svg"></button></div></li>`;
 
-    document.getElementById('subtasks').value = '';
+        let subtasksObject = {
+            text: subtaskText,
+            checked: false // Standardmäßig auf false setzen
+        };
+        subtasks.push(subtasksObject);
 
-    let subtasksObject = {
-        text: subtask,
-        checked: false // Standardmäßig auf false setzen
-    };
-    subtasks.push(subtasksObject);
+        subtaskInput.value = '';
+    } else {
+        displayFeedback('Subtask cannot be empty!');
+    }
+}
+
+function editSubtask(index) {
+    let subtaskElement = document.getElementById(`editSubtaskInput${index}`);
+    let subtaskSpan = document.querySelector(`#subtasks-list li:nth-child(${index + 1}) span`);
+
+    if (subtaskElement.style.display === 'none') {
+        subtaskElement.style.display = 'inline';
+        subtaskElement.value = subtasks[index].text;
+        subtaskSpan.style.display = 'none';
+        subtaskElement.focus();
+    } else {
+        subtasks[index].text = subtaskElement.value;
+        subtaskSpan.textContent = subtasks[index].text;
+        subtaskElement.style.display = 'none';
+        subtaskSpan.style.display = 'inline';
+    }
+}
+
+function deleteSubtask(index) {
+    subtasks.splice(index, 1);
+    displaySubtasks();
+}
+
+function displaySubtasks() {
+    let subtasksList = document.getElementById('subtasks-list');
+    subtasksList.innerHTML = '';
+    
+    subtasks.forEach((subtask, index) => {
+        subtasksList.innerHTML += `<li>${subtask.text}<div><button><img src="imgAddTask/edit.svg"></button><button onclick="deleteSubtask(${index})"><img src="imgAddTask/delete.svg"></button></div></li>`;
+    });
 }
 
 async function setMinDate() {
@@ -162,6 +196,24 @@ async function setMinDate() {
 function createTask() {
     create.disabled = false;
     window.location.href = '/Board/board.html';
+}
+
+async function clearInputs() {
+    document.getElementById('title').value = '';
+    document.getElementById('descritpion').value = '';
+    document.getElementById('selectedDate').value = '';
+    
+    document.getElementById('category').selectedIndex = 0;
+
+    document.getElementById('subtasks').value = '';
+    document.getElementById('subtasks-list').innerHTML = '';
+
+    priorityMedium();
+    
+    contactsAddTask = JSON.parse(await getItem('contacts')) || [];
+    contactsObject = [];
+
+    await showContacts();
 }
 
 //this function is to get the user initials 

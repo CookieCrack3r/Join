@@ -3,7 +3,7 @@ body {
     height: 1024px;
     margin: 0;
     padding: 0;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .content {
@@ -77,7 +77,6 @@ input::-webkit-search-cancel-button {
     justify-content: space-between;
     margin-left: 54px;
     margin-right: 54px;
-    overflow-y: auto;
 }
 
 .table-headlines {
@@ -103,7 +102,7 @@ input::-webkit-search-cancel-button {
 }
 
 .dragsection {
-    height: 100vh;
+    height: 100%;
 }
 
 .dragsection-highlight {
@@ -160,9 +159,11 @@ input::-webkit-search-cancel-button {
     padding: 48px 40px 48px 40px;
     gap: 24px;
     border: 1px solid lightgray;
-    top: 40px;
-    position: absolute;
-    overflow-y: scroll;
+    position: fixed;
+    overflow-y: auto;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .label-big {
@@ -455,6 +456,13 @@ input::-webkit-search-cancel-button {
     display: none;
 }
 
+#checkboxes input[type="text"] {
+    width: 200px;
+    margin-top: 8px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
 @media (max-width: 700px) {
     body {
         overflow-y: auto;
@@ -480,6 +488,74 @@ input::-webkit-search-cancel-button {
     }
 
     .dragsection {
-        height: 100%;
+        height: 100vh;
+    }
+
+    #big-card {
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        position: fixed;
+        overflow-x: hidden;
+    }
+
+    #textinput,
+    #titleinput {
+        width: 300px !important;
+    }
+
+    #dateinput {
+        width: 200px !important;
+    }
+
+    .priority-big-buttons {
+        display: flex !important;
+        justify-content: center !important;
+        margin-left: -100px;
+    }
+
+    .priority-big-buttons img {
+        margin-left: -8px;
+    }
+
+    #low,
+    #medium,
+    #urgent {
+        width: 60px !important;
+        font-size: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .find-task {
+        margin-left: -275px;
+        margin-top: -50px;
+    }
+
+    .complete-table {
+        margin-left: -180px;
+        width: 320px;
+    }
+
+    #dateinput {
+        width: 140px !important;
+    }
+
+    #textinput,
+    #titleinput {
+        width: 200px !important;
+    }
+
+    .priority-big-buttons {
+        gap: 0;
+    }
+
+    #low,
+    #medium,
+    #urgent {
+        width: 40px !important;
+        font-size: 0;
+        margin-left: 4px;
     }
 }

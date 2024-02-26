@@ -235,7 +235,7 @@ form button:hover{
      }
 
      .left-arrow-inbox{
-        left: -54px;
+        left: -45px;
      }
 
      .join-logo-left-corner{
@@ -245,4 +245,34 @@ form button:hover{
         right: 38px;
      }
  
+}
+
+@media (max-width: 380px) {
+    .login-box-center {
+        width: 320px;
+    }
+
+    .input {
+        width: 200px;
+    }
+
+    .privacy-policy-and-legal-notice-container{
+        margin-top: 25px;
+        column-gap: 22px;
+    }
+}
+
+@media (max-width: 345px){
+    .login-box-center{
+        width: 300px;
+    }
+
+    .left-arrow-inbox{
+        left: -35px;
+    }
+
+    .login-box-center{
+        margin-top: 79px;
+    }
+
 }

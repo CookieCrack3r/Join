@@ -444,3 +444,55 @@ body {
         left: 240px;
     }
 }
+
+@media (max-width: 400px) {
+    .under-task-section,
+    .middle-section,
+    .greet-container,
+    .content-container {
+        width: 320px;
+    }
+
+    .task-in-board,
+    .task-urgent {
+        width: 318px;
+        height: 150px;
+        padding: 23px 28px 23px 28px;
+    }
+
+    .task-to-do,
+    .task-in-progress,
+    .awaiting-feedback,
+    .tasks-done {
+        width: 150px;
+        height: 152px;
+        padding: 15px 40px 15px 40px;
+
+    }
+
+    .date-container span{
+        font-size: 15px;
+        padding-left: 3px;
+    }
+
+    .date-container p{
+        font-size: 13.2px;
+        padding-left: 3px;
+    }
+
+    .task-urgent{
+        width: 305px;
+    }
+
+    .task-in-board{
+        width: 300px;
+    }
+
+    .task-in-board span{
+        font-size: 16px;
+    }
+
+    .under-task-section{
+        column-gap: 5px;
+    }
+}
