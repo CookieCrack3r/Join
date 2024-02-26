@@ -21,6 +21,11 @@ async function createContact() {
     backgroundColor: getRandomColor()
   });
 
+  nameInput.value = '';
+  mail.value = '';
+  phone.value = '';
+
+
   await setItem('contacts', JSON.stringify(contacts));
   closeCard();
   generateContacts();
