@@ -91,9 +91,14 @@ body {
 }
 
 .contactContent {
-    margin-top: 0px;
-    margin-left: 0px;
+    margin-top: 168px;
+    margin-left: 100px;
     gap: 21px;
+}
+
+.contactId {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .bigContactSign {
