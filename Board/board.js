@@ -419,7 +419,7 @@ async function getInitials() {
     UserInitials = await getItem('userInitial');
     UserName = await getItem('userName');
     const kanban = document.getElementById("kanban");
-    kanban.innerHTML += `<div onclick="displayOptions()" id="initials">
+    kanban.innerHTML += `<div onclick="displayOptions()">
       ${UserInitials}
       </div>`;
 }
