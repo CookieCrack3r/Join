@@ -178,7 +178,7 @@ async function updateContact(i) {
 async function deleteContactByName(contactName) {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
-    
+
     const indexToDelete = contacts.findIndex(contact => contact.name === contactName);
 
     if (indexToDelete !== -1) {
@@ -226,3 +226,6 @@ async function displayOptions() {
     `;
   }
 }
+
+
+
