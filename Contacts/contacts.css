@@ -369,6 +369,11 @@ h1 {
     background-color: rgba(255, 255, 255, 0.618);
 }
 
+.highlighted-contact {
+    background-color: #4689FF;
+    color: white;
+}
+
 .displayNone {
     display: none !important;
 }
@@ -462,7 +467,7 @@ h1 {
     }
 }
 
-@media (max-width: 430px){
+@media (max-width: 430px) {
     #addContact {
         width: 200px;
     }

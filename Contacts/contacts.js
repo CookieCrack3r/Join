@@ -82,6 +82,8 @@ function openContact(i) {
   const contact = contacts[i];
   const initials = getContactInitials(contact.name);
 
+  highlightContactByName(contact.name);
+
   document.getElementById('contactContent').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
@@ -102,6 +104,26 @@ function openContact(i) {
   <span><b>Phone</b><br><br>${contact.phone}</span>
 </div>
   `;
+}
+
+function highlightContactByName(contactName) {
+  const normalizedContactName = contactName.trim().toLowerCase();
+
+  const contactsElements = document.querySelectorAll('.contact');
+  
+  contactsElements.forEach(contactElement => {
+      contactElement.classList.remove('highlighted-contact');
+  });
+  
+  const selectedContactElement = Array.from(contactsElements).find(contactElement => {
+      const contact = contacts.find(c => c.id == contactElement.id);
+      const normalizedComparisonName = contact ? contact.name.trim().toLowerCase() : '';
+      return normalizedComparisonName === normalizedContactName;
+  });
+
+  if (selectedContactElement) {
+      selectedContactElement.classList.add('highlighted-contact');
+  }
 }
 
 function getContactInitials(name) {
