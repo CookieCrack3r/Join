@@ -25,7 +25,6 @@ async function createContact() {
   mail.value = '';
   phone.value = '';
 
-
   await setItem('contacts', JSON.stringify(contacts));
   closeCard();
   generateContacts();
