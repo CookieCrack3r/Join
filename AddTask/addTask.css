@@ -256,6 +256,10 @@ select:hover {
     height: 200px;
 }
 
+.subtask-input-container img:hover {
+    cursor: pointer;
+}
+
 .subtask-input-container svg {
     margin-left: -20px;
 }
