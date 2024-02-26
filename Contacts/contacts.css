@@ -91,8 +91,8 @@ body {
 }
 
 .contactContent {
-    margin-top: 168px;
-    margin-left: 100px;
+    margin-top: 0px;
+    margin-left: 0px;
     gap: 21px;
 }
 
@@ -156,9 +156,7 @@ a {
     height: 100vh;
     width: 584px;
     left: 856px;
-    position: absolute;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-    top: 0;
     display: flex;
     flex-direction: column;
     border-top-left-radius: 30px;
@@ -180,14 +178,13 @@ a {
 .closeButton {
     background-color: rgba(255, 255, 255, 0);
     border: 0;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     height: 32px;
     width: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 481px;
+    margin-bottom: 25px;
 }
 
 .closeButton:hover {
@@ -361,20 +358,18 @@ h1 {
 }
 
 #bg {
-    width: 1440px;
-    height: 1024px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
     background-color: rgba(255, 255, 255, 0.618);
 }
 
 .displayNone {
     display: none !important;
 }
+
+
+
 
 /*/// Media-querry///*/
 
