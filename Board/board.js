@@ -280,8 +280,8 @@ function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
 
-    console.log(todo[0].subtasks);
-    console.log(todo[id]);
+    //console.log(todo[0].subtasks);
+    console.log(todo[0]);
 
     for (let i = 0; i < todo[id].subtasks.length; i++) {
         let subtaskText = todo[id].subtasks[i]['text'];
