@@ -253,6 +253,7 @@ select:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
+    height: 200px;
 }
 
 .subtask-input-container svg {
@@ -367,6 +368,11 @@ select:hover {
 
 .list button:hover {
     cursor: pointer;
+}
+
+.listSubtasks {
+    height: 100px !important;
+    overflow-y: scroll;
 }
 
 /*////Mediaquerry////*/
