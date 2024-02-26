@@ -307,9 +307,6 @@ function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
 
-    //console.log(todo[0].subtasks);
-    console.log(todo[0]);
-
     for (let i = 0; i < todo[id].subtasks.length; i++) {
         let subtaskText = todo[id].subtasks[i]['text'];
         let subtaskChecked = todo[id].subtasks[i]['checked'];
@@ -349,17 +346,41 @@ function getCompletedSubtaskCount(todo, id) {
     return subtasksLength.length;
 }
 
-function filterTodos() {
+async function filterTodos() {
 
     let searchInput = document.getElementById('search').value.trim().toLowerCase();
-
     let filteredTodos = todo.filter(t => t['title'].toLowerCase().includes(searchInput));
 
+    let filteredTodo = filteredTodos.filter(t => t['status'] == 'to-do');
+    let filteredInprogress = filteredTodos.filter(t => t['status'] == 'in-progress');
+    let filteredAwaitFeedback = filteredTodos.filter(t => t['status'] == 'await-feedback');
+    let filteredDone = filteredTodos.filter(t => t['status'] == 'done');
+
+
     document.getElementById('todo').innerHTML = '';
-    for (let i = 0; i < filteredTodos.length; i++) {
-        let filteredTodo = filteredTodos[i];
-        document.getElementById('todo').innerHTML += generateKanbanHTML(filteredTodo);
+    document.getElementById('in-progress').innerHTML = '';
+    document.getElementById('await-feedback').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
+
+    for (let i = 0; i < filteredTodo.length; i++) {
+        let filterTodo = filteredTodo[i];
+        document.getElementById('todo').innerHTML += generateKanbanHTML(filterTodo);
     }
+    for (let i = 0; i < filteredInprogress.length; i++) {
+        let filterInprogress = filteredInprogress[i];
+        document.getElementById('in-progress').innerHTML += generateKanbanHTML(filterInprogress);
+    }
+    for (let i = 0; i < filteredAwaitFeedback.length; i++) {
+        let filterAwaitFeedback = filteredAwaitFeedback[i];
+        document.getElementById('await-feedback').innerHTML += generateKanbanHTML(filterAwaitFeedback);
+    }
+    for (let i = 0; i < filteredDone.length; i++) {
+        let filterDone = filteredDone[i];
+        document.getElementById('done').innerHTML += generateKanbanHTML(filterDone);
+    }
+
+
+
 }
 
 async function deleteTodo(id) {
