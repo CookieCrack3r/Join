@@ -73,7 +73,6 @@ input::-webkit-search-cancel-button {
     max-width: 1090px;
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     margin-left: 54px;
     margin-right: 54px;
@@ -498,15 +497,24 @@ input::-webkit-search-cancel-button {
     .complete-table {
         margin-left: -140px;
         flex-direction: column !important;
-    }
-
-    .table-element {
-        display: flex;
-        flex-direction: column;
+        overflow-x: auto;
     }
 
     .dragsection {
-        height: 100vh;
+        height: 100%;
+    }
+
+    #todo,
+    #in-progress,
+    #await-feedback,
+    #done {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+    }
+
+    .card {
+        min-width: 242px !important;
     }
 
     #big-card {
