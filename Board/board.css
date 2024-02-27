@@ -497,7 +497,7 @@ input::-webkit-search-cancel-button {
 
     .complete-table {
         margin-left: -140px;
-        flex-direction: column;
+        flex-direction: column !important;
     }
 
     .table-element {

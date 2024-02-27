@@ -167,53 +167,67 @@ function generateKanbanHTML(todo) {
 
 function categoryUp(id, event) {
     event.stopPropagation();
-    moveCategory(id, -1);
+    moveCategoryUp(id);
 }
 
 function categoryDown(id, event) {
     event.stopPropagation();
-    moveCategory(id, 1);
+    moveCategoryDown(id);
 }
 
-function moveCategory(id, direction) {
-    const currentIndex = todo.findIndex(item => item.id === id);
-    const newIndex = currentIndex + direction;
+function moveCategoryUp(id) {
+    const index = todo.findIndex(item => item.id === id);
+    const currentCategory = todo[index].category;
+    const filteredTasks = todo.filter(task => task.category === currentCategory);
+    const taskIndex = filteredTasks.findIndex(task => task.id === id);
+    const newTaskIndex = (taskIndex - 1 + filteredTasks.length) % filteredTasks.length;
 
-    if (newIndex >= 0 && newIndex < todo.length) {
-        const currentStatus = todo[currentIndex].status;
-        const newStatus = todo[newIndex].status;
-
-        // Update status based on the current status
-        switch (currentStatus) {
-            case 'to-do':
-                todo[currentIndex].status = 'in-progress';
-                break;
-            case 'in-progress':
-                todo[currentIndex].status = 'await-feedback';
-                break;
-            case 'await-feedback':
-                todo[currentIndex].status = 'done';
-                break;
-            // Add more cases if needed
-        }
-
-        // Update status of the other task
-        switch (newStatus) {
-            case 'in-progress':
-                todo[newIndex].status = 'to-do';
-                break;
-            case 'await-feedback':
-                todo[newIndex].status = 'in-progress';
-                break;
-            case 'done':
-                todo[newIndex].status = 'await-feedback';
-                break;
-            // Add more cases if needed
-        }
-
-        [todo[currentIndex], todo[newIndex]] = [todo[newIndex], todo[currentIndex]];
+    if (taskIndex !== -1) {
+        todo[index].status = updateStatusBasedOnPrevious(todo[index].status);
+        [filteredTasks[taskIndex], filteredTasks[newTaskIndex]] = [filteredTasks[newTaskIndex], filteredTasks[taskIndex]];
         updateDB();
         updateHTML();
+    }
+}
+
+function moveCategoryDown(id) {
+    const index = todo.findIndex(item => item.id === id);
+    const currentCategory = todo[index].category;
+    const filteredTasks = todo.filter(task => task.category === currentCategory);
+    const taskIndex = filteredTasks.findIndex(task => task.id === id);
+    const newTaskIndex = (taskIndex + 1) % filteredTasks.length;
+
+    if (taskIndex !== -1) {
+        todo[index].status = updateStatusBasedOnCurrent(todo[index].status);
+        [filteredTasks[taskIndex], filteredTasks[newTaskIndex]] = [filteredTasks[newTaskIndex], filteredTasks[taskIndex]];
+        updateDB();
+        updateHTML();
+    }
+}
+
+function updateStatusBasedOnCurrent(status) {
+    switch (status) {
+        case 'to-do':
+            return 'in-progress';
+        case 'in-progress':
+            return 'await-feedback';
+        case 'await-feedback':
+            return 'done';
+        case 'done':
+            return status;
+    }
+}
+
+function updateStatusBasedOnPrevious(status) {
+    switch (status) {
+        case 'done':
+            return 'await-feedback';
+        case 'await-feedback':
+            return 'in-progress';
+        case 'in-progress':
+            return 'to-do';
+        case 'to-do':
+            return status;
     }
 }
 
