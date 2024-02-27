@@ -121,6 +121,7 @@ function generateKanbanHTML(todo) {
     let priority = todo['priority'];
     let date = todo['date'];
     let id = todo['id'];
+    let status = todo['status'];
 
     let subtaskCount = getSubtaskCount(todo, id);
     let completedSubtaskCount = getCompletedSubtaskCount(todo, id);
@@ -157,11 +158,63 @@ function generateKanbanHTML(todo) {
                 <img src="${priorityImage}">
             </div>
         </div>
-        <div class=mobileButtons>
-            <button><img src="img/up.png"</button>
-            <button><img src="img/down.png"</button>
+        <div class="mobileButtons">
+            <button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button>
+            <button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button>
         </div>
     </div>`;
+}
+
+function categoryUp(id, event) {
+    event.stopPropagation();
+    moveCategory(id, -1);
+}
+
+function categoryDown(id, event) {
+    event.stopPropagation();
+    moveCategory(id, 1);
+}
+
+function moveCategory(id, direction) {
+    const currentIndex = todo.findIndex(item => item.id === id);
+    const newIndex = currentIndex + direction;
+
+    if (newIndex >= 0 && newIndex < todo.length) {
+        const currentStatus = todo[currentIndex].status;
+        const newStatus = todo[newIndex].status;
+
+        // Update status based on the current status
+        switch (currentStatus) {
+            case 'to-do':
+                todo[currentIndex].status = 'in-progress';
+                break;
+            case 'in-progress':
+                todo[currentIndex].status = 'await-feedback';
+                break;
+            case 'await-feedback':
+                todo[currentIndex].status = 'done';
+                break;
+            // Add more cases if needed
+        }
+
+        // Update status of the other task
+        switch (newStatus) {
+            case 'in-progress':
+                todo[newIndex].status = 'to-do';
+                break;
+            case 'await-feedback':
+                todo[newIndex].status = 'in-progress';
+                break;
+            case 'done':
+                todo[newIndex].status = 'await-feedback';
+                break;
+            // Add more cases if needed
+        }
+
+        [todo[currentIndex], todo[newIndex]] = [todo[newIndex], todo[currentIndex]];
+        updateDB();
+        updateHTML();
+    }
 }
 
 function openCard(category, title, description, id, date, priority, subtasks) {

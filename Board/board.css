@@ -472,6 +472,13 @@ input::-webkit-search-cancel-button {
 .mobileButtons img{
     height: 24px;
     width: 24px;
+    padding: 8px;
+}
+
+.mobileButtons img:hover{
+    cursor: pointer;
+    background-color: #4589ff54;
+    border-radius: 50%;
 }
 
 @media (max-width: 700px) {
