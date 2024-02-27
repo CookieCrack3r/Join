@@ -12,7 +12,7 @@ let todoSum = [];
 
 async function loadtodoSums() {
     try {
-        let TasksUrgent = document.getElementById('task-urgend-number');
+        let TasksUrgent = document.getElementById('task_urgend_number');
         let Tasks = document.getElementById('Tasks-ToDo-value');
         let Task_in_Progress = document.getElementById('Task-in-Progress_value');
         let Awaiting_feedback = document.getElementById('Awaiting-feedback_value');
@@ -29,14 +29,13 @@ async function loadtodoSums() {
         let Task_in_Progress_value = todoSum.filter(t => t['status'] == 'in-progress');
         let Awaiting_feedback_value = todoSum.filter(t => t['status'] == 'await-feedback');
         let Task_Done_value = todoSum.filter(t => t['status'] == 'done');
-
-        TasksUrgent.innerHTML = UrgentTasks.length.toString();
         Tasks.innerHTML = Tasks_value.length.toString();
         Task_in_Progress.innerHTML = Task_in_Progress_value.length.toString();
         Awaiting_feedback.innerHTML = Awaiting_feedback_value.length.toString();
         Task_Done.innerHTML = Task_Done_value.length.toString();
 
-        Task_in_Board.innerHTML = todoSum.length.toString();;
+        TasksUrgent.innerHTML = UrgentTasks.length.toString();
+        
 
 
     } catch (e) {
