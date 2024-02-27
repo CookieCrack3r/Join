@@ -285,12 +285,11 @@ select:hover {
 }
 
 .buttons {
-    width: 335px;
+    max-width: 335px;
     height: 61px;
-    margin-left: 1054px;
+    margin-left: 75%;
     gap: 4px;
     display: flex;
-    position: fixed;
     bottom: 20px;
 }
 

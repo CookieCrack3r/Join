@@ -466,6 +466,7 @@ input::-webkit-search-cancel-button {
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
+    display: none;
 }
 
 .mobileButtons img{
@@ -488,6 +489,10 @@ input::-webkit-search-cancel-button {
     .find-task {
         margin-left: -220px;
         margin-top: -50px;
+    }
+
+    .mobileButtons {
+        display: flex;
     }
 
     .find-task button {
