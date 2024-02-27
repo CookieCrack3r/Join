@@ -376,7 +376,7 @@ select:hover {
 
 .listSubtasks {
     height: 100px !important;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 /*////Mediaquerry////*/

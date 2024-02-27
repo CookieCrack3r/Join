@@ -463,6 +463,17 @@ input::-webkit-search-cancel-button {
     border-bottom: 1px solid lightgray;
 }
 
+.mobileButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.mobileButtons img{
+    height: 24px;
+    width: 24px;
+}
+
 @media (max-width: 700px) {
     body {
         overflow-y: auto;

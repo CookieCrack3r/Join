@@ -157,6 +157,10 @@ function generateKanbanHTML(todo) {
                 <img src="${priorityImage}">
             </div>
         </div>
+        <div class=mobileButtons>
+            <button><img src="img/up.png"</button>
+            <button><img src="img/down.png"</button>
+        </div>
     </div>`;
 }
 
