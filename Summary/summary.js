@@ -18,7 +18,7 @@ async function loadtodoSums() {
         let Awaiting_feedback = document.getElementById('Awaiting-feedback_value');
         let Task_Done = document.getElementById('Task-Done_value');
 
-        let Task_in_Board = document.getElementById('Task-in-Board_value');
+        
 
         todoSum = JSON.parse(await getItem('todos'));
 

@@ -78,7 +78,7 @@ aside a:hover {
     background-color: white;
 }
 
-#myElement{
+#myElement {
     position: fixed;
     max-width: 232px;
     border-right: 1px solid lightgray;
@@ -87,12 +87,12 @@ aside a:hover {
 /*Media-querry*/
 
 @media (max-width: 700px) {
-    
-    .secondary-links{
+
+    .secondary-links {
         display: none;
     }
 
-    aside{
+    aside {
         border-right: none;
         height: 0px;
         gap: 0;
@@ -102,20 +102,20 @@ aside a:hover {
         padding-top: 0;
     }
 
-    .header span{
+    .header span {
         display: none;
     }
 
-    #mediaquerry_work{
+    #mediaquerry_work {
         display: none;
     }
 
-    .right-section{
+    .right-section {
         width: 0px;
         margin-right: 72px;
     }
 
-    aside ul{
+    aside ul {
         display: flex;
         flex-direction: row;
         height: 88px;
@@ -125,19 +125,19 @@ aside a:hover {
 
     }
 
-    aside ul a{
+    aside ul a {
         display: flex;
         flex-direction: column;
     }
 
-    aside a{
+    aside a {
         padding-left: 0;
         height: 80px;
         width: 86px;
         margin-top: 11px;
     }
 
-    aside a img{
+    aside a img {
         margin-top: 8px;
     }
 }
@@ -147,13 +147,35 @@ aside a:hover {
         width: 320px;
     }
 
-    #options{
+    #options {
         left: 150px;
     }
 
-    aside a{
+    aside a {
         font-size: 13px;
         width: 63px;
     }
-   
+
+}
+
+@media (max-width: 376px) {
+    aside {
+        top: 570px;
+    }
+
+    aside ul {
+        width: 335px;
+        padding-left: 48px;
+        column-gap: 10px;
+    }
+
+    .bigContactSign {
+        height: 85px;
+        width: 85px;
+        font-size: 40px;
+    }
+
+    .contactContent{
+        margin-top: 105px;
+    }
 }

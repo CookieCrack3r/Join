@@ -87,6 +87,9 @@ function openContact(i) {
   document.getElementById('contactContent').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
+  <div id="close_contact_information" onclick="closeContactInformation()" class="close-btn-cont">
+    <img src="img/close.svg">
+  </div>
   <div class="bigContactSign" style="background-color: ${contact.backgroundColor}; color: white;">${initials}</div>
   <div class="contactName">
       <span>${contact.name}</span>
@@ -106,23 +109,29 @@ function openContact(i) {
   `;
 }
 
+function closeContactInformation(){
+  document.getElementById('close_contact_information').classList.add('displayNone');
+  document.getElementById('contactContent').classList.add('displayNone');
+
+}
+
 function highlightContactByName(contactName) {
   const normalizedContactName = contactName.trim().toLowerCase();
 
   const contactsElements = document.querySelectorAll('.contact');
-  
+
   contactsElements.forEach(contactElement => {
-      contactElement.classList.remove('highlighted-contact');
+    contactElement.classList.remove('highlighted-contact');
   });
-  
+
   const selectedContactElement = Array.from(contactsElements).find(contactElement => {
-      const contact = contacts.find(c => c.id == contactElement.id);
-      const normalizedComparisonName = contact ? contact.name.trim().toLowerCase() : '';
-      return normalizedComparisonName === normalizedContactName;
+    const contact = contacts.find(c => c.id == contactElement.id);
+    const normalizedComparisonName = contact ? contact.name.trim().toLowerCase() : '';
+    return normalizedComparisonName === normalizedContactName;
   });
 
   if (selectedContactElement) {
-      selectedContactElement.classList.add('highlighted-contact');
+    selectedContactElement.classList.add('highlighted-contact');
   }
 }
 
