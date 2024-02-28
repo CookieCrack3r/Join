@@ -160,7 +160,8 @@ aside a:hover {
 
 @media (max-width: 376px) {
     aside {
-        top: 570px;
+        top: 568px;
+        padding-top: 0px;
     }
 
     aside ul {
@@ -175,7 +176,7 @@ aside a:hover {
         font-size: 40px;
     }
 
-    .contactContent{
+    .contactContent {
         margin-top: 105px;
     }
 }
