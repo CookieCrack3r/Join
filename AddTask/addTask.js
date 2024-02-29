@@ -19,22 +19,11 @@ async function addTodo() {
     let todo = 'to-do';
 
     var urlParams = new URLSearchParams(window.location.search);
-
-    if (urlParams) {
-
-
-        if (urlParams.has('addTaskTodo')) {
-            todo = 'to-do';
-        }
-        if (urlParams.has('addInProgress')) {
-            todo = 'in-progress';
-        }
-
-        if (urlParams.has('addTaskAwaitFeedback')) {
-            todo = 'await-feedback'
-        }
+    
+    if (urlParams.has('urlParam')) {
+        var paramValue = urlParams.get('urlParam');
+        todo = paramValue;
     }
-
 
 
 

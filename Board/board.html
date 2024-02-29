@@ -25,11 +25,11 @@
     <div class="content">
         <div class="find-task">
             <input type="search" class="icon" id="search" placeholder="Find Task" oninput="filterTodos()"><button
-                onclick="addTask('addTaskTodo')">Add Task <img src="img/plus.svg"></button>
+                onclick="addTask()">Add Task <img src="img/plus.svg"></button>
         </div>
         <div class="complete-table">
             <div class="table-element">
-                <div class="table-headlines">To do <button id="addTaskTodo" onclick="addTask(id)"><svg class="img-hover" width="24"
+                <div class="table-headlines">To do <button id="addTaskTodo" onclick="addTask('to-do')"><svg class="img-hover" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
                             <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="table-element">
-                <div class="table-headlines">In progress <button id="addInProgress" onclick="addTask(id)"><svg class="img-hover" width="24"
+                <div class="table-headlines">In progress <button id="addInProgress" onclick="addTask('in-progress')"><svg class="img-hover" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
                             <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="table-element">
-                <div class="table-headlines">Await feedback <button id="addTaskAwaitFeedback" onclick="addTask(id)"><svg class="img-hover"
+                <div class="table-headlines">Await feedback <button id="addTaskAwaitFeedback" onclick="addTask('await-feedback')"><svg class="img-hover"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="1" width="22" height="22" rx="7" stroke="#4589FF" stroke-width="2" />
                             <path d="M12 8V16" stroke="#4589FF" stroke-width="2" stroke-linecap="round" />

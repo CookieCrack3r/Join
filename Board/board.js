@@ -502,7 +502,11 @@ function removeHighlight(id) {
 }
 
 function addTask(urlParam) {
-    window.location.href = '/AddTask/addTask.html?' + urlParam;
+    var url = '/AddTask/addTask.html';
+    if (urlParam !== undefined && urlParam !== null) {
+        url += '?urlParam=' + urlParam;
+    }
+    window.location.href = url;
 }
 
 
