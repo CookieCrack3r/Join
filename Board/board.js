@@ -501,8 +501,8 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragsection-highlight');
 }
 
-function addTask() {
-    window.location.href = '/AddTask/addTask.html';
+function addTask(urlParam) {
+    window.location.href = '/AddTask/addTask.html?' + urlParam;
 }
 
 

@@ -3,6 +3,7 @@ let subtasks = [];
 let contactsObject = [];
 let contactsAddTask = [];
 
+
 async function initTask() {
     todos = JSON.parse(await getItem('todos')) || [];
 
@@ -16,6 +17,27 @@ async function initTask() {
 
 async function addTodo() {
     let todo = 'to-do';
+
+    var urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams) {
+
+
+        if (urlParams.has('addTaskTodo')) {
+            todo = 'to-do';
+        }
+        if (urlParams.has('addInProgress')) {
+            todo = 'in-progress';
+        }
+
+        if (urlParams.has('addTaskAwaitFeedback')) {
+            todo = 'await-feedback'
+        }
+    }
+
+
+
+
 
     create.disabled = true;
     todos_length = JSON.parse(await getItem('todos')) || [];
@@ -177,7 +199,7 @@ function deleteSubtask(index) {
 function displaySubtasks() {
     let subtasksList = document.getElementById('subtasks-list');
     subtasksList.innerHTML = '';
-    
+
     subtasks.forEach((subtask, index) => {
         subtasksList.innerHTML += `<li>${subtask.text}<div><button><img src="imgAddTask/edit.svg"></button><button onclick="deleteSubtask(${index})"><img src="imgAddTask/delete.svg"></button></div></li>`;
     });
@@ -202,14 +224,14 @@ async function clearInputs() {
     document.getElementById('title').value = '';
     document.getElementById('descritpion').value = '';
     document.getElementById('selectedDate').value = '';
-    
+
     document.getElementById('category').selectedIndex = 0;
 
     document.getElementById('subtasks').value = '';
     document.getElementById('subtasks-list').innerHTML = '';
 
     priorityMedium();
-    
+
     contactsAddTask = JSON.parse(await getItem('contacts')) || [];
     contactsObject = [];
 
