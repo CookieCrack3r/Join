@@ -311,7 +311,7 @@ body {
 /*/// Media-querry///*/
 
 @media (max-width: 700px) {
-
+    
     .secondary-links a {
         display: none;
     }
@@ -450,7 +450,7 @@ body {
     .middle-section,
     .greet-container,
     .content-container {
-        width: 320px;
+        width: 375px;
     }
 
     .task-in-board,
@@ -494,5 +494,16 @@ body {
 
     .under-task-section{
         column-gap: 5px;
+    }
+}
+
+@media (max-width: 376px) {
+    .content-container{
+        height: 498px;
+        overflow: auto;
+    }
+
+    #options{
+        left: 195px!important;
     }
 }
