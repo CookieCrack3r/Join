@@ -397,6 +397,9 @@ function addTask(urlParam) {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
+=======
 >>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
 =======
 >>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
@@ -409,6 +412,7 @@ async function getInitials() {
       </div>`;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 async function displayOptions() {
@@ -461,6 +465,8 @@ function displayOptions() {
 =======
 >>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
     }
+=======
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
    
   }
   
