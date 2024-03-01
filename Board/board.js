@@ -418,15 +418,16 @@ function getCompletedSubtaskCount(todo, id) {
 }
 
 async function filterTodos() {
-
     let searchInput = document.getElementById('search').value.trim().toLowerCase();
-    let filteredTodos = todo.filter(t => t['title'].toLowerCase().includes(searchInput));
+    let filteredTodos = todo.filter(t => 
+        t['title'].toLowerCase().includes(searchInput) || // Title filter
+        t['description'].toLowerCase().includes(searchInput) // Description filter
+    );
 
     let filteredTodo = filteredTodos.filter(t => t['status'] == 'to-do');
     let filteredInprogress = filteredTodos.filter(t => t['status'] == 'in-progress');
     let filteredAwaitFeedback = filteredTodos.filter(t => t['status'] == 'await-feedback');
     let filteredDone = filteredTodos.filter(t => t['status'] == 'done');
-
 
     document.getElementById('todo').innerHTML = '';
     document.getElementById('in-progress').innerHTML = '';
@@ -449,9 +450,6 @@ async function filterTodos() {
         let filterDone = filteredDone[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(filterDone);
     }
-
-
-
 }
 
 async function deleteTodo(id) {
