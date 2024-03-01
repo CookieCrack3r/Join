@@ -192,14 +192,23 @@ async function updateContact(i) {
     let editedPhone = document.getElementById('editPhone').value;
 
     contacts = JSON.parse(await getItem('contacts')) || [];
-    contacts[i].name = editedName;
-    contacts[i].mail = editedMail;
-    contacts[i].phone = editedPhone;
+    
+    // Find the index of the contact to be updated
+    const indexToUpdate = contacts.findIndex(contact => contact.id == i);
 
-    await setItem('contacts', JSON.stringify(contacts));
-    closeCard();
-    generateContacts();
-    openContact(i);
+    // Update the existing contact
+    if (indexToUpdate !== -1) {
+      contacts[indexToUpdate].name = editedName;
+      contacts[indexToUpdate].mail = editedMail;
+      contacts[indexToUpdate].phone = editedPhone;
+
+      await setItem('contacts', JSON.stringify(contacts));
+      closeCard();
+      generateContacts();
+      openContact(indexToUpdate);
+    } else {
+      console.error('Contact with index ' + i + ' not found.');
+    }
   } catch (e) {
     console.error('Error updating contact:', e);
   }

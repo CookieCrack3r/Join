@@ -420,8 +420,8 @@ function getCompletedSubtaskCount(todo, id) {
 async function filterTodos() {
     let searchInput = document.getElementById('search').value.trim().toLowerCase();
     let filteredTodos = todo.filter(t => 
-        t['title'].toLowerCase().includes(searchInput) || // Title filter
-        t['description'].toLowerCase().includes(searchInput) // Description filter
+        t['title'].toLowerCase().includes(searchInput) ||
+        t['description'].toLowerCase().includes(searchInput)
     );
 
     let filteredTodo = filteredTodos.filter(t => t['status'] == 'to-do');
