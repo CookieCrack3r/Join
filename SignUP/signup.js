@@ -2,9 +2,12 @@ function backToLogin() {
     window.location.pathname = '/Login/login.html';
 }
 
-//Disable & Enable the Button befor Sign Up
+/**
+*You can't finish your sing-up befor you accept the term checkbox
+*@param {string} signUpBtn - the sign-up button is disabled until you accept the term checkbox
+**/
 function enableTheBtn() {
-    
+
     let checkboxAccepted = document.getElementById('accept_terms');
     let signUpBtn = document.getElementById('sign_up');
 
@@ -16,7 +19,7 @@ function enableTheBtn() {
         signUpBtn.classList.add('disabled-Button');
     }
 }
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     enableTheBtn();
     document.getElementById('accept_terms').addEventListener('change', enableTheBtn());
 });
