@@ -35,9 +35,13 @@ function resetUserInput() {
 
 }
 
-//this function pop-up a baner after signing up
 
-function succesfullySignedUp() {
+/**
+ * this function pop-up a baner after signing up
+ * 
+ * @param {string} succes - this is the variable which is used to animate a pop-up banner after a user registration
+ */
+ function succesfullySignedUp() {
     let success = document.getElementById('popup_after_succesfully_signup');
     success.style.display = 'block';
     success.style.transition = "top 0.5s ease, transform 0.5s ease";
