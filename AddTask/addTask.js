@@ -118,8 +118,12 @@ function addContactToTodo(i) {
     let contactElement = document.getElementById(`added-${i}`);
     let contactToAdd = contactsAddTask[i];
 
-    if (contactsObject.some(existingContact => existingContact.id === contactToAdd.id)) {
-        displayFeedback('Contact already added!');
+    let existingContactIndex = contactsObject.findIndex(existingContact => existingContact.id === contactToAdd.id);
+
+    if (existingContactIndex !== -1) {
+        contactsObject.splice(existingContactIndex, 1);
+        contactElement.innerHTML = contactToAdd.name;
+        displayFeedback('Contact removed successfully!');
     } else {
         contactsObject.push({
             id: contactToAdd.id,
@@ -153,7 +157,7 @@ function addSubtask() {
 
         let subtasksObject = {
             text: subtaskText,
-            checked: false // Standardmäßig auf false setzen
+            checked: false
         };
         subtasks.push(subtasksObject);
 
