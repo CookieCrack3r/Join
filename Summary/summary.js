@@ -1,14 +1,17 @@
 let todoSum = [];
 
 
+
 async function initSummary() {
+  
   await includeHTML();
   loadtodoSums();
   await getInitials();
-  await displayOptions();
+  displayOptions();
   greetingOnDailyTime();
   getCurrentDate();
 }
+
 
 async function loadtodoSums() {
   try {
@@ -62,12 +65,13 @@ async function getInitials() {
 * this function is to open the submenu when the user is clicking on the initial-logo
 * @param {string} isDisplayed - if the user click on the initial-logo get opened if he click again it will be closed
 **/
-async function displayOptions() {
+function displayOptions() {
   const options = document.getElementById("options");
+  options.style.display = '';
   const isDisplayed = options.classList.toggle("dNone");
 
   if (isDisplayed) {
-    document.getElementById('d_none_svg').style.display = 'none';
+    document.getElementById('options').style.display = 'none';
   }
 
   if (isDisplayed && !options.innerHTML.trim()) {
@@ -75,9 +79,9 @@ async function displayOptions() {
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
-    
     `;
   }
+ 
 }
 
 function goToLogin() {

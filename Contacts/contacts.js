@@ -241,7 +241,7 @@ async function deleteContactByName(contactName) {
 }
 
 
-//this function is to get the user initials
+
 async function getInitials() {
   UserInitials = await getItem('userInitial');
   UserName = await getItem('userName');
@@ -251,14 +251,15 @@ async function getInitials() {
       </div>`;
 }
 
-//this function is to open the submenu for the logout
 
-async function displayOptions() {
+
+function displayOptions() {
   const options = document.getElementById("options");
+  options.style.display = '';
   const isDisplayed = options.classList.toggle("dNone");
 
   if (isDisplayed) {
-    document.getElementById('d_none_svg').style.display = 'none';
+    document.getElementById('options').style.display = 'none';
   }
 
   if (isDisplayed && !options.innerHTML.trim()) {
@@ -266,9 +267,9 @@ async function displayOptions() {
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
-    
     `;
   }
+ 
 }
 
 
