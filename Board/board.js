@@ -6,10 +6,6 @@ async function initBoard() {
     await loadTodos();
     await getInitials();
     await displayOptions();
-    updateHTML();
-}
-
-function updateHTML() {
     updateAwaitFeedback();
     updateInProgress();
     updateToDo();
@@ -31,9 +27,7 @@ async function loadTodos() {
 
 function updateToDo() {
     let to_do = todo.filter(t => t['status'] == 'to-do');
-
     document.getElementById('todo').innerHTML = '';
-
     if (to_do.length === 0) {
         document.getElementById('todo').innerHTML = '<span class="no-tasks">No tasks added</span>';
     } else {
@@ -46,9 +40,7 @@ function updateToDo() {
 
 function updateInProgress() {
     let progress = todo.filter(t => t['status'] == 'in-progress');
-
     document.getElementById('in-progress').innerHTML = '';
-
     if (progress.length === 0) {
         document.getElementById('in-progress').innerHTML = '<span class="no-tasks">No tasks added</span>';
     } else {
@@ -61,9 +53,7 @@ function updateInProgress() {
 
 function updateAwaitFeedback() {
     let awaitFeedback = todo.filter(t => t['status'] == 'await-feedback');
-
     document.getElementById('await-feedback').innerHTML = '';
-
     if (awaitFeedback.length === 0) {
         document.getElementById('await-feedback').innerHTML = '<span class="no-tasks">No tasks added</span>';
     } else {
@@ -76,9 +66,7 @@ function updateAwaitFeedback() {
 
 function updateDone() {
     let done = todo.filter(t => t['status'] == 'done');
-
     document.getElementById('done').innerHTML = '';
-
     if (done.length === 0) {
         document.getElementById('done').innerHTML = '<span class="no-tasks">No tasks added</span>';
     } else {
@@ -90,65 +78,31 @@ function updateDone() {
 }
 
 function generateBackroundColor(category) {
-    let categoryColor = '';
-
-    if (category === 'Technical') {
-        categoryColor = '#005bf8';
-    } else if (category === 'Design') {
-        categoryColor = '#FF7A00';
-    }
-
-    return categoryColor;
+    let categoryColor = { 'Technical': '#005bf8', 'Design': '#FF7A00' };
+    return categoryColor[category];
 }
 
 function getPriorityImage(priority) {
-    if (priority === 'Low') {
-        return 'img/low.png';
-    } else if (priority === 'Medium') {
-        return 'img/medium.svg';
-    } else if (priority === 'Urgent') {
-        return 'img/urgent.png';
-    } else {
-        return 'img/medium.svg';
-    }
+    const priorityImages = {
+        'Low': 'img/low.png',
+        'Medium': 'img/medium.svg',
+        'Urgent': 'img/urgent.png'
+    };
+    return priorityImages[priority] || 'img/medium.svg';
 }
 
 function generateKanbanHTML(todo) {
     let { category, title, subtasks, description, priority, date, id } = todo;
-    
     let subtaskCount = getSubtaskCount(todo, id);
     let completedSubtaskCount = getCompletedSubtaskCount(todo, id);
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
-    
     let progressPercentage = subtaskCount === 0 ? 0 : (completedSubtaskCount / subtaskCount) * 100;
-    
     let progressBarSection = subtaskCount > 0 ? `
-        <div class="progress-section">
-            <div class="progress-bar">
-                <div class="progress" style="width: ${progressPercentage}%"></div>
-            </div>
-            <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
-        </div>` : '';
-    
+        <div class="progress-section"><div class="progress-bar"><div class="progress" style="width: ${progressPercentage}%"></div></div><div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div></div>` : '';
     return `
-        <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
-            <span class="label" style="background-color: ${categoryColor};">${category}</span>
-            <span class="description">
-                <h3>${title}</h3><br>${description}
-            </span>
-            ${progressBarSection}
-            <div class="members-and-priority">
-                <div class="members">${getContactsPic(id)}</div>
-                <div class="priority"><img src="${priorityImage}"></div>
-            </div>
-            <div class="mobileButtons">
-                <button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button>
-                <button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button>
-            </div>
-        </div>`;
+        <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card"><span class="label" style="background-color: ${categoryColor};">${category}</span><span class="description"><h3>${title}</h3><br>${description}</span>${progressBarSection}<div class="members-and-priority"><div class="members">${getContactsPic(id)}</div> <div class="priority"><img src="${priorityImage}"></div></div><div class="mobileButtons"><button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button><button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button></div></div>`;
 }
-
 
 function categoryUp(id, event) {
     event.stopPropagation();
@@ -166,7 +120,6 @@ function moveCategoryUp(id) {
     const filteredTasks = todo.filter(task => task.category === currentCategory);
     const taskIndex = filteredTasks.findIndex(task => task.id === id);
     const newTaskIndex = (taskIndex - 1 + filteredTasks.length) % filteredTasks.length;
-
     if (taskIndex !== -1) {
         todo[index].status = updateStatusBasedOnPrevious(todo[index].status);
         [filteredTasks[taskIndex], filteredTasks[newTaskIndex]] = [filteredTasks[newTaskIndex], filteredTasks[taskIndex]];
@@ -181,7 +134,6 @@ function moveCategoryDown(id) {
     const filteredTasks = todo.filter(task => task.category === currentCategory);
     const taskIndex = filteredTasks.findIndex(task => task.id === id);
     const newTaskIndex = (taskIndex + 1) % filteredTasks.length;
-
     if (taskIndex !== -1) {
         todo[index].status = updateStatusBasedOnCurrent(todo[index].status);
         [filteredTasks[taskIndex], filteredTasks[newTaskIndex]] = [filteredTasks[newTaskIndex], filteredTasks[taskIndex]];
@@ -221,53 +173,15 @@ function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card').classList.remove('d-none');
     document.getElementById('big-card').innerHTML = '';
     document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, id, date, priority, subtasks);
-
     createCheckboxes(id, subtasks);
 }
 
 function generateBigCard(category, title, description, id, date, priority, subtasks) {
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
-
     return `
-        <div class="first-section">
-            <span class="label-big" style="background-color: ${categoryColor};">${category}</span>
-            <img src="img/close.svg" id="close" onclick="closeCard()">
-        </div>
-        <span class="headline-big" id="headline-big">${title}</span>
-        <br>
-        <div class="description-big" id="description-big">
-            <span>${description}</span>
-        </div>
-        <div class="date-big">
-            <span><b>Due date:</b></span><span id="date-big">${date}</span>
-        </div>
-        <div class="date-big">
-            <span><b>Priority:</b></span><span id="priority-big">${priority}<img src="${priorityImage}"></span>
-        </div>
-        <div class="profiles-big">
-            <span><b>Assigned To:</b></span>
-            <div class="assigned-contacts-big">
-                ${getContactsBig(id)}
-            </div>
-        </div>
-        <div class="subtasks-big">
-            <span><b>Subtasks</b></span>
-            <span id="checkboxes"></span>
-        </div>
-        <div class="end-section" id="end-section">
-            <span onclick="deleteTodo(${id})"><img src="img/delete.svg">Delete</span>
-            |
-            <span onclick="editTodo({
-                category: '${category}',
-                title: '${title}',
-                description: '${description}',
-                id: '${id}',
-                date: '${date}',
-                priority: '${priority}',
-                subtasks: '${subtasks}'
-            })"><img src="img/edit.svg">Edit</span>
-        </div>
+        <div class="first-section"><span class="label-big" style="background-color: ${categoryColor};">${category}</span><img src="img/close.svg" id="close" onclick="closeCard()"></div><span class="headline-big" id="headline-big">${title}</span><br><div class="description-big" id="description-big"><span>${description}</span></div><div class="date-big"><span><b>Due date:</b></span><span id="date-big">${date}</span></div><div class="date-big"><span><b>Priority:</b></span><span id="priority-big">${priority}<img src="${priorityImage}"></span></div><div class="profiles-big"><span><b>Assigned To:</b></span><div class="assigned-contacts-big">${getContactsBig(id)}</div></div><div class="subtasks-big"><span><b>Subtasks</b></span><span id="checkboxes"></span></div><div class="end-section" id="end-section"><span onclick="deleteTodo(${id})"><img src="img/delete.svg">Delete</span>
+            | <span onclick="editTodo({category: '${category}',title: '${title}',description: '${description}',id: '${id}',date: '${date}',priority: '${priority}',subtasks: '${subtasks}'})"><img src="img/edit.svg">Edit</span></div>
     `;
 }
 
@@ -278,22 +192,20 @@ async function getContacts(id) {
         for (let i = 0; i < todo[id].contacts.length; i++) {
             names += `<span>${todo[id].contacts[i].name}</span>`;
         }
-
         return names;
     } catch (error) {
         console.error("Error occurred while getting contacts:", error);
     }
 }
+
 function getContactInitials(contact) {
     const initials = contact.name.split(' ').map(part => part[0].toUpperCase()).join('');
-
     return initials;
 }
 
 function getContactsPic(id) {
     try {
         let pics = '';
-
         if (todo[id]) {
             for (let i = 0; i < todo[id].contacts.length; i++) {
                 let contactInitials = getContactInitials(todo[id].contacts[i]);
@@ -302,9 +214,7 @@ function getContactsPic(id) {
                 pics += `<div class="board-sign" style="background-color: ${contactColor}">${contactInitials}</div>`;
             }
         }
-
         return pics;
-
     } catch (error) {
         console.error("Error occurred while getting contacts:", error);
     }
@@ -319,18 +229,12 @@ function getContactsBig(id) {
                 let contact = todo[id].contacts[i];
                 let contactInitials = getContactInitials(contact);
                 let contactColor = todo[id].contacts[i].backgroundColor;
-
                 contactsBig += `
-                    <div class="contacts-big-both">
-                        <span class="big-names">${contact.name}</span>
-                        <div class="board-sign" style="background-color: ${contactColor}">${contactInitials}</div>
-                    </div>
+                    <div class="contacts-big-both"><span class="big-names">${contact.name}</span><div class="board-sign" style="background-color: ${contactColor}">${contactInitials}</div></div>
                 `;
             }
         }
-
         return contactsBig;
-
     } catch (error) {
         console.error("Error occurred while getting contacts:", error);
     }
@@ -338,22 +242,11 @@ function getContactsBig(id) {
 
 function editTodo(card) {
     let idInput = card.id;
-
     document.getElementById('headline-big').innerHTML = `<input id="titleinput" value="${card.title}">`;
     document.getElementById('description-big').innerHTML = `<textarea id="textinput">${card.description}</textarea>`;
     document.getElementById('date-big').innerHTML = `<input id="dateinput" type="date" value="${card.date}">`;
-
-    document.getElementById('priority-big').innerHTML = `<div class="priority-big-buttons">
-       <button type="button" onclick="priorityUrgent()" id="urgent">Urgent<img id="urgent-img"
-               src="img/urgent.png"></button>
-       <button type="button" onclick="priorityMedium()" id="medium">Medium<img id="medium-img"
-               src="img/medium.png"></button>
-       <button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"
-               src="img/low.png"></button>
-    </div>`;
-
+    document.getElementById('priority-big').innerHTML = `<div class="priority-big-buttons"><button type="button" onclick="priorityUrgent()" id="urgent">Urgent<img id="urgent-img"src="img/urgent.png"></button><button type="button" onclick="priorityMedium()" id="medium">Medium<img id="medium-img"src="img/medium.png"></button><button type="button" onclick="priorityLow()" id="low">Low<img id="low-img"src="img/low.png"></button></div>`;
     document.getElementById('checkboxes').innerHTML = '';
-
     for (let i = 0; i < todo[idInput].subtasks.length; i++) {
         let subtaskText = todo[idInput].subtasks[i]['text'];
         let subtaskChecked = todo[idInput].subtasks[i]['checked'];
@@ -361,11 +254,8 @@ function editTodo(card) {
         let checkboxId = `checkbox${i}`;
 
         document.getElementById('checkboxes').innerHTML += `
-            <div>
-                <input type="text" id="${checkboxId}" value="${subtaskText}" ${subtaskChecked ? 'checked' : ''}>
-            </div>`;
+            <div><input type="text" id="${checkboxId}" value="${subtaskText}" ${subtaskChecked ? 'checked' : ''}></div>`;
     }
-
     document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
 }
 
@@ -383,7 +273,6 @@ function saveTodo(idInput) {
         todo[idInput].subtasks[i]['text'] = document.getElementById(checkboxId).value;
         todo[idInput].subtasks[i]['checked'] = document.getElementById(checkboxId).checked;
     }
-
     updateDB();
     updateHTML();
     closeCard();
@@ -392,41 +281,32 @@ function saveTodo(idInput) {
 function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
-
     for (let i = 0; i < todo[id].subtasks.length; i++) {
         let subtaskText = todo[id].subtasks[i]['text'];
         let subtaskChecked = todo[id].subtasks[i]['checked'];
 
         let checkboxId = `checkbox${i}`;
-
         checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtaskChecked ? 'checked' : ''} onchange="updateSubtaskStatus(${i}, ${id})"> ${subtaskText}<br>`;
     }
 }
 
 function updateSubtaskStatus(i, id) {
-
     if (todo[id].subtasks[i]['checked'] == false) {
         todo[id].subtasks[i]['checked'] = true;
-
     } else
         todo[id].subtasks[i]['checked'] = false;
-
-
     updateDB();
     updateHTML();
 }
 
-
 function getSubtaskCount(todo, id) {
     let subtasks = todo['subtasks'];
-
     return subtasks.length;
 }
 
 function getCompletedSubtaskCount(todo, id) {
     let Subtasks = todo['subtasks'];
     let subtasksLength = Subtasks.filter(t => t['checked'] == true);
-
     return subtasksLength.length;
 }
 
@@ -436,30 +316,24 @@ async function filterTodos() {
         t['title'].toLowerCase().includes(searchInput) ||
         t['description'].toLowerCase().includes(searchInput)
     );
-
     let filteredTodo = filteredTodos.filter(t => t['status'] == 'to-do');
     let filteredInprogress = filteredTodos.filter(t => t['status'] == 'in-progress');
     let filteredAwaitFeedback = filteredTodos.filter(t => t['status'] == 'await-feedback');
     let filteredDone = filteredTodos.filter(t => t['status'] == 'done');
-
     document.getElementById('todo').innerHTML = '';
     document.getElementById('in-progress').innerHTML = '';
     document.getElementById('await-feedback').innerHTML = '';
     document.getElementById('done').innerHTML = '';
-
     for (let i = 0; i < filteredTodo.length; i++) {
         let filterTodo = filteredTodo[i];
         document.getElementById('todo').innerHTML += generateKanbanHTML(filterTodo);
-    }
-    for (let i = 0; i < filteredInprogress.length; i++) {
+    } for (let i = 0; i < filteredInprogress.length; i++) {
         let filterInprogress = filteredInprogress[i];
         document.getElementById('in-progress').innerHTML += generateKanbanHTML(filterInprogress);
-    }
-    for (let i = 0; i < filteredAwaitFeedback.length; i++) {
+    } for (let i = 0; i < filteredAwaitFeedback.length; i++) {
         let filterAwaitFeedback = filteredAwaitFeedback[i];
         document.getElementById('await-feedback').innerHTML += generateKanbanHTML(filterAwaitFeedback);
-    }
-    for (let i = 0; i < filteredDone.length; i++) {
+    } for (let i = 0; i < filteredDone.length; i++) {
         let filterDone = filteredDone[i];
         document.getElementById('done').innerHTML += generateKanbanHTML(filterDone);
     }
@@ -467,7 +341,6 @@ async function filterTodos() {
 
 async function deleteTodo(id) {
     let titleToDelete = '';
-
     if (todo[id] !== undefined) {
         titleToDelete = todo[id]['title'];
         todo.splice(id, 1);
@@ -479,7 +352,6 @@ async function deleteTodo(id) {
             todo.splice(indexToDelete, 1);
         }
     }
-
     await setItem('todos', JSON.stringify(todo));
     closeCard();
     updateHTML();
@@ -520,8 +392,14 @@ function addTask(urlParam) {
     window.location.href = url;
 }
 
+<<<<<<< HEAD
+=======
 
-//this function is to get the user initials
+
+<<<<<<< HEAD
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
+=======
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
 async function getInitials() {
     UserInitials = await getItem('userInitial');
     UserName = await getItem('userName');
@@ -531,22 +409,58 @@ async function getInitials() {
       </div>`;
 }
 
-//this function is to open the submenu for the logout
-
+<<<<<<< HEAD
+<<<<<<< HEAD
 async function displayOptions() {
+=======
+
+
+function displayOptions() {
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
     const options = document.getElementById("options");
+    options.style.display = '';
     const isDisplayed = options.classList.toggle("dNone");
-
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
     if (isDisplayed) {
-        document.getElementById('d_none_svg').style.display = 'none';
+      document.getElementById('options').style.display = 'none';
     }
-
+<<<<<<< HEAD
     if (isDisplayed && !options.innerHTML.trim()) {
         options.innerHTML = /*html*/`
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
-
     `;
+=======
+  
+    if (isDisplayed && !options.innerHTML.trim()) {
+=======
+
+
+function displayOptions() {
+    const options = document.getElementById("options");
+    options.style.display = '';
+    const isDisplayed = options.classList.toggle("dNone");
+  
+    if (isDisplayed) {
+      document.getElementById('options').style.display = 'none';
     }
-}
+  
+    if (isDisplayed && !options.innerHTML.trim()) {
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
+      options.innerHTML = /*html*/`
+        <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
+        <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
+        <div class="option" onclick="goToLogin()">Log out</div>
+      `;
+<<<<<<< HEAD
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
+=======
+>>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
+    }
+   
+  }
+  
