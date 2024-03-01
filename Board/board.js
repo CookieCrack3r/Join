@@ -114,56 +114,41 @@ function getPriorityImage(priority) {
 }
 
 function generateKanbanHTML(todo) {
-    let category = todo['category'];
-    let title = todo['title'];
-    let subtasks = todo['subtasks'];
-    let description = todo['description'];
-    let priority = todo['priority'];
-    let date = todo['date'];
-    let id = todo['id'];
-    let status = todo['status'];
-
+    let { category, title, subtasks, description, priority, date, id } = todo;
+    
     let subtaskCount = getSubtaskCount(todo, id);
     let completedSubtaskCount = getCompletedSubtaskCount(todo, id);
-
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
-
+    
     let progressPercentage = subtaskCount === 0 ? 0 : (completedSubtaskCount / subtaskCount) * 100;
-
-    let progressBarSection = '';
-    if (subtaskCount > 0) {
-        progressBarSection = `
-            <div class="progress-section">
-                <div class="progress-bar">
-                    <div class="progress" style="width: ${progressPercentage}%">
-                    </div>
-                </div>
-                <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
-            </div>`;
-    }
-
+    
+    let progressBarSection = subtaskCount > 0 ? `
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress" style="width: ${progressPercentage}%"></div>
+            </div>
+            <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
+        </div>` : '';
+    
     return `
-    <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
-        <span class="label" style="background-color: ${categoryColor};">${category}</span>
-        <span class="description">
-            <h3>${title}</h3><br>${description}
-        </span>
-        ${progressBarSection}
-        <div class="members-and-priority">
-            <div class="members">
-                ${getContactsPic(id)}
+        <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
+            <span class="label" style="background-color: ${categoryColor};">${category}</span>
+            <span class="description">
+                <h3>${title}</h3><br>${description}
+            </span>
+            ${progressBarSection}
+            <div class="members-and-priority">
+                <div class="members">${getContactsPic(id)}</div>
+                <div class="priority"><img src="${priorityImage}"></div>
             </div>
-            <div class="priority">
-                <img src="${priorityImage}">
+            <div class="mobileButtons">
+                <button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button>
+                <button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button>
             </div>
-        </div>
-        <div class="mobileButtons">
-            <button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button>
-            <button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button>
-        </div>
-    </div>`;
+        </div>`;
 }
+
 
 function categoryUp(id, event) {
     event.stopPropagation();
@@ -262,9 +247,9 @@ function generateBigCard(category, title, description, id, date, priority, subta
         </div>
         <div class="profiles-big">
             <span><b>Assigned To:</b></span>
-
-            ${getContacts(id)}
-            
+            <div class="assigned-contacts-big">
+                ${getContactsBig(id)}
+            </div>
         </div>
         <div class="subtasks-big">
             <span><b>Subtasks</b></span>
@@ -286,12 +271,11 @@ function generateBigCard(category, title, description, id, date, priority, subta
     `;
 }
 
-function getContacts(id) {
+async function getContacts(id) {
     try {
         let names = '';
 
         for (let i = 0; i < todo[id].contacts.length; i++) {
-
             names += `<span>${todo[id].contacts[i].name}</span>`;
         }
 
@@ -300,21 +284,52 @@ function getContacts(id) {
         console.error("Error occurred while getting contacts:", error);
     }
 }
+function getContactInitials(contact) {
+    const initials = contact.name.split(' ').map(part => part[0].toUpperCase()).join('');
+
+    return initials;
+}
 
 function getContactsPic(id) {
     try {
         let pics = '';
 
         if (todo[id]) {
-
             for (let i = 0; i < todo[id].contacts.length; i++) {
+                let contactInitials = getContactInitials(todo[id].contacts[i]);
+                let contactColor = todo[id].contacts[i].backgroundColor;
 
-                pics += ``;
-
+                pics += `<div class="board-sign" style="background-color: ${contactColor}">${contactInitials}</div>`;
             }
         }
 
         return pics;
+
+    } catch (error) {
+        console.error("Error occurred while getting contacts:", error);
+    }
+}
+
+function getContactsBig(id) {
+    try {
+        let contactsBig = '';
+
+        if (todo[id]) {
+            for (let i = 0; i < todo[id].contacts.length; i++) {
+                let contact = todo[id].contacts[i];
+                let contactInitials = getContactInitials(contact);
+                let contactColor = todo[id].contacts[i].backgroundColor;
+
+                contactsBig += `
+                    <div class="contacts-big-both">
+                        <span class="big-names">${contact.name}</span>
+                        <div class="board-sign" style="background-color: ${contactColor}">${contactInitials}</div>
+                    </div>
+                `;
+            }
+        }
+
+        return contactsBig;
 
     } catch (error) {
         console.error("Error occurred while getting contacts:", error);
@@ -387,8 +402,6 @@ function createCheckboxes(id, subtasks) {
         checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtaskChecked ? 'checked' : ''} onchange="updateSubtaskStatus(${i}, ${id})"> ${subtaskText}<br>`;
     }
 }
-
-
 
 function updateSubtaskStatus(i, id) {
 
