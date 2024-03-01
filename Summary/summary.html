@@ -30,73 +30,75 @@
                 </div>
                 <div class="greetingname-container" id="greetingname"></div>
             </div>
-            
-        <div class="middle-section">
-            <div class="task-urgent" onclick="goToBoard()">
-                    <div class="task-urgend-under-container">
+
+            <div class="middle-section-container">
+                <div class="middle-section">
+                    <div class="task-urgent" onclick="goToBoard()">
+                        <div class="task-urgend-under-container">
                             <div style="display: flex; align-items: center;">
                                 <img style="height: 76px; width: 76px;" src="/imgs/icon + circle.png">
                                 <div id="task_urgend_number" class="task-urgend-number">10</div>
                             </div>
-                        <span>Tasks Urgent</span>
+                            <span>Tasks Urgent</span>
+                        </div>
+
+                        <div class="white-column-urgent-task">
+                            <img src="/imgs/column-white-urgent-task.png">
+                        </div>
+
+                        <div class="date-container">
+                            <span id="currentDate">February, 02.02.2024</span>
+                            <p>Upcoming Deadline</p>
+                        </div>
                     </div>
 
-                    <div class="white-column-urgent-task">
-                        <img src="/imgs/column-white-urgent-task.png">
+                    <div class="task-in-board" onclick="goToBoard()">
+                        <div class="task-in-board-under-container">
+                            <img style="height: 76px; width: 76px;" src="/imgs/task-in-board-img.png">
+                            <div id="Task-in-Board_value" class="task-in-board-number">5</div>
+                        </div>
+                        <span>Task in Board</span>
                     </div>
-                
-                    <div class="date-container">
-                        <span id="currentDate">February, 02.02.2024</span>
-                        <p>Upcoming Deadline</p>
+                </div>
+            </div>
+
+            <div class="under-task-section">
+
+                <div class="task-to-do" onclick="goToBoard()">
+                    <div class="under-container">
+                        <img src="/imgs/task-to-do-img.png">
+                        <div id="Tasks-ToDo-value" class="number-in-tasks">7</div>
                     </div>
-            </div>
-
-            <div class="task-in-board" onclick="goToBoard()">
-                <div class="task-in-board-under-container">
-                    <img style="height: 76px; width: 76px;" src="/imgs/task-in-board-img.png">
-                    <div id="Task-in-Board_value" class="task-in-board-number">5</div>
+                    <span>Task To-Do</span>
                 </div>
-                <span>Task in Board</span>
-            </div>
-        </div>
 
-        <div class="under-task-section">
-
-            <div class="task-to-do" onclick="goToBoard()">
-                <div class="under-container">
-                    <img src="/imgs/task-to-do-img.png">
-                    <div id="Tasks-ToDo-value" class="number-in-tasks">7</div>
+                <div class="task-in-progress" onclick="goToBoard()">
+                    <div class="under-container">
+                        <img src="/imgs/task-in-progress-img.png">
+                        <div id="Task-in-Progress_value" class="number-in-tasks">2</div>
+                    </div>
+                    <span>Task in Progress</span>
                 </div>
-                <span>Task To-Do</span>
-            </div>
 
-            <div class="task-in-progress" onclick="goToBoard()">
-                <div class="under-container">
-                    <img src="/imgs/task-in-progress-img.png">
-                    <div id="Task-in-Progress_value" class="number-in-tasks">2</div>
+                <div class="awaiting-feedback" onclick="goToBoard()">
+                    <div class="under-container">
+                        <img src="/imgs/awaiting-feedback-img.png">
+                        <div id="Awaiting-feedback_value" class="number-in-tasks">3</div>
+                    </div>
+                    <span>Awaiting Feedback</span>
                 </div>
-                <span>Task in Progress</span>
-            </div>
 
-            <div class="awaiting-feedback" onclick="goToBoard()">
-                <div class="under-container">
-                    <img src="/imgs/awaiting-feedback-img.png">
-                    <div id="Awaiting-feedback_value" class="number-in-tasks">3</div>
+                <div class="tasks-done" onclick="goToBoard()">
+                    <div class="under-container">
+                        <img src="/imgs/task-done.png">
+                        <div id="Task-Done_value" class="number-in-tasks">4</div>
+                    </div>
+                    <span>Tasks Done</span>
                 </div>
-                <span>Awaiting Feedback</span>
+
             </div>
 
-            <div class="tasks-done" onclick="goToBoard()">
-                <div class="under-container">
-                    <img src="/imgs/task-done.png">
-                    <div id="Task-Done_value" class="number-in-tasks">4</div>
-                </div>
-                <span>Tasks Done</span>
-            </div>
-
-        </div>
-
-    <div>
+            <div>
 
 
 

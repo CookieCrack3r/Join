@@ -285,12 +285,12 @@ select:hover {
 }
 
 .buttons {
-    max-width: 335px;
+    max-width: 1440px;
     height: 61px;
-    margin-left: 75%;
     gap: 4px;
     display: flex;
     bottom: 20px;
+    justify-content: end;
 }
 
 #clear {
@@ -386,11 +386,11 @@ select:hover {
     }
 
     .buttons{
-        margin-left: 50px;
         height: 50px;
         margin-bottom: 70px;
         top: 790px;
-        
+        position: fixed;
+        margin-left: 150px;
     }
 
     #clear{
@@ -400,7 +400,6 @@ select:hover {
     #create{
         height: 48px;
         width: 160px;
-        margin-left: 84px;
     }
 
     .content{
@@ -550,6 +549,7 @@ select:hover {
 
     .buttons {
         top: 810px;
+        margin-left: 50px;
     }
 
     #create {
