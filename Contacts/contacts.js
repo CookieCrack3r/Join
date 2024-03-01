@@ -45,6 +45,12 @@ function addContact() {
   document.getElementById('bg').style.display = 'flex';
 }
 
+function validateNumbers(input) {
+  const inputValue = input.value;
+  const numericValue = inputValue.replace(/\D/g, '');
+  input.value = numericValue;
+2}
+
 function getRandomColor() {
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
@@ -173,7 +179,7 @@ function editContact(i) {
               <img src="img/mail.svg">
           </div>
           <div class="inputDiv">
-              <input id="editPhone" required pattern="^[0-9]{5,20}$" type="text" placeholder="Phone" value="${contact.phone}">
+              <input id="editPhone" required pattern="^[0-9]{5,20}$" type="text" placeholder="Phone" oninput="validateNumbers(this)" value="${contact.phone}">
               <img src="img/call.svg">
           </div>
           <div class="addContactButtons">
@@ -193,10 +199,8 @@ async function updateContact(i) {
 
     contacts = JSON.parse(await getItem('contacts')) || [];
     
-    // Find the index of the contact to be updated
     const indexToUpdate = contacts.findIndex(contact => contact.id == i);
 
-    // Update the existing contact
     if (indexToUpdate !== -1) {
       contacts[indexToUpdate].name = editedName;
       contacts[indexToUpdate].mail = editedMail;
