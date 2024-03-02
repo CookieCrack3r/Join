@@ -6,6 +6,9 @@ async function initBoard() {
     await loadTodos();
     await getInitials();
     await displayOptions();
+}
+
+async function updateHTML() {
     updateAwaitFeedback();
     updateInProgress();
     updateToDo();
@@ -142,30 +145,22 @@ function moveCategoryDown(id) {
     }
 }
 
-function updateStatusBasedOnCurrent(status) {
-    switch (status) {
-        case 'to-do':
-            return 'in-progress';
-        case 'in-progress':
-            return 'await-feedback';
-        case 'await-feedback':
-            return 'done';
-        case 'done':
-            return status;
-    }
+function updateStatusBasedOnPrevious(status) {
+    const statusMap = {
+        'done': 'await-feedback',
+        'await-feedback': 'in-progress',
+        'in-progress': 'to-do'
+    };
+    return statusMap[status] || status;
 }
 
-function updateStatusBasedOnPrevious(status) {
-    switch (status) {
-        case 'done':
-            return 'await-feedback';
-        case 'await-feedback':
-            return 'in-progress';
-        case 'in-progress':
-            return 'to-do';
-        case 'to-do':
-            return status;
-    }
+function updateStatusBasedOnCurrent(status) {
+    const statusMap = {
+        'to-do': 'in-progress',
+        'in-progress': 'await-feedback',
+        'await-feedback': 'done'
+    };
+    return statusMap[status] || status;
 }
 
 function openCard(category, title, description, id, date, priority, subtasks) {
@@ -188,7 +183,6 @@ function generateBigCard(category, title, description, id, date, priority, subta
 async function getContacts(id) {
     try {
         let names = '';
-
         for (let i = 0; i < todo[id].contacts.length; i++) {
             names += `<span>${todo[id].contacts[i].name}</span>`;
         }
@@ -223,7 +217,6 @@ function getContactsPic(id) {
 function getContactsBig(id) {
     try {
         let contactsBig = '';
-
         if (todo[id]) {
             for (let i = 0; i < todo[id].contacts.length; i++) {
                 let contact = todo[id].contacts[i];
@@ -250,9 +243,7 @@ function editTodo(card) {
     for (let i = 0; i < todo[idInput].subtasks.length; i++) {
         let subtaskText = todo[idInput].subtasks[i]['text'];
         let subtaskChecked = todo[idInput].subtasks[i]['checked'];
-
         let checkboxId = `checkbox${i}`;
-
         document.getElementById('checkboxes').innerHTML += `
             <div><input type="text" id="${checkboxId}" value="${subtaskText}" ${subtaskChecked ? 'checked' : ''}></div>`;
     }
@@ -263,11 +254,9 @@ function saveTodo(idInput) {
     let titleinput = document.getElementById('titleinput').value;
     let textinput = document.getElementById('textinput').value;
     let dateinput = document.getElementById('dateinput').value;
-
     todo[idInput].title = titleinput;
     todo[idInput].description = textinput;
     todo[idInput].date = dateinput;
-
     for (let i = 0; i < todo[idInput].subtasks.length; i++) {
         let checkboxId = `checkbox${i}`;
         todo[idInput].subtasks[i]['text'] = document.getElementById(checkboxId).value;
@@ -284,7 +273,6 @@ function createCheckboxes(id, subtasks) {
     for (let i = 0; i < todo[id].subtasks.length; i++) {
         let subtaskText = todo[id].subtasks[i]['text'];
         let subtaskChecked = todo[id].subtasks[i]['checked'];
-
         let checkboxId = `checkbox${i}`;
         checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtaskChecked ? 'checked' : ''} onchange="updateSubtaskStatus(${i}, ${id})"> ${subtaskText}<br>`;
     }
@@ -312,10 +300,7 @@ function getCompletedSubtaskCount(todo, id) {
 
 async function filterTodos() {
     let searchInput = document.getElementById('search').value.trim().toLowerCase();
-    let filteredTodos = todo.filter(t => 
-        t['title'].toLowerCase().includes(searchInput) ||
-        t['description'].toLowerCase().includes(searchInput)
-    );
+    let filteredTodos = todo.filter(t => t['title'].toLowerCase().includes(searchInput) || t['description'].toLowerCase().includes(searchInput));
     let filteredTodo = filteredTodos.filter(t => t['status'] == 'to-do');
     let filteredInprogress = filteredTodos.filter(t => t['status'] == 'in-progress');
     let filteredAwaitFeedback = filteredTodos.filter(t => t['status'] == 'await-feedback');
@@ -392,81 +377,24 @@ function addTask(urlParam) {
     window.location.href = url;
 }
 
-<<<<<<< HEAD
-=======
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
-=======
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
-=======
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
 async function getInitials() {
     UserInitials = await getItem('userInitial');
     UserName = await getItem('userName');
     const kanban = document.getElementById("kanban");
-    kanban.innerHTML += `<div onclick="displayOptions()">
-      ${UserInitials}
-      </div>`;
+    kanban.innerHTML += `<div onclick="displayOptions()">${UserInitials}</div>`;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 async function displayOptions() {
-=======
-
-
-function displayOptions() {
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
     const options = document.getElementById("options");
-    options.style.display = '';
     const isDisplayed = options.classList.toggle("dNone");
-<<<<<<< HEAD
-=======
-  
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
     if (isDisplayed) {
-      document.getElementById('options').style.display = 'none';
+        document.getElementById('d_none_svg').style.display = 'none';
     }
-<<<<<<< HEAD
     if (isDisplayed && !options.innerHTML.trim()) {
         options.innerHTML = /*html*/`
       <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
       <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
       <div class="option" onclick="goToLogin()">Log out</div>
     `;
-=======
-  
-    if (isDisplayed && !options.innerHTML.trim()) {
-=======
-
-
-function displayOptions() {
-    const options = document.getElementById("options");
-    options.style.display = '';
-    const isDisplayed = options.classList.toggle("dNone");
-  
-    if (isDisplayed) {
-      document.getElementById('options').style.display = 'none';
     }
-  
-    if (isDisplayed && !options.innerHTML.trim()) {
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
-      options.innerHTML = /*html*/`
-        <div class="option"><a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy</a></div>
-        <div class="option"><a href="/LegalNotice/legalnotice.html">Legal Notice</a></div>
-        <div class="option" onclick="goToLogin()">Log out</div>
-      `;
-<<<<<<< HEAD
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
-=======
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
-    }
-=======
->>>>>>> 3b14cef90a8f5783d3c71594248ac76e994278d6
-   
-  }
-  
+}
