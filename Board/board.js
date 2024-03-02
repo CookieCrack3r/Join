@@ -95,25 +95,11 @@ function getPriorityImage(priority) {
 }
 
 function generateKanbanHTML(todo) {
-<<<<<<< HEAD
     let { category, title, subtasks, description, priority, date, id } = todo;
-=======
-    let category = todo['category'];
-    let title = todo['title'];
-    let subtasks = todo['subtasks'];
-    let description = todo['description'];
-    let priority = todo['priority'];
-    let date = todo['date'];
-    let id = todo['id'];
-    let status = todo['status'];
-
->>>>>>> parent of 68ee0d3 (added contact preview at board)
     let subtaskCount = getSubtaskCount(todo, id);
     let completedSubtaskCount = getCompletedSubtaskCount(todo, id);
-
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
-<<<<<<< HEAD
     let progressPercentage = subtaskCount === 0 ? 0 : (completedSubtaskCount / subtaskCount) * 100;
     let progressBarSection = subtaskCount > 0 ? `
         <div class="progress-section"><div class="progress-bar"><div class="progress" style="width: ${progressPercentage}%"></div></div><div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div></div>` : '';
@@ -121,45 +107,6 @@ function generateKanbanHTML(todo) {
         <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card"><span class="label" style="background-color: ${categoryColor};">${category}</span><span class="description"><h3>${title}</h3><br>${description}</span>${progressBarSection}<div class="members-and-priority"><div class="members">${getContactsPic(id)}</div> <div class="priority"><img src="${priorityImage}"></div></div><div class="mobileButtons"><button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button><button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button></div></div>`;
 }
 
-=======
-
-    let progressPercentage = subtaskCount === 0 ? 0 : (completedSubtaskCount / subtaskCount) * 100;
-
-    let progressBarSection = '';
-    if (subtaskCount > 0) {
-        progressBarSection = `
-            <div class="progress-section">
-                <div class="progress-bar">
-                    <div class="progress" style="width: ${progressPercentage}%">
-                    </div>
-                </div>
-                <div id="subtasks-count">${completedSubtaskCount}/${subtaskCount} Subtasks</div>
-            </div>`;
-    }
-
-    return `
-    <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card">
-        <span class="label" style="background-color: ${categoryColor};">${category}</span>
-        <span class="description">
-            <h3>${title}</h3><br>${description}
-        </span>
-        ${progressBarSection}
-        <div class="members-and-priority">
-            <div class="members">
-                ${getContactsPic(id)}
-            </div>
-            <div class="priority">
-                <img src="${priorityImage}">
-            </div>
-        </div>
-        <div class="mobileButtons">
-            <button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button>
-            <button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button>
-        </div>
-    </div>`;
-}
-
->>>>>>> parent of 68ee0d3 (added contact preview at board)
 function categoryUp(id, event) {
     event.stopPropagation();
     moveCategoryUp(id);
@@ -228,57 +175,15 @@ function generateBigCard(category, title, description, id, date, priority, subta
     let priorityImage = getPriorityImage(priority);
     let categoryColor = generateBackroundColor(category);
     return `
-<<<<<<< HEAD
         <div class="first-section"><span class="label-big" style="background-color: ${categoryColor};">${category}</span><img src="img/close.svg" id="close" onclick="closeCard()"></div><span class="headline-big" id="headline-big">${title}</span><br><div class="description-big" id="description-big"><span>${description}</span></div><div class="date-big"><span><b>Due date:</b></span><span id="date-big">${date}</span></div><div class="date-big"><span><b>Priority:</b></span><span id="priority-big">${priority}<img src="${priorityImage}"></span></div><div class="profiles-big"><span><b>Assigned To:</b></span><div class="assigned-contacts-big">${getContactsBig(id)}</div></div><div class="subtasks-big"><span><b>Subtasks</b></span><span id="checkboxes"></span></div><div class="end-section" id="end-section"><span onclick="deleteTodo(${id})"><img src="img/delete.svg">Delete</span>
             | <span onclick="editTodo({category: '${category}',title: '${title}',description: '${description}',id: '${id}',date: '${date}',priority: '${priority}',subtasks: '${subtasks}'})"><img src="img/edit.svg">Edit</span></div>
-=======
-        <div class="first-section">
-            <span class="label-big" style="background-color: ${categoryColor};">${category}</span>
-            <img src="img/close.svg" id="close" onclick="closeCard()">
-        </div>
-        <span class="headline-big" id="headline-big">${title}</span>
-        <br>
-        <div class="description-big" id="description-big">
-            <span>${description}</span>
-        </div>
-        <div class="date-big">
-            <span><b>Due date:</b></span><span id="date-big">${date}</span>
-        </div>
-        <div class="date-big">
-            <span><b>Priority:</b></span><span id="priority-big">${priority}<img src="${priorityImage}"></span>
-        </div>
-        <div class="profiles-big">
-            <span><b>Assigned To:</b></span>
-
-            ${getContacts(id)}
-            
-        </div>
-        <div class="subtasks-big">
-            <span><b>Subtasks</b></span>
-            <span id="checkboxes"></span>
-        </div>
-        <div class="end-section" id="end-section">
-            <span onclick="deleteTodo(${id})"><img src="img/delete.svg">Delete</span>
-            |
-            <span onclick="editTodo({
-                category: '${category}',
-                title: '${title}',
-                description: '${description}',
-                id: '${id}',
-                date: '${date}',
-                priority: '${priority}',
-                subtasks: '${subtasks}'
-            })"><img src="img/edit.svg">Edit</span>
-        </div>
->>>>>>> parent of 68ee0d3 (added contact preview at board)
     `;
 }
 
-function getContacts(id) {
+async function getContacts(id) {
     try {
         let names = '';
         for (let i = 0; i < todo[id].contacts.length; i++) {
-
             names += `<span>${todo[id].contacts[i].name}</span>`;
         }
         return names;
@@ -286,24 +191,21 @@ function getContacts(id) {
         console.error("Error occurred while getting contacts:", error);
     }
 }
-<<<<<<< HEAD
 
 function getContactInitials(contact) {
     const initials = contact.name.split(' ').map(part => part[0].toUpperCase()).join('');
     return initials;
 }
-=======
->>>>>>> parent of 68ee0d3 (added contact preview at board)
 
 function getContactsPic(id) {
     try {
         let pics = '';
         if (todo[id]) {
-
             for (let i = 0; i < todo[id].contacts.length; i++) {
+                let contactInitials = getContactInitials(todo[id].contacts[i]);
+                let contactColor = todo[id].contacts[i].backgroundColor;
 
-                pics += ``;
-
+                pics += `<div class="board-sign" style="background-color: ${contactColor}">${contactInitials}</div>`;
             }
         }
         return pics;
@@ -312,7 +214,6 @@ function getContactsPic(id) {
     }
 }
 
-<<<<<<< HEAD
 function getContactsBig(id) {
     try {
         let contactsBig = '';
@@ -332,8 +233,6 @@ function getContactsBig(id) {
     }
 }
 
-=======
->>>>>>> parent of 68ee0d3 (added contact preview at board)
 function editTodo(card) {
     let idInput = card.id;
     document.getElementById('headline-big').innerHTML = `<input id="titleinput" value="${card.title}">`;
@@ -378,8 +277,6 @@ function createCheckboxes(id, subtasks) {
         checkboxesContainer.innerHTML += `<input type="checkbox" id="${checkboxId}" ${subtaskChecked ? 'checked' : ''} onchange="updateSubtaskStatus(${i}, ${id})"> ${subtaskText}<br>`;
     }
 }
-
-
 
 function updateSubtaskStatus(i, id) {
     if (todo[id].subtasks[i]['checked'] == false) {

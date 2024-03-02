@@ -2,7 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     max-width: 1440px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     margin: 0;
 }
 
@@ -412,10 +412,6 @@ select:hover {
         z-index: 0;
     }
 
-    .content::-webkit-scrollbar{
-        display: none;
-    }
-
     .title{
         height: 60px;
         width: 396px;
@@ -529,6 +525,10 @@ select:hover {
 
     .priority-buttons button{
         width: 100px;
+    }
+
+    .content {
+        overflow-y: auto;
     }
 
     .subtask-input-field,
