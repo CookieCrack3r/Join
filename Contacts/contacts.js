@@ -49,14 +49,15 @@ function validateNumbers(input) {
   const inputValue = input.value;
   const numericValue = inputValue.replace(/\D/g, '');
   input.value = numericValue;
-2}
+  2
+}
 
 function getRandomColor() {
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
 }
 
-function generateContacts() {
+async function generateContacts() {
 
   document.getElementById('allContacts').innerHTML = '';
 
@@ -84,7 +85,7 @@ function generateContacts() {
   }
 }
 
-function openContact(i) {
+async function openContact(i) {
   const contact = contacts[i];
   const initials = getContactInitials(contact.name);
 
@@ -93,12 +94,13 @@ function openContact(i) {
   document.getElementById('contactContent').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
-  <div id="close_contact_information" onclick="closeContactInformation()" class="close-btn-cont">
-    <img src="img/close.svg">
-  </div>
+  
   <div class="bigContactSign" style="background-color: ${contact.backgroundColor}; color: white;">${initials}</div>
   <div class="contactName">
-      <span>${contact.name}</span>
+      <span>${contact.name}<div id="close_contact_information" onclick="closeContactInformation()" class="close-btn-cont">
+      <img src="img/close.svg">
+    </div></span>
+      
       <span>
           <button onclick="editContact(${i})"><img src="img/edit.svg">Edit</button>
           <button onclick="deleteContactByName('${contact.name}')"><img src="img/delete.svg">Delete</button>
@@ -115,10 +117,9 @@ function openContact(i) {
   `;
 }
 
-function closeContactInformation(){
+function closeContactInformation() {
   document.getElementById('close_contact_information').classList.add('displayNone');
   document.getElementById('contactContent').classList.add('displayNone');
-
 }
 
 function highlightContactByName(contactName) {
@@ -169,7 +170,7 @@ function editContact(i) {
       </div>
       <div class="addContactInfo">
       <img src="img/icon.svg">
-      <form onsubmit="updateContact(${i}); return false;">
+      <form onsubmit="updateContact(${contact.id}); return false;">
           <div class="inputDiv">
               <input id="editName" required type="text" placeholder="Name" value="${contact.name}">
               <img src="img/person.svg">
@@ -191,15 +192,15 @@ function editContact(i) {
   `;
 }
 
-async function updateContact(i) {
+async function updateContact(newContactsId) {
   try {
     let editedName = document.getElementById('editName').value;
     let editedMail = document.getElementById('editMail').value;
     let editedPhone = document.getElementById('editPhone').value;
 
-    contacts = JSON.parse(await getItem('contacts')) || [];
+    let contacts = JSON.parse(await getItem('contacts')) || [];
 
-    const indexToUpdate = contacts.findIndex(contact => contact.id == i);
+    const indexToUpdate = contacts.findIndex(contact => contact.id == newContactsId);
 
     if (indexToUpdate !== -1) {
       contacts[indexToUpdate].name = editedName;
@@ -207,17 +208,16 @@ async function updateContact(i) {
       contacts[indexToUpdate].phone = editedPhone;
 
       await setItem('contacts', JSON.stringify(contacts));
+
+      location.reload();
       closeCard();
-      generateContacts();
-      openContact(indexToUpdate);
     } else {
-      console.error('Contact with index ' + i + ' not found.');
+      console.error('Contact with id ' + newContactsId + ' not found.');
     }
   } catch (e) {
     console.error('Error updating contact:', e);
   }
 }
-
 
 async function deleteContactByName(contactName) {
   try {
@@ -269,7 +269,7 @@ function displayOptions() {
       <div class="option" onclick="goToLogin()">Log out</div>
     `;
   }
- 
+
 }
 
 
