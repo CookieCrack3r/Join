@@ -2,7 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     max-width: 1440px;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
     margin: 0;
 }
 
@@ -409,7 +409,7 @@ select:hover {
         padding: 0;
         margin-top: 3px;
         overflow-y: hidden;
-        
+        z-index: 0;
     }
 
     .content::-webkit-scrollbar{

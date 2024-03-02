@@ -25,9 +25,6 @@ async function addTodo() {
         todo = paramValue;
     }
 
-
-
-
     create.disabled = true;
     todos_length = JSON.parse(await getItem('todos')) || [];
     let newTodoId = todos_length.length - 1;

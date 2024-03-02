@@ -97,11 +97,10 @@ aside a:hover {
 
     aside {
         border-right: none;
-        height: 0px;
+        height: 500px;
         gap: 0;
-        top: 828px;
-        bottom: 0;
-        position: fixed;
+        top: 92%;
+        position: fixed !important;
         padding-top: 0;
     }
 
