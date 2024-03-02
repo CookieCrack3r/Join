@@ -23,7 +23,7 @@ textarea {
     height: 928px;
     padding: 0px 24px 0px 24px;
     gap: 24px;
-    overflow-y: auto;
+    overflow-y: hidden;
     margin-top: 96px;
     margin-left: 232px;
 }
@@ -289,7 +289,6 @@ select:hover {
     height: 61px;
     gap: 4px;
     display: flex;
-    bottom: 20px;
     justify-content: end;
 }
 
@@ -509,8 +508,6 @@ select:hover {
         left: -10px;
         height: 56px;
         width: 60px;
-        bottom: 79px;
-    
     }
 
 }
@@ -528,7 +525,7 @@ select:hover {
     }
 
     .content {
-        overflow-y: auto;
+        overflow-x: auto;
     }
 
     .subtask-input-field,
