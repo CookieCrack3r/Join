@@ -198,7 +198,7 @@ async function updateContact(i) {
     let editedPhone = document.getElementById('editPhone').value;
 
     contacts = JSON.parse(await getItem('contacts')) || [];
-    
+
     const indexToUpdate = contacts.findIndex(contact => contact.id == i);
 
     if (indexToUpdate !== -1) {

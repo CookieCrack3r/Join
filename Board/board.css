@@ -129,7 +129,12 @@ input::-webkit-search-cancel-button {
 }
 
 .dragsection {
-    height: 100%;
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
 }
 
 .dragsection-highlight {
