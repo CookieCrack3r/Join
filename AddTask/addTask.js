@@ -93,7 +93,6 @@ function priorityLow() {
 }
 
 async function showContacts() {
-    console.log(todos);
     document.getElementById('contacts').innerHTML = '';
 
     for (let i = 0; i < contactsAddTask.length; i++) {
