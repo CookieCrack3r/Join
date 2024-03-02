@@ -290,6 +290,8 @@ select:hover {
     gap: 4px;
     display: flex;
     justify-content: end;
+    margin-top: -295px;
+    margin-right: 25px;
 }
 
 #clear {
