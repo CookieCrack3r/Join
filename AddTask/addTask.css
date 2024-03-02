@@ -290,7 +290,7 @@ select:hover {
     gap: 4px;
     display: flex;
     justify-content: end;
-    margin-top: -295px;
+    margin-top: -105px;
     margin-right: 25px;
 }
 
@@ -388,6 +388,7 @@ select:hover {
 
     .buttons{
         height: 50px;
+        margin-top: 0;
         margin-bottom: 70px;
         top: 790px;
         position: fixed;
