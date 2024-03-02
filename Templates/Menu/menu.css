@@ -162,6 +162,11 @@ aside a:hover {
 }
 
 @media (max-width: 376px) {
+    aside {
+        top: 568px;
+        padding-top: 0px;
+    }
+
     aside ul {
         width: 335px;
         padding-left: 48px;
