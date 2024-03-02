@@ -48,6 +48,33 @@ input::-webkit-search-cancel-button {
     border: 1px solid #005bf8;
 }
 
+.board-sign {
+    background-color: #F77A02;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    border: white 2px solid;
+    margin-left: -20px;
+}
+
+.contacts-big-both {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    margin-left: 16px;
+}
+
+.members {
+    display: flex;
+}
+
 .find-task button {
     width: 138px;
     height: 51px;
