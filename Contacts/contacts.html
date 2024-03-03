@@ -25,9 +25,9 @@
             <div id="allContacts">
             </div>
         </div>
-        <div  class="displayNone" class="contactContent" id="contactContent">
-            <div>
-            </div>
+        <div class="contactContent"  id="contactContentContainer">
+                <div id="contactContent">
+                </div>
             <div style="display: none;" id="bg">
                 <div id="addNewContact" class="displayNone">
                     <div class="addContactHeader">
@@ -38,25 +38,26 @@
                     </div>
                     <div class="addContactInfo">
                         <form onsubmit="createContact(); return false;">
-                        <img src="img/icon.svg">
-                        <div class="inputDiv">
-                            <input type="text" required id="nameInput" placeholder="Name">
-                            <img src="img/person.svg">
-                        </div>
-                        <div class="inputDiv">
-                            <input type="email" required id="mail" placeholder="Email">
-                            <img src="img/mail.svg">
-                        </div>
-                        <div class="inputDiv">
-                            <input type="text" title="Type a valid phone number" pattern="^[0-9]{5,20}$" id="phone" placeholder="Phone" oninput="validateNumbers(this)">
-                            <img src="img/call.svg">
-                        </div>
+                            <img src="img/icon.svg">
+                            <div class="inputDiv">
+                                <input type="text" required id="nameInput" placeholder="Name">
+                                <img src="img/person.svg">
+                            </div>
+                            <div class="inputDiv">
+                                <input type="email" required id="mail" placeholder="Email">
+                                <img src="img/mail.svg">
+                            </div>
+                            <div class="inputDiv">
+                                <input type="text" title="Type a valid phone number" pattern="^[0-9]{5,20}$" id="phone"
+                                    placeholder="Phone" oninput="validateNumbers(this)">
+                                <img src="img/call.svg">
+                            </div>
                     </div>
                     <div class="addContactButtons">
                         <button id="cancel" type="button" onclick="closeCard()">Cancel</button>
                         <button id="create" type="submit">Create Contact <img src="img/check.svg"></button>
                     </div>
-                        </form>
+                    </form>
                 </div>
             </div>
             <div>

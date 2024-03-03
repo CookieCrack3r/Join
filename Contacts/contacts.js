@@ -28,6 +28,7 @@ async function createContact() {
   await setItem('contacts', JSON.stringify(contacts));
   closeCard();
   generateContacts();
+  closeContactInformation();
 }
 
 async function loadContacts() {
@@ -41,6 +42,7 @@ async function loadContacts() {
 }
 
 function addContact() {
+  document.getElementById('contactContentContainer').classList.remove('displayNone');
   document.getElementById('addNewContact').classList.remove('displayNone');
   document.getElementById('bg').style.display = 'flex';
 }
@@ -90,8 +92,7 @@ async function openContact(i) {
   const initials = getContactInitials(contact.name);
 
   highlightContactByName(contact.name);
-
-  document.getElementById('contactContent').classList.remove('displayNone');
+  document.getElementById('contactContentContainer').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
   
@@ -118,8 +119,7 @@ async function openContact(i) {
 }
 
 function closeContactInformation() {
-  document.getElementById('close_contact_information').classList.add('displayNone');
-  document.getElementById('contactContent').classList.add('displayNone');
+  document.getElementById('contactContentContainer').classList.add('displayNone');
 }
 
 function highlightContactByName(contactName) {
@@ -192,27 +192,28 @@ function editContact(i) {
   `;
 }
 
-async function updateContact(newContactsId) {
+async function updateContact(contactId) {
   try {
-    let editedName = document.getElementById('editName').value;
-    let editedMail = document.getElementById('editMail').value;
-    let editedPhone = document.getElementById('editPhone').value;
+    contacts = JSON.parse(await getItem('contacts')) || [];
 
-    let contacts = JSON.parse(await getItem('contacts')) || [];
-
-    const indexToUpdate = contacts.findIndex(contact => contact.id == newContactsId);
+    const indexToUpdate = contacts.findIndex(contact => contact.id === contactId);
 
     if (indexToUpdate !== -1) {
-      contacts[indexToUpdate].name = editedName;
-      contacts[indexToUpdate].mail = editedMail;
-      contacts[indexToUpdate].phone = editedPhone;
+      const editedContact = {
+        id: contactId,
+        name: document.getElementById('editName').value,
+        mail: document.getElementById('editMail').value,
+        phone: document.getElementById('editPhone').value,
+        backgroundColor: contacts[indexToUpdate].backgroundColor
+      };
 
+      contacts[indexToUpdate] = editedContact;
       await setItem('contacts', JSON.stringify(contacts));
-
-      location.reload();
       closeCard();
+      openContact(contactId);
+      generateContacts();
     } else {
-      console.error('Contact with id ' + newContactsId + ' not found.');
+      console.error('Contact with ID ' + contactId + ' not found.');
     }
   } catch (e) {
     console.error('Error updating contact:', e);
@@ -229,7 +230,7 @@ async function deleteContactByName(contactName) {
       contacts.splice(indexToDelete, 1);
       await setItem('contacts', JSON.stringify(contacts));
       closeCard();
-      generateContacts();
+      location.reload();
     } else {
       console.error('Contact with name ' + contactName + ' not found.');
     }
