@@ -20,13 +20,13 @@
 <body onload="includeHTML(); loadContacts(); initBoard()">
     <div w3-include-html="/Templates/Menu/menu.html"></div>
     <div class="content">
-        <div class="allContacts">
+        <div class="allContacts" id="allContactsContainer">
             <button id="addContact" onclick="addContact()">Add new contact <img src="img/person_add.svg"></button>
             <div id="allContacts">
             </div>
         </div>
-        <div class="contactContent"  id="contactContentContainer">
-                <div id="contactContent">
+        <div class="contactContent" id="contactContentContainer">
+                <div id="contactContent" class="displayNone">
                 </div>
             <div style="display: none;" id="bg">
                 <div id="addNewContact" class="displayNone">

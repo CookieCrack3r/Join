@@ -92,7 +92,7 @@ async function openContact(i) {
   const initials = getContactInitials(contact.name);
 
   highlightContactByName(contact.name);
-  document.getElementById('contactContentContainer').classList.remove('displayNone');
+  document.getElementById('contactContent').classList.remove('displayNone');
   document.getElementById('contactContent').innerHTML = `
   <div class="contactId">
   
@@ -119,7 +119,7 @@ async function openContact(i) {
 }
 
 function closeContactInformation() {
-  document.getElementById('contactContentContainer').classList.add('displayNone');
+  document.getElementById('contactContent').classList.add('displayNone');
 }
 
 function highlightContactByName(contactName) {
