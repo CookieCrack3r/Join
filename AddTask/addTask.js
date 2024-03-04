@@ -126,7 +126,7 @@ function addContactToTodo(i) {
             name: contactToAdd.name,
             mail: contactToAdd.mail,
             phone: contactToAdd.phone,
-            backgroundColor: getRandomColor()
+            backgroundColor: contactToAdd.backgroundColor
         });
 
         contactElement.innerHTML += ' <i>(added)</i>';

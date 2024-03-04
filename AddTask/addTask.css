@@ -16,6 +16,10 @@ textarea {
     resize: none;
 }
 
+form {
+    overflow-y: auto;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -24,7 +28,7 @@ textarea {
     padding: 0px 24px 0px 24px;
     gap: 24px;
     overflow-y: hidden;
-    margin-top: 96px;
+    margin-top: 50px;
     margin-left: 232px;
 }
 
@@ -105,6 +109,7 @@ textarea {
     width: 440px;
     gap: 8px;
     margin-bottom: 16px;
+    padding-left: 2px;
 }
 
 .priority button {
@@ -290,7 +295,7 @@ select:hover {
     gap: 4px;
     display: flex;
     justify-content: end;
-    margin-top: -105px;
+    top: -55px;
     margin-right: 25px;
 }
 
@@ -386,9 +391,14 @@ select:hover {
         background-color: rgba(255, 255, 255, 0);
     }
 
+
+    form {
+        overflow-x: hidden;
+    }
+
     .buttons{
         height: 50px;
-        margin-top: 0;
+        margin-top: 16px;
         margin-bottom: 70px;
         top: 790px;
         position: fixed;
@@ -404,26 +414,21 @@ select:hover {
         width: 160px;
     }
 
-    .content{
-        height: 700px;
-        width: 396px;
-        margin-left: 12px;
-        padding: 0;
-        margin-top: 3px;
-        overflow-y: hidden;
-        z-index: 0;
+    .content {
+        position: fixed;
+        right: 0;
+        margin: 0;
     }
 
     .title{
         height: 60px;
         width: 396px;
-
     }
 
     #title{
         font-size: 28px;
         padding: 7px 16px 7px 16px;
-        width: 349px;
+        max-width: 356px;
     }
 
     .description{
@@ -515,7 +520,18 @@ select:hover {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 520px) {
+    .content {
+        left: 0;
+        z-index: 0;
+    }
+
+    form {
+        max-width: 410px;
+    }
+}
+
+@media (max-width: 430px) {
     .priority-buttons{
         width: 320px;
         justify-content: center;
@@ -529,6 +545,11 @@ select:hover {
 
     .content {
         overflow-x: auto;
+        margin-left: -10px;
+    }
+
+    form {
+        width: 324px;
     }
 
     .subtask-input-field,
@@ -543,19 +564,28 @@ select:hover {
         width: 270px;
     }
 
+    #contacts {
+        width: 300px;
+        overflow-x: hidden;
+    }
+
+    .contacts {
+        width: 280px;
+    }
+
     .subtask-input-field {
         margin-left: -100px;
     }
 
     .buttons {
         top: 810px;
-        margin-left: 50px;
+        margin-left: 25%;
     }
 
     #create {
+        margin-top: -50px;
         margin-left: 36px;
         font-size: 16px;
-        height: 32px;
     }
 
     #create img {
