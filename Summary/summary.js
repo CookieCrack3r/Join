@@ -124,5 +124,5 @@ function getCurrentDate() {
   let currentDateElement = document.getElementById("currentDate");
   let currentDate = new Date();
   let options = { year: 'numeric', month: 'long', day: 'numeric' };
-  currentDateElement.textContent = currentDate.toLocaleDateString('de-DE', options);
+  currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
 }
