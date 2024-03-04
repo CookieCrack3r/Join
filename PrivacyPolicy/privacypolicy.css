@@ -5,20 +5,21 @@ body {
     overflow-x: hidden;
 }
 
-body::-webkit-scrollbar{
-    display: none;
-}
+
 
 .privacypolicy {
     max-width: 1023px;
-    display: flex;
     justify-content: center;
     flex-direction: column;
     margin-left: 226px;
     overflow-y: auto;
     border-left: 1px solid lightgray;
     padding-left: 106px;
+    max-height: 831px;
+}
 
+.privacypolicy::-webkit-scrollbar{
+    display: none;
 }
 
 
@@ -37,6 +38,7 @@ body::-webkit-scrollbar{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 30px;
 }
 
 .headline button:hover {
@@ -80,10 +82,10 @@ span {
 
     .header-pp {
         font-size: 47px;
-        
+
     }
 
-    h3{
+    h3 {
         font-size: 23px;
     }
 

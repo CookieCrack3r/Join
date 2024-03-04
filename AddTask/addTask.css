@@ -279,6 +279,7 @@ select:hover {
     border: 0;
     border-bottom: 1px solid #D1D1D1;
     padding: 12px 16px 12px 16px;
+    outline: none;
 }
 
 .subtasks input:hover {
