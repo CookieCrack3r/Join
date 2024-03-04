@@ -110,7 +110,7 @@ function greetingOnDailyTime() {
 function getTimeOfDay() {
   const currentHour = new Date().getHours();
   if (currentHour >= 5 && currentHour < 12) return "Good Morning";
-  if (currentHour >= 12 && currentHour < 18) return "Good Day";
+  if (currentHour >= 12 && currentHour < 18) return "Good Afternoon";
   if (currentHour >= 18 && currentHour < 22) return "Good Evening";
   return "Gute Nacht";
 }
@@ -124,5 +124,5 @@ function getCurrentDate() {
   let currentDateElement = document.getElementById("currentDate");
   let currentDate = new Date();
   let options = { year: 'numeric', month: 'long', day: 'numeric' };
-  currentDateElement.textContent = currentDate.toLocaleDateString('de-DE', options);
+  currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
 }
