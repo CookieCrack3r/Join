@@ -17,7 +17,6 @@ body {
     margin-left: 232px;
     overflow-y: scroll;
     scrollbar-width: none;
-    z-index: 0;
 }
 
 #addContact {
@@ -461,8 +460,12 @@ h1 {
 
     .contactContent {
         left: 8px;
-        width: 100vh;
+        width: fit-content;
         background-color: white;
+    }
+
+    #contactContent {
+        width: 100vh;
     }
 
     .bigContactSign {
@@ -543,7 +546,7 @@ h1 {
 
     .contactContent {
         left: 8px;
-        width: 100vh;
+        width: fit-content;
         background-color: white;
     }
 
@@ -562,8 +565,7 @@ h1 {
     }
 
     #allContacts {
-        width: 320px;
-        margin-left: -20px;
+        width: 100%;
     }
 
     #editContact {
@@ -681,5 +683,12 @@ h1 {
     .close-btn-cont img {
         height: 21px;
         width: 21px;
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        margin-left: -50px;
     }
 }

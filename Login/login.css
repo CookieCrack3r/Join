@@ -339,6 +339,7 @@ a:hover {
         position: fixed;
         top: 728px;
         left: 70px;
+        padding-right: 0;
     }
 
     .privacy-policy-and-legal-notice-container {
@@ -382,6 +383,19 @@ a:hover {
     .privacy-policy-and-legal-notice-container{
         margin-top: 5px;
     }
+
+    .btn-above-login-section{
+        height: 38px;
+        font-size: 18px;
+    }
+
+    .above-signup-right-corner-txt{
+        font-size: 18px;
+    }
+
+    .login-box-center{
+        margin-top: 92px;
+    }
     
 }
 
@@ -392,6 +406,7 @@ a:hover {
         width: 300px;
         margin-top: 88px;
         height: 439px;
+        margin-top: 95px;
 
     }
 

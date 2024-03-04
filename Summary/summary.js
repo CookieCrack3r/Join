@@ -3,7 +3,7 @@ let todoSum = [];
 
 
 async function initSummary() {
-  
+
   await includeHTML();
   loadtodoSums();
   await getInitials();
@@ -20,26 +20,26 @@ async function loadtodoSums() {
     let Task_in_Progress = document.getElementById('Task-in-Progress_value');
     let Awaiting_feedback = document.getElementById('Awaiting-feedback_value');
     let Task_Done = document.getElementById('Task-Done_value');
+    let TaskInBoard = document.getElementById('Task-in-Board_value');
 
-
-
-    todoSum = JSON.parse(await getItem('todos'));
-
+    let todoSum = JSON.parse(await getItem('todos'));
 
     let UrgentTasks = todoSum.filter(t => t['priority'] == 'Urgent');
-
     let Tasks_value = todoSum.filter(t => t['status'] == 'to-do');
     let Task_in_Progress_value = todoSum.filter(t => t['status'] == 'in-progress');
     let Awaiting_feedback_value = todoSum.filter(t => t['status'] == 'await-feedback');
     let Task_Done_value = todoSum.filter(t => t['status'] == 'done');
+
+
+    let totalTodos = todoSum.length;
+
+    TaskInBoard.innerHTML = totalTodos.toString();
+
     Tasks.innerHTML = Tasks_value.length.toString();
     Task_in_Progress.innerHTML = Task_in_Progress_value.length.toString();
     Awaiting_feedback.innerHTML = Awaiting_feedback_value.length.toString();
     Task_Done.innerHTML = Task_Done_value.length.toString();
-
     TasksUrgent.innerHTML = UrgentTasks.length.toString();
-
-
 
   } catch (e) {
     console.error('Loading error:', e);
@@ -81,7 +81,7 @@ function displayOptions() {
       <div class="option" onclick="goToLogin()">Log out</div>
     `;
   }
- 
+
 }
 
 function goToLogin() {
@@ -109,9 +109,9 @@ function greetingOnDailyTime() {
  */
 function getTimeOfDay() {
   const currentHour = new Date().getHours();
-  if (currentHour >= 5 && currentHour < 12) return "Guten Morgen";
-  if (currentHour >= 12 && currentHour < 18) return "Guten Tag";
-  if (currentHour >= 18 && currentHour < 22) return "Guten Abend";
+  if (currentHour >= 5 && currentHour < 12) return "Good Morning";
+  if (currentHour >= 12 && currentHour < 18) return "Good Afternoon";
+  if (currentHour >= 18 && currentHour < 22) return "Good Evening";
   return "Gute Nacht";
 }
 
@@ -124,5 +124,5 @@ function getCurrentDate() {
   let currentDateElement = document.getElementById("currentDate");
   let currentDate = new Date();
   let options = { year: 'numeric', month: 'long', day: 'numeric' };
-  currentDateElement.textContent = currentDate.toLocaleDateString('de-DE', options);
+  currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
 }

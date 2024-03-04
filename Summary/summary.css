@@ -1,17 +1,18 @@
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    max-width: 1440px;
 }
 
 .content-container {
     position: fixed;
-    width: 100%;
-    height: 591px;
+    width: 1440px;
     top: 264.5px;
     left: 380px;
 }
 
 .greet-container {
+    position: fixed;
     width: 1044px;
     height: 77px;
 }
@@ -148,8 +149,15 @@ body {
     width: 912px;
     height: 219px;
     display: flex;
-    column-gap: 35px;
     margin-top: 35px;
+    flex-direction: row;
+    column-gap: 35px;
+}
+
+.responisveSection {
+    display: flex;
+    flex-direction: row;
+    column-gap: 35px;
 }
 
 /* for all 4 task in the under section*/
@@ -307,8 +315,134 @@ body {
     display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1300px) {
+    .greet-container {
+        right: 0;
+        left: auto;
+        width: 912px;
+    }
 
+    .flex-container {
+        width: 800px;
+    }
+
+    .middle-section {
+        max-width: 912px !important;
+        padding: 0;
+    }
+}
+
+@media (max-width: 1140px) {
+    .middle-section {
+        column-gap: 8px;
+        width: 890px;
+    }
+    
+    .responisveSection {
+        column-gap: 24px;
+    }
+
+    .under-task-section {
+        column-gap: 24px;
+        width: 890px;
+    }
+
+    .greet-container {
+        width: 890px;
+    }
+}
+
+@media (max-width: 1115px) {
+    .middle-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        height: 390px;
+        max-width: 672px;
+    }
+
+    .middle-section-container {
+        max-width: 672px;
+    }
+
+    .task-in-board {
+        width: 672px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column !important;
+        height: 191px;
+    }
+
+    .under-task-section {
+        height: 390px;
+        width: 672px;
+        margin-top: 8px;
+    }
+
+    .responisveSection {
+        flex-direction: column;
+    }
+
+
+    .awaiting-feedback,
+    .task-to-do,
+    .task-in-progress,
+    .tasks-done {
+        width: 324px;
+        height: 191px;
+    }
+
+    .greet-container {
+        max-width: 672px;
+    }
+
+    .content-container {
+        top: 120px;
+    }
+
+}
+
+@media (max-width: 900px) {
+    .awaiting-feedback,
+    .task-to-do,
+    .task-in-progress,
+    .tasks-done {
+        width: 222px;
+        height: 191px;
+    }
+
+    .middle-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        height: 390px;
+        max-width: 470px;
+    }
+
+    .task-in-board {
+        width: 470px;
+    }
+
+    .task-urgent {
+        width: 470px;
+    }
+
+    .flex-container {
+        width: 470px;
+    }
+
+    .greet-container {
+        width: 470px;
+    }
+
+    .responisveSection {
+        gap: 8px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 700px) {
     .secondary-links a {
         display: none;
     }
@@ -318,7 +452,8 @@ body {
         width: 426px;
         height: 100%;
         top: 97px;
-        left: 0px;
+        left: 50%;
+        transform: translate(-50%);
         z-index: -1;
     }
 
@@ -440,6 +575,10 @@ body {
     #options {
         left: 240px;
     }
+
+    .responisveSection {
+        gap: 8px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -492,14 +631,15 @@ body {
 
     .under-task-section {
         column-gap: 5px;
+        margin-top: 180px;
+    }
+
+    .responisveSection {
+        gap: 8px;
     }
 }
 
 @media (max-width: 376px) {
-    .content-container {
-        height: 498px;
-        overflow: auto;
-    }
 
     #options {
         left: 195px !important;
