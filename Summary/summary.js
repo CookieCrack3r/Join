@@ -112,7 +112,7 @@ function getTimeOfDay() {
   if (currentHour >= 5 && currentHour < 12) return "Good Morning";
   if (currentHour >= 12 && currentHour < 18) return "Good Afternoon";
   if (currentHour >= 18 && currentHour < 22) return "Good Evening";
-  return "Gute Nacht";
+  return "Good Night";
 }
 
 /**
