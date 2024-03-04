@@ -92,6 +92,7 @@ span {
         margin: 10px;
         border-left: none;
         padding-left: 18px;
+        max-height: 696px;
     }
 
     .headline h1 {
@@ -112,5 +113,11 @@ span {
 
     #mediaquerry_margin{
         margin-bottom: 90px;
+    }
+}
+
+@media (max-width: 376px) {
+    .privacypolicy{
+        max-height: 488px;
     }
 }

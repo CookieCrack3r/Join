@@ -77,6 +77,7 @@ span {
         margin: 10px;
         border-left: none;
         padding-left: 18px;
+        max-height: 696px;
     }
 
     .header-pp {
@@ -93,4 +94,10 @@ span {
     }
 
 
+}
+
+@media (max-width: 376px) {
+    .privacypolicy{
+        max-height: 488px;
+    }
 }
