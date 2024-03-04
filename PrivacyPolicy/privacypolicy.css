@@ -14,7 +14,7 @@ body {
     margin-left: 226px;
     overflow-y: auto;
     border-left: 1px solid lightgray;
-    padding-left: 106px;
+    padding-left: 100px;
     max-height: 831px;
 }
 
@@ -38,7 +38,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 30px;
 }
 
 .headline button:hover {

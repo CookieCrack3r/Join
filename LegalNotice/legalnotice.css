@@ -7,14 +7,16 @@ body {
 
 .privacypolicy {
     max-width: 1023px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     margin-left: 226px;
-    border-left: 1px solid lightgray;    
-    padding-left: 83px;
+    border-left: 1px solid lightgray;
+    padding-left: 100px;
+    max-height: 823px;
+    overflow-y: auto;
 }
 
+.privacypolicy::-webkit-scrollbar{
+    display: none;
+}
 
 .headline {
     display: flex;
