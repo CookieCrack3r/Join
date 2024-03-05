@@ -640,6 +640,18 @@ body {
 }
 
 @media (max-width: 376px) {
+    .content-container {
+        overflow-y: auto;
+    }
+
+    .middle-section {
+        gap: 8px;
+    }
+
+    .responisveSection {
+        height: 480px;
+        margin-top: -16px;
+    }
 
     #options {
         left: 195px !important;

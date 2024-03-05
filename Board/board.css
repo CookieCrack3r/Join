@@ -1,6 +1,5 @@
 body {
     max-width: 1440px;
-    height: 1024px;
     margin: 0;
     padding: 0;
     overflow-y: hidden;
@@ -640,9 +639,13 @@ input::-webkit-search-cancel-button {
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 376px) {
     .content {
         margin-left: 208px !important;
+    }
+
+    .find-task {
+        width: 312px;
     }
 
     .find-task {
