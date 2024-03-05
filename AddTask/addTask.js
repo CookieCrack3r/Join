@@ -137,9 +137,11 @@ function addContactToTodo(i) {
 function displayFeedback(message) {
     const feedbackContainer = document.getElementById('feedback');
     feedbackContainer.innerHTML = message;
+    feedbackContainer.style.display = 'block';
 
     setTimeout(() => {
         feedbackContainer.innerHTML = '';
+        feedbackContainer.style.display = 'none';
     }, 1500);
 }
 

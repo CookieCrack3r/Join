@@ -8,11 +8,12 @@ body {
 
 span {
     height: 23px;
-    font-size: 19px;;
+    font-size: 19px;
+    ;
     color: #42526E;
 }
 
-textarea { 
+textarea {
     resize: none;
 }
 
@@ -100,8 +101,8 @@ form {
     transform: translateY(-50%);
 }
 
-.calendar-icon:hover{
-   cursor: pointer;
+.calendar-icon:hover {
+    cursor: pointer;
 }
 
 .priority {
@@ -213,12 +214,13 @@ form {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff9d;
+    background-color: #ffffff;
     padding: 20px;
     z-index: 999;
     font-size: 23px;
     font-weight: 700;
     color: #42526E;
+    border: 1px solid #42526E;
 }
 
 .select {
@@ -269,7 +271,7 @@ select:hover {
     margin-left: -20px;
 }
 
-.subtask-input-container svg:hover{
+.subtask-input-container svg:hover {
     cursor: pointer;
 }
 
@@ -360,11 +362,10 @@ select:hover {
     left: 144.26px;
 }
 
-.list li{
+.list li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 400px;
 }
 
 .list li img {
@@ -381,7 +382,7 @@ select:hover {
 }
 
 .listSubtasks {
-    height: 100px !important;
+    height: fit-content;
     overflow-y: auto;
 }
 
@@ -389,15 +390,10 @@ select:hover {
 
 @media (max-width: 700px) {
     .feedback-container {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgb(255, 255, 255);
     }
 
-
-    form {
-        overflow-x: hidden;
-    }
-
-    .buttons{
+    .buttons {
         height: 50px;
         margin-top: 16px;
         margin-bottom: 70px;
@@ -406,44 +402,45 @@ select:hover {
         margin-left: 150px;
     }
 
-    #clear{
+    #clear {
         display: none;
     }
 
-    #create{
+    #create {
         height: 48px;
         width: 160px;
     }
 
-    .content {
+    form {
         position: fixed;
-        right: 0;
+        left: 50%;
+        transform: translate(-50%);
         margin: 0;
     }
 
-    .title{
+    .title {
         height: 60px;
         width: 396px;
     }
 
-    #title{
+    #title {
         font-size: 28px;
         padding: 7px 16px 7px 16px;
         max-width: 356px;
     }
 
-    .description{
+    .description {
         height: 135px;
         width: 396px;
         margin-bottom: 4px;
     }
 
-    .description span{
+    .description span {
         font-size: 16px;
         height: 19px;
     }
 
-    #descritpion{
+    #descritpion {
         padding: 18px 16px 18px 16px;
         font-size: 16px;
         font-weight: 400;
@@ -451,68 +448,68 @@ select:hover {
         height: 65px;
     }
 
-    .date{
+    .date {
         height: 95px;
         width: 396px;
         gap: 0px;
         margin-bottom: 0px;
     }
 
-    .date span{
+    .date span {
         font-size: 16px;
         height: 19px;
     }
 
-    #selectedDate{
+    #selectedDate {
         width: 380px;
     }
 
-    .priority{
+    .priority {
         width: 380px;
         height: 48px;
         margin-bottom: 45px;
         padding-left: 3px;
     }
 
-    .priority span{
+    .priority span {
         font-size: 16px;
     }
 
-    .priority-buttons{
+    .priority-buttons {
         width: 378px;
     }
 
-    .priority-buttons button{
+    .priority-buttons button {
         width: 121px;
         height: 48px;
     }
 
-    select{
+    select {
         height: 75px;
         width: 380px;
     }
 
-    .select{
+    .select {
         width: 380px;
         height: 75px;
     }
 
 
-    .subtasks{
+    .subtasks {
         width: 380px;
         height: 75px;
     }
 
-    .subtask-input-field{
+    .subtask-input-field {
         width: 377px;
     }
 
-    .subtasks input{
+    .subtasks input {
         width: 385px;
         height: 35px;
     }
 
-    .subtasks ul{
+    .subtasks ul {
         position: fixed;
         left: -10px;
         height: 56px;
@@ -522,31 +519,64 @@ select:hover {
 }
 
 @media (max-width: 520px) {
-    .content {
-        left: 0;
-        z-index: 0;
-    }
-
     form {
-        max-width: 410px;
+        width: 430px;
     }
 }
 
 @media (max-width: 430px) {
-    .priority-buttons{
-        width: 320px;
+
+    #low,
+    #urgent,
+    #medium {
+        display: flex;
         justify-content: center;
-        margin-left: -10px;
-        gap: 2px;
+        align-items: center;
+        width: 80px;
+        font-size: 13px;
     }
 
-    .priority-buttons button{
-        width: 100px;
+    .priority-buttons button img {
+        padding-left: 4px;
     }
 
-    .content {
-        overflow-x: auto;
-        margin-left: -10px;
+    .priority-buttons {
+        width: 300px;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .select {
+        width: 300px;
+    }
+
+    .subtasks {
+        width: 300px;
+    }
+
+    .date {
+        width: 300px;
+    }
+
+    .priority {
+        width: 300px;
+    }
+
+    .title {
+        width: 300px;
+    }
+
+    .description {
+        width: 300px;
+    }
+
+    span {
+        width: 200px;
+    }
+
+    .subtask-input-container {
+        width: 300px;
     }
 
     form {
@@ -574,17 +604,12 @@ select:hover {
         width: 280px;
     }
 
-    .subtask-input-field {
-        margin-left: -100px;
-    }
-
     .buttons {
         top: 810px;
         margin-left: 25%;
     }
 
     #create {
-        margin-top: -50px;
         margin-left: 36px;
         font-size: 16px;
     }
@@ -594,11 +619,36 @@ select:hover {
         width: 16px;
     }
 
-    .list {
-        top: 750px;
+    .list li {
+        width: 200px;
+    }
+}
+
+@media (max-width: 376px) {
+    .content {
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%);
+        margin-left: 8px;
+        overflow-y: scroll;
+        height: 110%;
     }
 
-    .list li {
-        width: 290px;
+    form {
+        height: 150%;
+    }
+
+    .buttons {
+       top: 82vh;
+       right: -5%;
+    }
+
+    #create {
+        font-size: 0;
+        width: 40px;
+        display: flex;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
     }
 }
