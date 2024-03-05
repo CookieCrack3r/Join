@@ -12,7 +12,10 @@ async function initSummary() {
   getCurrentDate();
 }
 
-
+/**
+ * Loads and displays the summary of task counts based on priority and status.
+ * Updates the corresponding HTML elements with the task count values.
+ */
 async function loadtodoSums() {
   try {
     let TasksUrgent = document.getElementById('task_urgend_number');

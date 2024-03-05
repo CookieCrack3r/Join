@@ -640,6 +640,16 @@ input::-webkit-search-cancel-button {
 }
 
 @media (max-width: 376px) {
+    #big-card {
+        top: 44%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 70%;
+        position: fixed;
+        overflow-x: hidden;
+    }
+
     .content {
         margin-left: 208px !important;
     }
