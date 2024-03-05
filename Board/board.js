@@ -511,28 +511,58 @@ function closeCard() {
     document.getElementById('big-card-bg').style.display = 'none';
 }
 
+/**
+ * Sets the current dragged element ID when starting the drag operation.
+ *
+ * @param {number} id - The ID of the element being dragged.
+ */
 function startDraggin(id) {
     currentDraggedElement = id;
 }
 
+/**
+ * Allows a drop event by preventing the default behavior.
+ *
+ * @param {Event} ev - The drop event.
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Moves the currently dragged task to the specified status category, updates the database, and refreshes the HTML.
+ *
+ * @param {string} status - The status category to move the task to.
+ */
 function moveTo(status) {
     todo[currentDraggedElement]['status'] = status;
     updateDB();
     updateHTML();
 }
 
+/**
+ * Highlights the dragsection
+ *
+ * @param {string} id - The ID of the element which is dragged over the dragsection.
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('dragsection-highlight');
 }
 
+/**
+ * Removes the highlight of the dragsection
+ *
+ * @param {string} id - The ID of the element which is dragged over the dragsection.
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragsection-highlight');
 }
 
+/**
+ * Redirects the user to the 'addTask.html' page with an optional URL parameter.
+ *
+ * @param {string} urlParam - An optional URL parameter to include in the redirection.
+ */
 function addTask(urlParam) {
     var url = '/AddTask/addTask.html';
     if (urlParam !== undefined && urlParam !== null) {

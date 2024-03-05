@@ -15,6 +15,9 @@ async function initTask() {
 
 }
 
+/**
+ * Adds a new todo to the todos array, with the information of the inputfields.
+ */
 async function addTodo() {
     let todo = 'to-do';
 
@@ -47,9 +50,16 @@ async function addTodo() {
     createTask();
 }
 
-
+/**
+ * Represents the selected priority for a task. Default value is 'Medium'.
+ *
+ * @type {string}
+ */
 let selectedPriority = 'Medium';
 
+/**
+ * Sets the selected priority to 'Urgent' and updates the visual styling for the priority buttons.
+ */
 function priorityUrgent() {
     selectedPriority = 'Urgent';
 
@@ -64,6 +74,9 @@ function priorityUrgent() {
     document.getElementById('low-img').src = '/AddTask/imgAddTask/low.png';
 }
 
+/**
+ * Sets the selected priority to 'Medium' and updates the visual styling for the priority buttons.
+ */
 function priorityMedium() {
     selectedPriority = 'Medium';
 
@@ -78,6 +91,9 @@ function priorityMedium() {
     document.getElementById('low-img').src = '/AddTask/imgAddTask/low.png';
 }
 
+/**
+ * Sets the selected priority to 'Low' and updates the visual styling for the priority buttons.
+ */
 function priorityLow() {
     selectedPriority = 'Low';
 
@@ -92,6 +108,9 @@ function priorityLow() {
     document.getElementById('urgent-img').src = '/AddTask/imgAddTask/urgent.png';
 }
 
+/**
+ * Shows the contacts on the add task page
+ */
 async function showContacts() {
     document.getElementById('contacts').innerHTML = '';
 
@@ -110,6 +129,10 @@ async function showContacts() {
     }
 }
 
+/**
+ * Adds or removes a contact from the 'contactsObject' based on its existence and updates the UI accordingly.
+ * @param {string} i - The index of the contact in the 'contactsAddTask' array.
+ */
 function addContactToTodo(i) {
     let contactElement = document.getElementById(`added-${i}`);
     let contactToAdd = contactsAddTask[i];
@@ -134,6 +157,11 @@ function addContactToTodo(i) {
     }
 }
 
+/**
+ * Displays feedback message in the designated container and hides it after a specified duration.
+ *
+ * @param {string} message - The feedback message to be displayed.
+ */
 function displayFeedback(message) {
     const feedbackContainer = document.getElementById('feedback');
     feedbackContainer.innerHTML = message;
@@ -145,6 +173,9 @@ function displayFeedback(message) {
     }, 1500);
 }
 
+/**
+ * Adds a new subtask to the 'subtasks' array and updates the UI accordingly.
+ */
 function addSubtask() {
     let subtaskInput = document.getElementById('subtasks');
     let subtaskText = subtaskInput.value.trim();
@@ -165,6 +196,11 @@ function addSubtask() {
     }
 }
 
+/**
+ * Edits a subtask's text in the 'subtasks' array and updates the UI accordingly.
+ *
+ * @param {number} index - The index of the subtask in the 'subtasks' array.
+ */
 function editSubtask(index) {
     let subtaskElement = document.getElementById(`editSubtaskInput${index}`);
     let subtaskSpan = document.querySelector(`#subtasks-list li:nth-child(${index + 1}) span`);
@@ -182,11 +218,19 @@ function editSubtask(index) {
     }
 }
 
+/**
+ * Deletes a subtask from the 'subtasks' array based on its index and updates the UI accordingly.
+ *
+ * @param {number} index - The index of the subtask in the 'subtasks' array to be deleted.
+ */
 function deleteSubtask(index) {
     subtasks.splice(index, 1);
     displaySubtasks();
 }
 
+/**
+ * Displays the list of subtasks in the UI based on the 'subtasks' array.
+ */
 function displaySubtasks() {
     let subtasksList = document.getElementById('subtasks-list');
     subtasksList.innerHTML = '';
@@ -196,6 +240,9 @@ function displaySubtasks() {
     });
 }
 
+/**
+ * Sets the minimum date for the 'selectedDate' input field to the current date.
+ */
 async function setMinDate() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -206,11 +253,17 @@ async function setMinDate() {
     document.getElementById("selectedDate").min = today;
 }
 
+/**
+ * Enables the 'create' button and navigates to the board.html page.
+ */
 function createTask() {
     create.disabled = false;
     window.location.href = '/Board/board.html';
 }
 
+/**
+ * Clears input fields and resets selections when creating a new task.
+ */
 async function clearInputs() {
     document.getElementById('title').value = '';
     document.getElementById('descritpion').value = '';
