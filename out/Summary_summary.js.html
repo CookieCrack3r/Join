@@ -29,14 +29,17 @@
             <pre class="prettyprint source linenums"><code>let todoSum = [];
 
 
+
 async function initSummary() {
+
   await includeHTML();
   loadtodoSums();
   await getInitials();
-  await displayOptions();
+  displayOptions();
   greetingOnDailyTime();
   getCurrentDate();
 }
+
 
 async function loadtodoSums() {
   try {
@@ -45,26 +48,26 @@ async function loadtodoSums() {
     let Task_in_Progress = document.getElementById('Task-in-Progress_value');
     let Awaiting_feedback = document.getElementById('Awaiting-feedback_value');
     let Task_Done = document.getElementById('Task-Done_value');
+    let TaskInBoard = document.getElementById('Task-in-Board_value');
 
-
-
-    todoSum = JSON.parse(await getItem('todos'));
-
+    let todoSum = JSON.parse(await getItem('todos'));
 
     let UrgentTasks = todoSum.filter(t => t['priority'] == 'Urgent');
-
     let Tasks_value = todoSum.filter(t => t['status'] == 'to-do');
     let Task_in_Progress_value = todoSum.filter(t => t['status'] == 'in-progress');
     let Awaiting_feedback_value = todoSum.filter(t => t['status'] == 'await-feedback');
     let Task_Done_value = todoSum.filter(t => t['status'] == 'done');
+
+
+    let totalTodos = todoSum.length;
+
+    TaskInBoard.innerHTML = totalTodos.toString();
+
     Tasks.innerHTML = Tasks_value.length.toString();
     Task_in_Progress.innerHTML = Task_in_Progress_value.length.toString();
     Awaiting_feedback.innerHTML = Awaiting_feedback_value.length.toString();
     Task_Done.innerHTML = Task_Done_value.length.toString();
-
     TasksUrgent.innerHTML = UrgentTasks.length.toString();
-
-
 
   } catch (e) {
     console.error('Loading error:', e);
@@ -90,12 +93,13 @@ async function getInitials() {
 * this function is to open the submenu when the user is clicking on the initial-logo
 * @param {string} isDisplayed - if the user click on the initial-logo get opened if he click again it will be closed
 **/
-async function displayOptions() {
+function displayOptions() {
   const options = document.getElementById("options");
+  options.style.display = '';
   const isDisplayed = options.classList.toggle("dNone");
 
   if (isDisplayed) {
-    document.getElementById('d_none_svg').style.display = 'none';
+    document.getElementById('options').style.display = 'none';
   }
 
   if (isDisplayed &amp;&amp; !options.innerHTML.trim()) {
@@ -103,9 +107,9 @@ async function displayOptions() {
       &lt;div class="option">&lt;a href="/PrivacyPolicy/privacypolicy.html">Privacy Policy&lt;/a>&lt;/div>
       &lt;div class="option">&lt;a href="/LegalNotice/legalnotice.html">Legal Notice&lt;/a>&lt;/div>
       &lt;div class="option" onclick="goToLogin()">Log out&lt;/div>
-    
     `;
   }
+
 }
 
 function goToLogin() {
@@ -133,10 +137,10 @@ function greetingOnDailyTime() {
  */
 function getTimeOfDay() {
   const currentHour = new Date().getHours();
-  if (currentHour >= 5 &amp;&amp; currentHour &lt; 12) return "Guten Morgen";
-  if (currentHour >= 12 &amp;&amp; currentHour &lt; 18) return "Guten Tag";
-  if (currentHour >= 18 &amp;&amp; currentHour &lt; 22) return "Guten Abend";
-  return "Gute Nacht";
+  if (currentHour >= 5 &amp;&amp; currentHour &lt; 12) return "Good Morning";
+  if (currentHour >= 12 &amp;&amp; currentHour &lt; 18) return "Good Afternoon";
+  if (currentHour >= 18 &amp;&amp; currentHour &lt; 22) return "Good Evening";
+  return "Good Night";
 }
 
 /**
@@ -148,7 +152,7 @@ function getCurrentDate() {
   let currentDateElement = document.getElementById("currentDate");
   let currentDate = new Date();
   let options = { year: 'numeric', month: 'long', day: 'numeric' };
-  currentDateElement.textContent = currentDate.toLocaleDateString('de-DE', options);
+  currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
 }
 </code></pre>
         </article>
@@ -160,13 +164,13 @@ function getCurrentDate() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkPasswords">checkPasswords</a></li><li><a href="global.html#displayOptions">displayOptions</a></li><li><a href="global.html#enableTheBtn">enableTheBtn</a></li><li><a href="global.html#getCurrentDate">getCurrentDate</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getTimeOfDay">getTimeOfDay</a></li><li><a href="global.html#greetingOnDailyTime">greetingOnDailyTime</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#registerUser">registerUser</a></li><li><a href="global.html#succesfullySignedUp">succesfullySignedUp</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#checkPasswords">checkPasswords</a></li><li><a href="global.html#closeCard">closeCard</a></li><li><a href="global.html#closeContactInformation">closeContactInformation</a></li><li><a href="global.html#createContact">createContact</a></li><li><a href="global.html#deleteContactByName">deleteContactByName</a></li><li><a href="global.html#displayOptions">displayOptions</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#enableTheBtn">enableTheBtn</a></li><li><a href="global.html#generateContacts">generateContacts</a></li><li><a href="global.html#getContactInitials">getContactInitials</a></li><li><a href="global.html#getCurrentDate">getCurrentDate</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getRandomColor">getRandomColor</a></li><li><a href="global.html#getTimeOfDay">getTimeOfDay</a></li><li><a href="global.html#greetingOnDailyTime">greetingOnDailyTime</a></li><li><a href="global.html#loadContacts">loadContacts</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#openContact">openContact</a></li><li><a href="global.html#registerUser">registerUser</a></li><li><a href="global.html#succesfullySignedUp">succesfullySignedUp</a></li><li><a href="global.html#updateContact">updateContact</a></li><li><a href="global.html#validateNumbers">validateNumbers</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 01 2024 20:38:08 GMT+0100 (Central European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 05 2024 12:39:52 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
