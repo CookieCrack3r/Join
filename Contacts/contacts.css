@@ -697,4 +697,8 @@ h1 {
         height: fit-content;
         margin-left: -50px;
     }
+
+    .allContacts {
+        margin-top: 0;
+    }
 }
