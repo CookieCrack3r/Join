@@ -1,7 +1,8 @@
 let greetingName = [];
 
-//to reset the Z-Index of the Logo-animation in the first
-
+/**
+ * to reset the Z-Index of the Logo-animation in the first
+ **/
 document.addEventListener('DOMContentLoaded', function () {
     const logoContainer = document.querySelector('.join-logo-container');
 
@@ -15,22 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//this function open's the sign up page
 
 function redirectToSignUp() {
     window.location.pathname = '/SignUP/signup.html';
 }
 
-//this function is to login as a guest
-
+/**
+ * this function is to login as a guest
+ **/
 async function loginAsGuest() {
     await setItem('userInitial', 'G')
     await setItem('userName', 'Guest');
     window.location.pathname = '/Summary/summary.html';
 }
 
-// this function is to login with your registered Email and Password && to save your Initials of your first and lastname
-
+/**
+ *  this function is to login with your registered Email and Password && to save your Initials of your first and lastname
+ * */ 
 async function LoginRegistered() {
     const email = document.getElementById('login_email_input').value;
     const password = document.getElementById('login_password_input').value;
