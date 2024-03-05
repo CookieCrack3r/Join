@@ -174,6 +174,13 @@ a {
     left: 856px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .addContactHeader {
     height: 362.48px;
     width: 584px;
@@ -475,10 +482,11 @@ h1 {
 
     #editContact {
         height: 700px;
-        width: 396px;
+        width: 420px;
         border-radius: 30px;
         top: 100px;
-        left: 4%;
+        left: 50%;
+        transform: translate(-50%);
     }
 
     #editContact input {
@@ -487,7 +495,7 @@ h1 {
 
     .editContactHeader {
         height: 328px;
-        width: 396px;
+        width: 420px;
         border-top-left-radius: 30px;
     }
 
@@ -508,11 +516,12 @@ h1 {
     }
 
     #addNewContact {
-        height: 700px;
-        width: 396px;
+        height: 800px;
+        width: 420px;
         border-radius: 30px;
         top: 100px;
-        left: 1.2%;
+        left: 50%;
+        transform: translate(-50%);
     }
 
     #addNewContact input {
@@ -521,7 +530,7 @@ h1 {
 
     .addContactHeader {
         height: 328px;
-        width: 396px;
+        width: 420px;
         border-top-right-radius: 30px;
     }
 
@@ -573,7 +582,6 @@ h1 {
         width: 300px;
         border-radius: 30px;
         top: 100px;
-        left: 4%;
     }
 
     #editContact input {
@@ -591,7 +599,6 @@ h1 {
         width: 300px;
         border-radius: 30px;
         top: 100px;
-        left: 15.5%;
     }
 
     #addNewContact input {
@@ -632,13 +639,12 @@ h1 {
 
 
     #editContact {
+        top: 50px;
         height: 530px !important;
-        left: -1%;
     }
 
     #addNewContact {
-        left: 11%;
-        top: 96px;
+        top: 40px;
         height: 561px;
     }
 
