@@ -516,7 +516,7 @@ h1 {
     }
 
     #addNewContact {
-        height: 800px;
+        height: 745px;
         width: 420px;
         border-radius: 30px;
         top: 100px;
@@ -644,12 +644,16 @@ h1 {
     }
 
     #addNewContact {
-        top: 40px;
-        height: 561px;
+        top: 80px;
+        height: 490px;
+    }
+
+    #addNewContact button{
+        font-size: 15px;
     }
 
     .addContactHeader {
-        height: 187px;
+        height: 150px;
     }
 
     .addContactInfo {
@@ -662,6 +666,7 @@ h1 {
 
     h1 {
         font-size: 30px;
+        margin: 0;
     }
 
     .addContactHeader h2 {
@@ -669,7 +674,8 @@ h1 {
     }
 
     .closeButton {
-        margin-left: 247px;
+        margin-top: 13px;
+        margin-left: 238px;
     }
 
     .allContacts {
@@ -700,5 +706,9 @@ h1 {
 
     .allContacts {
         margin-top: 0;
+    }
+
+    .addContactButtons{
+        margin-top: 7px;
     }
 }
