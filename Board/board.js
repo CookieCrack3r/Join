@@ -8,6 +8,10 @@ async function initBoard() {
     await displayOptions();
 }
 
+/**
+ * This funcion updates the HTML content for different sections of the application.
+ * Calls functions to update feedback, in-progress, to-do, and done sections.
+ */
 async function updateHTML() {
     updateAwaitFeedback();
     updateInProgress();
@@ -15,10 +19,16 @@ async function updateHTML() {
     updateDone();
 }
 
+/**
+ * This function updates the databank and the todo array.
+ */
 function updateDB() {
     setItem('todos', JSON.stringify(todo));
 }
 
+/**
+ * This function Loads the todos from the backend.
+ */
 async function loadTodos() {
     try {
         todo = JSON.parse(await getItem('todos'));
@@ -28,6 +38,9 @@ async function loadTodos() {
     }
 }
 
+/**
+ * Updates the 'to-do' section in the Kanban board based on the tasks in the 'todo' array and displays a message for no tasks.
+ */
 function updateToDo() {
     let to_do = todo.filter(t => t['status'] == 'to-do');
     document.getElementById('todo').innerHTML = '';
@@ -41,6 +54,9 @@ function updateToDo() {
     }
 }
 
+/**
+ * Updates the 'in-progress' section in the Kanban board based on the tasks in the 'todo' array and displays a message for no tasks.
+ */
 function updateInProgress() {
     let progress = todo.filter(t => t['status'] == 'in-progress');
     document.getElementById('in-progress').innerHTML = '';
@@ -54,6 +70,9 @@ function updateInProgress() {
     }
 }
 
+/**
+ * Updates the 'await-feedback' section in the Kanban board based on the tasks in the 'todo' array and displays a message for no tasks.
+ */
 function updateAwaitFeedback() {
     let awaitFeedback = todo.filter(t => t['status'] == 'await-feedback');
     document.getElementById('await-feedback').innerHTML = '';
@@ -67,6 +86,9 @@ function updateAwaitFeedback() {
     }
 }
 
+/**
+ * Updates the 'done' section in the Kanban board based on the tasks in the 'todo' array and displays a message for no tasks.
+ */
 function updateDone() {
     let done = todo.filter(t => t['status'] == 'done');
     document.getElementById('done').innerHTML = '';
@@ -80,11 +102,23 @@ function updateDone() {
     }
 }
 
+/**
+ * Generates a background color based on the specified category.
+ *
+ * @param {string} category - The category for which to generate the background color.
+ * @returns {string} The background color corresponding to the given category.
+ */
 function generateBackroundColor(category) {
     let categoryColor = { 'Technical': '#005bf8', 'Design': '#FF7A00' };
     return categoryColor[category];
 }
 
+/**
+ * Retrieves the image URL corresponding to the specified priority level.
+ *
+ * @param {string} priority - The priority level for which to retrieve the image URL.
+ * @returns {string} The image URL associated with the given priority, or a default URL if not found.
+ */
 function getPriorityImage(priority) {
     const priorityImages = {
         'Low': 'img/low.png',
@@ -94,6 +128,12 @@ function getPriorityImage(priority) {
     return priorityImages[priority] || 'img/medium.svg';
 }
 
+/**
+ * Generates HTML markup for a Kanban card based on the provided 'todo' object.
+ *
+ * @param {Object} todo - The 'todo' object containing information about the task.
+ * @returns {string} HTML markup for the Kanban card.
+ */
 function generateKanbanHTML(todo) {
     let { category, title, subtasks, description, priority, date, id } = todo;
     let subtaskCount = getSubtaskCount(todo, id);
@@ -107,16 +147,32 @@ function generateKanbanHTML(todo) {
         <div id=${id} draggable="true" onclick="openCard('${category}', '${title}', '${description}', '${id}', '${date}', '${priority}', '${subtasks}')" ondragstart="startDraggin(${todo['id']})" class="card"><span class="label" style="background-color: ${categoryColor};">${category}</span><span class="description"><h3>${title}</h3><br>${description}</span>${progressBarSection}<div class="members-and-priority"><div class="members">${getContactsPic(id)}</div> <div class="priority"><img src="${priorityImage}"></div></div><div class="mobileButtons"><button onclick="categoryUp(${id}, event)"><img src="img/up.png"></button><button onclick="categoryDown(${id}, event)"><img src="img/down.png"></button></div></div>`;
 }
 
+/**
+ * Moves the task with the specified ID up in the category order.
+ *
+ * @param {number} id - The ID of the task to be moved up.
+ * @param {Event} event - The event object triggering the function.
+ */
 function categoryUp(id, event) {
     event.stopPropagation();
     moveCategoryUp(id);
 }
 
+/**
+ * Moves the task with the specified ID down in the category order.
+ *
+ * @param {number} id - The ID of the task to be moved up.
+ * @param {Event} event - The event object triggering the function.
+ */
 function categoryDown(id, event) {
     event.stopPropagation();
     moveCategoryDown(id);
 }
 
+/**
+ * Checks the actual category and moves the task to the next category
+ * @param {number} id - The ID of the task to be moved up.
+ */
 function moveCategoryUp(id) {
     const index = todo.findIndex(item => item.id === id);
     const currentCategory = todo[index].category;
@@ -131,6 +187,10 @@ function moveCategoryUp(id) {
     }
 }
 
+/**
+ * Checks the currnet category and moves the task to the pevious category
+ * @param {number} id - The ID of the task to be moved up.
+ */
 function moveCategoryDown(id) {
     const index = todo.findIndex(item => item.id === id);
     const currentCategory = todo[index].category;
@@ -145,6 +205,12 @@ function moveCategoryDown(id) {
     }
 }
 
+/**
+ * Updates the status based on the previous status.
+ *
+ * @param {string} status - The current status.
+ * @returns {string} The updated status based on the previous status.
+ */
 function updateStatusBasedOnPrevious(status) {
     const statusMap = {
         'done': 'await-feedback',
@@ -154,6 +220,12 @@ function updateStatusBasedOnPrevious(status) {
     return statusMap[status] || status;
 }
 
+/**
+ * Updates the status based on the current status.
+ *
+ * @param {string} status - The current status.
+ * @returns {string} The updated status based on the current status.
+ */
 function updateStatusBasedOnCurrent(status) {
     const statusMap = {
         'to-do': 'in-progress',
@@ -163,6 +235,17 @@ function updateStatusBasedOnCurrent(status) {
     return statusMap[status] || status;
 }
 
+/**
+ * Shows the full task with all informations
+ * 
+ * @param {string} category - The category of the task.
+ * @param {string} title - The title of the task.
+ * @param {string} description - The description of the task.
+ * @param {number} id - The ID of the task.
+ * @param {string} date - The date of the task.
+ * @param {string} priority - The priority of the task.
+ * @param {string} subtasks - The subtasks of the task.
+ */
 function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card-bg').style.display = 'flex';
     document.getElementById('big-card').classList.remove('d-none');
@@ -170,6 +253,19 @@ function openCard(category, title, description, id, date, priority, subtasks) {
     document.getElementById('big-card').innerHTML += generateBigCard(category, title, description, id, date, priority, subtasks);
     createCheckboxes(id, subtasks);
 }
+
+/**
+ * Generates the card with all informations
+ * 
+ * @param {string} category - The category of the task.
+ * @param {string} title - The title of the task.
+ * @param {string} description - The description of the task.
+ * @param {number} id - The ID of the task.
+ * @param {string} date - The date of the task.
+ * @param {string} priority - The priority of the task.
+ * @param {string} subtasks - The subtasks of the task.
+ * @returns {string} HTML markup for the detailed card view.
+ */
 
 function generateBigCard(category, title, description, id, date, priority, subtasks) {
     let priorityImage = getPriorityImage(priority);
@@ -180,6 +276,11 @@ function generateBigCard(category, title, description, id, date, priority, subta
     `;
 }
 
+/**
+ * Shows the contact name
+ * @param {number} id - The id of the Contact which is assigned to the Task
+ * @returns {string} HTML markup for the Contact Name
+ */
 async function getContacts(id) {
     try {
         let names = '';
@@ -192,11 +293,21 @@ async function getContacts(id) {
     }
 }
 
+/**
+ * Create the Initiales of the contact
+ * @param {string} contact - The Contact Name
+ * @returns {string} initials of the contact 
+ */
 function getContactInitials(contact) {
     const initials = contact.name.split(' ').map(part => part[0].toUpperCase()).join('');
     return initials;
 }
 
+/**
+ * Creates the contact sign with initials and backgorundcolor
+ * @param {number} id - The id of the contact
+ * @returns {string} HTML markup for the contactsign
+ */
 function getContactsPic(id) {
     try {
         let pics = '';
@@ -214,6 +325,11 @@ function getContactsPic(id) {
     }
 }
 
+/**
+ * Creates the sign and name for the opened Task
+ * @param {number} id - The id of the contact
+ * @returns {string} HTML markup for the opened task
+ */
 function getContactsBig(id) {
     try {
         let contactsBig = '';
@@ -233,6 +349,12 @@ function getContactsBig(id) {
     }
 }
 
+/**
+ * Edits the details of a task in the detailed card view.
+ *
+ * @param {Object} card - The object containing information about the task.
+ *                        It should have properties: id, title, description, date, priority, and subtasks.
+ */
 function editTodo(card) {
     let idInput = card.id;
     document.getElementById('headline-big').innerHTML = `<input id="titleinput" value="${card.title}">`;
@@ -250,6 +372,11 @@ function editTodo(card) {
     document.getElementById('end-section').innerHTML = `<span onclick="saveTodo('${idInput}')"><img src=img/save.svg>Save</span>`;
 }
 
+/**
+ * Saves the edited details of a task in the detailed card view.
+ *
+ * @param {number} idInput - The ID of the task being edited.
+ */
 function saveTodo(idInput) {
     let titleinput = document.getElementById('titleinput').value;
     let textinput = document.getElementById('textinput').value;
@@ -267,6 +394,12 @@ function saveTodo(idInput) {
     closeCard();
 }
 
+/**
+ * Creates checkboxes for the subtasks of a task and appends them to the specified container.
+ *
+ * @param {number} id - The ID of the task.
+ * @param {Array} subtasks - An array containing subtask information for the task.
+ */
 function createCheckboxes(id, subtasks) {
     let checkboxesContainer = document.getElementById('checkboxes');
     checkboxesContainer.innerHTML = '';
@@ -278,6 +411,12 @@ function createCheckboxes(id, subtasks) {
     }
 }
 
+/**
+ * Updates the status of a subtask and triggers database and HTML updates.
+ *
+ * @param {number} i - The index of the subtask.
+ * @param {number} id - The ID of the task containing the subtask.
+ */
 function updateSubtaskStatus(i, id) {
     if (todo[id].subtasks[i]['checked'] == false) {
         todo[id].subtasks[i]['checked'] = true;
@@ -287,17 +426,34 @@ function updateSubtaskStatus(i, id) {
     updateHTML();
 }
 
+/**
+ * Gets the count of subtasks for a specific task.
+ *
+ * @param {Object} todo - The task object containing subtasks.
+ * @param {number} id - The ID of the task.
+ * @returns {number} The count of subtasks for the specified task.
+ */
 function getSubtaskCount(todo, id) {
     let subtasks = todo['subtasks'];
     return subtasks.length;
 }
 
+/**
+ * Gets the count of completed subtasks for a specific task.
+ *
+ * @param {Object} todo - The task object containing subtasks.
+ * @param {number} id - The ID of the task.
+ * @returns {number} The count of completed subtasks for the specified task.
+ */
 function getCompletedSubtaskCount(todo, id) {
     let Subtasks = todo['subtasks'];
     let subtasksLength = Subtasks.filter(t => t['checked'] == true);
     return subtasksLength.length;
 }
 
+/**
+ * Filters and displays tasks based on the title an description.
+ */
 async function filterTodos() {
     let searchInput = document.getElementById('search').value.trim().toLowerCase();
     let filteredTodos = todo.filter(t => t['title'].toLowerCase().includes(searchInput) || t['description'].toLowerCase().includes(searchInput));
@@ -324,6 +480,11 @@ async function filterTodos() {
     }
 }
 
+/**
+ * Deletes a task by its ID or title, updates the database, closes the card, and refreshes the HTML.
+ *
+ * @param {number} id - The ID of the task to delete.
+ */
 async function deleteTodo(id) {
     let titleToDelete = '';
     if (todo[id] !== undefined) {
@@ -342,6 +503,9 @@ async function deleteTodo(id) {
     updateHTML();
 }
 
+/**
+ * Closes the opned task
+ */
 function closeCard() {
     document.getElementById('big-card').classList.add('d-none');
     document.getElementById('big-card-bg').style.display = 'none';
