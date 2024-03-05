@@ -163,6 +163,13 @@ aside a:hover {
 }
 
 @media (max-width: 376px) {
+    body {
+        overflow: hidden;
+    }
+
+    aside {
+        top: 85vh
+    }
 
     aside ul {
         width: 100vh;
