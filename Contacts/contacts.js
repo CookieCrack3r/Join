@@ -6,6 +6,9 @@ async function initBoard() {
   displayOptions();
 }
 
+/**
+ * This funciton creates contacts and pushes different contact informations from the Input fields to the Contact Array.
+ */
 async function createContact() {
   contacts_length = JSON.parse(await getItem('contacts')) || [];
   let newcontactsId = contacts_length.length - 1;
@@ -31,6 +34,9 @@ async function createContact() {
   closeContactInformation();
 }
 
+/**
+ * This funciton loads all contacts from the array and opens the generateContacts function.
+ */
 async function loadContacts() {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
@@ -41,12 +47,19 @@ async function loadContacts() {
   }
 }
 
+/**
+ * This function Shows the addContact PopUp
+ */
 function addContact() {
   document.getElementById('contactContentContainer').classList.remove('displayNone');
   document.getElementById('addNewContact').classList.remove('displayNone');
   document.getElementById('bg').style.display = 'flex';
 }
 
+/**
+ * This function ensures that only numbers can be entered in the input field.
+ * @param {*} input - This is the input field which only shows numbers.
+ */
 function validateNumbers(input) {
   const inputValue = input.value;
   const numericValue = inputValue.replace(/\D/g, '');
@@ -54,11 +67,20 @@ function validateNumbers(input) {
   2
 }
 
+/**
+ * This function generates a random color from a predefined array of colors.
+ *
+ * @returns {string} A randomly selected color.
+ */
 function getRandomColor() {
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
 }
 
+/**
+ * This funcion generates and displays a list of contacts in the 'allContacts' element.
+ * Contacts are sorted alphabetically by name, and a letter header is displayed for each unique initial.
+ */
 async function generateContacts() {
 
   document.getElementById('allContacts').innerHTML = '';
@@ -87,6 +109,11 @@ async function generateContacts() {
   }
 }
 
+/**
+ * This function opens and displays detailed information about a specific contact.
+ *
+ * @param {number} i - The index of the contact in the 'contacts' array.
+ */
 async function openContact(i) {
   const contact = contacts[i];
   const initials = getContactInitials(contact.name);
@@ -118,6 +145,9 @@ async function openContact(i) {
   `;
 }
 
+/**
+ * This function closes the contact Information
+ */
 function closeContactInformation() {
   document.getElementById('contactContent').classList.add('displayNone');
 }
@@ -142,6 +172,12 @@ function highlightContactByName(contactName) {
   }
 }
 
+/**
+ * This function generates initials from the given full name.
+ *
+ * @param {string} name - The full name of the contact.
+ * @returns {string} The initials extracted from the name.
+ */
 function getContactInitials(name) {
   const nameParts = name.split(' ');
   const firstNameInitial = nameParts[0][0];
@@ -149,11 +185,20 @@ function getContactInitials(name) {
   return firstNameInitial + lastNameInitial;
 }
 
+/**
+ * This function close the add contact or edit contact pop up
+ */
 function closeCard() {
   document.getElementById('addNewContact').classList.add('displayNone');
   document.getElementById('editContainer').classList.add('displayNone');
   document.getElementById('bg').style.display = 'none';
 }
+
+/**
+ * Opens the edit contact interface for a specific contact.
+ *
+ * @param {number} i - The index of the contact in the 'contacts' array.
+ */
 
 function editContact(i) {
   const contact = contacts[i];
@@ -192,6 +237,11 @@ function editContact(i) {
   `;
 }
 
+/**
+ * This function updates the information of a specific contact.
+ *
+ * @param {number} contactId - The ID of the contact to be updated.
+ */
 async function updateContact(contactId) {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
@@ -220,6 +270,11 @@ async function updateContact(contactId) {
   }
 }
 
+/**
+ * This function deletes the Contact choosen by the name
+ *
+ * @param {string} contactName - The name of the contact to be deleted.
+ */
 async function deleteContactByName(contactName) {
   try {
     contacts = JSON.parse(await getItem('contacts')) || [];
@@ -241,8 +296,6 @@ async function deleteContactByName(contactName) {
   document.getElementById('contactContent').classList.add('displayNone');
 }
 
-
-
 async function getInitials() {
   UserInitials = await getItem('userInitial');
   UserName = await getItem('userName');
@@ -251,8 +304,6 @@ async function getInitials() {
       ${UserInitials}
       </div>`;
 }
-
-
 
 function displayOptions() {
   const options = document.getElementById("options");
