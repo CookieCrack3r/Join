@@ -108,6 +108,10 @@ input::-webkit-search-cancel-button {
     overflow-y: auto;
 }
 
+.complete-table::-webkit-scrollbar{
+    display: none;
+}
+
 .table-headlines {
     width: 244px;
     height: 28px;
